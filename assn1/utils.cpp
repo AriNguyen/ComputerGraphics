@@ -3,9 +3,18 @@
 #include <string.h>
 #include <vector>
 #include "utils.h"
+#include "Window.h"
 
 Specs::Specs(int argc, char *argv[]) {
     int i;
+    Window window;
+
+    fileName = (char *)"hw1.ps";
+    scaleFactor = 1;
+    counterClockwiseDegree = 1;
+    xDim = 0; 
+    yDim = 0;
+    window.loadDim(0, 0, 499, 499);
     for (i = 0; i < argc; i++) {
         if (strcmp(argv[i], "-f") == 0) 
             fileName = argv[++i];
@@ -14,17 +23,17 @@ Specs::Specs(int argc, char *argv[]) {
         else if (strcmp(argv[i], "-r") == 0) 
             counterClockwiseDegree = atoi(argv[++i]);
         else if (strcmp(argv[i], "-m") == 0) 
-            xDIim = atoi(argv[++i]);
+            xDim = atoi(argv[++i]);
         else if (strcmp(argv[i], "-n") == 0) 
             yDim = atoi(argv[++i]);
         else if (strcmp(argv[i], "-a") == 0) 
-            lowXBound = atoi(argv[++i]);
+            window.lowX = atoi(argv[++i]);
         else if (strcmp(argv[i], "-b") == 0) 
-            lowYBound = atoi(argv[++i]);
+            window.lowY = atoi(argv[++i]);
         else if (strcmp(argv[i], "-c") == 0) 
-            upXBound  = atoi(argv[++i]);
+            window.upX  = atoi(argv[++i]);
         else if (strcmp(argv[i], "-d") == 0) 
-            upYBound = atoi(argv[++i]);
+            window.upY = atoi(argv[++i]);
     }
 }
 
@@ -35,7 +44,7 @@ std::vector<std::string> tokenizeBySymbol(std::string str, char *symbol) {
     
     cstr = new char[str.length() + 1];
     strcpy(cstr, str.c_str());
-    
+
     token = strtok(cstr, symbol); 
     while (token != NULL) { 
         // printf("%s\n", token); 
@@ -45,3 +54,7 @@ std::vector<std::string> tokenizeBySymbol(std::string str, char *symbol) {
     delete [] cstr;
     return tokens;
 } 
+
+int stringToInt(std::string str) {
+    return std::atoi(str.c_str());
+}

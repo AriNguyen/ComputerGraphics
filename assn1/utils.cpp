@@ -83,13 +83,12 @@ int clipLine(Point &p0, Point &p1, Window win) {
 
     while (true) {
         if (!(outCode0 | outCode1)) {      // both points inside widnow
-            break;
+            return 1;
         } else if (outCode0 & outCode1) {  // both outside window
             return 0;
         } else {                            // either of 2 points out side window
             int outCode = outCode1 > outCode0 ? outCode1 : outCode0;    // get larger one
             int x, y;
-
             if (outCode & TOP) {           // point is above the clip window
 				x = p0.x + (p1.x - p0.x) * (win.upBound.y - p0.y) / (p1.y - p0.y);
 				y = win.upBound.y;

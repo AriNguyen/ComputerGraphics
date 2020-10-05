@@ -15,10 +15,13 @@ Specs::Specs(int argc, char *argv[]) {
     window.width = 499;
     window.height = 499;
     scaleFactor = 1.0;
-    rotateDegree = 1;
+    rotateAngle = 0;
     xDim = 0; 
     yDim = 0;
-    
+    lowX = 0;
+    lowY = 0;
+    upX = 499;
+    upY = 499;
     // parse argv
     for (int i = 0; i < argc; i++) {
         if (strcmp(argv[i], "-f") == 0) 
@@ -26,7 +29,7 @@ Specs::Specs(int argc, char *argv[]) {
         else if (strcmp(argv[i], "-s") == 0) 
             scaleFactor = atof(argv[++i]);
         else if (strcmp(argv[i], "-r") == 0) 
-            rotateDegree = atoi(argv[++i]);
+            rotateAngle = atoi(argv[++i]);
         else if (strcmp(argv[i], "-m") == 0) 
             xDim = std::atoi(argv[++i]);
         else if (strcmp(argv[i], "-n") == 0) 
@@ -58,16 +61,19 @@ void Window::loadDim(int lowX, int lowY, int upX, int upY) {
 
 
 int computeOutcode(Point point, Point lowBound, Point upBound) {
-    int code = INSIDE;              // initialized to be inside window
-    if (point.x < lowBound.x)       // to the left
-        code |= LEFT;
-    else if (point.x > upBound.x)   // to the right
-        code |= RIGHT;
-    else if (point.y < lowBound.y)  // below window
-        code |= BOTTOM;
-    else if (point.y > upBound.y)   // above window
-        code |= TOP;
-    return code;
+    // printf("computeOutcode: x, y: %d %d, %d %d, %d %d\n", point.x, point.y, lowBound.x, lowBound.y, upBound.x, upBound.y);
+    // initialized as being inside 
+    int code = INSIDE; 
+    if (point.x < lowBound.x) // to the left of rectangle 
+        code |= LEFT; 
+    else if (point.x > upBound.x) // to the right of rectangle 
+        code |= RIGHT; 
+    if (point.y < lowBound.y) // below the rectangle 
+        code |= BOTTOM; 
+    else if (point.y > upBound.y) // above the rectangle 
+        code |= TOP; 
+  
+    return code; 
 }
 
 // cohenSutherland: clip line
@@ -84,25 +90,39 @@ int clipLine(Point &p0, Point &p1, Window win) {
     while (true) {
         if (!(outCode0 | outCode1)) {      // both points inside widnow
             return 1;
-        } else if (outCode0 & outCode1) {  // both outside window
+        } else if (outCode0 & outCode1) {  // both outside window, in same region
             return 0;
         } else {                            // either of 2 points out side window
             int outCode = outCode1 > outCode0 ? outCode1 : outCode0;    // get larger one
             int x, y;
+            int dx = p1.x - p0.x;
+            int dy = p1.y - p0.y;
             if (outCode & TOP) {           // point is above the clip window
-				x = p0.x + (p1.x - p0.x) * (win.upBound.y - p0.y) / (p1.y - p0.y);
+                if (dy == 0)
+                    x = p0.x;
+                else 
+                    x = p0.x + dx * (win.upBound.y - p0.y) / dy;
 				y = win.upBound.y;
+                // printf("--win: %d %d, %d %d\n", win.lowBound.x, win.lowBound.y, win.upBound.x, win.upBound.y);
 			} else if (outCode & BOTTOM) { // point is below the clip window
-				x = p0.x + (p1.x - p0.x) * (win.lowBound.y - p0.y) / (p1.y - p0.y);
+				if (dy == 0)
+                    x = p0.x;
+                else 
+                    x = p0.x + dx * (win.lowBound.y - p0.y) / dy;
 				y = win.lowBound.y ;
 			} else if (outCode & RIGHT) {  // point is to the right of clip window
-				y = p0.y + (p1.y - p0.y) * (win.upBound.x - p0.x) / (p1.x - p0.x);
+				if (dx == 0)
+                    y = p0.y;
+                else   
+                    y = p0.y + dy * (win.upBound.x - p0.x) / dx;
 				x = win.upBound.x;
 			} else if (outCode & LEFT) {   // point is to the left of clip window
-				y = p0.y + (p1.y - p0.y) * (win.lowBound.x - p0.x) / (p1.x - p0.x);
+				if (dx == 0)
+                    y = p0.y;
+                else  
+                    y = p0.y + dy * (win.lowBound.x - p0.x) / dx;
 				x = win.lowBound.x ;
 			}
-
             if (outCode == outCode0) {
 				p0.x = x;
 				p0.y = y;
@@ -131,7 +151,7 @@ std::vector<Point> drawLine(Point p0, Point p1) {
     // printf("drawLine: %d %d, %d %d\n", p0.x, p0.y, p1.x, p1.y);
     while (true) {  
         // printf(" x y: %d %d\n", p0.x, p0.y);
-        Point p {p0.x, p0.y};
+        Point p = {p0.x, p0.y};
         points.push_back(p);
         if (p0.x == p1.x && p0.y == p1.y) 
             break;
@@ -164,15 +184,15 @@ void scale(int &x, int &y, float scaleFactor) {
     y = round(y * scaleFactor);
 }
 
-void rotate(int &x, int &y, int rotateDegree) {
+void rotate(int &x, int &y, int rotateAngle, Point rotatePoint) {
     int x0 = x;
     int y0 = y;
-    double rad = rotateDegree * PI/180;
+    const float rad = rotateAngle * PI/180;
     // std::cout << "rad: " << rad << " " << round(cos(rad)) << " "  << round(sin(rad)) << std::endl;
     // printf("x0 y0: %d %d\n", x0, y0);
-    x = x0*round(cos(rad)) - y0*round(sin(rad));
-    y = x0*round(sin(rad)) + y0*round(cos(rad));
-    // printf("x y: %d %d\n", x, y);
+    x = round((x0) * cos(rad) - (y0) * sin(rad));
+    y = round((x0) * sin(rad) + (y0) * cos(rad));
+    // printf("x y: %d %d\n\n", xnew, y);
 
 }
 

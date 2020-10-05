@@ -9,16 +9,16 @@ void PBMFile::setDim(int w, int h) {
 void PBMFile::exportToFile(char *fileName, std::vector<Point> points) {
     printf("P1\n");
     printf("%d %d\n", width, height);
-    std::vector<std::vector<int>> pixelArr(height, std::vector<int> (width, 0));
+    std::vector<std::vector<int>> pixelArr(width, std::vector<int> (height, 0));
     for (auto &p: points) {
-        // p.y = abs(p.y - 499);
-        // printf("p: %d %d\n", p.x, p.y);
+        // p.x = abs(p.x - 499);
         pixelArr[p.x][p.y] = 1;
+        // printf("export: %d %d\n", p.x, p.y);
     }
-    for (int i = 0; i < height; ++i) {
+    for (int i = height - 1; i >= 0; --i) {
         std::string row = "";
         for (int j = 0; j < width; ++j) {
-            printf("%d ", pixelArr[i][j]);
+            printf("%d ", pixelArr[j][i]);
         }
         printf("\n");
     }

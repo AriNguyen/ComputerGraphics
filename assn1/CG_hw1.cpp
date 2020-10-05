@@ -6,6 +6,8 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <stack>
+
 #include "utils.h"
 #include "PBMFile.h"
 
@@ -19,6 +21,7 @@ int main(int argc, char *argv[]) {
     out.setDim(specs.window.width + 1, specs.window.height + 1);
     // printf("Window: w, h: %d %d\n", specs.window.width, specs.window.height);
     // printf("filename: "specs.fileName);
+    // printf("\nhere: %f %d %d %d\n", specs.scaleFactor, specs.rotateAngle, specs.xDim, specs.yDim);
 
     // handle PS file
     int isBegin = 0;
@@ -40,25 +43,26 @@ int main(int argc, char *argv[]) {
                 else {
                     Point p1 = {std::stoi(tokens[0]), std::stoi(tokens[1])};
                     Point p2 = {std::stoi(tokens[2]), std::stoi(tokens[3])};
+                    // printf("# initial x y: %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
+                    Point rotatePoint = {0, 0};
+                    std::vector<Point *> pl = {&p1, &p2};
+                    // transform with arguments
+                    for (auto p: pl) {
+                        rotate(p->x, p->y, specs.rotateAngle, rotatePoint);
+                        scale(p->x, p->y, specs.scaleFactor);
+                        translate(p->x, p->y, specs.xDim, specs.yDim);
+                    }
+                    // printf("###### after x, y: %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
 
-                    // printf("\n---clip\n");
+                    // printf("\n---clip %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
                     if (!clipLine(p1, p2, specs.window))  // 0 is returned if both points outside
                         continue;
-                    // printf("after clip: %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
+                    // printf("---after clip: %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
                     
-                    // printf("---draw\n");
+                    // printf("\n---draw\n");
                     std::vector<Point> ps = drawLine(p1, p2);
-                    // printf("\n---after draw\n");
-                    // printf("here: %f %d %d %d\n", specs.scaleFactor, specs.rotateDegree, specs.xDim, specs.yDim);
-                    for (auto &p: ps) {
-                        // rotate(p.x, p.y, 90); // flip to match pbm file
-                        rotate(p.x, p.y, specs.rotateDegree);
-                        // printf("rotate x, y: %d %d\n", p.x, p.y);
-                        scale(p.x, p.y, specs.scaleFactor);
-                        // printf("scale x, y: %d %d\n", p.x, p.y);
-                        translate(p.x, p.y, specs.xDim, specs.yDim);
-                        // printf("translate x, y: %d %d\n", p.x, p.y);
-                    }
+                    // printf("---after draw\n");
+                    
                     for (auto &p: ps) 
                         points.push_back(p);
                 }

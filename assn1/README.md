@@ -6,11 +6,13 @@ OS: macOS Catalina (test on tux and worked)
 ## File Structure
 ```
 ├── assn1
-   ├── CG_hw1.cpp           # hold main function for
-   ├── utils.cpp            # hold utils functions for clipping and drawing Line
-   ├── utils.h  
-   ├── PBMFile.cpp          # hold PBM object format
-   └── PBMFile.h
+    ├── test            
+    ├── data
+    ├── CG_hw1.cpp           # hold main function for
+    ├── utils.cpp            # hold utils functions for clipping and drawing Line
+    ├── utils.h  
+    ├── PBMFile.cpp          # hold PBM object format
+    └── PBMFile.h
 ```
 
 ## Compile the program

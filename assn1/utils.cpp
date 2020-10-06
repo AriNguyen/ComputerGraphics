@@ -43,25 +43,21 @@ Specs::Specs(int argc, char *argv[]) {
         else if (strcmp(argv[i], "-d") == 0) 
             upY = std::atoi(argv[++i]);
     }
-    // printf("Window %d %d %d %d \n", lowX, lowY, upX, upY);
     window.loadDim(lowX, lowY, upX, upY);
 }
 
 
 void Window::loadDim(int lowX, int lowY, int upX, int upY) {
-    // printf("loadim %d %d %d %d \n", lowX, lowY, upX, upY);
     lowBound.x = lowX;
     lowBound.y = lowY;
     upBound.x = upX;
     upBound.y = upY;
     width = upX - lowX + 1;
     height = upY - lowY + 1;
-    // printf("loadim w h: %d %d\n", width, height);
 }
 
 
 int computeOutcode(Point point, Point lowBound, Point upBound) {
-    // printf("computeOutcode: x, y: %d %d, %d %d, %d %d\n", point.x, point.y, lowBound.x, lowBound.y, upBound.x, upBound.y);
     int code = INSIDE; // default to be inside
     if (point.x < lowBound.x) // to the left of rectangle 
         code |= LEFT; 
@@ -81,17 +77,12 @@ int computeOutcode(Point point, Point lowBound, Point upBound) {
 int clipLine(Point &p0, Point &p1, Window win) {
     int outCode0 = computeOutcode(p0, win.lowBound, win.upBound);
     int outCode1 = computeOutcode(p1, win.lowBound, win.upBound);
-    // printf("win: %d %d, %d %d\n", win.lowBound.x, win.lowBound.y, win.upBound.x, win.upBound.y);
-    // printf("points: %d %d, %d %d\n", p0.x, p0.y, p1.x, p1.y);
-    // printf("outCode1 outCode2: %d %d\n", outCode0, outCode1);
-
     while (true) {
         if (!(outCode0 | outCode1)) {      // both points inside widnow
             return 1;
         } else if (outCode0 & outCode1) {  // both outside window, in same region
             return 0;
         } else {                            // either of 2 points out side window
-            // printf("outCode1 outCode2: %d %d\n", outCode0, outCode1);
             int outCode = outCode1 > outCode0 ? outCode1 : outCode0;    // get larger one
             int x, y;
             int dx = p1.x - p0.x;
@@ -146,9 +137,7 @@ std::vector<Point> drawLine(Point p0, Point p1) {
     int dy = -abs(p1.y - p0.y);
     int sy = p0.y < p1.y ? 1 : -1;
     int error = dx + dy;  
-    // printf("drawLine: %d %d, %d %d\n", p0.x, p0.y, p1.x, p1.y);
     while (true) {  
-        // printf(" x y: %d %d\n", p0.x, p0.y);
         Point p = {p0.x, p0.y};
         points.push_back(p);
         if (p0.x == p1.x && p0.y == p1.y) 
@@ -170,10 +159,8 @@ std::vector<std::string> tokenizeBySymbol(std::string str, char symbol) {
     std::vector<std::string> tokens;
     std::stringstream ss(str);
     std::string cell;
-    while(std::getline(ss, cell, symbol)) {
+    while(std::getline(ss, cell, symbol)) 
         tokens.push_back(cell);
-        // std::cout << cell << std::endl;   
-    }
     return tokens;
 } 
 
@@ -186,12 +173,8 @@ void rotate(int &x, int &y, int rotateAngle, Point rotatePoint) {
     int x0 = x;
     int y0 = y;
     const float rad = rotateAngle * PI/180;
-    // std::cout << "rad: " << rad << " " << round(cos(rad)) << " "  << round(sin(rad)) << std::endl;
-    // printf("x0 y0: %d %d\n", x0, y0);
     x = round((x0) * cos(rad) - (y0) * sin(rad));
     y = round((x0) * sin(rad) + (y0) * cos(rad));
-    // printf("x y: %d %d\n\n", xnew, y);
-
 }
 
 void translate(int &x, int &y, int dx, int dy) {

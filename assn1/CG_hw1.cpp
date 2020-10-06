@@ -19,9 +19,6 @@ int main(int argc, char *argv[]) {
     // hanlde arguments
     Specs specs(argc, argv);
     out.setWindow(specs.window);
-    // printf("Window: w, h: %d %d\n", specs.window.width, specs.window.height);
-    // printf("filename: "specs.fileName);
-    // printf("\nhere: %f %d %d %d\n", specs.scaleFactor, specs.rotateAngle, specs.xDim, specs.yDim);
 
     // handle PS file
     int isBegin = 0;
@@ -33,7 +30,6 @@ int main(int argc, char *argv[]) {
             else if (line == "%%%END") 
                 break;
             else if (isBegin) {
-                // printf(line);
                 std::vector<std::string> tokens = tokenizeBySymbol(line, ' ');
                 if (tokens.size() > 5) {
                     psFile.close();
@@ -43,26 +39,16 @@ int main(int argc, char *argv[]) {
                 else {
                     Point p1 = {std::stoi(tokens[0]), std::stoi(tokens[1])};
                     Point p2 = {std::stoi(tokens[2]), std::stoi(tokens[3])};
-                    // printf("# initial x y: %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
                     Point rotatePoint = {0, 0};
                     std::vector<Point *> pl = {&p1, &p2};
-                    // transform with arguments
                     for (auto p: pl) {
                         rotate(p->x, p->y, specs.rotateAngle, rotatePoint);
                         scale(p->x, p->y, specs.scaleFactor);
                         translate(p->x, p->y, specs.xDim, specs.yDim);
                     }
-                    // printf("###### after x, y: %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
-
-                    // printf("\n---clip %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
                     if (!clipLine(p1, p2, specs.window))  // 0 is returned if both points outside
                         continue;
-                    // printf("---after clip: %d %d, %d %d\n", p1.x, p1.y, p2.x, p2.y);
-                    
-                    // printf("\n---draw\n");
                     std::vector<Point> ps = drawLine(p1, p2);
-                    // printf("---after draw\n");
-                    
                     for (auto &p: ps) 
                         points.push_back(p);
                 }

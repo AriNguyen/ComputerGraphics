@@ -6,7 +6,6 @@ class PBMFile {
     private: 
         std::string pixels;
         char header;
-        // int width, height;
         Window win;
 
     public:

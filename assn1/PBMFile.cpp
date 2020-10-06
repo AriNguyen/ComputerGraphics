@@ -11,8 +11,6 @@ void PBMFile::exportToFile(char *fileName, std::vector<Point> points) {
     std::vector<std::vector<int>> pixelArr(win.width, std::vector<int> (win.height, 0));
     try {
         for (auto &p: points) {
-            // p.x = abs(p.x - 499);
-            // printf("export: %d %d\n", p.x, p.y);
             pixelArr[p.x - win.lowBound.x][p.y - win.lowBound.y] = 1;
         }
         for (int i = win.height - 1; i >= 0; --i) {

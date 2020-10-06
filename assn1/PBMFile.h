@@ -6,11 +6,12 @@ class PBMFile {
     private: 
         std::string pixels;
         char header;
-        int width, height;
+        // int width, height;
+        Window win;
 
     public:
         PBMFile() {};
-        void setDim(int w, int h);
+        void setWindow(Window win);
         void load(std::vector<Point>);
         void exportToFile(char *fileName, std::vector<Point> points);
         void clear();

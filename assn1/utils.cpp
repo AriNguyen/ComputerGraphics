@@ -18,10 +18,10 @@ Specs::Specs(int argc, char *argv[]) {
     rotateAngle = 0;
     xDim = 0; 
     yDim = 0;
-    lowX = 0;
-    lowY = 0;
-    upX = 499;
-    upY = 499;
+    int lowX = 0;
+    int lowY = 0;
+    int upX = 499;
+    int upY = 499;
     // parse argv
     for (int i = 0; i < argc; i++) {
         if (strcmp(argv[i], "-f") == 0) 
@@ -54,16 +54,15 @@ void Window::loadDim(int lowX, int lowY, int upX, int upY) {
     lowBound.y = lowY;
     upBound.x = upX;
     upBound.y = upY;
-    width = upX - lowX;
-    height = upY - lowY;
+    width = upX - lowX + 1;
+    height = upY - lowY + 1;
     // printf("loadim w h: %d %d\n", width, height);
 }
 
 
 int computeOutcode(Point point, Point lowBound, Point upBound) {
     // printf("computeOutcode: x, y: %d %d, %d %d, %d %d\n", point.x, point.y, lowBound.x, lowBound.y, upBound.x, upBound.y);
-    // initialized as being inside 
-    int code = INSIDE; 
+    int code = INSIDE; // default to be inside
     if (point.x < lowBound.x) // to the left of rectangle 
         code |= LEFT; 
     else if (point.x > upBound.x) // to the right of rectangle 
@@ -72,7 +71,6 @@ int computeOutcode(Point point, Point lowBound, Point upBound) {
         code |= BOTTOM; 
     else if (point.y > upBound.y) // above the rectangle 
         code |= TOP; 
-  
     return code; 
 }
 
@@ -93,6 +91,7 @@ int clipLine(Point &p0, Point &p1, Window win) {
         } else if (outCode0 & outCode1) {  // both outside window, in same region
             return 0;
         } else {                            // either of 2 points out side window
+            // printf("outCode1 outCode2: %d %d\n", outCode0, outCode1);
             int outCode = outCode1 > outCode0 ? outCode1 : outCode0;    // get larger one
             int x, y;
             int dx = p1.x - p0.x;
@@ -103,7 +102,6 @@ int clipLine(Point &p0, Point &p1, Window win) {
                 else 
                     x = p0.x + dx * (win.upBound.y - p0.y) / dy;
 				y = win.upBound.y;
-                // printf("--win: %d %d, %d %d\n", win.lowBound.x, win.lowBound.y, win.upBound.x, win.upBound.y);
 			} else if (outCode & BOTTOM) { // point is below the clip window
 				if (dy == 0)
                     x = p0.x;
@@ -147,7 +145,7 @@ std::vector<Point> drawLine(Point p0, Point p1) {
     int sx = p0.x < p1.x ? 1 : -1;
     int dy = -abs(p1.y - p0.y);
     int sy = p0.y < p1.y ? 1 : -1;
-    int err = dx + dy;  
+    int error = dx + dy;  
     // printf("drawLine: %d %d, %d %d\n", p0.x, p0.y, p1.x, p1.y);
     while (true) {  
         // printf(" x y: %d %d\n", p0.x, p0.y);
@@ -155,13 +153,13 @@ std::vector<Point> drawLine(Point p0, Point p1) {
         points.push_back(p);
         if (p0.x == p1.x && p0.y == p1.y) 
             break;
-        int e2 = 2*err;
+        int e2 = 2 * error;
         if (e2 >= dy) { 
-            err += dy;
+            error += dy;
             p0.x += sx;
         }
         if (e2 <= dx) {
-            err += dx;
+            error += dx;
             p0.y += sy;
         }
     }

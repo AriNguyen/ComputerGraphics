@@ -34,7 +34,6 @@ class Specs {
         char *fileName;
         float scaleFactor;
         int rotateAngle, xDim, yDim;
-        int lowX, lowY, upX, upY;
         Window window;
 
         // Specs();

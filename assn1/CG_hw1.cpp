@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     
     // hanlde arguments
     Specs specs(argc, argv);
-    out.setDim(specs.window.width + 1, specs.window.height + 1);
+    out.setWindow(specs.window);
     // printf("Window: w, h: %d %d\n", specs.window.width, specs.window.height);
     // printf("filename: "specs.fileName);
     // printf("\nhere: %f %d %d %d\n", specs.scaleFactor, specs.rotateAngle, specs.xDim, specs.yDim);

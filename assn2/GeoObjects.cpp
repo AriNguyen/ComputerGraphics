@@ -1,31 +1,52 @@
 #include "GeoObjects.h"
 
 /** Point **/
-Point::Point(int x, int y) {
-    x = x; 
-    y = y;
+Point::Point(int a, int b) {
+    x = a; 
+    y = b;
 }
 
 /** Line **/
-Line::Line(Point p0, Point p1) {
-    p0 = p0;
+Line::Line(Point a, Point b) {
+    p0 = a;
+    p1 = b;
 }
 
 /** Polygon **/
 Polygon::Polygon() {
-    points = {};
 }
 Polygon::Polygon(std::vector<Point> p) {
     setPoints(p);
 }
+Polygon::~Polygon() {
+    points.clear();
+}
+void Polygon::updateLines() {
+    int i;
+    for (i = 0; i < points.size() - 1; ++i) {
+        Line l(points[i], points[i + 1]);
+        addLine(l);
+    }
+}
 std::vector<Point> Polygon::getPoints() {
     return points;
 }
+std::vector<Line> Polygon::getLines() {
+    return lines;
+}
 void Polygon::setPoints(std::vector<Point> p) {
     points = p;
+    updateLines();
+}
+void Polygon::setLines(std::vector<Line> l) {
+    lines = l;
 }
 void Polygon::addPoint(Point p) {
     points.push_back(p);
+    updateLines();
+}
+void Polygon::addLine(Line l) {
+    lines.push_back(l);
 }
 
 /** GeoObjects **/

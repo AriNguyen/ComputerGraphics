@@ -8,6 +8,7 @@ class Point {
         int x, y;
         Point() {};
         Point(int, int);
+        void setXY(int, int);
 };
 class Line {
     public:
@@ -18,12 +19,18 @@ class Line {
 class Polygon {
     private:
         std::vector<Point> points;
+        std::vector<Line> lines;    // lines that connect 2 points of the all points in the Polygon
     public:
         Polygon();
         Polygon(std::vector<Point>);
+        virtual ~Polygon();
+        void updateLines();
         std::vector<Point> getPoints();
+        std::vector<Line> getLines();
         void setPoints(std::vector<Point>);
+        void setLines(std::vector<Line>);
         void addPoint(Point);
+        void addLine(Line);
 };
 class GeoObjects {
     private:

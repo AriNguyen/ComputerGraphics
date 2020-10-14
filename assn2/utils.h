@@ -37,5 +37,7 @@ class Specs {
 };
 
 std::vector<std::string> tokenizeBySymbol(std::string, char);
-
+void scale(int&, int&, float);
+void rotate(int&, int&, int, Point);
+void translate(int&, int&, int, int);
 #endif

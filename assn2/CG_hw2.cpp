@@ -2,10 +2,11 @@
 #include <string>
 #include <cmath>
 
-#include "utils.h"
-#include "PBMFile.h"
-#include "PSImage.h"
-#include "GeoObjects.h"
+#include "utils.hpp"
+#include "pbm_file.hpp"
+#include "ps_image.hpp"
+#include "geometry_objects.hpp"
+#include "transformations.hpp"
 
 const int INSIDE = 0; // 0000
 const int LEFT = 1;   // 0001

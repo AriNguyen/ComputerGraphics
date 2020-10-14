@@ -1,6 +1,6 @@
 GPP := g++
-PPFLAGS := -std=c11
-SRC := CG_hw2.cpp utils.cpp PBMFile.cpp PSImage.cpp GeoObjects.cpp
+PPFLAGS := -std=c++11
+SRC := CG_hw2.cpp utils.cpp pbm_file.cpp ps_image.cpp geometry_objects.cpp transformations.cpp
 EXE := CG_hw2
 .PHONY: cleanall
 

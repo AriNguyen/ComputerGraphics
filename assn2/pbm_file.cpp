@@ -1,3 +1,9 @@
+/**
+ * @file pbm_file.cpp
+ * @brief C++ program that holds pbmFile objects
+ * @author Ari Nguyen
+ *
+ */
 #include "pbm_file.hpp"
 #include "geometry_objects.hpp"
 #include "utils.hpp"

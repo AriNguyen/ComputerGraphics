@@ -1,3 +1,9 @@
+/**
+ * @file transformations.cpp
+ * @brief C++ program that holds graphics transformations functions
+ * @author Ari Nguyen
+ *
+ */
 #include <cmath>
 #include "utils.hpp"
 

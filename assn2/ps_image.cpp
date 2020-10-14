@@ -1,7 +1,12 @@
+/**
+ * @file ps_image.cpp
+ * @brief C++ Program hold PSImage class that returns points, lines, polygons in .ps iamge
+ * @author Ari Nguyen
+ *
+ */
 #include <cstdlib>
 #include <fstream>
 #include <string>
-
 #include "utils.hpp"
 #include "ps_image.hpp"
 #include "geometry_objects.hpp"
@@ -41,7 +46,8 @@ GeoObjects PSImage::extractGeoObjects() {
             break;
         else if (isBegin) {
             std::vector<std::string> tokens = tokenizeBySymbol(line, ' ');
-            if (!isPolygon && tokens[tokens.size() - 1] == "line") {
+            if (!isPolygon && tokens[tokens.size() - 1] == "Line") {
+                // printf("line\n");
                 Point p0(std::stoi(tokens[0]), std::stoi(tokens[1]));
                 Point p1(std::stoi(tokens[2]), std::stoi(tokens[3]));
                 Line l(p0, p1);

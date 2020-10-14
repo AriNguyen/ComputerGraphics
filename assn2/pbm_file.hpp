@@ -1,13 +1,18 @@
+/**
+ * @file pbm_file.hpp
+ * @brief C++ program that holds pbmFile objects
+ * @author Ari Nguyen
+ *
+ */
 #ifndef PBMFILE_HPP
 #define PBMFILE_HPP
+
 #include <string>
 #include <iostream>
 #include <cstdio>
 #include <vector>
-
 #include "utils.hpp"
 #include "geometry_objects.hpp"
-
 
 class PBMFile {
     private: 

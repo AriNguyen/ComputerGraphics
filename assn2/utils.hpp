@@ -3,27 +3,6 @@
 
 #include "geometry_objects.hpp"
 
-class Window {
-    private:
-        Point lowBound, upBound;
-        int height, width;
-
-    public:
-        Window() {};
-        Window(int, int, int, int);
-        void loadDim(int, int, int, int);
-        void setBound(int, int, int, int);
-        int getHeight();
-        int getWidth();
-        Point getLowBound();
-        Point getUpBound();
-        void setHeight(int);
-        void setWidth(int);
-        void setLowBound(Point);
-        void setUpBound(Point);
-
-};
-
 class Specs {
     public: 
         char *fileName;

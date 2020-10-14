@@ -47,53 +47,6 @@ void Specs::loadSpecs(int argc, char *argv[]) {
     }
 }
 
-// int Specs::get
-
-Window::Window(int lowX, int lowY, int upX, int upY) {
-    loadDim(lowX, lowY, upX, upY);
-}
-
-void Window::loadDim(int lowX, int lowY, int upX, int upY) {
-    lowBound.x = lowX;
-    lowBound.y = lowY;
-    upBound.x = upX;
-    upBound.y = upY;
-    width = upX - lowX + 1;
-    height = upY - lowY + 1;
-}
-
-int Window::getHeight() {
-    return height;
-}
-
-int Window::getWidth() {
-    return width;
-}
-
-void Window::setHeight(int h) {
-    height = h;
-}
-
-void Window::setWidth(int w) {
-    width = w;
-}
-
-Point Window::getLowBound() {
-    return lowBound;
-}
-
-Point Window::getUpBound() {
-    return upBound;
-}
-
-void Window::setLowBound(Point l) {
-    lowBound = l;
-}
-
-void Window::setUpBound(Point u) {
-    upBound = u;
-}
-
 std::vector<std::string> tokenizeBySymbol(std::string str, char symbol) {
     std::vector<std::string> tokens;
     std::stringstream ss(str);

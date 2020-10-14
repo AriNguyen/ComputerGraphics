@@ -1,13 +1,13 @@
 /**
- * Author: Ari Nguyen
- * Description: handle .ps iamges
- * Date: October 11, 2020
+ * @file ps_image.hpp
+ * @brief C++ Program hold PSImage class that returns points, lines, polygons in .ps iamge
+ * @author Ari Nguyen
+ *
  */
 #ifndef PSIMAGE_HPP
 #define PSIMAGE_HPP
 
 #include <vector>
-
 #include "utils.hpp"
 #include "geometry_objects.hpp"
 

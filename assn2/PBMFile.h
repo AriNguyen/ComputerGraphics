@@ -15,9 +15,10 @@ class PBMFile {
 
     public:
         PBMFile() {};
+        Window getWindow();
         void setWindow(int, int, int, int);
         void load(std::vector<Point>);
-        void exportToFile(char *, std::vector<Point>);
+        void toStdOut(std::vector<Point>);
         void clear();
 };
 

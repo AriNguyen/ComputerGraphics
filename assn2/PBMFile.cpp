@@ -2,11 +2,15 @@
 #include "GeoObjects.h"
 #include "utils.h"
 
+Window PBMFile::getWindow() {
+    return win;
+}
+
 void PBMFile::setWindow(int lowX, int lowY, int upX, int upY) {
     win.loadDim(lowX, lowY, upX, upY);
 }
 
-void PBMFile::exportToFile(char *fileName, std::vector<Point> points) {
+void PBMFile::toStdOut(std::vector<Point> points) {
     printf("P1\n");
     printf("%d %d\n", win.getWidth(), win.getHeight());
     std::vector<std::vector<int>> pixelArr(win.getWidth(), std::vector<int> (win.getHeight(), 0));

@@ -33,7 +33,7 @@ GeoObjects PSImage::extractGeoObjects() {
     isPolygon = false;
     Polygon pointsPoly;
     while (std::getline(ifs, line)) {
-        printf("%s\n", line.c_str());
+        // printf("%s\n", line.c_str());
         if (line == "%%%BEGIN")
             isBegin = true;
         else if (line == "%%%END") 
@@ -52,13 +52,14 @@ GeoObjects PSImage::extractGeoObjects() {
                 pointsPoly.addPoint(p);
             }
             else if (tokens[tokens.size() - 1] == "lineto") {
+                // printf("lineto: %d %d\n", std::stoi(tokens[0]), std::stoi(tokens[1]));
                 Point p(std::stoi(tokens[0]), std::stoi(tokens[1]));
                 pointsPoly.addPoint(p);
             }
             else if (tokens[tokens.size() - 1] == "stroke") {
-                isPolygon = false; 
                 polygonVector.push_back(pointsPoly);
                 Polygon pointsPoly;
+                isPolygon = false; 
             }
         }
     }

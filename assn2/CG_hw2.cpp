@@ -44,7 +44,8 @@ int main(int argc, char *argv[]) {
         std::vector<Point> polygonVertices = polygonVector[i].getPoints();
         // transform all points
         for (auto &p: polygonVertices) 
-            std::async(std::launch::async, transform, &p, specs);
+            // std::async(std::launch::async, transform, &p, specs);
+            transform(&p, specs);
 
         clipPolygon(polygonVertices, pbmFile.getWindow());
         for (auto p: polygonVertices) {

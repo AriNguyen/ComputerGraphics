@@ -1,10 +1,11 @@
 GPP := g++
 PPFLAGS := -std=c++11
-SRC := CG_hw2.cpp utils.cpp pbm_file.cpp ps_image.cpp geometry_objects.cpp transformations.cpp drawing.cpp
+SRC := CG_hw2.cpp 
+INCLUDE:= utils.cpp pbm_file.cpp ps_image.cpp geometry_objects.cpp transformations.cpp drawing.cpp time.cpp
 EXE := bin/CG_hw2
 .PHONY: cleanall
 
-${EXE} : ${SRC}
+${EXE} : ${SRC} ${INCLUDE}
 	${GPP} ${PPFLAGS} -o $@ $^
 
 cleanall :

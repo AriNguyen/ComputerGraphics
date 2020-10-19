@@ -8,6 +8,8 @@ class Point {
         int x, y;
         Point() {};
         Point(int, int);
+        virtual bool operator==(const Point&) const;
+        virtual bool operator!=(const Point&) const;
         void setXY(int, int);
 };
 class Line {
@@ -53,9 +55,8 @@ class GeoObjects {
 
 class Window {
     private:
-        Point lowBound, upBound;
+        Point topLeft, topRight, bottomLeft, bottomRight;
         int height, width;
-
     public:
         Window() {};
         Window(int, int, int, int);
@@ -63,13 +64,16 @@ class Window {
         void setBound(int, int, int, int);
         int getHeight();
         int getWidth();
-        Point getLowBound();
-        Point getUpBound();
+        Point getBottomLeft();
+        Point getTopLeft();
+        Point getTopRight();
+        Point getBottomRight();
         void setHeight(int);
         void setWidth(int);
-        void setLowBound(Point);
-        void setUpBound(Point);
-
+        void setBottomLeft(Point);
+        void setTopLeft(Point);
+        void setTopRight(Point);
+        void setBottomRight(Point);
 };
 
 #endif

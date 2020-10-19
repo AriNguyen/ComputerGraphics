@@ -5,6 +5,12 @@ Point::Point(int a, int b) {
     x = a; 
     y = b;
 }
+bool Point::operator==(const Point& other) const {
+    return x == other.x && y == other.y;
+}
+bool Point::operator!=(const Point& other) const {
+    return !(x == other.x && y == other.y);
+}
 
 /** Line **/
 Line::Line(Point a, Point b) {
@@ -22,8 +28,8 @@ Polygon::~Polygon() {
     points.clear();
 }
 void Polygon::updateLines() {
-    int i;
-    for (i = 0; i < points.size() - 1; ++i) {
+    lines.clear();
+    for (int i = 0; i < points.size() - 1; ++i) {
         Line l(points[i], points[i + 1]);
         addLine(l);
     }
@@ -88,10 +94,14 @@ Window::Window(int lowX, int lowY, int upX, int upY) {
 }
 
 void Window::loadDim(int lowX, int lowY, int upX, int upY) {
-    lowBound.x = lowX;
-    lowBound.y = lowY;
-    upBound.x = upX;
-    upBound.y = upY;
+    bottomLeft.x = lowX;
+    bottomLeft.y = lowY;
+    topRight.x = upX;
+    topRight.y = upY;
+    topLeft.x = lowX;
+    topLeft.y = upY;
+    bottomRight.x = upX;
+    bottomRight.y = lowY;
     width = upX - lowX + 1;
     height = upY - lowY + 1;
 }
@@ -112,18 +122,34 @@ void Window::setWidth(int w) {
     width = w;
 }
 
-Point Window::getLowBound() {
-    return lowBound;
+Point Window::getBottomLeft() {
+    return bottomLeft;
 }
 
-Point Window::getUpBound() {
-    return upBound;
+Point Window::getTopLeft() {
+    return topLeft;
 }
 
-void Window::setLowBound(Point l) {
-    lowBound = l;
+Point Window::getTopRight() {
+    return topRight;
 }
 
-void Window::setUpBound(Point u) {
-    upBound = u;
+Point Window::getBottomRight() {
+    return bottomRight;
+}
+
+void Window::setBottomLeft(Point p) {
+    bottomLeft = p;
+}
+
+void Window::setTopLeft(Point p) {
+    topLeft = p;
+}
+
+void Window::setTopRight(Point p) {
+    topRight = p;
+}
+
+void Window::setBottomRight(Point p) {
+    bottomRight = p;
 }

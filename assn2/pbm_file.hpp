@@ -18,7 +18,6 @@ class PBMFile {
     private: 
         std::string pixels;
         Window win;
-
     public:
         PBMFile() {};
         Window getWindow();

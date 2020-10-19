@@ -17,21 +17,23 @@ void PBMFile::setWindow(int lowX, int lowY, int upX, int upY) {
 }
 
 void PBMFile::toStdOut(std::vector<Point> points) {
-    printf("P1\n");
-    printf("%d %d\n", win.getWidth(), win.getHeight());
+    fprintf(stdout, "P1\n");
+    fprintf(stdout, "%d %d\n", win.getWidth(), win.getHeight());
     std::vector<std::vector<int>> pixelArr(win.getWidth(), std::vector<int> (win.getHeight(), 0));
-    try {
+    fprintf(stderr, "bottomLeft: %d %d\n", win.getBottomLeft().x, win.getBottomLeft().y);
+    // try {
         for (auto &p: points) {
-            pixelArr[p.x - win.getLowBound().x][p.y - win.getLowBound().y] = 1;
+            // fprintf(stderr, "toStdOut: %d %d\n", p.x, p.y);
+            pixelArr[p.x - win.getBottomLeft().x][p.y - win.getBottomLeft().y] = 1;
         }
         for (int i = win.getHeight() - 1; i >= 0; --i) {
             std::string row = "";
             for (int j = 0; j < win.getWidth(); ++j) {
-                printf("%d ", pixelArr[j][i]);
+                fprintf(stdout, "%d ", pixelArr[j][i]);
             }
-            printf("\n");
+            fprintf(stdout, "\n");
         }
-    } catch (const std::exception& e) {
-        std::cout << e.what() << "\n";
-    }
+    // } catch (const std::exception& e) {
+    //     fprintf(stderr, "toStdOut: Error: %s", e.what());
+    // }
 }

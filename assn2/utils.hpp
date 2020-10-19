@@ -1,6 +1,7 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
+#include <string>
 #include "geometry_objects.hpp"
 
 class Specs {

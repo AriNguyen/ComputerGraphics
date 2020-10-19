@@ -1,6 +1,7 @@
-#include <limits>
+#include <climits>
 #include <cfloat>
 #include <algorithm>
+#include <cstdio>
 #include "drawing.hpp"
 #include "geometry_objects.hpp"
 
@@ -127,7 +128,7 @@ int clipPolygon(std::vector<Point> &vertices, Window win) {
             // 2nd case: first vertice in side, second outside
             else if (posToClipLine1 < 0 && posToClipLine2 >= 0) {
                 fprintf(stderr, "2nd case: first vertice in side, second outside\n");
-                if (clippedVertices.back() != p0)
+                if (!clippedVertices.empty() && clippedVertices.back() != p0)
                     clippedVertices.push_back(p0); 
                 clippedVertices.push_back(getIntersection(
                     p0, 
@@ -135,6 +136,8 @@ int clipPolygon(std::vector<Point> &vertices, Window win) {
                     clippedLine.p0,
                     clippedLine.p1
                 )); 
+                fprintf(stderr, "2nd case: first vertice in side, second outside\n");
+
             }
             // 3th case: first vertice outside, second inside
             else if (posToClipLine1 >= 0 && posToClipLine2 < 0) {
@@ -148,10 +151,18 @@ int clipPolygon(std::vector<Point> &vertices, Window win) {
                 clippedVertices.push_back(p1); 
             }
         }
+        fprintf(stderr, "size: %lu %lu\n", vertices.size(), clippedVertices.size());
         clippedVertices.push_back(clippedVertices[0]);
         vertices = clippedVertices;
         for (auto v: vertices) {
-            fprintf(stderr, "vertice: %d %d\n", v.x, v.y);
+            try
+            {
+                fprintf(stderr, "vertice: %d %d\n", v.x, v.y);
+            }
+            catch(int e)
+            {
+
+            }
         }
         clippedVertices.clear();
 

@@ -71,7 +71,8 @@ int main(int argc, char *argv[]) {
         std::vector<Point*> pl = {&(lineVector[j].p0), &(lineVector[j].p1)};
         // transform all points
         for (auto p: pl) 
-            std::async(std::launch::async, transform, p, specs);
+            transform(p, specs);
+            // std::async(std::launch::async, transform, p, specs);
         // clip Line
         if (!clipLine(lineVector[j].p0, lineVector[j].p1, pbmFile.getWindow())) 
             continue;

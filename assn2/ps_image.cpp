@@ -20,23 +20,19 @@ void PSImage::setImagePath(char *p) {
 }
 
 GeoObjects PSImage::extractGeoObjects() {
-    int isBegin, isPolygon;;
     std::string line;
-    std::ifstream ifs;
     Point rotatePoint = {0, 0};
-
-    std::vector<Point> points;
     std::vector<Line> lines;
     std::vector<Polygon> polygonVector;
     GeoObjects geoObjects;
 
-    ifs.open(imagePath);
+    std::ifstream ifs(imagePath);
     if (!ifs.is_open()) {
         printf("Error: could not open file %s\n", imagePath);
         exit(EXIT_FAILURE);
     }
-    isBegin = false;
-    isPolygon = false;
+    int isBegin = false;
+    int isPolygon = false;
     Polygon pointsPoly;
     while (std::getline(ifs, line)) {
         // printf("%s\n", line.c_str());

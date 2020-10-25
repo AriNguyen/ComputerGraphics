@@ -1,0 +1,22 @@
+#!/bin/bash
+# @file execute
+# @author Arya Nguyen
+# @brief run all cmds to test hw2 images
+
+imgFolder="img"
+outFolder="output/"
+binFolder="bin"
+options=("" \
+"-a 0 -b 0 -c 500 -d 500 -j 0 -k 0 -o 500 -p 500 -s 1.0 -m 0 -n 0 -r 0 " \
+"-a 50 -b 0 -c 325 -d 500 -j 0 -k 110 -o 480 -p 410 -s 1 -m 0 -n 0 -r 0" \
+"-a 10 -b 10 -c 550 -d 400 -j 10 -k 10 -o 500 -p 400 -s 1.2 -m 6 -n 25 -r 8" \
+"-b 62 -c 500 -d 479 -r 75 -j 139 -o 404 -p 461 -s .85 -m 300" \
+"-a 275 -b 81 -c 550 -d 502 -r -37 -j 123 -k 217 -o 373 -p 467" \
+"-d 301 -c 435 -b 170 -a -100 -r -23" \
+"-a -135 -b -53 -c 633 -d 842 -m -23 -j 101 -p 415 -s 3.6" \
+)
+file=("a" "b" "c" "d" "e" "f" "g" "h")
+
+for i in ${!options[@]}; do
+    ./${binFolder}/CG_hw2 -f $imgFolder/hw3_split.ps ${options[$i]}> $outFolder/hw2_ex$(($i+1)).pbm 
+done

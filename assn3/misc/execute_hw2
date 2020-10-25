@@ -1,0 +1,14 @@
+#!/bin/bash
+# @file execute
+# @author Arya Nguyen
+# @brief run all cmds to test hw2 images
+
+imgFolder="img"
+outFolder="output/hw2"
+binFolder="bin"
+options=("-s 1.5" "-m -250 -n -200" "-a 170 -b 100 -c 270 -d 400" "-s 2" "-a 200 -b 100 -c 375 -d 400" "-a 275 -b 100 -c 550 -d 502" "-d 270 -c 435 -b 170 -a 100 -r 17" "-a -135 -b -53 -c 633 -d 442"  "-a -150 -b -475 -c 123 -d -65")
+file=("a" "a" "b" "b" "c" "c" "b" "b" "c")
+
+for i in ${!options[@]}; do
+    ./${binFolder}/CG_hw2 -f $imgFolder/hw2_${file[$i]}.ps ${options[$i]}> $outFolder/hw2_ex$(($i+1)).pbm 
+done

@@ -1,0 +1,14 @@
+#!/bin/bash
+# @file execute_hw1
+# @author Arya Nguyen
+# @brief run all cmds to test hw1 images
+
+imgFolder="img"
+outFolder="output/hw1"
+binFolder="bin"
+options=("-a 0 -b 0 -c 499 -d 499 -s 1.0 -m 0 -n 0 -r 0" "-a 0 -b 0 -c 499 -d 499 -s 0.8 -m 85 -n 25 -r 10" "-s 0.5" "-r -30" "-m 100 -n 100" "-a 25 -b 50 -c 399 -d 399" "-a 25 -b 50 -c 399 -d 399 -r 30 -m 100 -n 100 -s 0.5")
+outfile=("out.pbm" "hw1.pbm" "scale.pbm" "nrotate.pbm" "translate.pbm" "worldwindow.pbm" "all.pbm")
+
+for i in ${!options[@]}; do
+    ./${binFolder}/CG_hw2 -f $imgFolder/hw1.ps ${options[$i]} > $outFolder/${outfile[$i]} 
+done

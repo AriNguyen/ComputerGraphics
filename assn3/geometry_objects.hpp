@@ -19,10 +19,9 @@ class Line {
         Line(Point, Point);
 };
 class Canva {
-    private:
+    public:
         Point topLeft, topRight, bottomLeft, bottomRight;
         int height, width;
-    public:
         Canva() {};
         Canva(int, int, int, int);
         void loadDim(int, int, int, int);

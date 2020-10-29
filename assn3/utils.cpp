@@ -45,6 +45,15 @@ void Specs::loadSpecs(int argc, char *argv[]) {
             upX  = std::atoi(argv[++i]);
         else if (strcmp(argv[i], "-d") == 0) 
             upY = std::atoi(argv[++i]);
+        else if (strcmp(argv[i], "-j") == 0) 
+            ;
+        else if (strcmp(argv[i], "-k") == 0) 
+            ;
+        else if (strcmp(argv[i], "-o") == 0) 
+            ;
+        else if (strcmp(argv[i], "-p") == 0) 
+            ;
+        pbmFile.setCanva(lowX, lowY, upX, upY);
     }
 }
 
@@ -53,6 +62,7 @@ std::vector<std::string> tokenizeBySymbol(std::string str, char symbol) {
     std::stringstream ss(str);
     std::string cell;
     while(std::getline(ss, cell, symbol)) 
-        tokens.push_back(cell);
+        if (cell != "")
+            tokens.push_back(cell);
     return tokens;
 } 

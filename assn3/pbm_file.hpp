@@ -11,17 +11,16 @@
 #include <iostream>
 #include <cstdio>
 #include <vector>
-#include "utils.hpp"
 #include "geometry_objects.hpp"
 
 class PBMFile {
     private: 
         std::string pixels;
-        Window win;
+        Canva win;
     public:
         PBMFile() {};
-        Window getWindow();
-        void setWindow(int, int, int, int);
+        Canva getCanva();
+        void setCanva(int, int, int, int);
         void load(std::vector<Point>);
         void toStdOut(std::vector<Point>);
         void clear();

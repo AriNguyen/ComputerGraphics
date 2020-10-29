@@ -9,7 +9,7 @@
  * @param 2 points and window size
  * @return 0: if both points are outside, otherwise return 1;
  */
-int clipLine(Point &p0, Point &p1, Window win) {
+int clipLine(Point &p0, Point &p1, Canva win) {
     int outCode0 = getOutCode(p0, win.getBottomLeft(), win.getTopRight());
     int outCode1 = getOutCode(p1, win.getBottomLeft(), win.getTopRight());
     while (true) {
@@ -85,7 +85,7 @@ std::vector<Point> drawLine(Point p0, Point p1) {
 /** Apply Sutherland-Hodgman
  * @return vector of clipped vertices of polygon
  */
-int clipPolygon(std::vector<Point> &vertices, Window win) {
+int clipPolygon(std::vector<Point> &vertices, Canva win) {
     std::vector<Point> clippedVertices;
     std::vector<Point> newVertices;
     std::vector<Point> winVertices = {
@@ -98,36 +98,36 @@ int clipPolygon(std::vector<Point> &vertices, Window win) {
     int winVerticesSize = winVertices.size();
     for (int i = 0; i < winVerticesSize; ++i) {
         int verticesSize = vertices.size();
-        fprintf(stderr, "-------clip edge: %d %d, %d %d\n", 
-            winVertices[i % winVerticesSize].x,
-            winVertices[i % winVerticesSize].y,
-            winVertices[(i + 1) % winVerticesSize].x,
-            winVertices[(i + 1) % winVerticesSize].y
-        );
+        // fprintf(stderr, "-------clip edge: %d %d, %d %d\n", 
+        //     winVertices[i % winVerticesSize].x,
+        //     winVertices[i % winVerticesSize].y,
+        //     winVertices[(i + 1) % winVerticesSize].x,
+        //     winVertices[(i + 1) % winVerticesSize].y
+        // );
         Line clippedLine = {
             winVertices[i % winVerticesSize],
             winVertices[(i + 1) % winVerticesSize]
         };
         for (int j = 0; j < verticesSize - 1; ++j) {
-            fprintf(stderr, "\nbefore: %d %d, %d %d\n", 
-                vertices[j % verticesSize].x, 
-                vertices[j % verticesSize].y,
-                vertices[j + 1].x, 
-                vertices[j + 1].y
-            );
+            // fprintf(stderr, "\nbefore: %d %d, %d %d\n", 
+            //     vertices[j % verticesSize].x, 
+            //     vertices[j % verticesSize].y,
+            //     vertices[j + 1].x, 
+            //     vertices[j + 1].y
+            // );
             Point p0 = vertices[j];
             Point p1 = vertices[j + 1];
             int posToClipLine1 = getDistancePointToLine(p0, clippedLine);
             int posToClipLine2 = getDistancePointToLine(p1, clippedLine);
-            fprintf(stderr, "distance: %d, %d\n", posToClipLine1, posToClipLine2);
+            // fprintf(stderr, "distance: %d, %d\n", posToClipLine1, posToClipLine2);
             // 1st case: both is inside
             if (posToClipLine1 < 0 && posToClipLine2 < 0) {
-                fprintf(stderr, "both is inside\n");
+                // fprintf(stderr, "both is inside\n");
                 clippedVertices.push_back(p1); // add second point
             }
             // 2nd case: first vertice in side, second outside
             else if (posToClipLine1 < 0 && posToClipLine2 >= 0) {
-                fprintf(stderr, "2nd case: first vertice in side, second outside\n");
+                // fprintf(stderr, "2nd case: first vertice in side, second outside\n");
                 if (!clippedVertices.empty() && clippedVertices.back() != p0)
                     clippedVertices.push_back(p0); 
                 clippedVertices.push_back(getIntersection(
@@ -141,7 +141,7 @@ int clipPolygon(std::vector<Point> &vertices, Window win) {
             }
             // 3th case: first vertice outside, second inside
             else if (posToClipLine1 >= 0 && posToClipLine2 < 0) {
-                fprintf(stderr, "3th case: first vertice outside, second inside\n");
+                // fprintf(stderr, "3th case: first vertice outside, second inside\n");
                 clippedVertices.push_back(getIntersection(
                     p0, 
                     p1, 
@@ -151,12 +151,12 @@ int clipPolygon(std::vector<Point> &vertices, Window win) {
                 clippedVertices.push_back(p1); 
             }
         }
-        fprintf(stderr, "size: %lu %lu\n", vertices.size(), clippedVertices.size());
+        // fprintf(stderr, "size: %lu %lu\n", vertices.size(), clippedVertices.size());
         clippedVertices.push_back(clippedVertices[0]);
         vertices = clippedVertices;
-        for (auto v: vertices) {
-            fprintf(stderr, "vertice: %d %d\n", v.x, v.y);
-        }
+        // for (auto v: vertices) {
+        //     fprintf(stderr, "vertice: %d %d\n", v.x, v.y);
+        // }
         clippedVertices.clear();
 
     }
@@ -199,12 +199,12 @@ Point getIntersection(Point p0, Point p1, Point p2, Point p3) {
         return Point(INT_MAX, INT_MAX);
     int x = (c1 * a2 - c2 * a1) / det;
     int y = (c1 * b2 - c2 * b1) / det;
-    fprintf(stderr, "getIntersection: %d %d, %d %d (with) %d %d, %d %d => %d %d\n", p0.x, p0.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, x, y);
+    // fprintf(stderr, "getIntersection: %d %d, %d %d (with) %d %d, %d %d => %d %d\n", p0.x, p0.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, x, y);
     return Point(x, y);
 }
 
 int getDistancePointToLine(Point p, Line l) {
-    fprintf(stderr, "getDistance: %d %d, Line: %d %d, %d %d\n", p.x, p.y, l.p0.x, l.p0.y, l.p1.x, l.p1.y);
+    // fprintf(stderr, "getDistance: %d %d, Line: %d %d, %d %d\n", p.x, p.y, l.p0.x, l.p0.y, l.p1.x, l.p1.y);
     int distance = (l.p1.x - l.p0.x) * (p.y - l.p0.y) - (l.p1.y - l.p0.y) * (p.x - l.p0.x);
     return distance;
 }

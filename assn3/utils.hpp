@@ -3,6 +3,8 @@
 
 #include <string>
 #include "geometry_objects.hpp"
+#include "pbm_file.hpp"
+
 
 class Specs {
     public: 
@@ -10,6 +12,9 @@ class Specs {
         float scaleFactor;
         int rotateAngle, xDim, yDim;
         int lowX, lowY, upX, upY;
+        PBMFile pbmFile;
+        Canva worldView;
+        Canva viewPort;
 
         Specs() {};
         Specs(int, char*[]);

@@ -20,11 +20,15 @@ Line::Line(Point a, Point b) {
 
 /** Polygon **/
 Polygon::Polygon() {
+    points.clear();
 }
 Polygon::Polygon(std::vector<Point> p) {
     setPoints(p);
 }
 Polygon::~Polygon() {
+    points.clear();
+}
+void Polygon::clear() {
     points.clear();
 }
 void Polygon::updateLines() {
@@ -33,6 +37,60 @@ void Polygon::updateLines() {
         Line l(points[i], points[i + 1]);
         addLine(l);
     }
+}
+/** Scan-Filling algorithm
+ * @param boundary box that the polygon is within
+ * @return vector of points filling the polygons
+ */
+std::vector<Point> Polygon::fill(Canva boundary) {
+    std::vector<Point> fillingPoints;
+    std::vector<Point> scanLines;
+
+    fprintf(stderr, "fill boundary: %d %d, %d %d\n", 
+        boundary.getBottomLeft().x,
+        boundary.getBottomLeft().y,
+        boundary.getTopRight().x,
+        boundary.getTopRight().y
+    );
+    for (int i = 0; i < points.size(); ++i) {
+        Point p = points[i];
+        Point p1 = points[(i + 1) % points.size()];
+        int dy = p1.y - p.y;
+
+        fprintf(stderr, "point: %d %d\n", p.x, p.y);
+        // case: edge is horizontal
+        if (dy == 0)
+        // case: ymax on scan-line
+            continue;
+        else if (p == boundary.getTopRight()) 
+            continue;
+        if (p.y >= boundary.getBottomLeft().y && p.y < boundary.getTopRight().y) {
+            scanLines.push_back(p);
+        }
+    }
+    fprintf(stderr, "\n");
+    for (int i = 0; i < scanLines.size(); ++i) {
+        fprintf(stderr, "scanLine: %d %d\n", scanLines[i].x, scanLines[i].y);
+        // get intersection
+
+
+        // sort intersection
+
+
+        // parity-bit scan-line filling
+
+
+        // Check for double intersection special case
+    }
+
+    // loop through scan line
+    for (int i = boundary.getBottomLeft().y; i < boundary.getTopLeft().y; ++i) {
+        
+    }
+
+    fprintf(stderr, "\n");
+
+    return fillingPoints;
 }
 std::vector<Point> Polygon::getPoints() {
     return points;
@@ -89,11 +147,11 @@ void GeoObjects::addPolygon(Polygon p) {
     polygons.push_back(p);
 }
 
-Window::Window(int lowX, int lowY, int upX, int upY) {
+Canva::Canva(int lowX, int lowY, int upX, int upY) {
     loadDim(lowX, lowY, upX, upY);
 }
 
-void Window::loadDim(int lowX, int lowY, int upX, int upY) {
+void Canva::loadDim(int lowX, int lowY, int upX, int upY) {
     bottomLeft.x = lowX;
     bottomLeft.y = lowY;
     topRight.x = upX;
@@ -106,50 +164,50 @@ void Window::loadDim(int lowX, int lowY, int upX, int upY) {
     height = upY - lowY + 1;
 }
 
-int Window::getHeight() {
+int Canva::getHeight() {
     return height;
 }
 
-int Window::getWidth() {
+int Canva::getWidth() {
     return width;
 }
 
-void Window::setHeight(int h) {
+void Canva::setHeight(int h) {
     height = h;
 }
 
-void Window::setWidth(int w) {
+void Canva::setWidth(int w) {
     width = w;
 }
 
-Point Window::getBottomLeft() {
+Point Canva::getBottomLeft() {
     return bottomLeft;
 }
 
-Point Window::getTopLeft() {
+Point Canva::getTopLeft() {
     return topLeft;
 }
 
-Point Window::getTopRight() {
+Point Canva::getTopRight() {
     return topRight;
 }
 
-Point Window::getBottomRight() {
+Point Canva::getBottomRight() {
     return bottomRight;
 }
 
-void Window::setBottomLeft(Point p) {
+void Canva::setBottomLeft(Point p) {
     bottomLeft = p;
 }
 
-void Window::setTopLeft(Point p) {
+void Canva::setTopLeft(Point p) {
     topLeft = p;
 }
 
-void Window::setTopRight(Point p) {
+void Canva::setTopRight(Point p) {
     topRight = p;
 }
 
-void Window::setBottomRight(Point p) {
+void Canva::setBottomRight(Point p) {
     bottomRight = p;
 }

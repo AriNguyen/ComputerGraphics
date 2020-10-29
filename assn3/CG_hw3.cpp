@@ -1,5 +1,5 @@
 /**
- * @file CG_hw2.cpp
+ * @file CG_hw3.cpp
  * @brief C++ Program that clip and draw lines from .ps image to .pbm 
  * @author Ari Nguyen
  *
@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     // handle argvs
     time.start();
     specs.loadSpecs(argc, argv);
-    pbmFile.setWindow(specs.lowX, specs.lowY, specs.upX, specs.upY);
+    pbmFile = specs.pbmFile;
     
     // handle .ps File
     psImage.setImagePath(specs.fileName);
@@ -41,19 +41,21 @@ int main(int argc, char *argv[]) {
     // clip Polygons
     std::vector<Polygon> polygonVector = geoObjects.getPolygons();
     for (int i = 0; i < polygonVector.size(); ++i) {
+        fprintf(stderr, "\nNew Polygon\n");
         std::vector<Point> polygonVertices = polygonVector[i].getPoints();
         // transform all points
         for (auto &p: polygonVertices) 
             // std::async(std::launch::async, transform, &p, specs);
             transform(&p, specs);
 
-        clipPolygon(polygonVertices, pbmFile.getWindow());
+        clipPolygon(polygonVertices, pbmFile.getCanva());
         for (auto p: polygonVertices) {
-            fprintf(stderr, "point: %d %d\n", p.x, p.y);
+            // fprintf(stderr, "point: %d %d\n", p.x, p.y);
         }
         polygonVector[i].setPoints(polygonVertices);
         std::vector<Line> polygonLines =  polygonVector[i].getLines();
-        
+        std::vector<Point> filling = polygonVector[i].fill(pbmFile.getCanva());
+
         for (int j = 0; j < polygonLines.size(); ++j) {
             fprintf(stderr, "drawLine: %d %d - %d %d\n", polygonLines[j].p0.x, polygonLines[j].p0.y, polygonLines[j].p1.x, polygonLines[j].p1.y);
             std::vector<Point*> pl = {&(polygonLines[j].p0), &(polygonLines[j].p1)};
@@ -74,7 +76,7 @@ int main(int argc, char *argv[]) {
             transform(p, specs);
             // std::async(std::launch::async, transform, p, specs);
         // clip Line
-        if (!clipLine(lineVector[j].p0, lineVector[j].p1, pbmFile.getWindow())) 
+        if (!clipLine(lineVector[j].p0, lineVector[j].p1, pbmFile.getCanva()))
             continue;
         // drawLine() returns vector of points to be display
         std::vector<Point> linePoints = drawLine(lineVector[j].p0, lineVector[j].p1);
@@ -84,7 +86,6 @@ int main(int argc, char *argv[]) {
     }
 
     // export to File
-    fprintf(stderr, "----export\n");
     pbmFile.toStdOut(pixelPoints);
     time.stop();
     // printf("Elapsed time: %f", time.elapsed());

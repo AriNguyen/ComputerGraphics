@@ -34,35 +34,43 @@ GeoObjects PSImage::extractGeoObjects() {
     int isBegin = false;
     int isPolygon = false;
     Polygon pointsPoly;
+    int j = 0;
     while (std::getline(ifs, line)) {
-        // printf("%s\n", line.c_str());
+        // fprintf(stderr, "%s\n", line.c_str());
         if (line == "%%%BEGIN")
             isBegin = true;
         else if (line == "%%%END") 
             break;
         else if (isBegin) {
             std::vector<std::string> tokens = tokenizeBySymbol(line, ' ');
+            if (tokens.size() == 0)
+                continue;
+            // for (int i = 0; i < tokens.size(); ++i)
+            //     fprintf(stderr, "tokens: \"%s\"\n", tokens[i].c_str());
             if (!isPolygon && tokens[tokens.size() - 1] == "Line") {
-                // printf("line\n");
+                // fprintf(stderr, "line\n");
                 Point p0(std::stoi(tokens[0]), std::stoi(tokens[1]));
                 Point p1(std::stoi(tokens[2]), std::stoi(tokens[3]));
                 Line l(p0, p1);
                 lines.push_back(l);
             }
             else if (tokens[tokens.size() - 1] == "moveto") {
+                // fprintf(stderr, "---moveto: %d %d\n", std::stoi(tokens[0]), std::stoi(tokens[1]));
                 isPolygon = true;
                 Point p(std::stoi(tokens[0]), std::stoi(tokens[1]));
                 pointsPoly.addPoint(p);
             }
             else if (tokens[tokens.size() - 1] == "lineto") {
-                // printf("lineto: %d %d\n", std::stoi(tokens[0]), std::stoi(tokens[1]));
+                // fprintf(stderr, "---lineto: %d %d\n", std::stoi(tokens[0]), std::stoi(tokens[1]));
                 Point p(std::stoi(tokens[0]), std::stoi(tokens[1]));
                 pointsPoly.addPoint(p);
             }
-            else if (tokens[tokens.size() - 1] == "stroke") {
+            else if (tokens[0] == "stroke") {
+                j += 1;
+                // fprintf(stderr, "---stroke\n");
                 polygonVector.push_back(pointsPoly);
-                Polygon pointsPoly;
                 isPolygon = false; 
+                pointsPoly.clear();
             }
         }
     }

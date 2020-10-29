@@ -18,6 +18,28 @@ class Line {
         Line() {};
         Line(Point, Point);
 };
+class Canva {
+    private:
+        Point topLeft, topRight, bottomLeft, bottomRight;
+        int height, width;
+    public:
+        Canva() {};
+        Canva(int, int, int, int);
+        void loadDim(int, int, int, int);
+        void setBound(int, int, int, int);
+        int getHeight();
+        int getWidth();
+        Point getBottomLeft();
+        Point getTopLeft();
+        Point getTopRight();
+        Point getBottomRight();
+        void setHeight(int);
+        void setWidth(int);
+        void setBottomLeft(Point);
+        void setTopLeft(Point);
+        void setTopRight(Point);
+        void setBottomRight(Point);
+};
 class Polygon {
     private:
         std::vector<Point> points;
@@ -26,7 +48,9 @@ class Polygon {
         Polygon();
         Polygon(std::vector<Point>);
         virtual ~Polygon();
+        void clear();
         void updateLines();
+        std::vector<Point> fill(Canva);  // return all points inside polygon
         std::vector<Point> getPoints();
         std::vector<Line> getLines();
         void setPoints(std::vector<Point>);
@@ -53,27 +77,5 @@ class GeoObjects {
         void addPolygon(Polygon);
 };
 
-class Window {
-    private:
-        Point topLeft, topRight, bottomLeft, bottomRight;
-        int height, width;
-    public:
-        Window() {};
-        Window(int, int, int, int);
-        void loadDim(int, int, int, int);
-        void setBound(int, int, int, int);
-        int getHeight();
-        int getWidth();
-        Point getBottomLeft();
-        Point getTopLeft();
-        Point getTopRight();
-        Point getBottomRight();
-        void setHeight(int);
-        void setWidth(int);
-        void setBottomLeft(Point);
-        void setTopLeft(Point);
-        void setTopRight(Point);
-        void setBottomRight(Point);
-};
 
 #endif

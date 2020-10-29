@@ -10,8 +10,8 @@ const int BOTTOM = 4; // 0100
 const int TOP = 8;    // 1000
 
 int getOutCode(Point, Point, Point);
-int clipLine(Point &, Point &, Window);
-int clipPolygon(std::vector<Point> &, Window);
+int clipLine(Point &, Point &, Canva);
+int clipPolygon(std::vector<Point> &, Canva);
 std::vector<Point> drawLine(Point, Point);
 Point getIntersection(Point, Point, Point, Point);
 int getDistancePointToLine(Point, Line);

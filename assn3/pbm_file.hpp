@@ -16,11 +16,12 @@
 class PBMFile {
     private: 
         std::string pixels;
-        Canva win;
+        Canva worldView, viewPort;
     public:
         PBMFile() {};
-        Canva getCanva();
-        void setCanva(int, int, int, int);
+        Canva getWorldView();
+        void setWorldView(Canva);
+        void setViewPort(Canva);
         void load(std::vector<Point>);
         void toStdOut(std::vector<Point>);
         void clear();

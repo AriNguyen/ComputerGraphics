@@ -27,12 +27,13 @@ int main(int argc, char *argv[]) {
     Specs specs;
     PBMFile pbmFile;
     std::vector<Point> pixelPoints;
-    Time time;
+    // Time time;
 
     // handle argvs
-    time.start();
+    // time.start();
     specs.loadSpecs(argc, argv);
-    pbmFile = specs.pbmFile;
+    pbmFile.setWorldView(specs.worldView);
+    pbmFile.setViewPort(specs.viewPort);
     
     // handle .ps File
     psImage.setImagePath(specs.fileName);
@@ -43,18 +44,21 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < polygonVector.size(); ++i) {
         fprintf(stderr, "\nNew Polygon\n");
         std::vector<Point> polygonVertices = polygonVector[i].getPoints();
+        
         // transform all points
         for (auto &p: polygonVertices) 
-            // std::async(std::launch::async, transform, &p, specs);
             transform(&p, specs);
 
-        clipPolygon(polygonVertices, pbmFile.getCanva());
+        // clip Polygon
+        clipPolygon(polygonVertices, pbmFile.getWorldView());
+
         for (auto p: polygonVertices) {
             // fprintf(stderr, "point: %d %d\n", p.x, p.y);
         }
+
         polygonVector[i].setPoints(polygonVertices);
         std::vector<Line> polygonLines =  polygonVector[i].getLines();
-        std::vector<Point> filling = polygonVector[i].fill(pbmFile.getCanva());
+        std::vector<Point> filling = polygonVector[i].fill(pbmFile.getWorldView());
 
         for (int j = 0; j < polygonLines.size(); ++j) {
             fprintf(stderr, "drawLine: %d %d - %d %d\n", polygonLines[j].p0.x, polygonLines[j].p0.y, polygonLines[j].p1.x, polygonLines[j].p1.y);
@@ -64,7 +68,6 @@ int main(int argc, char *argv[]) {
                 // fprintf(stderr, "pixels: %d %d\n", p.x, p.y);
                 pixelPoints.push_back(p);
             }
-                // pushToVector(&pixelPoints, p);
 
         }
     }
@@ -74,25 +77,26 @@ int main(int argc, char *argv[]) {
         // transform all points
         for (auto p: pl) 
             transform(p, specs);
-            // std::async(std::launch::async, transform, p, specs);
+
         // clip Line
-        if (!clipLine(lineVector[j].p0, lineVector[j].p1, pbmFile.getCanva()))
+        if (!clipLine(lineVector[j].p0, lineVector[j].p1, pbmFile.getWorldView()))
             continue;
+
         // drawLine() returns vector of points to be display
         std::vector<Point> linePoints = drawLine(lineVector[j].p0, lineVector[j].p1);
         for (auto &p: linePoints) 
             pushToVector(&pixelPoints, p);
-            // pixelPoints.push_back(p);
     }
 
     // export to File
     pbmFile.toStdOut(pixelPoints);
-    time.stop();
+    // time.stop();
     // printf("Elapsed time: %f", time.elapsed());
     return 0;
 }
 
 void transform(Point *p, Specs specs) {
+    // std::async(std::launch::async, transform, p, specs);
     Point rotatePoint = {0, 0};
     rotate(p->x, p->y, specs.rotateAngle, rotatePoint);
     scale(p->x, p->y, specs.scaleFactor);

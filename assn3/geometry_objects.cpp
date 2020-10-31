@@ -1,3 +1,4 @@
+#include <cstdio>
 #include "geometry_objects.hpp"
 
 /** Point **/
@@ -154,12 +155,16 @@ Canva::Canva(int lowX, int lowY, int upX, int upY) {
 void Canva::loadDim(int lowX, int lowY, int upX, int upY) {
     bottomLeft.x = lowX;
     bottomLeft.y = lowY;
+
     topRight.x = upX;
     topRight.y = upY;
+
     topLeft.x = lowX;
     topLeft.y = upY;
+
     bottomRight.x = upX;
     bottomRight.y = lowY;
+
     width = upX - lowX + 1;
     height = upY - lowY + 1;
 }

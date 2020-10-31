@@ -7,27 +7,31 @@
 #include "pbm_file.hpp"
 #include "geometry_objects.hpp"
 
-Canva PBMFile::getCanva() {
-    return win;
+Canva PBMFile::getWorldView() {
+    return worldView;
 }
 
-void PBMFile::setCanva(int lowX, int lowY, int upX, int upY) {
-    win.loadDim(lowX, lowY, upX, upY);
+void PBMFile::setWorldView(Canva c) {
+    worldView = c;
+}
+
+void PBMFile::setViewPort(Canva c) {
+    viewPort = c;
 }
 
 void PBMFile::toStdOut(std::vector<Point> points) {
     fprintf(stdout, "P1\n");
-    fprintf(stdout, "%d %d\n", win.getWidth(), win.getHeight());
-    std::vector<std::vector<int>> pixelArr(win.getWidth(), std::vector<int> (win.getHeight(), 0));
-    // fprintf(stderr, "bottomLeft: %d %d\n", win.getBottomLeft().x, win.getBottomLeft().y);
+    fprintf(stdout, "%d %d\n", worldView.getWidth(), worldView.getHeight());
+    std::vector<std::vector<int>> pixelArr(worldView.getWidth(), std::vector<int> (worldView.getHeight(), 0));
+    // fprintf(stderr, "bottomLeft: %d %d\n", worldView.getBottomLeft().x, worldView.getBottomLeft().y);
     // try {
         for (auto &p: points) {
             // fprintf(stderr, "toStdOut: %d %d\n", p.x, p.y);
-            pixelArr[p.x - win.getBottomLeft().x][p.y - win.getBottomLeft().y] = 1;
+            pixelArr[p.x - worldView.getBottomLeft().x][p.y - worldView.getBottomLeft().y] = 1;
         }
-        for (int i = win.getHeight() - 1; i >= 0; --i) {
+        for (int i = worldView.getHeight() - 1; i >= 0; --i) {
             std::string row = "";
-            for (int j = 0; j < win.getWidth(); ++j) {
+            for (int j = 0; j < worldView.getWidth(); ++j) {
                 fprintf(stdout, "%d ", pixelArr[j][i]);
             }
             fprintf(stdout, "\n");

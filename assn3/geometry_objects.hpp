@@ -10,7 +10,6 @@ class Point {
         Point(int, int);
         virtual bool operator==(const Point&) const;
         virtual bool operator!=(const Point&) const;
-        void setXY(int, int);
 };
 class Line {
     public:

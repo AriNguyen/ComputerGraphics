@@ -11,10 +11,8 @@ class Specs {
         char *fileName;
         float scaleFactor;
         int rotateAngle, xDim, yDim;
-        int lowX, lowY, upX, upY;
-        PBMFile pbmFile;
-        Canva worldView;
-        Canva viewPort;
+        // int lowX, lowY, upX, upY;
+        Canva worldView, viewPort;
 
         Specs() {};
         Specs(int, char*[]);

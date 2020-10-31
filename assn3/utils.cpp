@@ -21,7 +21,7 @@ void Specs::loadSpecs(int argc, char *argv[]) {
     rotateAngle = 0;
     xDim = 0; 
     yDim = 0;
-    int x0 = 0, y0 = 0, x1 = 499, y1 = 499; 
+    int x0 = 0, y0 = 0, x1 = 250, y1 = 250; 
     int x2 = 0, y2 = 0, x3 = 200, y3 = 200; 
 
     // parse argv

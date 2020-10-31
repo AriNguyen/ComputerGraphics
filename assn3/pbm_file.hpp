@@ -20,6 +20,7 @@ class PBMFile {
     public:
         PBMFile() {};
         Canva getWorldView();
+        Canva getViewPort();
         void setWorldView(Canva);
         void setViewPort(Canva);
         void load(std::vector<Point>);

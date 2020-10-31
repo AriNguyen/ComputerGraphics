@@ -10,7 +10,9 @@
 Canva PBMFile::getWorldView() {
     return worldView;
 }
-
+Canva PBMFile::getViewPort() {
+    return viewPort;
+}
 void PBMFile::setWorldView(Canva c) {
     worldView = c;
 }

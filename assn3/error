@@ -1,0 +1,161 @@
+
+New Polygon
+2nd case: first vertice in side, second outside
+2nd case: first vertice in side, second outside
+fill boundary: 10 10, 550 400
+point: 11 207
+point: 86 97
+point: 146 105
+point: 188 233
+point: 180 291
+point: 121 283
+point: 130 224
+point: 70 216
+point: 44 400
+point: 10 400
+point: 10 214
+point: 11 207
+
+scanLine: 11 207
+scanLine: 86 97
+scanLine: 146 105
+scanLine: 188 233
+scanLine: 180 291
+scanLine: 121 283
+scanLine: 130 224
+scanLine: 70 216
+scanLine: 10 214
+
+drawLine: 11 207 - 86 97
+drawLine: 86 97 - 146 105
+drawLine: 146 105 - 188 233
+drawLine: 188 233 - 180 291
+drawLine: 180 291 - 121 283
+drawLine: 121 283 - 130 224
+drawLine: 130 224 - 70 216
+drawLine: 70 216 - 44 400
+drawLine: 44 400 - 10 400
+drawLine: 10 400 - 10 214
+drawLine: 10 214 - 11 207
+
+New Polygon
+2nd case: first vertice in side, second outside
+fill boundary: 10 10, 550 400
+point: 337 253
+point: 278 245
+point: 270 305
+point: 210 296
+point: 218 236
+point: 295 126
+point: 354 134
+point: 397 261
+point: 389 321
+point: 283 400
+point: 213 400
+point: 329 313
+point: 337 253
+
+scanLine: 337 253
+scanLine: 278 245
+scanLine: 270 305
+scanLine: 210 296
+scanLine: 218 236
+scanLine: 295 126
+scanLine: 354 134
+scanLine: 397 261
+scanLine: 389 321
+scanLine: 329 313
+
+drawLine: 337 253 - 278 245
+drawLine: 278 245 - 270 305
+drawLine: 270 305 - 210 296
+drawLine: 210 296 - 218 236
+drawLine: 218 236 - 295 126
+drawLine: 295 126 - 354 134
+drawLine: 354 134 - 397 261
+drawLine: 397 261 - 389 321
+drawLine: 389 321 - 283 400
+drawLine: 283 400 - 213 400
+drawLine: 213 400 - 329 313
+drawLine: 329 313 - 337 253
+
+New Polygon
+fill boundary: 10 10, 550 400
+point: 386 548
+
+
+
+New Polygon
+2nd case: first vertice in side, second outside
+fill boundary: 10 10, 550 400
+point: 500 383
+point: 503 367
+point: 414 355
+point: 419 325
+point: 538 342
+point: 529 400
+point: 438 400
+point: 442 374
+point: 500 383
+
+scanLine: 500 383
+scanLine: 503 367
+scanLine: 414 355
+scanLine: 419 325
+scanLine: 538 342
+scanLine: 442 374
+
+drawLine: 500 383 - 503 367
+drawLine: 503 367 - 414 355
+drawLine: 414 355 - 419 325
+drawLine: 419 325 - 538 342
+drawLine: 538 342 - 529 400
+drawLine: 529 400 - 438 400
+drawLine: 438 400 - 442 374
+drawLine: 442 374 - 500 383
+
+New Polygon
+2nd case: first vertice in side, second outside
+fill boundary: 10 10, 550 400
+point: 473 151
+point: 533 159
+point: 550 182
+point: 550 253
+point: 516 278
+point: 528 189
+point: 469 181
+point: 461 240
+point: 520 248
+point: 516 278
+point: 456 270
+point: 431 236
+point: 439 176
+point: 473 151
+
+scanLine: 473 151
+scanLine: 533 159
+scanLine: 550 182
+scanLine: 550 253
+scanLine: 516 278
+scanLine: 528 189
+scanLine: 469 181
+scanLine: 461 240
+scanLine: 520 248
+scanLine: 516 278
+scanLine: 456 270
+scanLine: 431 236
+scanLine: 439 176
+
+drawLine: 473 151 - 533 159
+drawLine: 533 159 - 550 182
+drawLine: 550 182 - 550 253
+drawLine: 550 253 - 516 278
+drawLine: 516 278 - 528 189
+drawLine: 528 189 - 469 181
+drawLine: 469 181 - 461 240
+drawLine: 461 240 - 520 248
+drawLine: 520 248 - 516 278
+drawLine: 516 278 - 456 270
+drawLine: 456 270 - 431 236
+drawLine: 431 236 - 439 176
+drawLine: 439 176 - 473 151

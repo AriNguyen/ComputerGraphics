@@ -54,7 +54,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
     std::vector<Line> fillingLines, scanLines;
     std::vector<Point> intersections;
 
-    fprintf(stderr, "fill boundary: %d %d, %d %d\n", 
+    fprintf(stderr, "----------fill boundary: %d %d, %d %d\n", 
         boundary.getBottomLeft().x,
         boundary.getBottomLeft().y,
         boundary.getTopRight().x,

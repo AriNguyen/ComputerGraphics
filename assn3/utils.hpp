@@ -20,5 +20,8 @@ class Specs {
 };
 
 std::vector<std::string> tokenizeBySymbol(std::string, char);
+bool compPoint(const Point&, const Point&); 
+bool compLine(const Line&, const Line&); 
+
 
 #endif

@@ -10,6 +10,8 @@ class Point {
         Point(int, int);
         virtual bool operator==(const Point&) const;
         virtual bool operator!=(const Point&) const;
+        virtual bool operator<(const Point&) const;
+
 };
 class Line {
     public:
@@ -48,7 +50,7 @@ class Polygon {
         virtual ~Polygon();
         void clear();
         void updateLines();
-        std::vector<Point> fill(Canva);  // return all points inside polygon
+        std::vector<Line> fill(Canva);  // return all points inside polygon
         std::vector<Point> getPoints();
         std::vector<Line> getLines();
         void setPoints(std::vector<Point>);

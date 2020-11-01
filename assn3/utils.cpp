@@ -66,3 +66,11 @@ std::vector<std::string> tokenizeBySymbol(std::string str, char symbol) {
             tokens.push_back(cell);
     return tokens;
 } 
+
+bool compPoint(const Point& lhs, const Point& rhs) {
+  return lhs.x < rhs.x;
+}
+
+bool compLine(const Line& lhs, const Line& rhs) {
+  return lhs.p0.y < rhs.p0.y;
+}

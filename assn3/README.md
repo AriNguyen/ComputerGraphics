@@ -18,19 +18,19 @@ Test assignment 2:
 chmod 700 misc/execute
 ./misc/execute
 ```
-When running the above command line, the bash file runs all command below. All output images is in folder **output/hw2**
+When running the above command line, the bash file runs all command below. All output images is in folder **output/hw3/hw2**
 ```shell
-./CG_hw3 -f img/hw3_split.ps > output/hw3_a.pbm
-./CG_hw3 -f img/hw3_split.ps -a 0 -b 0 -c 500 -d 500 -j 0 -k 0 -o 500 -p 500 -s 1.0 -m 0 -n 0 -r 0 > output/hw3_b.pbm
-./CG_hw3 -f img/hw3_split.ps -a 50 -b 0 -c 325 -d 500 -j 0 -k 110 -o 480 -p 410 -s 1 -m 0 -n 0 -r 0 > output/hw3_c.pbm
-./CG_hw3 -f img/hw3_split.ps -a 10 -b 10 -c 550 -d 400 -j 10 -k 10 -o 500 -p 400 -s 1.2 -m 6 -n 25 -r 8 > output/hw3_d.pbm
-./CG_hw3 -f img/hw3_split.ps -b 62 -c 500 -d 479 -r 75 -j 139 -o 404 -p 461 -s .85 -m 300 > output/hw3_e.pbm
-./CG_hw3 -f img/hw3_split.ps -a 275 -b 81 -c 550 -d 502 -r -37 -j 123 -k 217 -o 373 -p 467 > output/hw3_f.pbm
-./CG_hw3 -f img/hw3_split.ps -d 301 -c 435 -b 170 -a -100 -r -23 > output/hw3_g.pbm
-./CG_hw3 -f img/hw3_split.ps -a -135 -b -53 -c 633 -d 842 -m -23 -j 101 -p 415 -s 3.6 > output/hw3_h.pbm
+./CG_hw3 -f img/hw3_split.ps > output/hw3/hw3_a.pbm 2> error
+./CG_hw3 -f img/hw3_split.ps -a 0 -b 0 -c 500 -d 500 -j 0 -k 0 -o 500 -p 500 -s 1.0 -m 0 -n 0 -r 0 > output/hw3/hw3_b.pbm 2> error
+./CG_hw3 -f img/hw3_split.ps -a 50 -b 0 -c 325 -d 500 -j 0 -k 110 -o 480 -p 410 -s 1 -m 0 -n 0 -r 0 > output/hw3/hw3_c.pbm 2> error
+./CG_hw3 -f img/hw3_split.ps -a 10 -b 10 -c 550 -d 400 -j 10 -k 10 -o 500 -p 400 -s 1.2 -m 6 -n 25 -r 8 > output/hw3/hw3_d.pbm 2> error
+./CG_hw3 -f img/hw3_split.ps -b 62 -c 500 -d 479 -r 75 -j 139 -o 404 -p 461 -s .85 -m 300 > output/hw3/hw3_e.pbm 2> error
+./CG_hw3 -f img/hw3_split.ps -a 275 -b 81 -c 550 -d 502 -r -37 -j 123 -k 217 -o 373 -p 467 > output/hw3/hw3_f.pbm 2> error
+./CG_hw3 -f img/hw3_split.ps -d 301 -c 435 -b 170 -a -100 -r -23 > output/hw3/hw3_g.pbm 2> error
+./CG_hw3 -f img/hw3_split.ps -a -135 -b -53 -c 633 -d 842 -m -23 -j 101 -p 415 -s 3.6 > output/hw3/hw3_h.pbm 2> error
  ```
 
-To test if the program works for assignment 1. All output images for hw1 is in folder **output/hw1**
+To test if the program works for assignment 1. All output images for hw1 is in folder **output/hw3/hw1**
 ```shell
 chmod 700 misc/execute_hw1
 ./misc/execute_hw1
@@ -42,11 +42,11 @@ chmod 700 misc/execute_hw1
 ├── assn2/
     ├── img/                 # hold all images 
     |   ...
-    ├── output/hw2/          # hold output images
+    ├── output/hw3/hw2/          # hold output images
     |   ...
     ├── test/                # hold test cases
     |   ...
-    ├── output/              # hold output
+    ├── output/hw3/              # hold output
     |   ...
     ├── misc/                # bash scripts
     |   ...

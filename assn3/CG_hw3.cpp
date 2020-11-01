@@ -57,8 +57,10 @@ int main(int argc, char *argv[]) {
         }
 
         polygonVector[i].setPoints(polygonVertices);
-        std::vector<Line> polygonLines =  polygonVector[i].getLines();
-        std::vector<Point> filling = polygonVector[i].fill(pbmFile.getWorldView());
+        // std::vector<Line> polygonLines =  polygonVector[i].getLines();
+
+        //  fill polygon
+        std::vector<Line> polygonLines = polygonVector[i].fill(pbmFile.getWorldView());
 
         for (int j = 0; j < polygonLines.size(); ++j) {
             fprintf(stderr, "drawLine: %d %d - %d %d\n", polygonLines[j].p0.x, polygonLines[j].p0.y, polygonLines[j].p1.x, polygonLines[j].p1.y);

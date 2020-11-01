@@ -51,9 +51,8 @@ void Polygon::updateLines() {
  * @return vector of points filling the polygons
  */
 std::vector<Line> Polygon::fill(Canva boundary) {
-    std::vector<Line> fillingLines;
-    std::vector<Point> fillingPoints;
-    std::vector<Line> scanLines;
+    std::vector<Line> fillingLines, scanLines;
+    std::vector<Point> intersections;
 
     fprintf(stderr, "fill boundary: %d %d, %d %d\n", 
         boundary.getBottomLeft().x,
@@ -93,7 +92,6 @@ std::vector<Line> Polygon::fill(Canva boundary) {
     for (int i = 0; i < scanLines.size(); ++i) 
         fprintf(stderr, "scanLine: %d %d, %d %d\n", scanLines[i].p0.x, scanLines[i].p0.y, scanLines[i].p1.x, scanLines[i].p1.y);
 
-    
     int lowY = scanLines[0].p0.y;
     int topY = scanLines[0].p0.y;
     for (auto l : scanLines) {
@@ -109,10 +107,8 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         if (l.p1.y > topY)
             topY = l.p1.y;
     }
-    
     fprintf(stderr, "-----low and top: %d, %d\n", lowY, topY);
 
-    std::vector<Point> intersections;
     for (int i = lowY; i < topY; ++i) {
         Point lowPoint(boundary.bottomLeft.x, i);
         Point topPoint(boundary.bottomRight.x, i);
@@ -136,13 +132,13 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         }
             
         std::sort(std::begin(intersections), std::end(intersections), compPoint);
-
         fprintf(stderr, "\n----intersections size: %lu\n", intersections.size());
         for (int j = 0; j < intersections.size(); ++j) {
                 Point is1 = intersections[j];
                 fprintf(stderr, "intersect: %d %d\n", is1.x, is1.y);
         }
 
+        // add filling Lines
         if ((intersections.size() % 2) == 0)
             for (int j = 0; j < intersections.size(); j += 2) {
                 Point is1 = intersections[j];
@@ -157,16 +153,6 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         }
         intersections.clear();
     }
-    
-    // fprintf(stderr, "\nfillingPoints: %lu\n", fillingPoints.size());
-    // if (fillingPoints.size() > 0) {
-    //     fprintf(stderr, "\nSort Filling Points\n");
-    //     std::sort(std::begin(fillingPoints), std::end(fillingPoints), compPoint);
-    //     for (int i = 0; i < fillingPoints.size() - 1; ++i) {
-    //         fprintf(stderr, "%d %d, %d %d\n", fillingPoints[i].x, fillingPoints[i].y, fillingPoints[i + 1].x, fillingPoints[i + 1].y);
-    //         fillingLines.push_back(Line(fillingPoints[i], fillingPoints[i + 1]));
-    //     }
-    // }
     
     lines.insert(lines.end(), fillingLines.begin(), fillingLines.end());
     return lines;

@@ -48,10 +48,10 @@ void Polygon::updateLines() {
 }
 /** Scan-Filling algorithm
  * @param boundary box that the polygon is within
- * @return vector of points filling the polygons
+ * @return vector of lines filling the polygons
  */
 std::vector<Line> Polygon::fill(Canva boundary) {
-    std::vector<Line> fillingLines, scanLines;
+    std::vector<Line> fillingLines, edgeList;
     std::vector<Point> intersections;
 
     fprintf(stderr, "----------fill boundary: %d %d, %d %d\n", 
@@ -60,6 +60,8 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         boundary.getTopRight().x,
         boundary.getTopRight().y
     );
+    
+    // edgeList.insert(edgeList.end(), lines.begin(), lines.end());
     for (int i = 0; i < points.size(); ++i) {
         Point p = points[i];
         Point p1 = points[(i + 1) % points.size()];
@@ -74,27 +76,26 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         //     continue;
         else if (p.y >= boundary.getBottomLeft().y && p.y <= boundary.getTopRight().y) {
             // sort by y
-            if (p.y < p1.y) {
+            if (p.y > p1.y) {
                 auto temp = p;
                 p = p1;
                 p1 = temp;
             }
-            scanLines.push_back(Line(p, p1));
+            edgeList.push_back(Line(p, p1));
             // fprintf(stderr, "scanLine: %d %d, %d %d\n", p.x, p.y, p1.x, p1.y);
         }
     }
     fprintf(stderr, "\n");
-    if (scanLines.size() == 0)
+    if (edgeList.size() == 0)
         return lines;
 
-    // sort by Y
-    std::sort(std::begin(scanLines), std::end(scanLines), compLine);
-    for (int i = 0; i < scanLines.size(); ++i) 
-        fprintf(stderr, "scanLine: %d %d, %d %d\n", scanLines[i].p0.x, scanLines[i].p0.y, scanLines[i].p1.x, scanLines[i].p1.y);
+    // print scan Line
+    for (int i = 0; i < edgeList.size(); ++i) 
+        fprintf(stderr, "scanLine: %d %d, %d %d\n", edgeList[i].p0.x, edgeList[i].p0.y, edgeList[i].p1.x, edgeList[i].p1.y);
 
-    int lowY = scanLines[0].p0.y;
-    int topY = scanLines[0].p0.y;
-    for (auto l : scanLines) {
+    int lowY = edgeList[0].p0.y;
+    int topY = edgeList[0].p0.y;
+    for (auto l : edgeList) {
         // min
         if (l.p0.y < lowY)
             lowY = l.p0.y;
@@ -109,22 +110,24 @@ std::vector<Line> Polygon::fill(Canva boundary) {
     }
     fprintf(stderr, "-----low and top: %d, %d\n", lowY, topY);
 
+    // loop through horizontal scanline
     for (int i = lowY; i < topY; ++i) {
         Point lowPoint(boundary.bottomLeft.x, i);
         Point topPoint(boundary.bottomRight.x, i);
 
         // fprintf(stderr, "\nintersect with: %d %d, %d %d\n", lowPoint.x, lowPoint.y, topPoint.x, topPoint.y);
-        for (int j = 0; j < scanLines.size(); ++j) {
-            // fprintf(stderr, "\nscanLine here: %d %d, %d %d\n", scanLines[j].p0.x, scanLines[j].p0.y, scanLines[j].p1.x, scanLines[j].p1.y);
+        for (int j = 0; j < edgeList.size(); ++j) {
+            // fprintf(stderr, "\nscanLine here: %d %d, %d %d\n", edgeList[j].p0.x, edgeList[j].p0.y, edgeList[j].p1.x, edgeList[j].p1.y);
             
-            // in range scanLines
-            if (!(i >= scanLines[j].p1.y && i <= scanLines[j].p0.y)) 
+            // in range edgeList
+            if (!(i >= edgeList[j].p0.y && i <= edgeList[j].p1.y)) 
                 continue;
 
             // get intersection
-            Point intersect = getIntersection(scanLines[j].p0, scanLines[j].p1, lowPoint, topPoint);
+            Point intersect = getIntersection(edgeList[j].p0, edgeList[j].p1, lowPoint, topPoint);
             // fprintf(stderr, "intersect: %d %d\n", intersect.x, intersect.y);
-            
+        
+
             // intersections not contains intersect
             if(std::find(intersections.begin(), intersections.end(), intersect) == intersections.end())
                 if (intersect.x != INT_MAX)

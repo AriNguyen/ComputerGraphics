@@ -143,11 +143,12 @@ std::vector<Line> Polygon::fill(Canva boundary) {
 
         // remove mid point
         if (intersections.size() > 1 && !(intersections.size() % 2 == 0)) {
-            fprintf(stderr, "mid point: %d\n", (int)(intersections.size() / 2));
-            Point midpoint = intersections[(int)(intersections.size() / 2)];
-            for (auto edge: edgeList) {
-                if (midpoint == edge.p0 || midpoint == edge.p1) 
-                    intersections.erase(std::remove(intersections.begin(), intersections.end(), midpoint), intersections.end());
+            for (auto i : intersections) {
+                for (auto edge: edgeList) {
+                    fprintf(stderr, "edge: %d %d, %d %d\n", edge.p0.x, edge.p0.y, edge.p1.x, edge.p1.y);
+                    if (i == edge.p0 || i == edge.p1) 
+                        intersections.erase(std::remove(intersections.begin(), intersections.end(), i), intersections.end());
+                }
             }
             fprintf(stderr, "----intersections size after: %lu\n", intersections.size());
         }

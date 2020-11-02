@@ -53,15 +53,15 @@ int main(int argc, char *argv[]) {
         clipPolygon(polygonVertices, pbmFile.getWorldView());
 
         // worldToViewPort
-        // for (auto &p: polygonVertices) 
-        //     worldToViewPort(&p, specs.worldView, specs.viewPort);
+        for (auto &p: polygonVertices) 
+            worldToViewPort(&p, specs.worldView, specs.viewPort);
 
 
         polygonVector[i].setPoints(polygonVertices);
 
         //  fill polygon
         // std::vector<Line> polygonLines =  polygonVector[i].getLines();
-        std::vector<Line> polygonLines = polygonVector[i].fill(pbmFile.getWorldView());
+        std::vector<Line> polygonLines = polygonVector[i].fill(pbmFile.getWorld());
         
         // draw Line
         for (int j = 0; j < polygonLines.size(); ++j) {

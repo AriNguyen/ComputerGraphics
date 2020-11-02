@@ -44,8 +44,9 @@ int main(int argc, char *argv[]) {
         std::vector<Point> polygonVertices = polygonVector[i].getPoints();
         
         // transform all points
-        for (auto &p: polygonVertices) 
+        for (auto &p: polygonVertices) {
             transform(&p, specs);
+        }
 
         // clip Polygon
         clipPolygon(polygonVertices, pbmFile.getWorldView());
@@ -86,9 +87,6 @@ int main(int argc, char *argv[]) {
         for (auto &p: linePoints) 
             pushToVector(&pixelPoints, p);
     }
-
-    // world To Viewport
-    pixelPoints = worldToViewPort(pixelPoints, specs.viewPort);
 
     // export to File
     pbmFile.toStdOut(pixelPoints);

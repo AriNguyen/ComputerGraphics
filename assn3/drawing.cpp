@@ -208,3 +208,9 @@ int getDistancePointToLine(Point p, Line l) {
     int distance = (l.p1.x - l.p0.x) * (p.y - l.p0.y) - (l.p1.y - l.p0.y) * (p.x - l.p0.x);
     return distance;
 }
+
+std::vector<Point> worldToViewPort(std::vector<Point> pixels, Canva viewPort) {
+    
+
+    return pixels;
+}

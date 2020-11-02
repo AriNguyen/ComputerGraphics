@@ -1,6 +1,7 @@
 #ifndef DRAWING_HPP
 #define DRAWING_HPP
 
+#include <vector>
 #include "geometry_objects.hpp"
 
 const int INSIDE = 0; // 0000
@@ -15,5 +16,6 @@ int clipPolygon(std::vector<Point> &, Canva);
 std::vector<Point> drawLine(Point, Point);
 Point getIntersection(Point, Point, Point, Point);
 int getDistancePointToLine(Point, Line);
+std::vector<Point> worldToViewPort(std::vector<Point>, Canva);
 
 #endif

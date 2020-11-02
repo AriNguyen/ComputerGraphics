@@ -27,10 +27,8 @@ int main(int argc, char *argv[]) {
     Specs specs;
     PBMFile pbmFile;
     std::vector<Point> pixelPoints;
-    // Time time;
 
     // handle argvs
-    // time.start();
     specs.loadSpecs(argc, argv);
     pbmFile.setWorldView(specs.worldView);
     pbmFile.setViewPort(specs.viewPort);
@@ -39,7 +37,7 @@ int main(int argc, char *argv[]) {
     psImage.setImagePath(specs.fileName);
     GeoObjects geoObjects = psImage.extractGeoObjects();
 
-    // clip Polygons
+    // Hanlde Polygons
     std::vector<Polygon> polygonVector = geoObjects.getPolygons();
     for (int i = 0; i < polygonVector.size(); ++i) {
         fprintf(stderr, "\nNew Polygon\n");
@@ -51,17 +49,13 @@ int main(int argc, char *argv[]) {
 
         // clip Polygon
         clipPolygon(polygonVertices, pbmFile.getWorldView());
-
-        for (auto p: polygonVertices) {
-            // fprintf(stderr, "point: %d %d\n", p.x, p.y);
-        }
-
         polygonVector[i].setPoints(polygonVertices);
         // std::vector<Line> polygonLines =  polygonVector[i].getLines();
 
         //  fill polygon
         std::vector<Line> polygonLines = polygonVector[i].fill(pbmFile.getWorldView());
-
+        
+        // draw Line
         for (int j = 0; j < polygonLines.size(); ++j) {
             fprintf(stderr, "drawLine: %d %d - %d %d\n", polygonLines[j].p0.x, polygonLines[j].p0.y, polygonLines[j].p1.x, polygonLines[j].p1.y);
             std::vector<Point*> pl = {&(polygonLines[j].p0), &(polygonLines[j].p1)};
@@ -73,6 +67,9 @@ int main(int argc, char *argv[]) {
 
         }
     }
+
+
+    // Hanlde Lines
     std::vector<Line> lineVector = geoObjects.getLines();
     for (int j = 0; j < lineVector.size(); ++j) {
         std::vector<Point*> pl = {&(lineVector[j].p0), &(lineVector[j].p1)};
@@ -90,10 +87,11 @@ int main(int argc, char *argv[]) {
             pushToVector(&pixelPoints, p);
     }
 
+    // world To Viewport
+    pixelPoints = worldToViewPort(pixelPoints, specs.viewPort);
+
     // export to File
     pbmFile.toStdOut(pixelPoints);
-    // time.stop();
-    // printf("Elapsed time: %f", time.elapsed());
     return 0;
 }
 

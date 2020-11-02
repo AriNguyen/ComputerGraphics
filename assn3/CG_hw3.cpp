@@ -30,6 +30,7 @@ int main(int argc, char *argv[]) {
 
     // handle argvs
     specs.loadSpecs(argc, argv);
+    pbmFile.setWorld(specs.world);
     pbmFile.setWorldView(specs.worldView);
     pbmFile.setViewPort(specs.viewPort);
     

@@ -7,16 +7,21 @@
 #include "pbm_file.hpp"
 #include "geometry_objects.hpp"
 
+Canva PBMFile::getWorld() {
+    return world;
+}
 Canva PBMFile::getWorldView() {
     return worldView;
 }
 Canva PBMFile::getViewPort() {
     return viewPort;
 }
+void PBMFile::setWorld(Canva c) {
+    world = c;
+}
 void PBMFile::setWorldView(Canva c) {
     worldView = c;
 }
-
 void PBMFile::setViewPort(Canva c) {
     viewPort = c;
 }

@@ -225,4 +225,7 @@ void worldToViewPort(Point* p, Canva worldView, Canva viewPort) {
     // calculating the point on viewport 
     p->x = viewPort.bottomLeft.x + (float)((p->x - worldView.bottomLeft.x) * sx); 
     p->y = viewPort.bottomLeft.y + (float)((p->y - worldView.bottomLeft.y) * sy); 
+
+    p->x = round(p->x);
+    p->y = round(p->y);
 }

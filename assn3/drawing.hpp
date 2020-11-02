@@ -16,6 +16,6 @@ int clipPolygon(std::vector<Point> &, Canva);
 std::vector<Point> drawLine(Point, Point);
 Point getIntersection(Point, Point, Point, Point);
 int getDistancePointToLine(Point, Line);
-std::vector<Point> worldToViewPort(std::vector<Point>, Canva);
+void worldToViewPort(Point*, Canva, Canva);
 
 #endif

@@ -209,8 +209,20 @@ int getDistancePointToLine(Point p, Line l) {
     return distance;
 }
 
-std::vector<Point> worldToViewPort(std::vector<Point> pixels, Canva viewPort) {
-    
 
-    return pixels;
+/** 
+ * 
+ * 
+ */
+void worldToViewPort(Point* p, Canva worldView, Canva viewPort) {
+    // scaling factors for x coordinate and y coordinate 
+    float sx, sy; 
+  
+    // calculatng Sx and Sy 
+    sx = (float)(viewPort.topRight.x - viewPort.bottomLeft.x) / (worldView.topRight.x - worldView.bottomLeft.x); 
+    sy = (float)(viewPort.topRight.y - viewPort.bottomLeft.y) / (worldView.topRight.y - worldView.bottomLeft.y); 
+  
+    // calculating the point on viewport 
+    p->x = viewPort.bottomLeft.x + (float)((p->x - worldView.bottomLeft.x) * sx); 
+    p->y = viewPort.bottomLeft.y + (float)((p->y - worldView.bottomLeft.y) * sy); 
 }

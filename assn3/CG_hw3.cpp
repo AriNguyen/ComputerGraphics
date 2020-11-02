@@ -50,10 +50,16 @@ int main(int argc, char *argv[]) {
 
         // clip Polygon
         clipPolygon(polygonVertices, pbmFile.getWorldView());
+
+        // worldToViewPort
+        // for (auto &p: polygonVertices) 
+        //     worldToViewPort(&p, specs.worldView, specs.viewPort);
+
+
         polygonVector[i].setPoints(polygonVertices);
-        // std::vector<Line> polygonLines =  polygonVector[i].getLines();
 
         //  fill polygon
+        // std::vector<Line> polygonLines =  polygonVector[i].getLines();
         std::vector<Line> polygonLines = polygonVector[i].fill(pbmFile.getWorldView());
         
         // draw Line

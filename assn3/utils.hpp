@@ -12,7 +12,7 @@ class Specs {
         float scaleFactor;
         int rotateAngle, xDim, yDim;
         // int lowX, lowY, upX, upY;
-        Canva worldView, viewPort;
+        Canva worldView, viewPort, world;
 
         Specs() {};
         Specs(int, char*[]);

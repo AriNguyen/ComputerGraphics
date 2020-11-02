@@ -52,9 +52,10 @@ void Specs::loadSpecs(int argc, char *argv[]) {
             x3 = std::atoi(argv[++i]);
         else if (strcmp(argv[i], "-p") == 0) 
             y3 = std::atoi(argv[++i]);
-        worldView.loadDim(x0, y0, x1, y1);
-        viewPort.loadDim(x2, y2, x3, y3);
     }
+    world.loadDim(0, 0, 500, 500);
+    worldView.loadDim(x0, y0, x1, y1);
+    viewPort.loadDim(x2, y2, x3, y3);
 }
 
 std::vector<std::string> tokenizeBySymbol(std::string str, char symbol) {

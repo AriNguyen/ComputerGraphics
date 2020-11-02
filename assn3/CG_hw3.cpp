@@ -84,6 +84,8 @@ int main(int argc, char *argv[]) {
         for (auto p: pl) 
             transform(p, specs);
 
+        // world To Viewport
+
         // clip Line
         if (!clipLine(lineVector[j].p0, lineVector[j].p1, pbmFile.getWorldView()))
             continue;

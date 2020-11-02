@@ -209,6 +209,11 @@ int getDistancePointToLine(Point p, Line l) {
     return distance;
 }
 
+
+/** 
+ * 
+ * 
+ */
 void worldToViewPort(Point* p, Canva worldView, Canva viewPort) {
     // scaling factors for x coordinate and y coordinate 
     float sx, sy; 
@@ -220,7 +225,4 @@ void worldToViewPort(Point* p, Canva worldView, Canva viewPort) {
     // calculating the point on viewport 
     p->x = viewPort.bottomLeft.x + (float)((p->x - worldView.bottomLeft.x) * sx); 
     p->y = viewPort.bottomLeft.y + (float)((p->y - worldView.bottomLeft.y) * sy); 
-
-    // round(p->x);
-    // round(p->y);
 }

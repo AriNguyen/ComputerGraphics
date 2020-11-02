@@ -15,7 +15,6 @@
 #include "geometry_objects.hpp"
 #include "transformations.hpp"
 #include "drawing.hpp"
-#include "time.hpp"
 
 static std::mutex vectorMutex;
 template<typename T>
@@ -55,7 +54,6 @@ int main(int argc, char *argv[]) {
         // worldToViewPort
         for (auto &p: polygonVertices) 
             worldToViewPort(&p, specs.worldView, specs.viewPort);
-
 
         polygonVector[i].setPoints(polygonVertices);
 

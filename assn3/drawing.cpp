@@ -2,6 +2,8 @@
 #include <cfloat>
 #include <algorithm>
 #include <cstdio>
+#include <cmath>
+
 #include "drawing.hpp"
 #include "geometry_objects.hpp"
 

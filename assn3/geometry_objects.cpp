@@ -143,9 +143,10 @@ std::vector<Line> Polygon::fill(Canva boundary) {
             // fprintf(stderr, "intersect: %d %d\n", intersect.x, intersect.y);
         
             // intersections not contains intersect
-            if(std::find(intersections.begin(), intersections.end(), intersect) == intersections.end())
+            if(std::find(intersections.begin(), intersections.end(), intersect) == intersections.end()) {
                 if (intersect.x != INT_MAX)
                     intersections.push_back(intersect);
+            }
         }
             
         std::sort(std::begin(intersections), std::end(intersections), compPoint);
@@ -166,6 +167,9 @@ std::vector<Line> Polygon::fill(Canva boundary) {
             }
             fprintf(stderr, "----intersections size after: %lu\n", intersections.size());
         }
+
+
+
         // add filling Lines
         if ((intersections.size() % 2) == 0)
             for (int j = 0; j < intersections.size(); j += 2) {

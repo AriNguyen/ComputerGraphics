@@ -1,2350 +1,2212 @@
 
 New Polygon
 2nd case: first vertice in side, second outside
-----------fill boundary: 0 0, 250 250
+2nd case: first vertice in side, second outside
+----------fill boundary: -100 170, 435 301
 
-scanLine: 125 50, 175 150
-scanLine: 175 150, 175 200
-scanLine: 125 150, 125 200
-scanLine: 75 150, 75 250
-scanLine: 25 150, 25 250
-scanLine: 75 50, 25 150
------low and top: 50, 250
+edgeList: 153 170, 206 293
+edgeList: 206 293, 252 273
+edgeList: 252 273, 232 227
+edgeList: 232 227, 278 208
+edgeList: 278 208, 298 254
+edgeList: 298 254, 295 301
+edgeList: 295 301, 155 301
+edgeList: 155 301, 99 170
+edgeList: 99 170, 153 170
+edgeList: 153 170, 206 293
+edgeList: 252 273, 206 293
+edgeList: 232 227, 252 273
+edgeList: 278 208, 232 227
+edgeList: 278 208, 298 254
+edgeList: 298 254, 295 301
+edgeList: 99 170, 155 301
+-----low and top: 170, 301
 
 ----intersections size: 2
-intersect: 75 50
-intersect: 125 50
-fillingLines: 75 50, 125 50
+intersect: 99 170
+intersect: 153 170
+fillingLines: 99 170, 153 170
 
 ----intersections size: 2
-intersect: 74 51
-intersect: 125 51
-fillingLines: 74 51, 125 51
+intersect: 99 171
+intersect: 153 171
+fillingLines: 99 171, 153 171
 
 ----intersections size: 2
-intersect: 74 52
-intersect: 126 52
-fillingLines: 74 52, 126 52
+intersect: 99 172
+intersect: 153 172
+fillingLines: 99 172, 153 172
 
 ----intersections size: 2
-intersect: 73 53
-intersect: 126 53
-fillingLines: 73 53, 126 53
+intersect: 100 173
+intersect: 154 173
+fillingLines: 100 173, 154 173
 
 ----intersections size: 2
-intersect: 73 54
-intersect: 127 54
-fillingLines: 73 54, 127 54
+intersect: 100 174
+intersect: 154 174
+fillingLines: 100 174, 154 174
 
 ----intersections size: 2
-intersect: 72 55
-intersect: 127 55
-fillingLines: 72 55, 127 55
+intersect: 101 175
+intersect: 155 175
+fillingLines: 101 175, 155 175
 
 ----intersections size: 2
-intersect: 72 56
-intersect: 128 56
-fillingLines: 72 56, 128 56
+intersect: 101 176
+intersect: 155 176
+fillingLines: 101 176, 155 176
 
 ----intersections size: 2
-intersect: 71 57
-intersect: 128 57
-fillingLines: 71 57, 128 57
+intersect: 101 177
+intersect: 156 177
+fillingLines: 101 177, 156 177
 
 ----intersections size: 2
-intersect: 71 58
-intersect: 129 58
-fillingLines: 71 58, 129 58
+intersect: 102 178
+intersect: 156 178
+fillingLines: 102 178, 156 178
 
 ----intersections size: 2
-intersect: 70 59
-intersect: 129 59
-fillingLines: 70 59, 129 59
+intersect: 102 179
+intersect: 156 179
+fillingLines: 102 179, 156 179
 
 ----intersections size: 2
-intersect: 70 60
-intersect: 130 60
-fillingLines: 70 60, 130 60
+intersect: 103 180
+intersect: 157 180
+fillingLines: 103 180, 157 180
 
 ----intersections size: 2
-intersect: 69 61
-intersect: 130 61
-fillingLines: 69 61, 130 61
+intersect: 103 181
+intersect: 157 181
+fillingLines: 103 181, 157 181
 
 ----intersections size: 2
-intersect: 69 62
-intersect: 131 62
-fillingLines: 69 62, 131 62
+intersect: 104 182
+intersect: 158 182
+fillingLines: 104 182, 158 182
 
 ----intersections size: 2
-intersect: 68 63
-intersect: 131 63
-fillingLines: 68 63, 131 63
+intersect: 104 183
+intersect: 158 183
+fillingLines: 104 183, 158 183
 
 ----intersections size: 2
-intersect: 68 64
-intersect: 132 64
-fillingLines: 68 64, 132 64
+intersect: 104 184
+intersect: 159 184
+fillingLines: 104 184, 159 184
 
 ----intersections size: 2
-intersect: 67 65
-intersect: 132 65
-fillingLines: 67 65, 132 65
+intersect: 105 185
+intersect: 159 185
+fillingLines: 105 185, 159 185
 
 ----intersections size: 2
-intersect: 67 66
-intersect: 133 66
-fillingLines: 67 66, 133 66
+intersect: 105 186
+intersect: 159 186
+fillingLines: 105 186, 159 186
 
 ----intersections size: 2
-intersect: 66 67
-intersect: 133 67
-fillingLines: 66 67, 133 67
+intersect: 106 187
+intersect: 160 187
+fillingLines: 106 187, 160 187
 
 ----intersections size: 2
-intersect: 66 68
-intersect: 134 68
-fillingLines: 66 68, 134 68
+intersect: 106 188
+intersect: 160 188
+fillingLines: 106 188, 160 188
 
 ----intersections size: 2
-intersect: 65 69
-intersect: 134 69
-fillingLines: 65 69, 134 69
+intersect: 107 189
+intersect: 161 189
+fillingLines: 107 189, 161 189
 
 ----intersections size: 2
-intersect: 65 70
-intersect: 135 70
-fillingLines: 65 70, 135 70
+intersect: 107 190
+intersect: 161 190
+fillingLines: 107 190, 161 190
 
 ----intersections size: 2
-intersect: 64 71
-intersect: 135 71
-fillingLines: 64 71, 135 71
+intersect: 107 191
+intersect: 162 191
+fillingLines: 107 191, 162 191
 
 ----intersections size: 2
-intersect: 64 72
-intersect: 136 72
-fillingLines: 64 72, 136 72
+intersect: 108 192
+intersect: 162 192
+fillingLines: 108 192, 162 192
 
 ----intersections size: 2
-intersect: 63 73
-intersect: 136 73
-fillingLines: 63 73, 136 73
+intersect: 108 193
+intersect: 162 193
+fillingLines: 108 193, 162 193
 
 ----intersections size: 2
-intersect: 63 74
-intersect: 137 74
-fillingLines: 63 74, 137 74
+intersect: 109 194
+intersect: 163 194
+fillingLines: 109 194, 163 194
 
 ----intersections size: 2
-intersect: 62 75
-intersect: 137 75
-fillingLines: 62 75, 137 75
+intersect: 109 195
+intersect: 163 195
+fillingLines: 109 195, 163 195
 
 ----intersections size: 2
-intersect: 62 76
-intersect: 138 76
-fillingLines: 62 76, 138 76
+intersect: 110 196
+intersect: 164 196
+fillingLines: 110 196, 164 196
 
 ----intersections size: 2
-intersect: 61 77
-intersect: 138 77
-fillingLines: 61 77, 138 77
+intersect: 110 197
+intersect: 164 197
+fillingLines: 110 197, 164 197
 
 ----intersections size: 2
-intersect: 61 78
-intersect: 139 78
-fillingLines: 61 78, 139 78
+intersect: 110 198
+intersect: 165 198
+fillingLines: 110 198, 165 198
 
 ----intersections size: 2
-intersect: 60 79
-intersect: 139 79
-fillingLines: 60 79, 139 79
+intersect: 111 199
+intersect: 165 199
+fillingLines: 111 199, 165 199
 
 ----intersections size: 2
-intersect: 60 80
-intersect: 140 80
-fillingLines: 60 80, 140 80
+intersect: 111 200
+intersect: 165 200
+fillingLines: 111 200, 165 200
 
 ----intersections size: 2
-intersect: 59 81
-intersect: 140 81
-fillingLines: 59 81, 140 81
+intersect: 112 201
+intersect: 166 201
+fillingLines: 112 201, 166 201
 
 ----intersections size: 2
-intersect: 59 82
-intersect: 141 82
-fillingLines: 59 82, 141 82
+intersect: 112 202
+intersect: 166 202
+fillingLines: 112 202, 166 202
 
 ----intersections size: 2
-intersect: 58 83
-intersect: 141 83
-fillingLines: 58 83, 141 83
+intersect: 113 203
+intersect: 167 203
+fillingLines: 113 203, 167 203
 
 ----intersections size: 2
-intersect: 58 84
-intersect: 142 84
-fillingLines: 58 84, 142 84
+intersect: 113 204
+intersect: 167 204
+fillingLines: 113 204, 167 204
 
 ----intersections size: 2
-intersect: 57 85
-intersect: 142 85
-fillingLines: 57 85, 142 85
+intersect: 113 205
+intersect: 168 205
+fillingLines: 113 205, 168 205
 
 ----intersections size: 2
-intersect: 57 86
-intersect: 143 86
-fillingLines: 57 86, 143 86
+intersect: 114 206
+intersect: 168 206
+fillingLines: 114 206, 168 206
 
 ----intersections size: 2
-intersect: 56 87
-intersect: 143 87
-fillingLines: 56 87, 143 87
+intersect: 114 207
+intersect: 168 207
+fillingLines: 114 207, 168 207
 
-----intersections size: 2
-intersect: 56 88
-intersect: 144 88
-fillingLines: 56 88, 144 88
-
-----intersections size: 2
-intersect: 55 89
-intersect: 144 89
-fillingLines: 55 89, 144 89
-
-----intersections size: 2
-intersect: 55 90
-intersect: 145 90
-fillingLines: 55 90, 145 90
-
-----intersections size: 2
-intersect: 54 91
-intersect: 145 91
-fillingLines: 54 91, 145 91
-
-----intersections size: 2
-intersect: 54 92
-intersect: 146 92
-fillingLines: 54 92, 146 92
-
-----intersections size: 2
-intersect: 53 93
-intersect: 146 93
-fillingLines: 53 93, 146 93
-
-----intersections size: 2
-intersect: 53 94
-intersect: 147 94
-fillingLines: 53 94, 147 94
-
-----intersections size: 2
-intersect: 52 95
-intersect: 147 95
-fillingLines: 52 95, 147 95
-
-----intersections size: 2
-intersect: 52 96
-intersect: 148 96
-fillingLines: 52 96, 148 96
-
-----intersections size: 2
-intersect: 51 97
-intersect: 148 97
-fillingLines: 51 97, 148 97
-
-----intersections size: 2
-intersect: 51 98
-intersect: 149 98
-fillingLines: 51 98, 149 98
-
-----intersections size: 2
-intersect: 50 99
-intersect: 149 99
-fillingLines: 50 99, 149 99
-
-----intersections size: 2
-intersect: 50 100
-intersect: 150 100
-fillingLines: 50 100, 150 100
-
-----intersections size: 2
-intersect: 49 101
-intersect: 150 101
-fillingLines: 49 101, 150 101
-
-----intersections size: 2
-intersect: 49 102
-intersect: 151 102
-fillingLines: 49 102, 151 102
-
-----intersections size: 2
-intersect: 48 103
-intersect: 151 103
-fillingLines: 48 103, 151 103
-
-----intersections size: 2
-intersect: 48 104
-intersect: 152 104
-fillingLines: 48 104, 152 104
-
-----intersections size: 2
-intersect: 47 105
-intersect: 152 105
-fillingLines: 47 105, 152 105
-
-----intersections size: 2
-intersect: 47 106
-intersect: 153 106
-fillingLines: 47 106, 153 106
-
-----intersections size: 2
-intersect: 46 107
-intersect: 153 107
-fillingLines: 46 107, 153 107
-
-----intersections size: 2
-intersect: 46 108
-intersect: 154 108
-fillingLines: 46 108, 154 108
-
-----intersections size: 2
-intersect: 45 109
-intersect: 154 109
-fillingLines: 45 109, 154 109
-
-----intersections size: 2
-intersect: 45 110
-intersect: 155 110
-fillingLines: 45 110, 155 110
-
-----intersections size: 2
-intersect: 44 111
-intersect: 155 111
-fillingLines: 44 111, 155 111
-
-----intersections size: 2
-intersect: 44 112
-intersect: 156 112
-fillingLines: 44 112, 156 112
-
-----intersections size: 2
-intersect: 43 113
-intersect: 156 113
-fillingLines: 43 113, 156 113
-
-----intersections size: 2
-intersect: 43 114
-intersect: 157 114
-fillingLines: 43 114, 157 114
-
-----intersections size: 2
-intersect: 42 115
-intersect: 157 115
-fillingLines: 42 115, 157 115
-
-----intersections size: 2
-intersect: 42 116
-intersect: 158 116
-fillingLines: 42 116, 158 116
-
-----intersections size: 2
-intersect: 41 117
-intersect: 158 117
-fillingLines: 41 117, 158 117
-
-----intersections size: 2
-intersect: 41 118
-intersect: 159 118
-fillingLines: 41 118, 159 118
-
-----intersections size: 2
-intersect: 40 119
-intersect: 159 119
-fillingLines: 40 119, 159 119
-
-----intersections size: 2
-intersect: 40 120
-intersect: 160 120
-fillingLines: 40 120, 160 120
-
-----intersections size: 2
-intersect: 39 121
-intersect: 160 121
-fillingLines: 39 121, 160 121
-
-----intersections size: 2
-intersect: 39 122
-intersect: 161 122
-fillingLines: 39 122, 161 122
-
-----intersections size: 2
-intersect: 38 123
-intersect: 161 123
-fillingLines: 38 123, 161 123
-
-----intersections size: 2
-intersect: 38 124
-intersect: 162 124
-fillingLines: 38 124, 162 124
-
-----intersections size: 2
-intersect: 37 125
-intersect: 162 125
-fillingLines: 37 125, 162 125
-
-----intersections size: 2
-intersect: 37 126
-intersect: 163 126
-fillingLines: 37 126, 163 126
-
-----intersections size: 2
-intersect: 36 127
-intersect: 163 127
-fillingLines: 36 127, 163 127
-
-----intersections size: 2
-intersect: 36 128
-intersect: 164 128
-fillingLines: 36 128, 164 128
-
-----intersections size: 2
-intersect: 35 129
-intersect: 164 129
-fillingLines: 35 129, 164 129
-
-----intersections size: 2
-intersect: 35 130
-intersect: 165 130
-fillingLines: 35 130, 165 130
-
-----intersections size: 2
-intersect: 34 131
-intersect: 165 131
-fillingLines: 34 131, 165 131
-
-----intersections size: 2
-intersect: 34 132
-intersect: 166 132
-fillingLines: 34 132, 166 132
-
-----intersections size: 2
-intersect: 33 133
-intersect: 166 133
-fillingLines: 33 133, 166 133
-
-----intersections size: 2
-intersect: 33 134
-intersect: 167 134
-fillingLines: 33 134, 167 134
-
-----intersections size: 2
-intersect: 32 135
-intersect: 167 135
-fillingLines: 32 135, 167 135
-
-----intersections size: 2
-intersect: 32 136
-intersect: 168 136
-fillingLines: 32 136, 168 136
-
-----intersections size: 2
-intersect: 31 137
-intersect: 168 137
-fillingLines: 31 137, 168 137
-
-----intersections size: 2
-intersect: 31 138
-intersect: 169 138
-fillingLines: 31 138, 169 138
-
-----intersections size: 2
-intersect: 30 139
-intersect: 169 139
-fillingLines: 30 139, 169 139
-
-----intersections size: 2
-intersect: 30 140
-intersect: 170 140
-fillingLines: 30 140, 170 140
-
-----intersections size: 2
-intersect: 29 141
-intersect: 170 141
-fillingLines: 29 141, 170 141
-
-----intersections size: 2
-intersect: 29 142
-intersect: 171 142
-fillingLines: 29 142, 171 142
-
-----intersections size: 2
-intersect: 28 143
-intersect: 171 143
-fillingLines: 28 143, 171 143
-
-----intersections size: 2
-intersect: 28 144
-intersect: 172 144
-fillingLines: 28 144, 172 144
-
-----intersections size: 2
-intersect: 27 145
-intersect: 172 145
-fillingLines: 27 145, 172 145
-
-----intersections size: 2
-intersect: 27 146
-intersect: 173 146
-fillingLines: 27 146, 173 146
-
-----intersections size: 2
-intersect: 26 147
-intersect: 173 147
-fillingLines: 26 147, 173 147
-
-----intersections size: 2
-intersect: 26 148
-intersect: 174 148
-fillingLines: 26 148, 174 148
-
-----intersections size: 2
-intersect: 25 149
-intersect: 174 149
-fillingLines: 25 149, 174 149
+----intersections size: 3
+intersect: 115 208
+intersect: 169 208
+intersect: 278 208
+mid point: 1
+----intersections size after: 3
 
 ----intersections size: 4
-intersect: 25 150
-intersect: 75 150
-intersect: 125 150
-intersect: 175 150
-fillingLines: 25 150, 75 150
-fillingLines: 125 150, 175 150
+intersect: 115 209
+intersect: 169 209
+intersect: 275 209
+intersect: 278 209
+fillingLines: 115 209, 169 209
+fillingLines: 275 209, 278 209
 
 ----intersections size: 4
-intersect: 25 151
-intersect: 75 151
-intersect: 125 151
-intersect: 175 151
-fillingLines: 25 151, 75 151
-fillingLines: 125 151, 175 151
+intersect: 116 210
+intersect: 170 210
+intersect: 273 210
+intersect: 278 210
+fillingLines: 116 210, 170 210
+fillingLines: 273 210, 278 210
 
 ----intersections size: 4
-intersect: 25 152
-intersect: 75 152
-intersect: 125 152
-intersect: 175 152
-fillingLines: 25 152, 75 152
-fillingLines: 125 152, 175 152
+intersect: 116 211
+intersect: 170 211
+intersect: 270 211
+intersect: 279 211
+fillingLines: 116 211, 170 211
+fillingLines: 270 211, 279 211
 
 ----intersections size: 4
-intersect: 25 153
-intersect: 75 153
-intersect: 125 153
-intersect: 175 153
-fillingLines: 25 153, 75 153
-fillingLines: 125 153, 175 153
+intersect: 116 212
+intersect: 171 212
+intersect: 268 212
+intersect: 279 212
+fillingLines: 116 212, 171 212
+fillingLines: 268 212, 279 212
 
 ----intersections size: 4
-intersect: 25 154
-intersect: 75 154
-intersect: 125 154
-intersect: 175 154
-fillingLines: 25 154, 75 154
-fillingLines: 125 154, 175 154
+intersect: 117 213
+intersect: 171 213
+intersect: 265 213
+intersect: 280 213
+fillingLines: 117 213, 171 213
+fillingLines: 265 213, 280 213
 
 ----intersections size: 4
-intersect: 25 155
-intersect: 75 155
-intersect: 125 155
-intersect: 175 155
-fillingLines: 25 155, 75 155
-fillingLines: 125 155, 175 155
+intersect: 117 214
+intersect: 171 214
+intersect: 263 214
+intersect: 280 214
+fillingLines: 117 214, 171 214
+fillingLines: 263 214, 280 214
 
 ----intersections size: 4
-intersect: 25 156
-intersect: 75 156
-intersect: 125 156
-intersect: 175 156
-fillingLines: 25 156, 75 156
-fillingLines: 125 156, 175 156
+intersect: 118 215
+intersect: 172 215
+intersect: 261 215
+intersect: 281 215
+fillingLines: 118 215, 172 215
+fillingLines: 261 215, 281 215
 
 ----intersections size: 4
-intersect: 25 157
-intersect: 75 157
-intersect: 125 157
-intersect: 175 157
-fillingLines: 25 157, 75 157
-fillingLines: 125 157, 175 157
+intersect: 118 216
+intersect: 172 216
+intersect: 258 216
+intersect: 281 216
+fillingLines: 118 216, 172 216
+fillingLines: 258 216, 281 216
 
 ----intersections size: 4
-intersect: 25 158
-intersect: 75 158
-intersect: 125 158
-intersect: 175 158
-fillingLines: 25 158, 75 158
-fillingLines: 125 158, 175 158
+intersect: 119 217
+intersect: 173 217
+intersect: 256 217
+intersect: 281 217
+fillingLines: 119 217, 173 217
+fillingLines: 256 217, 281 217
 
 ----intersections size: 4
-intersect: 25 159
-intersect: 75 159
-intersect: 125 159
-intersect: 175 159
-fillingLines: 25 159, 75 159
-fillingLines: 125 159, 175 159
+intersect: 119 218
+intersect: 173 218
+intersect: 253 218
+intersect: 282 218
+fillingLines: 119 218, 173 218
+fillingLines: 253 218, 282 218
 
 ----intersections size: 4
-intersect: 25 160
-intersect: 75 160
-intersect: 125 160
-intersect: 175 160
-fillingLines: 25 160, 75 160
-fillingLines: 125 160, 175 160
+intersect: 119 219
+intersect: 174 219
+intersect: 251 219
+intersect: 282 219
+fillingLines: 119 219, 174 219
+fillingLines: 251 219, 282 219
 
 ----intersections size: 4
-intersect: 25 161
-intersect: 75 161
-intersect: 125 161
-intersect: 175 161
-fillingLines: 25 161, 75 161
-fillingLines: 125 161, 175 161
+intersect: 120 220
+intersect: 174 220
+intersect: 248 220
+intersect: 283 220
+fillingLines: 120 220, 174 220
+fillingLines: 248 220, 283 220
 
 ----intersections size: 4
-intersect: 25 162
-intersect: 75 162
-intersect: 125 162
-intersect: 175 162
-fillingLines: 25 162, 75 162
-fillingLines: 125 162, 175 162
+intersect: 120 221
+intersect: 174 221
+intersect: 246 221
+intersect: 283 221
+fillingLines: 120 221, 174 221
+fillingLines: 246 221, 283 221
 
 ----intersections size: 4
-intersect: 25 163
-intersect: 75 163
-intersect: 125 163
-intersect: 175 163
-fillingLines: 25 163, 75 163
-fillingLines: 125 163, 175 163
+intersect: 121 222
+intersect: 175 222
+intersect: 244 222
+intersect: 284 222
+fillingLines: 121 222, 175 222
+fillingLines: 244 222, 284 222
 
 ----intersections size: 4
-intersect: 25 164
-intersect: 75 164
-intersect: 125 164
-intersect: 175 164
-fillingLines: 25 164, 75 164
-fillingLines: 125 164, 175 164
+intersect: 121 223
+intersect: 175 223
+intersect: 241 223
+intersect: 284 223
+fillingLines: 121 223, 175 223
+fillingLines: 241 223, 284 223
 
 ----intersections size: 4
-intersect: 25 165
-intersect: 75 165
-intersect: 125 165
-intersect: 175 165
-fillingLines: 25 165, 75 165
-fillingLines: 125 165, 175 165
+intersect: 122 224
+intersect: 176 224
+intersect: 239 224
+intersect: 284 224
+fillingLines: 122 224, 176 224
+fillingLines: 239 224, 284 224
 
 ----intersections size: 4
-intersect: 25 166
-intersect: 75 166
-intersect: 125 166
-intersect: 175 166
-fillingLines: 25 166, 75 166
-fillingLines: 125 166, 175 166
+intersect: 122 225
+intersect: 176 225
+intersect: 236 225
+intersect: 285 225
+fillingLines: 122 225, 176 225
+fillingLines: 236 225, 285 225
 
 ----intersections size: 4
-intersect: 25 167
-intersect: 75 167
-intersect: 125 167
-intersect: 175 167
-fillingLines: 25 167, 75 167
-fillingLines: 125 167, 175 167
+intersect: 122 226
+intersect: 177 226
+intersect: 234 226
+intersect: 285 226
+fillingLines: 122 226, 177 226
+fillingLines: 234 226, 285 226
 
 ----intersections size: 4
-intersect: 25 168
-intersect: 75 168
-intersect: 125 168
-intersect: 175 168
-fillingLines: 25 168, 75 168
-fillingLines: 125 168, 175 168
+intersect: 123 227
+intersect: 177 227
+intersect: 232 227
+intersect: 286 227
+fillingLines: 123 227, 177 227
+fillingLines: 232 227, 286 227
 
 ----intersections size: 4
-intersect: 25 169
-intersect: 75 169
-intersect: 125 169
-intersect: 175 169
-fillingLines: 25 169, 75 169
-fillingLines: 125 169, 175 169
+intersect: 123 228
+intersect: 177 228
+intersect: 232 228
+intersect: 286 228
+fillingLines: 123 228, 177 228
+fillingLines: 232 228, 286 228
 
 ----intersections size: 4
-intersect: 25 170
-intersect: 75 170
-intersect: 125 170
-intersect: 175 170
-fillingLines: 25 170, 75 170
-fillingLines: 125 170, 175 170
+intersect: 124 229
+intersect: 178 229
+intersect: 232 229
+intersect: 287 229
+fillingLines: 124 229, 178 229
+fillingLines: 232 229, 287 229
 
 ----intersections size: 4
-intersect: 25 171
-intersect: 75 171
-intersect: 125 171
-intersect: 175 171
-fillingLines: 25 171, 75 171
-fillingLines: 125 171, 175 171
+intersect: 124 230
+intersect: 178 230
+intersect: 233 230
+intersect: 287 230
+fillingLines: 124 230, 178 230
+fillingLines: 233 230, 287 230
 
 ----intersections size: 4
-intersect: 25 172
-intersect: 75 172
-intersect: 125 172
-intersect: 175 172
-fillingLines: 25 172, 75 172
-fillingLines: 125 172, 175 172
+intersect: 125 231
+intersect: 179 231
+intersect: 233 231
+intersect: 288 231
+fillingLines: 125 231, 179 231
+fillingLines: 233 231, 288 231
 
 ----intersections size: 4
-intersect: 25 173
-intersect: 75 173
-intersect: 125 173
-intersect: 175 173
-fillingLines: 25 173, 75 173
-fillingLines: 125 173, 175 173
+intersect: 125 232
+intersect: 179 232
+intersect: 234 232
+intersect: 288 232
+fillingLines: 125 232, 179 232
+fillingLines: 234 232, 288 232
 
 ----intersections size: 4
-intersect: 25 174
-intersect: 75 174
-intersect: 125 174
-intersect: 175 174
-fillingLines: 25 174, 75 174
-fillingLines: 125 174, 175 174
+intersect: 125 233
+intersect: 180 233
+intersect: 234 233
+intersect: 288 233
+fillingLines: 125 233, 180 233
+fillingLines: 234 233, 288 233
 
 ----intersections size: 4
-intersect: 25 175
-intersect: 75 175
-intersect: 125 175
-intersect: 175 175
-fillingLines: 25 175, 75 175
-fillingLines: 125 175, 175 175
+intersect: 126 234
+intersect: 180 234
+intersect: 235 234
+intersect: 289 234
+fillingLines: 126 234, 180 234
+fillingLines: 235 234, 289 234
 
 ----intersections size: 4
-intersect: 25 176
-intersect: 75 176
-intersect: 125 176
-intersect: 175 176
-fillingLines: 25 176, 75 176
-fillingLines: 125 176, 175 176
+intersect: 126 235
+intersect: 181 235
+intersect: 235 235
+intersect: 289 235
+fillingLines: 126 235, 181 235
+fillingLines: 235 235, 289 235
 
 ----intersections size: 4
-intersect: 25 177
-intersect: 75 177
-intersect: 125 177
-intersect: 175 177
-fillingLines: 25 177, 75 177
-fillingLines: 125 177, 175 177
+intersect: 127 236
+intersect: 181 236
+intersect: 235 236
+intersect: 290 236
+fillingLines: 127 236, 181 236
+fillingLines: 235 236, 290 236
 
 ----intersections size: 4
-intersect: 25 178
-intersect: 75 178
-intersect: 125 178
-intersect: 175 178
-fillingLines: 25 178, 75 178
-fillingLines: 125 178, 175 178
+intersect: 127 237
+intersect: 181 237
+intersect: 236 237
+intersect: 290 237
+fillingLines: 127 237, 181 237
+fillingLines: 236 237, 290 237
 
 ----intersections size: 4
-intersect: 25 179
-intersect: 75 179
-intersect: 125 179
-intersect: 175 179
-fillingLines: 25 179, 75 179
-fillingLines: 125 179, 175 179
+intersect: 128 238
+intersect: 182 238
+intersect: 236 238
+intersect: 291 238
+fillingLines: 128 238, 182 238
+fillingLines: 236 238, 291 238
 
 ----intersections size: 4
-intersect: 25 180
-intersect: 75 180
-intersect: 125 180
-intersect: 175 180
-fillingLines: 25 180, 75 180
-fillingLines: 125 180, 175 180
+intersect: 128 239
+intersect: 182 239
+intersect: 237 239
+intersect: 291 239
+fillingLines: 128 239, 182 239
+fillingLines: 237 239, 291 239
 
 ----intersections size: 4
-intersect: 25 181
-intersect: 75 181
-intersect: 125 181
-intersect: 175 181
-fillingLines: 25 181, 75 181
-fillingLines: 125 181, 175 181
+intersect: 128 240
+intersect: 183 240
+intersect: 237 240
+intersect: 291 240
+fillingLines: 128 240, 183 240
+fillingLines: 237 240, 291 240
 
 ----intersections size: 4
-intersect: 25 182
-intersect: 75 182
-intersect: 125 182
-intersect: 175 182
-fillingLines: 25 182, 75 182
-fillingLines: 125 182, 175 182
+intersect: 129 241
+intersect: 183 241
+intersect: 238 241
+intersect: 292 241
+fillingLines: 129 241, 183 241
+fillingLines: 238 241, 292 241
 
 ----intersections size: 4
-intersect: 25 183
-intersect: 75 183
-intersect: 125 183
-intersect: 175 183
-fillingLines: 25 183, 75 183
-fillingLines: 125 183, 175 183
+intersect: 129 242
+intersect: 184 242
+intersect: 238 242
+intersect: 292 242
+fillingLines: 129 242, 184 242
+fillingLines: 238 242, 292 242
 
 ----intersections size: 4
-intersect: 25 184
-intersect: 75 184
-intersect: 125 184
-intersect: 175 184
-fillingLines: 25 184, 75 184
-fillingLines: 125 184, 175 184
+intersect: 130 243
+intersect: 184 243
+intersect: 238 243
+intersect: 293 243
+fillingLines: 130 243, 184 243
+fillingLines: 238 243, 293 243
 
 ----intersections size: 4
-intersect: 25 185
-intersect: 75 185
-intersect: 125 185
-intersect: 175 185
-fillingLines: 25 185, 75 185
-fillingLines: 125 185, 175 185
+intersect: 130 244
+intersect: 184 244
+intersect: 239 244
+intersect: 293 244
+fillingLines: 130 244, 184 244
+fillingLines: 239 244, 293 244
 
 ----intersections size: 4
-intersect: 25 186
-intersect: 75 186
-intersect: 125 186
-intersect: 175 186
-fillingLines: 25 186, 75 186
-fillingLines: 125 186, 175 186
+intersect: 131 245
+intersect: 185 245
+intersect: 239 245
+intersect: 294 245
+fillingLines: 131 245, 185 245
+fillingLines: 239 245, 294 245
 
 ----intersections size: 4
-intersect: 25 187
-intersect: 75 187
-intersect: 125 187
-intersect: 175 187
-fillingLines: 25 187, 75 187
-fillingLines: 125 187, 175 187
+intersect: 131 246
+intersect: 185 246
+intersect: 240 246
+intersect: 294 246
+fillingLines: 131 246, 185 246
+fillingLines: 240 246, 294 246
 
 ----intersections size: 4
-intersect: 25 188
-intersect: 75 188
-intersect: 125 188
-intersect: 175 188
-fillingLines: 25 188, 75 188
-fillingLines: 125 188, 175 188
+intersect: 131 247
+intersect: 186 247
+intersect: 240 247
+intersect: 294 247
+fillingLines: 131 247, 186 247
+fillingLines: 240 247, 294 247
 
 ----intersections size: 4
-intersect: 25 189
-intersect: 75 189
-intersect: 125 189
-intersect: 175 189
-fillingLines: 25 189, 75 189
-fillingLines: 125 189, 175 189
+intersect: 132 248
+intersect: 186 248
+intersect: 241 248
+intersect: 295 248
+fillingLines: 132 248, 186 248
+fillingLines: 241 248, 295 248
 
 ----intersections size: 4
-intersect: 25 190
-intersect: 75 190
-intersect: 125 190
-intersect: 175 190
-fillingLines: 25 190, 75 190
-fillingLines: 125 190, 175 190
+intersect: 132 249
+intersect: 187 249
+intersect: 241 249
+intersect: 295 249
+fillingLines: 132 249, 187 249
+fillingLines: 241 249, 295 249
 
 ----intersections size: 4
-intersect: 25 191
-intersect: 75 191
-intersect: 125 191
-intersect: 175 191
-fillingLines: 25 191, 75 191
-fillingLines: 125 191, 175 191
+intersect: 133 250
+intersect: 187 250
+intersect: 242 250
+intersect: 296 250
+fillingLines: 133 250, 187 250
+fillingLines: 242 250, 296 250
 
 ----intersections size: 4
-intersect: 25 192
-intersect: 75 192
-intersect: 125 192
-intersect: 175 192
-fillingLines: 25 192, 75 192
-fillingLines: 125 192, 175 192
+intersect: 133 251
+intersect: 187 251
+intersect: 242 251
+intersect: 296 251
+fillingLines: 133 251, 187 251
+fillingLines: 242 251, 296 251
 
 ----intersections size: 4
-intersect: 25 193
-intersect: 75 193
-intersect: 125 193
-intersect: 175 193
-fillingLines: 25 193, 75 193
-fillingLines: 125 193, 175 193
+intersect: 134 252
+intersect: 188 252
+intersect: 242 252
+intersect: 297 252
+fillingLines: 134 252, 188 252
+fillingLines: 242 252, 297 252
 
 ----intersections size: 4
-intersect: 25 194
-intersect: 75 194
-intersect: 125 194
-intersect: 175 194
-fillingLines: 25 194, 75 194
-fillingLines: 125 194, 175 194
+intersect: 134 253
+intersect: 188 253
+intersect: 243 253
+intersect: 297 253
+fillingLines: 134 253, 188 253
+fillingLines: 243 253, 297 253
 
 ----intersections size: 4
-intersect: 25 195
-intersect: 75 195
-intersect: 125 195
-intersect: 175 195
-fillingLines: 25 195, 75 195
-fillingLines: 125 195, 175 195
+intersect: 134 254
+intersect: 189 254
+intersect: 243 254
+intersect: 298 254
+fillingLines: 134 254, 189 254
+fillingLines: 243 254, 298 254
 
 ----intersections size: 4
-intersect: 25 196
-intersect: 75 196
-intersect: 125 196
-intersect: 175 196
-fillingLines: 25 196, 75 196
-fillingLines: 125 196, 175 196
+intersect: 135 255
+intersect: 189 255
+intersect: 244 255
+intersect: 297 255
+fillingLines: 135 255, 189 255
+fillingLines: 244 255, 297 255
 
 ----intersections size: 4
-intersect: 25 197
-intersect: 75 197
-intersect: 125 197
-intersect: 175 197
-fillingLines: 25 197, 75 197
-fillingLines: 125 197, 175 197
+intersect: 135 256
+intersect: 190 256
+intersect: 244 256
+intersect: 297 256
+fillingLines: 135 256, 190 256
+fillingLines: 244 256, 297 256
 
 ----intersections size: 4
-intersect: 25 198
-intersect: 75 198
-intersect: 125 198
-intersect: 175 198
-fillingLines: 25 198, 75 198
-fillingLines: 125 198, 175 198
+intersect: 136 257
+intersect: 190 257
+intersect: 245 257
+intersect: 297 257
+fillingLines: 136 257, 190 257
+fillingLines: 245 257, 297 257
 
 ----intersections size: 4
-intersect: 25 199
-intersect: 75 199
-intersect: 125 199
-intersect: 175 199
-fillingLines: 25 199, 75 199
-fillingLines: 125 199, 175 199
+intersect: 136 258
+intersect: 190 258
+intersect: 245 258
+intersect: 297 258
+fillingLines: 136 258, 190 258
+fillingLines: 245 258, 297 258
 
 ----intersections size: 4
-intersect: 25 200
-intersect: 75 200
-intersect: 125 200
-intersect: 175 200
-fillingLines: 25 200, 75 200
-fillingLines: 125 200, 175 200
+intersect: 137 259
+intersect: 191 259
+intersect: 245 259
+intersect: 297 259
+fillingLines: 137 259, 191 259
+fillingLines: 245 259, 297 259
+
+----intersections size: 4
+intersect: 137 260
+intersect: 191 260
+intersect: 246 260
+intersect: 297 260
+fillingLines: 137 260, 191 260
+fillingLines: 246 260, 297 260
+
+----intersections size: 4
+intersect: 137 261
+intersect: 192 261
+intersect: 246 261
+intersect: 297 261
+fillingLines: 137 261, 192 261
+fillingLines: 246 261, 297 261
+
+----intersections size: 4
+intersect: 138 262
+intersect: 192 262
+intersect: 247 262
+intersect: 297 262
+fillingLines: 138 262, 192 262
+fillingLines: 247 262, 297 262
+
+----intersections size: 4
+intersect: 138 263
+intersect: 193 263
+intersect: 247 263
+intersect: 297 263
+fillingLines: 138 263, 193 263
+fillingLines: 247 263, 297 263
+
+----intersections size: 4
+intersect: 139 264
+intersect: 193 264
+intersect: 248 264
+intersect: 297 264
+fillingLines: 139 264, 193 264
+fillingLines: 248 264, 297 264
+
+----intersections size: 4
+intersect: 139 265
+intersect: 193 265
+intersect: 248 265
+intersect: 297 265
+fillingLines: 139 265, 193 265
+fillingLines: 248 265, 297 265
+
+----intersections size: 4
+intersect: 140 266
+intersect: 194 266
+intersect: 248 266
+intersect: 297 266
+fillingLines: 140 266, 194 266
+fillingLines: 248 266, 297 266
+
+----intersections size: 4
+intersect: 140 267
+intersect: 194 267
+intersect: 249 267
+intersect: 297 267
+fillingLines: 140 267, 194 267
+fillingLines: 249 267, 297 267
+
+----intersections size: 4
+intersect: 140 268
+intersect: 195 268
+intersect: 249 268
+intersect: 297 268
+fillingLines: 140 268, 195 268
+fillingLines: 249 268, 297 268
+
+----intersections size: 4
+intersect: 141 269
+intersect: 195 269
+intersect: 250 269
+intersect: 297 269
+fillingLines: 141 269, 195 269
+fillingLines: 250 269, 297 269
+
+----intersections size: 4
+intersect: 141 270
+intersect: 196 270
+intersect: 250 270
+intersect: 296 270
+fillingLines: 141 270, 196 270
+fillingLines: 250 270, 296 270
+
+----intersections size: 4
+intersect: 142 271
+intersect: 196 271
+intersect: 251 271
+intersect: 296 271
+fillingLines: 142 271, 196 271
+fillingLines: 251 271, 296 271
+
+----intersections size: 4
+intersect: 142 272
+intersect: 196 272
+intersect: 251 272
+intersect: 296 272
+fillingLines: 142 272, 196 272
+fillingLines: 251 272, 296 272
+
+----intersections size: 4
+intersect: 143 273
+intersect: 197 273
+intersect: 252 273
+intersect: 296 273
+fillingLines: 143 273, 197 273
+fillingLines: 252 273, 296 273
+
+----intersections size: 4
+intersect: 143 274
+intersect: 197 274
+intersect: 249 274
+intersect: 296 274
+fillingLines: 143 274, 197 274
+fillingLines: 249 274, 296 274
+
+----intersections size: 4
+intersect: 143 275
+intersect: 198 275
+intersect: 247 275
+intersect: 296 275
+fillingLines: 143 275, 198 275
+fillingLines: 247 275, 296 275
+
+----intersections size: 4
+intersect: 144 276
+intersect: 198 276
+intersect: 245 276
+intersect: 296 276
+fillingLines: 144 276, 198 276
+fillingLines: 245 276, 296 276
+
+----intersections size: 4
+intersect: 144 277
+intersect: 199 277
+intersect: 242 277
+intersect: 296 277
+fillingLines: 144 277, 199 277
+fillingLines: 242 277, 296 277
+
+----intersections size: 4
+intersect: 145 278
+intersect: 199 278
+intersect: 240 278
+intersect: 296 278
+fillingLines: 145 278, 199 278
+fillingLines: 240 278, 296 278
+
+----intersections size: 4
+intersect: 145 279
+intersect: 199 279
+intersect: 238 279
+intersect: 296 279
+fillingLines: 145 279, 199 279
+fillingLines: 238 279, 296 279
+
+----intersections size: 4
+intersect: 146 280
+intersect: 200 280
+intersect: 235 280
+intersect: 296 280
+fillingLines: 146 280, 200 280
+fillingLines: 235 280, 296 280
+
+----intersections size: 4
+intersect: 146 281
+intersect: 200 281
+intersect: 233 281
+intersect: 296 281
+fillingLines: 146 281, 200 281
+fillingLines: 233 281, 296 281
+
+----intersections size: 4
+intersect: 146 282
+intersect: 201 282
+intersect: 231 282
+intersect: 296 282
+fillingLines: 146 282, 201 282
+fillingLines: 231 282, 296 282
+
+----intersections size: 4
+intersect: 147 283
+intersect: 201 283
+intersect: 229 283
+intersect: 296 283
+fillingLines: 147 283, 201 283
+fillingLines: 229 283, 296 283
+
+----intersections size: 4
+intersect: 147 284
+intersect: 202 284
+intersect: 226 284
+intersect: 296 284
+fillingLines: 147 284, 202 284
+fillingLines: 226 284, 296 284
+
+----intersections size: 4
+intersect: 148 285
+intersect: 202 285
+intersect: 224 285
+intersect: 296 285
+fillingLines: 148 285, 202 285
+fillingLines: 224 285, 296 285
+
+----intersections size: 4
+intersect: 148 286
+intersect: 202 286
+intersect: 222 286
+intersect: 295 286
+fillingLines: 148 286, 202 286
+fillingLines: 222 286, 295 286
+
+----intersections size: 4
+intersect: 149 287
+intersect: 203 287
+intersect: 219 287
+intersect: 295 287
+fillingLines: 149 287, 203 287
+fillingLines: 219 287, 295 287
+
+----intersections size: 4
+intersect: 149 288
+intersect: 203 288
+intersect: 217 288
+intersect: 295 288
+fillingLines: 149 288, 203 288
+fillingLines: 217 288, 295 288
+
+----intersections size: 4
+intersect: 149 289
+intersect: 204 289
+intersect: 215 289
+intersect: 295 289
+fillingLines: 149 289, 204 289
+fillingLines: 215 289, 295 289
+
+----intersections size: 4
+intersect: 150 290
+intersect: 204 290
+intersect: 212 290
+intersect: 295 290
+fillingLines: 150 290, 204 290
+fillingLines: 212 290, 295 290
+
+----intersections size: 4
+intersect: 150 291
+intersect: 205 291
+intersect: 210 291
+intersect: 295 291
+fillingLines: 150 291, 205 291
+fillingLines: 210 291, 295 291
+
+----intersections size: 4
+intersect: 151 292
+intersect: 205 292
+intersect: 208 292
+intersect: 295 292
+fillingLines: 151 292, 205 292
+fillingLines: 208 292, 295 292
 
 ----intersections size: 2
-intersect: 25 201
-intersect: 75 201
-fillingLines: 25 201, 75 201
+intersect: 151 293
+intersect: 295 293
+fillingLines: 151 293, 295 293
 
 ----intersections size: 2
-intersect: 25 202
-intersect: 75 202
-fillingLines: 25 202, 75 202
+intersect: 152 294
+intersect: 295 294
+fillingLines: 152 294, 295 294
 
 ----intersections size: 2
-intersect: 25 203
-intersect: 75 203
-fillingLines: 25 203, 75 203
+intersect: 152 295
+intersect: 295 295
+fillingLines: 152 295, 295 295
 
 ----intersections size: 2
-intersect: 25 204
-intersect: 75 204
-fillingLines: 25 204, 75 204
+intersect: 152 296
+intersect: 295 296
+fillingLines: 152 296, 295 296
 
 ----intersections size: 2
-intersect: 25 205
-intersect: 75 205
-fillingLines: 25 205, 75 205
+intersect: 153 297
+intersect: 295 297
+fillingLines: 153 297, 295 297
 
 ----intersections size: 2
-intersect: 25 206
-intersect: 75 206
-fillingLines: 25 206, 75 206
+intersect: 153 298
+intersect: 295 298
+fillingLines: 153 298, 295 298
 
 ----intersections size: 2
-intersect: 25 207
-intersect: 75 207
-fillingLines: 25 207, 75 207
+intersect: 154 299
+intersect: 295 299
+fillingLines: 154 299, 295 299
 
 ----intersections size: 2
-intersect: 25 208
-intersect: 75 208
-fillingLines: 25 208, 75 208
-
-----intersections size: 2
-intersect: 25 209
-intersect: 75 209
-fillingLines: 25 209, 75 209
-
-----intersections size: 2
-intersect: 25 210
-intersect: 75 210
-fillingLines: 25 210, 75 210
-
-----intersections size: 2
-intersect: 25 211
-intersect: 75 211
-fillingLines: 25 211, 75 211
-
-----intersections size: 2
-intersect: 25 212
-intersect: 75 212
-fillingLines: 25 212, 75 212
-
-----intersections size: 2
-intersect: 25 213
-intersect: 75 213
-fillingLines: 25 213, 75 213
-
-----intersections size: 2
-intersect: 25 214
-intersect: 75 214
-fillingLines: 25 214, 75 214
-
-----intersections size: 2
-intersect: 25 215
-intersect: 75 215
-fillingLines: 25 215, 75 215
-
-----intersections size: 2
-intersect: 25 216
-intersect: 75 216
-fillingLines: 25 216, 75 216
-
-----intersections size: 2
-intersect: 25 217
-intersect: 75 217
-fillingLines: 25 217, 75 217
-
-----intersections size: 2
-intersect: 25 218
-intersect: 75 218
-fillingLines: 25 218, 75 218
-
-----intersections size: 2
-intersect: 25 219
-intersect: 75 219
-fillingLines: 25 219, 75 219
-
-----intersections size: 2
-intersect: 25 220
-intersect: 75 220
-fillingLines: 25 220, 75 220
-
-----intersections size: 2
-intersect: 25 221
-intersect: 75 221
-fillingLines: 25 221, 75 221
-
-----intersections size: 2
-intersect: 25 222
-intersect: 75 222
-fillingLines: 25 222, 75 222
-
-----intersections size: 2
-intersect: 25 223
-intersect: 75 223
-fillingLines: 25 223, 75 223
-
-----intersections size: 2
-intersect: 25 224
-intersect: 75 224
-fillingLines: 25 224, 75 224
-
-----intersections size: 2
-intersect: 25 225
-intersect: 75 225
-fillingLines: 25 225, 75 225
-
-----intersections size: 2
-intersect: 25 226
-intersect: 75 226
-fillingLines: 25 226, 75 226
-
-----intersections size: 2
-intersect: 25 227
-intersect: 75 227
-fillingLines: 25 227, 75 227
-
-----intersections size: 2
-intersect: 25 228
-intersect: 75 228
-fillingLines: 25 228, 75 228
-
-----intersections size: 2
-intersect: 25 229
-intersect: 75 229
-fillingLines: 25 229, 75 229
-
-----intersections size: 2
-intersect: 25 230
-intersect: 75 230
-fillingLines: 25 230, 75 230
-
-----intersections size: 2
-intersect: 25 231
-intersect: 75 231
-fillingLines: 25 231, 75 231
-
-----intersections size: 2
-intersect: 25 232
-intersect: 75 232
-fillingLines: 25 232, 75 232
-
-----intersections size: 2
-intersect: 25 233
-intersect: 75 233
-fillingLines: 25 233, 75 233
-
-----intersections size: 2
-intersect: 25 234
-intersect: 75 234
-fillingLines: 25 234, 75 234
-
-----intersections size: 2
-intersect: 25 235
-intersect: 75 235
-fillingLines: 25 235, 75 235
-
-----intersections size: 2
-intersect: 25 236
-intersect: 75 236
-fillingLines: 25 236, 75 236
-
-----intersections size: 2
-intersect: 25 237
-intersect: 75 237
-fillingLines: 25 237, 75 237
-
-----intersections size: 2
-intersect: 25 238
-intersect: 75 238
-fillingLines: 25 238, 75 238
-
-----intersections size: 2
-intersect: 25 239
-intersect: 75 239
-fillingLines: 25 239, 75 239
-
-----intersections size: 2
-intersect: 25 240
-intersect: 75 240
-fillingLines: 25 240, 75 240
-
-----intersections size: 2
-intersect: 25 241
-intersect: 75 241
-fillingLines: 25 241, 75 241
-
-----intersections size: 2
-intersect: 25 242
-intersect: 75 242
-fillingLines: 25 242, 75 242
-
-----intersections size: 2
-intersect: 25 243
-intersect: 75 243
-fillingLines: 25 243, 75 243
-
-----intersections size: 2
-intersect: 25 244
-intersect: 75 244
-fillingLines: 25 244, 75 244
-
-----intersections size: 2
-intersect: 25 245
-intersect: 75 245
-fillingLines: 25 245, 75 245
-
-----intersections size: 2
-intersect: 25 246
-intersect: 75 246
-fillingLines: 25 246, 75 246
-
-----intersections size: 2
-intersect: 25 247
-intersect: 75 247
-fillingLines: 25 247, 75 247
-
-----intersections size: 2
-intersect: 25 248
-intersect: 75 248
-fillingLines: 25 248, 75 248
-
-----intersections size: 2
-intersect: 25 249
-intersect: 75 249
-fillingLines: 25 249, 75 249
-drawLine: 75 50 - 125 50
-drawLine: 125 50 - 175 150
-drawLine: 175 150 - 175 200
-drawLine: 175 200 - 125 200
-drawLine: 125 200 - 125 150
-drawLine: 125 150 - 75 150
-drawLine: 75 150 - 75 250
-drawLine: 75 250 - 25 250
-drawLine: 25 250 - 25 150
-drawLine: 25 150 - 75 50
-drawLine: 75 50 - 125 50
-drawLine: 74 51 - 125 51
-drawLine: 74 52 - 126 52
-drawLine: 73 53 - 126 53
-drawLine: 73 54 - 127 54
-drawLine: 72 55 - 127 55
-drawLine: 72 56 - 128 56
-drawLine: 71 57 - 128 57
-drawLine: 71 58 - 129 58
-drawLine: 70 59 - 129 59
-drawLine: 70 60 - 130 60
-drawLine: 69 61 - 130 61
-drawLine: 69 62 - 131 62
-drawLine: 68 63 - 131 63
-drawLine: 68 64 - 132 64
-drawLine: 67 65 - 132 65
-drawLine: 67 66 - 133 66
-drawLine: 66 67 - 133 67
-drawLine: 66 68 - 134 68
-drawLine: 65 69 - 134 69
-drawLine: 65 70 - 135 70
-drawLine: 64 71 - 135 71
-drawLine: 64 72 - 136 72
-drawLine: 63 73 - 136 73
-drawLine: 63 74 - 137 74
-drawLine: 62 75 - 137 75
-drawLine: 62 76 - 138 76
-drawLine: 61 77 - 138 77
-drawLine: 61 78 - 139 78
-drawLine: 60 79 - 139 79
-drawLine: 60 80 - 140 80
-drawLine: 59 81 - 140 81
-drawLine: 59 82 - 141 82
-drawLine: 58 83 - 141 83
-drawLine: 58 84 - 142 84
-drawLine: 57 85 - 142 85
-drawLine: 57 86 - 143 86
-drawLine: 56 87 - 143 87
-drawLine: 56 88 - 144 88
-drawLine: 55 89 - 144 89
-drawLine: 55 90 - 145 90
-drawLine: 54 91 - 145 91
-drawLine: 54 92 - 146 92
-drawLine: 53 93 - 146 93
-drawLine: 53 94 - 147 94
-drawLine: 52 95 - 147 95
-drawLine: 52 96 - 148 96
-drawLine: 51 97 - 148 97
-drawLine: 51 98 - 149 98
-drawLine: 50 99 - 149 99
-drawLine: 50 100 - 150 100
-drawLine: 49 101 - 150 101
-drawLine: 49 102 - 151 102
-drawLine: 48 103 - 151 103
-drawLine: 48 104 - 152 104
-drawLine: 47 105 - 152 105
-drawLine: 47 106 - 153 106
-drawLine: 46 107 - 153 107
-drawLine: 46 108 - 154 108
-drawLine: 45 109 - 154 109
-drawLine: 45 110 - 155 110
-drawLine: 44 111 - 155 111
-drawLine: 44 112 - 156 112
-drawLine: 43 113 - 156 113
-drawLine: 43 114 - 157 114
-drawLine: 42 115 - 157 115
-drawLine: 42 116 - 158 116
-drawLine: 41 117 - 158 117
-drawLine: 41 118 - 159 118
-drawLine: 40 119 - 159 119
-drawLine: 40 120 - 160 120
-drawLine: 39 121 - 160 121
-drawLine: 39 122 - 161 122
-drawLine: 38 123 - 161 123
-drawLine: 38 124 - 162 124
-drawLine: 37 125 - 162 125
-drawLine: 37 126 - 163 126
-drawLine: 36 127 - 163 127
-drawLine: 36 128 - 164 128
-drawLine: 35 129 - 164 129
-drawLine: 35 130 - 165 130
-drawLine: 34 131 - 165 131
-drawLine: 34 132 - 166 132
-drawLine: 33 133 - 166 133
-drawLine: 33 134 - 167 134
-drawLine: 32 135 - 167 135
-drawLine: 32 136 - 168 136
-drawLine: 31 137 - 168 137
-drawLine: 31 138 - 169 138
-drawLine: 30 139 - 169 139
-drawLine: 30 140 - 170 140
-drawLine: 29 141 - 170 141
-drawLine: 29 142 - 171 142
-drawLine: 28 143 - 171 143
-drawLine: 28 144 - 172 144
-drawLine: 27 145 - 172 145
-drawLine: 27 146 - 173 146
-drawLine: 26 147 - 173 147
-drawLine: 26 148 - 174 148
-drawLine: 25 149 - 174 149
-drawLine: 25 150 - 75 150
-drawLine: 125 150 - 175 150
-drawLine: 25 151 - 75 151
-drawLine: 125 151 - 175 151
-drawLine: 25 152 - 75 152
-drawLine: 125 152 - 175 152
-drawLine: 25 153 - 75 153
-drawLine: 125 153 - 175 153
-drawLine: 25 154 - 75 154
-drawLine: 125 154 - 175 154
-drawLine: 25 155 - 75 155
-drawLine: 125 155 - 175 155
-drawLine: 25 156 - 75 156
-drawLine: 125 156 - 175 156
-drawLine: 25 157 - 75 157
-drawLine: 125 157 - 175 157
-drawLine: 25 158 - 75 158
-drawLine: 125 158 - 175 158
-drawLine: 25 159 - 75 159
-drawLine: 125 159 - 175 159
-drawLine: 25 160 - 75 160
-drawLine: 125 160 - 175 160
-drawLine: 25 161 - 75 161
-drawLine: 125 161 - 175 161
-drawLine: 25 162 - 75 162
-drawLine: 125 162 - 175 162
-drawLine: 25 163 - 75 163
-drawLine: 125 163 - 175 163
-drawLine: 25 164 - 75 164
-drawLine: 125 164 - 175 164
-drawLine: 25 165 - 75 165
-drawLine: 125 165 - 175 165
-drawLine: 25 166 - 75 166
-drawLine: 125 166 - 175 166
-drawLine: 25 167 - 75 167
-drawLine: 125 167 - 175 167
-drawLine: 25 168 - 75 168
-drawLine: 125 168 - 175 168
-drawLine: 25 169 - 75 169
-drawLine: 125 169 - 175 169
-drawLine: 25 170 - 75 170
-drawLine: 125 170 - 175 170
-drawLine: 25 171 - 75 171
-drawLine: 125 171 - 175 171
-drawLine: 25 172 - 75 172
-drawLine: 125 172 - 175 172
-drawLine: 25 173 - 75 173
-drawLine: 125 173 - 175 173
-drawLine: 25 174 - 75 174
-drawLine: 125 174 - 175 174
-drawLine: 25 175 - 75 175
-drawLine: 125 175 - 175 175
-drawLine: 25 176 - 75 176
-drawLine: 125 176 - 175 176
-drawLine: 25 177 - 75 177
-drawLine: 125 177 - 175 177
-drawLine: 25 178 - 75 178
-drawLine: 125 178 - 175 178
-drawLine: 25 179 - 75 179
-drawLine: 125 179 - 175 179
-drawLine: 25 180 - 75 180
-drawLine: 125 180 - 175 180
-drawLine: 25 181 - 75 181
-drawLine: 125 181 - 175 181
-drawLine: 25 182 - 75 182
-drawLine: 125 182 - 175 182
-drawLine: 25 183 - 75 183
-drawLine: 125 183 - 175 183
-drawLine: 25 184 - 75 184
-drawLine: 125 184 - 175 184
-drawLine: 25 185 - 75 185
-drawLine: 125 185 - 175 185
-drawLine: 25 186 - 75 186
-drawLine: 125 186 - 175 186
-drawLine: 25 187 - 75 187
-drawLine: 125 187 - 175 187
-drawLine: 25 188 - 75 188
-drawLine: 125 188 - 175 188
-drawLine: 25 189 - 75 189
-drawLine: 125 189 - 175 189
-drawLine: 25 190 - 75 190
-drawLine: 125 190 - 175 190
-drawLine: 25 191 - 75 191
-drawLine: 125 191 - 175 191
-drawLine: 25 192 - 75 192
-drawLine: 125 192 - 175 192
-drawLine: 25 193 - 75 193
-drawLine: 125 193 - 175 193
-drawLine: 25 194 - 75 194
-drawLine: 125 194 - 175 194
-drawLine: 25 195 - 75 195
-drawLine: 125 195 - 175 195
-drawLine: 25 196 - 75 196
-drawLine: 125 196 - 175 196
-drawLine: 25 197 - 75 197
-drawLine: 125 197 - 175 197
-drawLine: 25 198 - 75 198
-drawLine: 125 198 - 175 198
-drawLine: 25 199 - 75 199
-drawLine: 125 199 - 175 199
-drawLine: 25 200 - 75 200
-drawLine: 125 200 - 175 200
-drawLine: 25 201 - 75 201
-drawLine: 25 202 - 75 202
-drawLine: 25 203 - 75 203
-drawLine: 25 204 - 75 204
-drawLine: 25 205 - 75 205
-drawLine: 25 206 - 75 206
-drawLine: 25 207 - 75 207
-drawLine: 25 208 - 75 208
-drawLine: 25 209 - 75 209
-drawLine: 25 210 - 75 210
-drawLine: 25 211 - 75 211
-drawLine: 25 212 - 75 212
-drawLine: 25 213 - 75 213
-drawLine: 25 214 - 75 214
-drawLine: 25 215 - 75 215
-drawLine: 25 216 - 75 216
-drawLine: 25 217 - 75 217
-drawLine: 25 218 - 75 218
-drawLine: 25 219 - 75 219
-drawLine: 25 220 - 75 220
-drawLine: 25 221 - 75 221
-drawLine: 25 222 - 75 222
-drawLine: 25 223 - 75 223
-drawLine: 25 224 - 75 224
-drawLine: 25 225 - 75 225
-drawLine: 25 226 - 75 226
-drawLine: 25 227 - 75 227
-drawLine: 25 228 - 75 228
-drawLine: 25 229 - 75 229
-drawLine: 25 230 - 75 230
-drawLine: 25 231 - 75 231
-drawLine: 25 232 - 75 232
-drawLine: 25 233 - 75 233
-drawLine: 25 234 - 75 234
-drawLine: 25 235 - 75 235
-drawLine: 25 236 - 75 236
-drawLine: 25 237 - 75 237
-drawLine: 25 238 - 75 238
-drawLine: 25 239 - 75 239
-drawLine: 25 240 - 75 240
-drawLine: 25 241 - 75 241
-drawLine: 25 242 - 75 242
-drawLine: 25 243 - 75 243
-drawLine: 25 244 - 75 244
-drawLine: 25 245 - 75 245
-drawLine: 25 246 - 75 246
-drawLine: 25 247 - 75 247
-drawLine: 25 248 - 75 248
-drawLine: 25 249 - 75 249
+intersect: 154 300
+intersect: 295 300
+fillingLines: 154 300, 295 300
+drawLine: 153 170 - 206 293
+drawLine: 206 293 - 252 273
+drawLine: 252 273 - 232 227
+drawLine: 232 227 - 278 208
+drawLine: 278 208 - 298 254
+drawLine: 298 254 - 295 301
+drawLine: 295 301 - 155 301
+drawLine: 155 301 - 99 170
+drawLine: 99 170 - 153 170
+drawLine: 99 170 - 153 170
+drawLine: 99 171 - 153 171
+drawLine: 99 172 - 153 172
+drawLine: 100 173 - 154 173
+drawLine: 100 174 - 154 174
+drawLine: 101 175 - 155 175
+drawLine: 101 176 - 155 176
+drawLine: 101 177 - 156 177
+drawLine: 102 178 - 156 178
+drawLine: 102 179 - 156 179
+drawLine: 103 180 - 157 180
+drawLine: 103 181 - 157 181
+drawLine: 104 182 - 158 182
+drawLine: 104 183 - 158 183
+drawLine: 104 184 - 159 184
+drawLine: 105 185 - 159 185
+drawLine: 105 186 - 159 186
+drawLine: 106 187 - 160 187
+drawLine: 106 188 - 160 188
+drawLine: 107 189 - 161 189
+drawLine: 107 190 - 161 190
+drawLine: 107 191 - 162 191
+drawLine: 108 192 - 162 192
+drawLine: 108 193 - 162 193
+drawLine: 109 194 - 163 194
+drawLine: 109 195 - 163 195
+drawLine: 110 196 - 164 196
+drawLine: 110 197 - 164 197
+drawLine: 110 198 - 165 198
+drawLine: 111 199 - 165 199
+drawLine: 111 200 - 165 200
+drawLine: 112 201 - 166 201
+drawLine: 112 202 - 166 202
+drawLine: 113 203 - 167 203
+drawLine: 113 204 - 167 204
+drawLine: 113 205 - 168 205
+drawLine: 114 206 - 168 206
+drawLine: 114 207 - 168 207
+drawLine: 115 208 - 278 208
+drawLine: 115 209 - 169 209
+drawLine: 275 209 - 278 209
+drawLine: 116 210 - 170 210
+drawLine: 273 210 - 278 210
+drawLine: 116 211 - 170 211
+drawLine: 270 211 - 279 211
+drawLine: 116 212 - 171 212
+drawLine: 268 212 - 279 212
+drawLine: 117 213 - 171 213
+drawLine: 265 213 - 280 213
+drawLine: 117 214 - 171 214
+drawLine: 263 214 - 280 214
+drawLine: 118 215 - 172 215
+drawLine: 261 215 - 281 215
+drawLine: 118 216 - 172 216
+drawLine: 258 216 - 281 216
+drawLine: 119 217 - 173 217
+drawLine: 256 217 - 281 217
+drawLine: 119 218 - 173 218
+drawLine: 253 218 - 282 218
+drawLine: 119 219 - 174 219
+drawLine: 251 219 - 282 219
+drawLine: 120 220 - 174 220
+drawLine: 248 220 - 283 220
+drawLine: 120 221 - 174 221
+drawLine: 246 221 - 283 221
+drawLine: 121 222 - 175 222
+drawLine: 244 222 - 284 222
+drawLine: 121 223 - 175 223
+drawLine: 241 223 - 284 223
+drawLine: 122 224 - 176 224
+drawLine: 239 224 - 284 224
+drawLine: 122 225 - 176 225
+drawLine: 236 225 - 285 225
+drawLine: 122 226 - 177 226
+drawLine: 234 226 - 285 226
+drawLine: 123 227 - 177 227
+drawLine: 232 227 - 286 227
+drawLine: 123 228 - 177 228
+drawLine: 232 228 - 286 228
+drawLine: 124 229 - 178 229
+drawLine: 232 229 - 287 229
+drawLine: 124 230 - 178 230
+drawLine: 233 230 - 287 230
+drawLine: 125 231 - 179 231
+drawLine: 233 231 - 288 231
+drawLine: 125 232 - 179 232
+drawLine: 234 232 - 288 232
+drawLine: 125 233 - 180 233
+drawLine: 234 233 - 288 233
+drawLine: 126 234 - 180 234
+drawLine: 235 234 - 289 234
+drawLine: 126 235 - 181 235
+drawLine: 235 235 - 289 235
+drawLine: 127 236 - 181 236
+drawLine: 235 236 - 290 236
+drawLine: 127 237 - 181 237
+drawLine: 236 237 - 290 237
+drawLine: 128 238 - 182 238
+drawLine: 236 238 - 291 238
+drawLine: 128 239 - 182 239
+drawLine: 237 239 - 291 239
+drawLine: 128 240 - 183 240
+drawLine: 237 240 - 291 240
+drawLine: 129 241 - 183 241
+drawLine: 238 241 - 292 241
+drawLine: 129 242 - 184 242
+drawLine: 238 242 - 292 242
+drawLine: 130 243 - 184 243
+drawLine: 238 243 - 293 243
+drawLine: 130 244 - 184 244
+drawLine: 239 244 - 293 244
+drawLine: 131 245 - 185 245
+drawLine: 239 245 - 294 245
+drawLine: 131 246 - 185 246
+drawLine: 240 246 - 294 246
+drawLine: 131 247 - 186 247
+drawLine: 240 247 - 294 247
+drawLine: 132 248 - 186 248
+drawLine: 241 248 - 295 248
+drawLine: 132 249 - 187 249
+drawLine: 241 249 - 295 249
+drawLine: 133 250 - 187 250
+drawLine: 242 250 - 296 250
+drawLine: 133 251 - 187 251
+drawLine: 242 251 - 296 251
+drawLine: 134 252 - 188 252
+drawLine: 242 252 - 297 252
+drawLine: 134 253 - 188 253
+drawLine: 243 253 - 297 253
+drawLine: 134 254 - 189 254
+drawLine: 243 254 - 298 254
+drawLine: 135 255 - 189 255
+drawLine: 244 255 - 297 255
+drawLine: 135 256 - 190 256
+drawLine: 244 256 - 297 256
+drawLine: 136 257 - 190 257
+drawLine: 245 257 - 297 257
+drawLine: 136 258 - 190 258
+drawLine: 245 258 - 297 258
+drawLine: 137 259 - 191 259
+drawLine: 245 259 - 297 259
+drawLine: 137 260 - 191 260
+drawLine: 246 260 - 297 260
+drawLine: 137 261 - 192 261
+drawLine: 246 261 - 297 261
+drawLine: 138 262 - 192 262
+drawLine: 247 262 - 297 262
+drawLine: 138 263 - 193 263
+drawLine: 247 263 - 297 263
+drawLine: 139 264 - 193 264
+drawLine: 248 264 - 297 264
+drawLine: 139 265 - 193 265
+drawLine: 248 265 - 297 265
+drawLine: 140 266 - 194 266
+drawLine: 248 266 - 297 266
+drawLine: 140 267 - 194 267
+drawLine: 249 267 - 297 267
+drawLine: 140 268 - 195 268
+drawLine: 249 268 - 297 268
+drawLine: 141 269 - 195 269
+drawLine: 250 269 - 297 269
+drawLine: 141 270 - 196 270
+drawLine: 250 270 - 296 270
+drawLine: 142 271 - 196 271
+drawLine: 251 271 - 296 271
+drawLine: 142 272 - 196 272
+drawLine: 251 272 - 296 272
+drawLine: 143 273 - 197 273
+drawLine: 252 273 - 296 273
+drawLine: 143 274 - 197 274
+drawLine: 249 274 - 296 274
+drawLine: 143 275 - 198 275
+drawLine: 247 275 - 296 275
+drawLine: 144 276 - 198 276
+drawLine: 245 276 - 296 276
+drawLine: 144 277 - 199 277
+drawLine: 242 277 - 296 277
+drawLine: 145 278 - 199 278
+drawLine: 240 278 - 296 278
+drawLine: 145 279 - 199 279
+drawLine: 238 279 - 296 279
+drawLine: 146 280 - 200 280
+drawLine: 235 280 - 296 280
+drawLine: 146 281 - 200 281
+drawLine: 233 281 - 296 281
+drawLine: 146 282 - 201 282
+drawLine: 231 282 - 296 282
+drawLine: 147 283 - 201 283
+drawLine: 229 283 - 296 283
+drawLine: 147 284 - 202 284
+drawLine: 226 284 - 296 284
+drawLine: 148 285 - 202 285
+drawLine: 224 285 - 296 285
+drawLine: 148 286 - 202 286
+drawLine: 222 286 - 295 286
+drawLine: 149 287 - 203 287
+drawLine: 219 287 - 295 287
+drawLine: 149 288 - 203 288
+drawLine: 217 288 - 295 288
+drawLine: 149 289 - 204 289
+drawLine: 215 289 - 295 289
+drawLine: 150 290 - 204 290
+drawLine: 212 290 - 295 290
+drawLine: 150 291 - 205 291
+drawLine: 210 291 - 295 291
+drawLine: 151 292 - 205 292
+drawLine: 208 292 - 295 292
+drawLine: 151 293 - 295 293
+drawLine: 152 294 - 295 294
+drawLine: 152 295 - 295 295
+drawLine: 152 296 - 295 296
+drawLine: 153 297 - 295 297
+drawLine: 153 298 - 295 298
+drawLine: 154 299 - 295 299
+drawLine: 154 300 - 295 300
 
 New Polygon
 2nd case: first vertice in side, second outside
 2nd case: first vertice in side, second outside
-----------fill boundary: 0 0, 250 250
-
-scanLine: 200 150, 200 200
-scanLine: 250 50, 200 150
-scanLine: 250 50, 250 200
------low and top: 50, 200
-
-----intersections size: 1
-intersect: 250 50
-
-----intersections size: 2
-intersect: 249 51
-intersect: 250 51
-fillingLines: 249 51, 250 51
-
-----intersections size: 2
-intersect: 249 52
-intersect: 250 52
-fillingLines: 249 52, 250 52
-
-----intersections size: 2
-intersect: 248 53
-intersect: 250 53
-fillingLines: 248 53, 250 53
-
-----intersections size: 2
-intersect: 248 54
-intersect: 250 54
-fillingLines: 248 54, 250 54
-
-----intersections size: 2
-intersect: 247 55
-intersect: 250 55
-fillingLines: 247 55, 250 55
-
-----intersections size: 2
-intersect: 247 56
-intersect: 250 56
-fillingLines: 247 56, 250 56
-
-----intersections size: 2
-intersect: 246 57
-intersect: 250 57
-fillingLines: 246 57, 250 57
-
-----intersections size: 2
-intersect: 246 58
-intersect: 250 58
-fillingLines: 246 58, 250 58
-
-----intersections size: 2
-intersect: 245 59
-intersect: 250 59
-fillingLines: 245 59, 250 59
-
-----intersections size: 2
-intersect: 245 60
-intersect: 250 60
-fillingLines: 245 60, 250 60
-
-----intersections size: 2
-intersect: 244 61
-intersect: 250 61
-fillingLines: 244 61, 250 61
-
-----intersections size: 2
-intersect: 244 62
-intersect: 250 62
-fillingLines: 244 62, 250 62
-
-----intersections size: 2
-intersect: 243 63
-intersect: 250 63
-fillingLines: 243 63, 250 63
-
-----intersections size: 2
-intersect: 243 64
-intersect: 250 64
-fillingLines: 243 64, 250 64
-
-----intersections size: 2
-intersect: 242 65
-intersect: 250 65
-fillingLines: 242 65, 250 65
-
-----intersections size: 2
-intersect: 242 66
-intersect: 250 66
-fillingLines: 242 66, 250 66
-
-----intersections size: 2
-intersect: 241 67
-intersect: 250 67
-fillingLines: 241 67, 250 67
-
-----intersections size: 2
-intersect: 241 68
-intersect: 250 68
-fillingLines: 241 68, 250 68
-
-----intersections size: 2
-intersect: 240 69
-intersect: 250 69
-fillingLines: 240 69, 250 69
-
-----intersections size: 2
-intersect: 240 70
-intersect: 250 70
-fillingLines: 240 70, 250 70
-
-----intersections size: 2
-intersect: 239 71
-intersect: 250 71
-fillingLines: 239 71, 250 71
-
-----intersections size: 2
-intersect: 239 72
-intersect: 250 72
-fillingLines: 239 72, 250 72
-
-----intersections size: 2
-intersect: 238 73
-intersect: 250 73
-fillingLines: 238 73, 250 73
-
-----intersections size: 2
-intersect: 238 74
-intersect: 250 74
-fillingLines: 238 74, 250 74
-
-----intersections size: 2
-intersect: 237 75
-intersect: 250 75
-fillingLines: 237 75, 250 75
-
-----intersections size: 2
-intersect: 237 76
-intersect: 250 76
-fillingLines: 237 76, 250 76
-
-----intersections size: 2
-intersect: 236 77
-intersect: 250 77
-fillingLines: 236 77, 250 77
-
-----intersections size: 2
-intersect: 236 78
-intersect: 250 78
-fillingLines: 236 78, 250 78
-
-----intersections size: 2
-intersect: 235 79
-intersect: 250 79
-fillingLines: 235 79, 250 79
-
-----intersections size: 2
-intersect: 235 80
-intersect: 250 80
-fillingLines: 235 80, 250 80
-
-----intersections size: 2
-intersect: 234 81
-intersect: 250 81
-fillingLines: 234 81, 250 81
-
-----intersections size: 2
-intersect: 234 82
-intersect: 250 82
-fillingLines: 234 82, 250 82
-
-----intersections size: 2
-intersect: 233 83
-intersect: 250 83
-fillingLines: 233 83, 250 83
-
-----intersections size: 2
-intersect: 233 84
-intersect: 250 84
-fillingLines: 233 84, 250 84
-
-----intersections size: 2
-intersect: 232 85
-intersect: 250 85
-fillingLines: 232 85, 250 85
-
-----intersections size: 2
-intersect: 232 86
-intersect: 250 86
-fillingLines: 232 86, 250 86
-
-----intersections size: 2
-intersect: 231 87
-intersect: 250 87
-fillingLines: 231 87, 250 87
-
-----intersections size: 2
-intersect: 231 88
-intersect: 250 88
-fillingLines: 231 88, 250 88
-
-----intersections size: 2
-intersect: 230 89
-intersect: 250 89
-fillingLines: 230 89, 250 89
-
-----intersections size: 2
-intersect: 230 90
-intersect: 250 90
-fillingLines: 230 90, 250 90
-
-----intersections size: 2
-intersect: 229 91
-intersect: 250 91
-fillingLines: 229 91, 250 91
-
-----intersections size: 2
-intersect: 229 92
-intersect: 250 92
-fillingLines: 229 92, 250 92
-
-----intersections size: 2
-intersect: 228 93
-intersect: 250 93
-fillingLines: 228 93, 250 93
-
-----intersections size: 2
-intersect: 228 94
-intersect: 250 94
-fillingLines: 228 94, 250 94
-
-----intersections size: 2
-intersect: 227 95
-intersect: 250 95
-fillingLines: 227 95, 250 95
-
-----intersections size: 2
-intersect: 227 96
-intersect: 250 96
-fillingLines: 227 96, 250 96
-
-----intersections size: 2
-intersect: 226 97
-intersect: 250 97
-fillingLines: 226 97, 250 97
-
-----intersections size: 2
-intersect: 226 98
-intersect: 250 98
-fillingLines: 226 98, 250 98
-
-----intersections size: 2
-intersect: 225 99
-intersect: 250 99
-fillingLines: 225 99, 250 99
-
-----intersections size: 2
-intersect: 225 100
-intersect: 250 100
-fillingLines: 225 100, 250 100
-
-----intersections size: 2
-intersect: 224 101
-intersect: 250 101
-fillingLines: 224 101, 250 101
-
-----intersections size: 2
-intersect: 224 102
-intersect: 250 102
-fillingLines: 224 102, 250 102
-
-----intersections size: 2
-intersect: 223 103
-intersect: 250 103
-fillingLines: 223 103, 250 103
-
-----intersections size: 2
-intersect: 223 104
-intersect: 250 104
-fillingLines: 223 104, 250 104
-
-----intersections size: 2
-intersect: 222 105
-intersect: 250 105
-fillingLines: 222 105, 250 105
-
-----intersections size: 2
-intersect: 222 106
-intersect: 250 106
-fillingLines: 222 106, 250 106
-
-----intersections size: 2
-intersect: 221 107
-intersect: 250 107
-fillingLines: 221 107, 250 107
-
-----intersections size: 2
-intersect: 221 108
-intersect: 250 108
-fillingLines: 221 108, 250 108
-
-----intersections size: 2
-intersect: 220 109
-intersect: 250 109
-fillingLines: 220 109, 250 109
-
-----intersections size: 2
-intersect: 220 110
-intersect: 250 110
-fillingLines: 220 110, 250 110
-
-----intersections size: 2
-intersect: 219 111
-intersect: 250 111
-fillingLines: 219 111, 250 111
-
-----intersections size: 2
-intersect: 219 112
-intersect: 250 112
-fillingLines: 219 112, 250 112
-
-----intersections size: 2
-intersect: 218 113
-intersect: 250 113
-fillingLines: 218 113, 250 113
-
-----intersections size: 2
-intersect: 218 114
-intersect: 250 114
-fillingLines: 218 114, 250 114
-
-----intersections size: 2
-intersect: 217 115
-intersect: 250 115
-fillingLines: 217 115, 250 115
-
-----intersections size: 2
-intersect: 217 116
-intersect: 250 116
-fillingLines: 217 116, 250 116
-
-----intersections size: 2
-intersect: 216 117
-intersect: 250 117
-fillingLines: 216 117, 250 117
-
-----intersections size: 2
-intersect: 216 118
-intersect: 250 118
-fillingLines: 216 118, 250 118
-
-----intersections size: 2
-intersect: 215 119
-intersect: 250 119
-fillingLines: 215 119, 250 119
-
-----intersections size: 2
-intersect: 215 120
-intersect: 250 120
-fillingLines: 215 120, 250 120
-
-----intersections size: 2
-intersect: 214 121
-intersect: 250 121
-fillingLines: 214 121, 250 121
-
-----intersections size: 2
-intersect: 214 122
-intersect: 250 122
-fillingLines: 214 122, 250 122
-
-----intersections size: 2
-intersect: 213 123
-intersect: 250 123
-fillingLines: 213 123, 250 123
-
-----intersections size: 2
-intersect: 213 124
-intersect: 250 124
-fillingLines: 213 124, 250 124
-
-----intersections size: 2
-intersect: 212 125
-intersect: 250 125
-fillingLines: 212 125, 250 125
-
-----intersections size: 2
-intersect: 212 126
-intersect: 250 126
-fillingLines: 212 126, 250 126
-
-----intersections size: 2
-intersect: 211 127
-intersect: 250 127
-fillingLines: 211 127, 250 127
-
-----intersections size: 2
-intersect: 211 128
-intersect: 250 128
-fillingLines: 211 128, 250 128
-
-----intersections size: 2
-intersect: 210 129
-intersect: 250 129
-fillingLines: 210 129, 250 129
-
-----intersections size: 2
-intersect: 210 130
-intersect: 250 130
-fillingLines: 210 130, 250 130
-
-----intersections size: 2
-intersect: 209 131
-intersect: 250 131
-fillingLines: 209 131, 250 131
-
-----intersections size: 2
-intersect: 209 132
-intersect: 250 132
-fillingLines: 209 132, 250 132
-
-----intersections size: 2
-intersect: 208 133
-intersect: 250 133
-fillingLines: 208 133, 250 133
-
-----intersections size: 2
-intersect: 208 134
-intersect: 250 134
-fillingLines: 208 134, 250 134
-
-----intersections size: 2
-intersect: 207 135
-intersect: 250 135
-fillingLines: 207 135, 250 135
-
-----intersections size: 2
-intersect: 207 136
-intersect: 250 136
-fillingLines: 207 136, 250 136
-
-----intersections size: 2
-intersect: 206 137
-intersect: 250 137
-fillingLines: 206 137, 250 137
-
-----intersections size: 2
-intersect: 206 138
-intersect: 250 138
-fillingLines: 206 138, 250 138
-
-----intersections size: 2
-intersect: 205 139
-intersect: 250 139
-fillingLines: 205 139, 250 139
-
-----intersections size: 2
-intersect: 205 140
-intersect: 250 140
-fillingLines: 205 140, 250 140
-
-----intersections size: 2
-intersect: 204 141
-intersect: 250 141
-fillingLines: 204 141, 250 141
-
-----intersections size: 2
-intersect: 204 142
-intersect: 250 142
-fillingLines: 204 142, 250 142
-
-----intersections size: 2
-intersect: 203 143
-intersect: 250 143
-fillingLines: 203 143, 250 143
-
-----intersections size: 2
-intersect: 203 144
-intersect: 250 144
-fillingLines: 203 144, 250 144
-
-----intersections size: 2
-intersect: 202 145
-intersect: 250 145
-fillingLines: 202 145, 250 145
-
-----intersections size: 2
-intersect: 202 146
-intersect: 250 146
-fillingLines: 202 146, 250 146
-
-----intersections size: 2
-intersect: 201 147
-intersect: 250 147
-fillingLines: 201 147, 250 147
-
-----intersections size: 2
-intersect: 201 148
-intersect: 250 148
-fillingLines: 201 148, 250 148
-
-----intersections size: 2
-intersect: 200 149
-intersect: 250 149
-fillingLines: 200 149, 250 149
-
-----intersections size: 2
-intersect: 200 150
-intersect: 250 150
-fillingLines: 200 150, 250 150
-
-----intersections size: 2
-intersect: 200 151
-intersect: 250 151
-fillingLines: 200 151, 250 151
-
-----intersections size: 2
-intersect: 200 152
-intersect: 250 152
-fillingLines: 200 152, 250 152
-
-----intersections size: 2
-intersect: 200 153
-intersect: 250 153
-fillingLines: 200 153, 250 153
-
-----intersections size: 2
-intersect: 200 154
-intersect: 250 154
-fillingLines: 200 154, 250 154
-
-----intersections size: 2
-intersect: 200 155
-intersect: 250 155
-fillingLines: 200 155, 250 155
-
-----intersections size: 2
-intersect: 200 156
-intersect: 250 156
-fillingLines: 200 156, 250 156
-
-----intersections size: 2
-intersect: 200 157
-intersect: 250 157
-fillingLines: 200 157, 250 157
-
-----intersections size: 2
-intersect: 200 158
-intersect: 250 158
-fillingLines: 200 158, 250 158
-
-----intersections size: 2
-intersect: 200 159
-intersect: 250 159
-fillingLines: 200 159, 250 159
-
-----intersections size: 2
-intersect: 200 160
-intersect: 250 160
-fillingLines: 200 160, 250 160
-
-----intersections size: 2
-intersect: 200 161
-intersect: 250 161
-fillingLines: 200 161, 250 161
-
-----intersections size: 2
-intersect: 200 162
-intersect: 250 162
-fillingLines: 200 162, 250 162
-
-----intersections size: 2
-intersect: 200 163
-intersect: 250 163
-fillingLines: 200 163, 250 163
-
-----intersections size: 2
-intersect: 200 164
-intersect: 250 164
-fillingLines: 200 164, 250 164
-
-----intersections size: 2
-intersect: 200 165
-intersect: 250 165
-fillingLines: 200 165, 250 165
-
-----intersections size: 2
-intersect: 200 166
-intersect: 250 166
-fillingLines: 200 166, 250 166
-
-----intersections size: 2
-intersect: 200 167
-intersect: 250 167
-fillingLines: 200 167, 250 167
-
-----intersections size: 2
-intersect: 200 168
-intersect: 250 168
-fillingLines: 200 168, 250 168
-
-----intersections size: 2
-intersect: 200 169
-intersect: 250 169
-fillingLines: 200 169, 250 169
-
-----intersections size: 2
-intersect: 200 170
-intersect: 250 170
-fillingLines: 200 170, 250 170
-
+2nd case: first vertice in side, second outside
+2nd case: first vertice in side, second outside
+----------fill boundary: -100 170, 435 301
+
+edgeList: 350 170, 347 178
+edgeList: 347 178, 367 224
+edgeList: 367 224, 413 205
+edgeList: 413 205, 397 170
+edgeList: 397 170, 435 170
+edgeList: 435 170, 435 301
+edgeList: 435 301, 388 301
+edgeList: 388 301, 321 244
+edgeList: 321 244, 301 198
+edgeList: 301 198, 312 170
+edgeList: 312 170, 350 170
+edgeList: 350 170, 347 178
+edgeList: 347 178, 367 224
+edgeList: 413 205, 367 224
+edgeList: 397 170, 413 205
+edgeList: 435 170, 435 301
+edgeList: 321 244, 388 301
+edgeList: 301 198, 321 244
+edgeList: 312 170, 301 198
+-----low and top: 170, 301
+
+----intersections size: 4
+intersect: 312 170
+intersect: 350 170
+intersect: 397 170
+intersect: 435 170
+fillingLines: 312 170, 350 170
+fillingLines: 397 170, 435 170
+
+----intersections size: 4
+intersect: 311 171
+intersect: 349 171
+intersect: 397 171
+intersect: 435 171
+fillingLines: 311 171, 349 171
+fillingLines: 397 171, 435 171
+
+----intersections size: 4
+intersect: 311 172
+intersect: 349 172
+intersect: 397 172
+intersect: 435 172
+fillingLines: 311 172, 349 172
+fillingLines: 397 172, 435 172
+
+----intersections size: 4
+intersect: 310 173
+intersect: 348 173
+intersect: 398 173
+intersect: 435 173
+fillingLines: 310 173, 348 173
+fillingLines: 398 173, 435 173
+
+----intersections size: 4
+intersect: 310 174
+intersect: 348 174
+intersect: 398 174
+intersect: 435 174
+fillingLines: 310 174, 348 174
+fillingLines: 398 174, 435 174
+
+----intersections size: 4
+intersect: 310 175
+intersect: 348 175
+intersect: 399 175
+intersect: 435 175
+fillingLines: 310 175, 348 175
+fillingLines: 399 175, 435 175
+
+----intersections size: 4
+intersect: 309 176
+intersect: 347 176
+intersect: 399 176
+intersect: 435 176
+fillingLines: 309 176, 347 176
+fillingLines: 399 176, 435 176
+
+----intersections size: 4
+intersect: 309 177
+intersect: 347 177
+intersect: 400 177
+intersect: 435 177
+fillingLines: 309 177, 347 177
+fillingLines: 400 177, 435 177
+
+----intersections size: 4
+intersect: 308 178
+intersect: 347 178
+intersect: 400 178
+intersect: 435 178
+fillingLines: 308 178, 347 178
+fillingLines: 400 178, 435 178
+
+----intersections size: 4
+intersect: 308 179
+intersect: 347 179
+intersect: 401 179
+intersect: 435 179
+fillingLines: 308 179, 347 179
+fillingLines: 401 179, 435 179
+
+----intersections size: 4
+intersect: 308 180
+intersect: 347 180
+intersect: 401 180
+intersect: 435 180
+fillingLines: 308 180, 347 180
+fillingLines: 401 180, 435 180
+
+----intersections size: 4
+intersect: 307 181
+intersect: 348 181
+intersect: 402 181
+intersect: 435 181
+fillingLines: 307 181, 348 181
+fillingLines: 402 181, 435 181
+
+----intersections size: 4
+intersect: 307 182
+intersect: 348 182
+intersect: 402 182
+intersect: 435 182
+fillingLines: 307 182, 348 182
+fillingLines: 402 182, 435 182
+
+----intersections size: 4
+intersect: 306 183
+intersect: 349 183
+intersect: 402 183
+intersect: 435 183
+fillingLines: 306 183, 349 183
+fillingLines: 402 183, 435 183
+
+----intersections size: 4
+intersect: 306 184
+intersect: 349 184
+intersect: 403 184
+intersect: 435 184
+fillingLines: 306 184, 349 184
+fillingLines: 403 184, 435 184
+
+----intersections size: 4
+intersect: 306 185
+intersect: 350 185
+intersect: 403 185
+intersect: 435 185
+fillingLines: 306 185, 350 185
+fillingLines: 403 185, 435 185
+
+----intersections size: 4
+intersect: 305 186
+intersect: 350 186
+intersect: 404 186
+intersect: 435 186
+fillingLines: 305 186, 350 186
+fillingLines: 404 186, 435 186
+
+----intersections size: 4
+intersect: 305 187
+intersect: 350 187
+intersect: 404 187
+intersect: 435 187
+fillingLines: 305 187, 350 187
+fillingLines: 404 187, 435 187
+
+----intersections size: 4
+intersect: 304 188
+intersect: 351 188
+intersect: 405 188
+intersect: 435 188
+fillingLines: 304 188, 351 188
+fillingLines: 405 188, 435 188
+
+----intersections size: 4
+intersect: 304 189
+intersect: 351 189
+intersect: 405 189
+intersect: 435 189
+fillingLines: 304 189, 351 189
+fillingLines: 405 189, 435 189
+
+----intersections size: 4
+intersect: 304 190
+intersect: 352 190
+intersect: 406 190
+intersect: 435 190
+fillingLines: 304 190, 352 190
+fillingLines: 406 190, 435 190
+
+----intersections size: 4
+intersect: 303 191
+intersect: 352 191
+intersect: 406 191
+intersect: 435 191
+fillingLines: 303 191, 352 191
+fillingLines: 406 191, 435 191
+
+----intersections size: 4
+intersect: 303 192
+intersect: 353 192
+intersect: 407 192
+intersect: 435 192
+fillingLines: 303 192, 353 192
+fillingLines: 407 192, 435 192
+
+----intersections size: 4
+intersect: 302 193
+intersect: 353 193
+intersect: 407 193
+intersect: 435 193
+fillingLines: 302 193, 353 193
+fillingLines: 407 193, 435 193
+
+----intersections size: 4
+intersect: 302 194
+intersect: 353 194
+intersect: 407 194
+intersect: 435 194
+fillingLines: 302 194, 353 194
+fillingLines: 407 194, 435 194
+
+----intersections size: 4
+intersect: 302 195
+intersect: 354 195
+intersect: 408 195
+intersect: 435 195
+fillingLines: 302 195, 354 195
+fillingLines: 408 195, 435 195
+
+----intersections size: 4
+intersect: 301 196
+intersect: 354 196
+intersect: 408 196
+intersect: 435 196
+fillingLines: 301 196, 354 196
+fillingLines: 408 196, 435 196
+
+----intersections size: 4
+intersect: 301 197
+intersect: 355 197
+intersect: 409 197
+intersect: 435 197
+fillingLines: 301 197, 355 197
+fillingLines: 409 197, 435 197
+
+----intersections size: 4
+intersect: 301 198
+intersect: 355 198
+intersect: 409 198
+intersect: 435 198
+fillingLines: 301 198, 355 198
+fillingLines: 409 198, 435 198
+
+----intersections size: 4
+intersect: 301 199
+intersect: 356 199
+intersect: 410 199
+intersect: 435 199
+fillingLines: 301 199, 356 199
+fillingLines: 410 199, 435 199
+
+----intersections size: 4
+intersect: 301 200
+intersect: 356 200
+intersect: 410 200
+intersect: 435 200
+fillingLines: 301 200, 356 200
+fillingLines: 410 200, 435 200
+
+----intersections size: 4
+intersect: 302 201
+intersect: 357 201
+intersect: 411 201
+intersect: 435 201
+fillingLines: 302 201, 357 201
+fillingLines: 411 201, 435 201
+
+----intersections size: 4
+intersect: 302 202
+intersect: 357 202
+intersect: 411 202
+intersect: 435 202
+fillingLines: 302 202, 357 202
+fillingLines: 411 202, 435 202
+
+----intersections size: 4
+intersect: 303 203
+intersect: 357 203
+intersect: 412 203
+intersect: 435 203
+fillingLines: 303 203, 357 203
+fillingLines: 412 203, 435 203
+
+----intersections size: 4
+intersect: 303 204
+intersect: 358 204
+intersect: 412 204
+intersect: 435 204
+fillingLines: 303 204, 358 204
+fillingLines: 412 204, 435 204
+
+----intersections size: 4
+intersect: 304 205
+intersect: 358 205
+intersect: 413 205
+intersect: 435 205
+fillingLines: 304 205, 358 205
+fillingLines: 413 205, 435 205
+
+----intersections size: 4
+intersect: 304 206
+intersect: 359 206
+intersect: 410 206
+intersect: 435 206
+fillingLines: 304 206, 359 206
+fillingLines: 410 206, 435 206
+
+----intersections size: 4
+intersect: 304 207
+intersect: 359 207
+intersect: 408 207
+intersect: 435 207
+fillingLines: 304 207, 359 207
+fillingLines: 408 207, 435 207
+
+----intersections size: 4
+intersect: 305 208
+intersect: 360 208
+intersect: 405 208
+intersect: 435 208
+fillingLines: 305 208, 360 208
+fillingLines: 405 208, 435 208
+
+----intersections size: 4
+intersect: 305 209
+intersect: 360 209
+intersect: 403 209
+intersect: 435 209
+fillingLines: 305 209, 360 209
+fillingLines: 403 209, 435 209
+
+----intersections size: 4
+intersect: 306 210
+intersect: 360 210
+intersect: 400 210
+intersect: 435 210
+fillingLines: 306 210, 360 210
+fillingLines: 400 210, 435 210
+
+----intersections size: 4
+intersect: 306 211
+intersect: 361 211
+intersect: 398 211
+intersect: 435 211
+fillingLines: 306 211, 361 211
+fillingLines: 398 211, 435 211
+
+----intersections size: 4
+intersect: 307 212
+intersect: 361 212
+intersect: 396 212
+intersect: 435 212
+fillingLines: 307 212, 361 212
+fillingLines: 396 212, 435 212
+
+----intersections size: 4
+intersect: 307 213
+intersect: 362 213
+intersect: 393 213
+intersect: 435 213
+fillingLines: 307 213, 362 213
+fillingLines: 393 213, 435 213
+
+----intersections size: 4
+intersect: 307 214
+intersect: 362 214
+intersect: 391 214
+intersect: 435 214
+fillingLines: 307 214, 362 214
+fillingLines: 391 214, 435 214
+
+----intersections size: 4
+intersect: 308 215
+intersect: 363 215
+intersect: 388 215
+intersect: 435 215
+fillingLines: 308 215, 363 215
+fillingLines: 388 215, 435 215
+
+----intersections size: 4
+intersect: 308 216
+intersect: 363 216
+intersect: 386 216
+intersect: 435 216
+fillingLines: 308 216, 363 216
+fillingLines: 386 216, 435 216
+
+----intersections size: 4
+intersect: 309 217
+intersect: 363 217
+intersect: 383 217
+intersect: 435 217
+fillingLines: 309 217, 363 217
+fillingLines: 383 217, 435 217
+
+----intersections size: 4
+intersect: 309 218
+intersect: 364 218
+intersect: 381 218
+intersect: 435 218
+fillingLines: 309 218, 364 218
+fillingLines: 381 218, 435 218
+
+----intersections size: 4
+intersect: 310 219
+intersect: 364 219
+intersect: 379 219
+intersect: 435 219
+fillingLines: 310 219, 364 219
+fillingLines: 379 219, 435 219
+
+----intersections size: 4
+intersect: 310 220
+intersect: 365 220
+intersect: 376 220
+intersect: 435 220
+fillingLines: 310 220, 365 220
+fillingLines: 376 220, 435 220
+
+----intersections size: 4
+intersect: 311 221
+intersect: 365 221
+intersect: 374 221
+intersect: 435 221
+fillingLines: 311 221, 365 221
+fillingLines: 374 221, 435 221
+
+----intersections size: 4
+intersect: 311 222
+intersect: 366 222
+intersect: 371 222
+intersect: 435 222
+fillingLines: 311 222, 366 222
+fillingLines: 371 222, 435 222
+
+----intersections size: 4
+intersect: 311 223
+intersect: 366 223
+intersect: 369 223
+intersect: 435 223
+fillingLines: 311 223, 366 223
+fillingLines: 369 223, 435 223
+
+----intersections size: 2
+intersect: 312 224
+intersect: 435 224
+fillingLines: 312 224, 435 224
+
+----intersections size: 2
+intersect: 312 225
+intersect: 435 225
+fillingLines: 312 225, 435 225
+
+----intersections size: 2
+intersect: 313 226
+intersect: 435 226
+fillingLines: 313 226, 435 226
+
+----intersections size: 2
+intersect: 313 227
+intersect: 435 227
+fillingLines: 313 227, 435 227
+
+----intersections size: 2
+intersect: 314 228
+intersect: 435 228
+fillingLines: 314 228, 435 228
+
+----intersections size: 2
+intersect: 314 229
+intersect: 435 229
+fillingLines: 314 229, 435 229
+
+----intersections size: 2
+intersect: 314 230
+intersect: 435 230
+fillingLines: 314 230, 435 230
+
+----intersections size: 2
+intersect: 315 231
+intersect: 435 231
+fillingLines: 315 231, 435 231
+
+----intersections size: 2
+intersect: 315 232
+intersect: 435 232
+fillingLines: 315 232, 435 232
+
+----intersections size: 2
+intersect: 316 233
+intersect: 435 233
+fillingLines: 316 233, 435 233
+
+----intersections size: 2
+intersect: 316 234
+intersect: 435 234
+fillingLines: 316 234, 435 234
+
+----intersections size: 2
+intersect: 317 235
+intersect: 435 235
+fillingLines: 317 235, 435 235
+
+----intersections size: 2
+intersect: 317 236
+intersect: 435 236
+fillingLines: 317 236, 435 236
+
+----intersections size: 2
+intersect: 317 237
+intersect: 435 237
+fillingLines: 317 237, 435 237
+
+----intersections size: 2
+intersect: 318 238
+intersect: 435 238
+fillingLines: 318 238, 435 238
+
+----intersections size: 2
+intersect: 318 239
+intersect: 435 239
+fillingLines: 318 239, 435 239
+
+----intersections size: 2
+intersect: 319 240
+intersect: 435 240
+fillingLines: 319 240, 435 240
+
+----intersections size: 2
+intersect: 319 241
+intersect: 435 241
+fillingLines: 319 241, 435 241
+
+----intersections size: 2
+intersect: 320 242
+intersect: 435 242
+fillingLines: 320 242, 435 242
+
+----intersections size: 2
+intersect: 320 243
+intersect: 435 243
+fillingLines: 320 243, 435 243
+
+----intersections size: 2
+intersect: 321 244
+intersect: 435 244
+fillingLines: 321 244, 435 244
+
+----intersections size: 2
+intersect: 322 245
+intersect: 435 245
+fillingLines: 322 245, 435 245
+
+----intersections size: 2
+intersect: 323 246
+intersect: 435 246
+fillingLines: 323 246, 435 246
+
+----intersections size: 2
+intersect: 324 247
+intersect: 435 247
+fillingLines: 324 247, 435 247
+
+----intersections size: 2
+intersect: 325 248
+intersect: 435 248
+fillingLines: 325 248, 435 248
+
+----intersections size: 2
+intersect: 326 249
+intersect: 435 249
+fillingLines: 326 249, 435 249
+
+----intersections size: 2
+intersect: 328 250
+intersect: 435 250
+fillingLines: 328 250, 435 250
+
+----intersections size: 2
+intersect: 329 251
+intersect: 435 251
+fillingLines: 329 251, 435 251
+
+----intersections size: 2
+intersect: 330 252
+intersect: 435 252
+fillingLines: 330 252, 435 252
+
+----intersections size: 2
+intersect: 331 253
+intersect: 435 253
+fillingLines: 331 253, 435 253
+
+----intersections size: 2
+intersect: 332 254
+intersect: 435 254
+fillingLines: 332 254, 435 254
+
+----intersections size: 2
+intersect: 333 255
+intersect: 435 255
+fillingLines: 333 255, 435 255
+
+----intersections size: 2
+intersect: 335 256
+intersect: 435 256
+fillingLines: 335 256, 435 256
+
+----intersections size: 2
+intersect: 336 257
+intersect: 435 257
+fillingLines: 336 257, 435 257
+
+----intersections size: 2
+intersect: 337 258
+intersect: 435 258
+fillingLines: 337 258, 435 258
+
+----intersections size: 2
+intersect: 338 259
+intersect: 435 259
+fillingLines: 338 259, 435 259
+
+----intersections size: 2
+intersect: 339 260
+intersect: 435 260
+fillingLines: 339 260, 435 260
+
+----intersections size: 2
+intersect: 340 261
+intersect: 435 261
+fillingLines: 340 261, 435 261
+
+----intersections size: 2
+intersect: 342 262
+intersect: 435 262
+fillingLines: 342 262, 435 262
+
 ----intersections size: 2
-intersect: 200 171
-intersect: 250 171
-fillingLines: 200 171, 250 171
+intersect: 343 263
+intersect: 435 263
+fillingLines: 343 263, 435 263
 
 ----intersections size: 2
-intersect: 200 172
-intersect: 250 172
-fillingLines: 200 172, 250 172
+intersect: 344 264
+intersect: 435 264
+fillingLines: 344 264, 435 264
 
 ----intersections size: 2
-intersect: 200 173
-intersect: 250 173
-fillingLines: 200 173, 250 173
+intersect: 345 265
+intersect: 435 265
+fillingLines: 345 265, 435 265
 
 ----intersections size: 2
-intersect: 200 174
-intersect: 250 174
-fillingLines: 200 174, 250 174
+intersect: 346 266
+intersect: 435 266
+fillingLines: 346 266, 435 266
 
 ----intersections size: 2
-intersect: 200 175
-intersect: 250 175
-fillingLines: 200 175, 250 175
+intersect: 348 267
+intersect: 435 267
+fillingLines: 348 267, 435 267
 
 ----intersections size: 2
-intersect: 200 176
-intersect: 250 176
-fillingLines: 200 176, 250 176
+intersect: 349 268
+intersect: 435 268
+fillingLines: 349 268, 435 268
 
 ----intersections size: 2
-intersect: 200 177
-intersect: 250 177
-fillingLines: 200 177, 250 177
+intersect: 350 269
+intersect: 435 269
+fillingLines: 350 269, 435 269
 
 ----intersections size: 2
-intersect: 200 178
-intersect: 250 178
-fillingLines: 200 178, 250 178
+intersect: 351 270
+intersect: 435 270
+fillingLines: 351 270, 435 270
 
 ----intersections size: 2
-intersect: 200 179
-intersect: 250 179
-fillingLines: 200 179, 250 179
+intersect: 352 271
+intersect: 435 271
+fillingLines: 352 271, 435 271
 
 ----intersections size: 2
-intersect: 200 180
-intersect: 250 180
-fillingLines: 200 180, 250 180
+intersect: 353 272
+intersect: 435 272
+fillingLines: 353 272, 435 272
 
 ----intersections size: 2
-intersect: 200 181
-intersect: 250 181
-fillingLines: 200 181, 250 181
+intersect: 355 273
+intersect: 435 273
+fillingLines: 355 273, 435 273
 
 ----intersections size: 2
-intersect: 200 182
-intersect: 250 182
-fillingLines: 200 182, 250 182
+intersect: 356 274
+intersect: 435 274
+fillingLines: 356 274, 435 274
 
 ----intersections size: 2
-intersect: 200 183
-intersect: 250 183
-fillingLines: 200 183, 250 183
+intersect: 357 275
+intersect: 435 275
+fillingLines: 357 275, 435 275
 
 ----intersections size: 2
-intersect: 200 184
-intersect: 250 184
-fillingLines: 200 184, 250 184
+intersect: 358 276
+intersect: 435 276
+fillingLines: 358 276, 435 276
 
 ----intersections size: 2
-intersect: 200 185
-intersect: 250 185
-fillingLines: 200 185, 250 185
+intersect: 359 277
+intersect: 435 277
+fillingLines: 359 277, 435 277
 
 ----intersections size: 2
-intersect: 200 186
-intersect: 250 186
-fillingLines: 200 186, 250 186
+intersect: 360 278
+intersect: 435 278
+fillingLines: 360 278, 435 278
 
 ----intersections size: 2
-intersect: 200 187
-intersect: 250 187
-fillingLines: 200 187, 250 187
+intersect: 362 279
+intersect: 435 279
+fillingLines: 362 279, 435 279
 
 ----intersections size: 2
-intersect: 200 188
-intersect: 250 188
-fillingLines: 200 188, 250 188
+intersect: 363 280
+intersect: 435 280
+fillingLines: 363 280, 435 280
 
 ----intersections size: 2
-intersect: 200 189
-intersect: 250 189
-fillingLines: 200 189, 250 189
+intersect: 364 281
+intersect: 435 281
+fillingLines: 364 281, 435 281
 
 ----intersections size: 2
-intersect: 200 190
-intersect: 250 190
-fillingLines: 200 190, 250 190
+intersect: 365 282
+intersect: 435 282
+fillingLines: 365 282, 435 282
 
 ----intersections size: 2
-intersect: 200 191
-intersect: 250 191
-fillingLines: 200 191, 250 191
+intersect: 366 283
+intersect: 435 283
+fillingLines: 366 283, 435 283
 
 ----intersections size: 2
-intersect: 200 192
-intersect: 250 192
-fillingLines: 200 192, 250 192
+intersect: 368 284
+intersect: 435 284
+fillingLines: 368 284, 435 284
 
 ----intersections size: 2
-intersect: 200 193
-intersect: 250 193
-fillingLines: 200 193, 250 193
+intersect: 369 285
+intersect: 435 285
+fillingLines: 369 285, 435 285
 
 ----intersections size: 2
-intersect: 200 194
-intersect: 250 194
-fillingLines: 200 194, 250 194
+intersect: 370 286
+intersect: 435 286
+fillingLines: 370 286, 435 286
 
 ----intersections size: 2
-intersect: 200 195
-intersect: 250 195
-fillingLines: 200 195, 250 195
+intersect: 371 287
+intersect: 435 287
+fillingLines: 371 287, 435 287
 
 ----intersections size: 2
-intersect: 200 196
-intersect: 250 196
-fillingLines: 200 196, 250 196
+intersect: 372 288
+intersect: 435 288
+fillingLines: 372 288, 435 288
 
 ----intersections size: 2
-intersect: 200 197
-intersect: 250 197
-fillingLines: 200 197, 250 197
+intersect: 373 289
+intersect: 435 289
+fillingLines: 373 289, 435 289
 
 ----intersections size: 2
-intersect: 200 198
-intersect: 250 198
-fillingLines: 200 198, 250 198
+intersect: 375 290
+intersect: 435 290
+fillingLines: 375 290, 435 290
 
 ----intersections size: 2
-intersect: 200 199
-intersect: 250 199
-fillingLines: 200 199, 250 199
-drawLine: 200 200 - 200 150
-drawLine: 200 150 - 250 50
-drawLine: 250 50 - 250 200
-drawLine: 250 200 - 200 200
-drawLine: 249 51 - 250 51
-drawLine: 249 52 - 250 52
-drawLine: 248 53 - 250 53
-drawLine: 248 54 - 250 54
-drawLine: 247 55 - 250 55
-drawLine: 247 56 - 250 56
-drawLine: 246 57 - 250 57
-drawLine: 246 58 - 250 58
-drawLine: 245 59 - 250 59
-drawLine: 245 60 - 250 60
-drawLine: 244 61 - 250 61
-drawLine: 244 62 - 250 62
-drawLine: 243 63 - 250 63
-drawLine: 243 64 - 250 64
-drawLine: 242 65 - 250 65
-drawLine: 242 66 - 250 66
-drawLine: 241 67 - 250 67
-drawLine: 241 68 - 250 68
-drawLine: 240 69 - 250 69
-drawLine: 240 70 - 250 70
-drawLine: 239 71 - 250 71
-drawLine: 239 72 - 250 72
-drawLine: 238 73 - 250 73
-drawLine: 238 74 - 250 74
-drawLine: 237 75 - 250 75
-drawLine: 237 76 - 250 76
-drawLine: 236 77 - 250 77
-drawLine: 236 78 - 250 78
-drawLine: 235 79 - 250 79
-drawLine: 235 80 - 250 80
-drawLine: 234 81 - 250 81
-drawLine: 234 82 - 250 82
-drawLine: 233 83 - 250 83
-drawLine: 233 84 - 250 84
-drawLine: 232 85 - 250 85
-drawLine: 232 86 - 250 86
-drawLine: 231 87 - 250 87
-drawLine: 231 88 - 250 88
-drawLine: 230 89 - 250 89
-drawLine: 230 90 - 250 90
-drawLine: 229 91 - 250 91
-drawLine: 229 92 - 250 92
-drawLine: 228 93 - 250 93
-drawLine: 228 94 - 250 94
-drawLine: 227 95 - 250 95
-drawLine: 227 96 - 250 96
-drawLine: 226 97 - 250 97
-drawLine: 226 98 - 250 98
-drawLine: 225 99 - 250 99
-drawLine: 225 100 - 250 100
-drawLine: 224 101 - 250 101
-drawLine: 224 102 - 250 102
-drawLine: 223 103 - 250 103
-drawLine: 223 104 - 250 104
-drawLine: 222 105 - 250 105
-drawLine: 222 106 - 250 106
-drawLine: 221 107 - 250 107
-drawLine: 221 108 - 250 108
-drawLine: 220 109 - 250 109
-drawLine: 220 110 - 250 110
-drawLine: 219 111 - 250 111
-drawLine: 219 112 - 250 112
-drawLine: 218 113 - 250 113
-drawLine: 218 114 - 250 114
-drawLine: 217 115 - 250 115
-drawLine: 217 116 - 250 116
-drawLine: 216 117 - 250 117
-drawLine: 216 118 - 250 118
-drawLine: 215 119 - 250 119
-drawLine: 215 120 - 250 120
-drawLine: 214 121 - 250 121
-drawLine: 214 122 - 250 122
-drawLine: 213 123 - 250 123
-drawLine: 213 124 - 250 124
-drawLine: 212 125 - 250 125
-drawLine: 212 126 - 250 126
-drawLine: 211 127 - 250 127
-drawLine: 211 128 - 250 128
-drawLine: 210 129 - 250 129
-drawLine: 210 130 - 250 130
-drawLine: 209 131 - 250 131
-drawLine: 209 132 - 250 132
-drawLine: 208 133 - 250 133
-drawLine: 208 134 - 250 134
-drawLine: 207 135 - 250 135
-drawLine: 207 136 - 250 136
-drawLine: 206 137 - 250 137
-drawLine: 206 138 - 250 138
-drawLine: 205 139 - 250 139
-drawLine: 205 140 - 250 140
-drawLine: 204 141 - 250 141
-drawLine: 204 142 - 250 142
-drawLine: 203 143 - 250 143
-drawLine: 203 144 - 250 144
-drawLine: 202 145 - 250 145
-drawLine: 202 146 - 250 146
-drawLine: 201 147 - 250 147
-drawLine: 201 148 - 250 148
-drawLine: 200 149 - 250 149
-drawLine: 200 150 - 250 150
-drawLine: 200 151 - 250 151
-drawLine: 200 152 - 250 152
-drawLine: 200 153 - 250 153
-drawLine: 200 154 - 250 154
-drawLine: 200 155 - 250 155
-drawLine: 200 156 - 250 156
-drawLine: 200 157 - 250 157
-drawLine: 200 158 - 250 158
-drawLine: 200 159 - 250 159
-drawLine: 200 160 - 250 160
-drawLine: 200 161 - 250 161
-drawLine: 200 162 - 250 162
-drawLine: 200 163 - 250 163
-drawLine: 200 164 - 250 164
-drawLine: 200 165 - 250 165
-drawLine: 200 166 - 250 166
-drawLine: 200 167 - 250 167
-drawLine: 200 168 - 250 168
-drawLine: 200 169 - 250 169
-drawLine: 200 170 - 250 170
-drawLine: 200 171 - 250 171
-drawLine: 200 172 - 250 172
-drawLine: 200 173 - 250 173
-drawLine: 200 174 - 250 174
-drawLine: 200 175 - 250 175
-drawLine: 200 176 - 250 176
-drawLine: 200 177 - 250 177
-drawLine: 200 178 - 250 178
-drawLine: 200 179 - 250 179
-drawLine: 200 180 - 250 180
-drawLine: 200 181 - 250 181
-drawLine: 200 182 - 250 182
-drawLine: 200 183 - 250 183
-drawLine: 200 184 - 250 184
-drawLine: 200 185 - 250 185
-drawLine: 200 186 - 250 186
-drawLine: 200 187 - 250 187
-drawLine: 200 188 - 250 188
-drawLine: 200 189 - 250 189
-drawLine: 200 190 - 250 190
-drawLine: 200 191 - 250 191
-drawLine: 200 192 - 250 192
-drawLine: 200 193 - 250 193
-drawLine: 200 194 - 250 194
-drawLine: 200 195 - 250 195
-drawLine: 200 196 - 250 196
-drawLine: 200 197 - 250 197
-drawLine: 200 198 - 250 198
-drawLine: 200 199 - 250 199
+intersect: 376 291
+intersect: 435 291
+fillingLines: 376 291, 435 291
+
+----intersections size: 2
+intersect: 377 292
+intersect: 435 292
+fillingLines: 377 292, 435 292
+
+----intersections size: 2
+intersect: 378 293
+intersect: 435 293
+fillingLines: 378 293, 435 293
+
+----intersections size: 2
+intersect: 379 294
+intersect: 435 294
+fillingLines: 379 294, 435 294
+
+----intersections size: 2
+intersect: 380 295
+intersect: 435 295
+fillingLines: 380 295, 435 295
+
+----intersections size: 2
+intersect: 382 296
+intersect: 435 296
+fillingLines: 382 296, 435 296
+
+----intersections size: 2
+intersect: 383 297
+intersect: 435 297
+fillingLines: 383 297, 435 297
+
+----intersections size: 2
+intersect: 384 298
+intersect: 435 298
+fillingLines: 384 298, 435 298
+
+----intersections size: 2
+intersect: 385 299
+intersect: 435 299
+fillingLines: 385 299, 435 299
+
+----intersections size: 2
+intersect: 386 300
+intersect: 435 300
+fillingLines: 386 300, 435 300
+drawLine: 350 170 - 347 178
+drawLine: 347 178 - 367 224
+drawLine: 367 224 - 413 205
+drawLine: 413 205 - 397 170
+drawLine: 397 170 - 435 170
+drawLine: 435 170 - 435 301
+drawLine: 435 301 - 388 301
+drawLine: 388 301 - 321 244
+drawLine: 321 244 - 301 198
+drawLine: 301 198 - 312 170
+drawLine: 312 170 - 350 170
+drawLine: 312 170 - 350 170
+drawLine: 397 170 - 435 170
+drawLine: 311 171 - 349 171
+drawLine: 397 171 - 435 171
+drawLine: 311 172 - 349 172
+drawLine: 397 172 - 435 172
+drawLine: 310 173 - 348 173
+drawLine: 398 173 - 435 173
+drawLine: 310 174 - 348 174
+drawLine: 398 174 - 435 174
+drawLine: 310 175 - 348 175
+drawLine: 399 175 - 435 175
+drawLine: 309 176 - 347 176
+drawLine: 399 176 - 435 176
+drawLine: 309 177 - 347 177
+drawLine: 400 177 - 435 177
+drawLine: 308 178 - 347 178
+drawLine: 400 178 - 435 178
+drawLine: 308 179 - 347 179
+drawLine: 401 179 - 435 179
+drawLine: 308 180 - 347 180
+drawLine: 401 180 - 435 180
+drawLine: 307 181 - 348 181
+drawLine: 402 181 - 435 181
+drawLine: 307 182 - 348 182
+drawLine: 402 182 - 435 182
+drawLine: 306 183 - 349 183
+drawLine: 402 183 - 435 183
+drawLine: 306 184 - 349 184
+drawLine: 403 184 - 435 184
+drawLine: 306 185 - 350 185
+drawLine: 403 185 - 435 185
+drawLine: 305 186 - 350 186
+drawLine: 404 186 - 435 186
+drawLine: 305 187 - 350 187
+drawLine: 404 187 - 435 187
+drawLine: 304 188 - 351 188
+drawLine: 405 188 - 435 188
+drawLine: 304 189 - 351 189
+drawLine: 405 189 - 435 189
+drawLine: 304 190 - 352 190
+drawLine: 406 190 - 435 190
+drawLine: 303 191 - 352 191
+drawLine: 406 191 - 435 191
+drawLine: 303 192 - 353 192
+drawLine: 407 192 - 435 192
+drawLine: 302 193 - 353 193
+drawLine: 407 193 - 435 193
+drawLine: 302 194 - 353 194
+drawLine: 407 194 - 435 194
+drawLine: 302 195 - 354 195
+drawLine: 408 195 - 435 195
+drawLine: 301 196 - 354 196
+drawLine: 408 196 - 435 196
+drawLine: 301 197 - 355 197
+drawLine: 409 197 - 435 197
+drawLine: 301 198 - 355 198
+drawLine: 409 198 - 435 198
+drawLine: 301 199 - 356 199
+drawLine: 410 199 - 435 199
+drawLine: 301 200 - 356 200
+drawLine: 410 200 - 435 200
+drawLine: 302 201 - 357 201
+drawLine: 411 201 - 435 201
+drawLine: 302 202 - 357 202
+drawLine: 411 202 - 435 202
+drawLine: 303 203 - 357 203
+drawLine: 412 203 - 435 203
+drawLine: 303 204 - 358 204
+drawLine: 412 204 - 435 204
+drawLine: 304 205 - 358 205
+drawLine: 413 205 - 435 205
+drawLine: 304 206 - 359 206
+drawLine: 410 206 - 435 206
+drawLine: 304 207 - 359 207
+drawLine: 408 207 - 435 207
+drawLine: 305 208 - 360 208
+drawLine: 405 208 - 435 208
+drawLine: 305 209 - 360 209
+drawLine: 403 209 - 435 209
+drawLine: 306 210 - 360 210
+drawLine: 400 210 - 435 210
+drawLine: 306 211 - 361 211
+drawLine: 398 211 - 435 211
+drawLine: 307 212 - 361 212
+drawLine: 396 212 - 435 212
+drawLine: 307 213 - 362 213
+drawLine: 393 213 - 435 213
+drawLine: 307 214 - 362 214
+drawLine: 391 214 - 435 214
+drawLine: 308 215 - 363 215
+drawLine: 388 215 - 435 215
+drawLine: 308 216 - 363 216
+drawLine: 386 216 - 435 216
+drawLine: 309 217 - 363 217
+drawLine: 383 217 - 435 217
+drawLine: 309 218 - 364 218
+drawLine: 381 218 - 435 218
+drawLine: 310 219 - 364 219
+drawLine: 379 219 - 435 219
+drawLine: 310 220 - 365 220
+drawLine: 376 220 - 435 220
+drawLine: 311 221 - 365 221
+drawLine: 374 221 - 435 221
+drawLine: 311 222 - 366 222
+drawLine: 371 222 - 435 222
+drawLine: 311 223 - 366 223
+drawLine: 369 223 - 435 223
+drawLine: 312 224 - 435 224
+drawLine: 312 225 - 435 225
+drawLine: 313 226 - 435 226
+drawLine: 313 227 - 435 227
+drawLine: 314 228 - 435 228
+drawLine: 314 229 - 435 229
+drawLine: 314 230 - 435 230
+drawLine: 315 231 - 435 231
+drawLine: 315 232 - 435 232
+drawLine: 316 233 - 435 233
+drawLine: 316 234 - 435 234
+drawLine: 317 235 - 435 235
+drawLine: 317 236 - 435 236
+drawLine: 317 237 - 435 237
+drawLine: 318 238 - 435 238
+drawLine: 318 239 - 435 239
+drawLine: 319 240 - 435 240
+drawLine: 319 241 - 435 241
+drawLine: 320 242 - 435 242
+drawLine: 320 243 - 435 243
+drawLine: 321 244 - 435 244
+drawLine: 322 245 - 435 245
+drawLine: 323 246 - 435 246
+drawLine: 324 247 - 435 247
+drawLine: 325 248 - 435 248
+drawLine: 326 249 - 435 249
+drawLine: 328 250 - 435 250
+drawLine: 329 251 - 435 251
+drawLine: 330 252 - 435 252
+drawLine: 331 253 - 435 253
+drawLine: 332 254 - 435 254
+drawLine: 333 255 - 435 255
+drawLine: 335 256 - 435 256
+drawLine: 336 257 - 435 257
+drawLine: 337 258 - 435 258
+drawLine: 338 259 - 435 259
+drawLine: 339 260 - 435 260
+drawLine: 340 261 - 435 261
+drawLine: 342 262 - 435 262
+drawLine: 343 263 - 435 263
+drawLine: 344 264 - 435 264
+drawLine: 345 265 - 435 265
+drawLine: 346 266 - 435 266
+drawLine: 348 267 - 435 267
+drawLine: 349 268 - 435 268
+drawLine: 350 269 - 435 269
+drawLine: 351 270 - 435 270
+drawLine: 352 271 - 435 271
+drawLine: 353 272 - 435 272
+drawLine: 355 273 - 435 273
+drawLine: 356 274 - 435 274
+drawLine: 357 275 - 435 275
+drawLine: 358 276 - 435 276
+drawLine: 359 277 - 435 277
+drawLine: 360 278 - 435 278
+drawLine: 362 279 - 435 279
+drawLine: 363 280 - 435 280
+drawLine: 364 281 - 435 281
+drawLine: 365 282 - 435 282
+drawLine: 366 283 - 435 283
+drawLine: 368 284 - 435 284
+drawLine: 369 285 - 435 285
+drawLine: 370 286 - 435 286
+drawLine: 371 287 - 435 287
+drawLine: 372 288 - 435 288
+drawLine: 373 289 - 435 289
+drawLine: 375 290 - 435 290
+drawLine: 376 291 - 435 291
+drawLine: 377 292 - 435 292
+drawLine: 378 293 - 435 293
+drawLine: 379 294 - 435 294
+drawLine: 380 295 - 435 295
+drawLine: 382 296 - 435 296
+drawLine: 383 297 - 435 297
+drawLine: 384 298 - 435 298
+drawLine: 385 299 - 435 299
+drawLine: 386 300 - 435 300
 
 New Polygon
-----------fill boundary: 0 0, 250 250
+----------fill boundary: -100 170, 435 301
 
 
 New Polygon
 2nd case: first vertice in side, second outside
-----------fill boundary: 0 0, 250 250
+----------fill boundary: -100 170, 435 301
 
 
 New Polygon
-----------fill boundary: 0 0, 250 250
+2nd case: first vertice in side, second outside
+2nd case: first vertice in side, second outside
+----------fill boundary: -100 170, 435 301
 

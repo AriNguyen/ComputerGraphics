@@ -61,7 +61,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         boundary.getTopRight().y
     );
     
-    // edgeList.insert(edgeList.end(), lines.begin(), lines.end());
+    edgeList.insert(edgeList.end(), lines.begin(), lines.end());
     for (int i = 0; i < points.size(); ++i) {
         Point p = points[i];
         Point p1 = points[(i + 1) % points.size()];
@@ -82,7 +82,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
                 p1 = temp;
             }
             edgeList.push_back(Line(p, p1));
-            // fprintf(stderr, "scanLine: %d %d, %d %d\n", p.x, p.y, p1.x, p1.y);
+            // fprintf(stderr, "edgeList: %d %d, %d %d\n", p.x, p.y, p1.x, p1.y);
         }
     }
     fprintf(stderr, "\n");
@@ -91,7 +91,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
 
     // print scan Line
     for (int i = 0; i < edgeList.size(); ++i) 
-        fprintf(stderr, "scanLine: %d %d, %d %d\n", edgeList[i].p0.x, edgeList[i].p0.y, edgeList[i].p1.x, edgeList[i].p1.y);
+        fprintf(stderr, "edgeList: %d %d, %d %d\n", edgeList[i].p0.x, edgeList[i].p0.y, edgeList[i].p1.x, edgeList[i].p1.y);
 
     int lowY = edgeList[0].p0.y;
     int topY = edgeList[0].p0.y;
@@ -117,10 +117,10 @@ std::vector<Line> Polygon::fill(Canva boundary) {
 
         // fprintf(stderr, "\nintersect with: %d %d, %d %d\n", lowPoint.x, lowPoint.y, topPoint.x, topPoint.y);
         for (int j = 0; j < edgeList.size(); ++j) {
-            // fprintf(stderr, "\nscanLine here: %d %d, %d %d\n", edgeList[j].p0.x, edgeList[j].p0.y, edgeList[j].p1.x, edgeList[j].p1.y);
+            // fprintf(stderr, "\nedgeList here: %d %d, %d %d\n", edgeList[j].p0.x, edgeList[j].p0.y, edgeList[j].p1.x, edgeList[j].p1.y);
             
             // in range edgeList
-            if (!(i >= edgeList[j].p0.y && i <= edgeList[j].p1.y)) 
+            if (!(i >= edgeList[j].p0.y && i < edgeList[j].p1.y)) 
                 continue;
 
             // get intersection
@@ -141,6 +141,16 @@ std::vector<Line> Polygon::fill(Canva boundary) {
                 fprintf(stderr, "intersect: %d %d\n", is1.x, is1.y);
         }
 
+        // remove mid point
+        if (intersections.size() > 1 && !(intersections.size() % 2 == 0)) {
+            fprintf(stderr, "mid point: %d\n", (int)(intersections.size() / 2));
+            Point midpoint = intersections[(int)(intersections.size() / 2)];
+            for (auto edge: edgeList) {
+                if (midpoint == edge.p0 || midpoint == edge.p1) 
+                    intersections.erase(std::remove(intersections.begin(), intersections.end(), midpoint), intersections.end());
+            }
+            fprintf(stderr, "----intersections size after: %lu\n", intersections.size());
+        }
         // add filling Lines
         if ((intersections.size() % 2) == 0)
             for (int j = 0; j < intersections.size(); j += 2) {

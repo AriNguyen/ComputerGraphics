@@ -194,6 +194,7 @@ Point getIntersection(Point p0, Point p1, Point p2, Point p3) {
     int b2 = p2.y - p3.y;
     int c2 = p2.x * p3.y - p3.x * p2.y;
 
+    // parallel
     int det = a1 * b2 - a2 * b1;
     if (det == 0) 
         return Point(INT_MAX, INT_MAX);

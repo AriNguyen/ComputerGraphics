@@ -61,27 +61,42 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         boundary.getTopRight().y
     );
     
-    edgeList.insert(edgeList.end(), lines.begin(), lines.end());
+    // edgeList.insert(edgeList.end(), lines.begin(), lines.end());
     for (int i = 0; i < points.size(); ++i) {
         Point p = points[i];
         Point p1 = points[(i + 1) % points.size()];
         int dy = p1.y - p.y;
 
-        // fprintf(stderr, "point: %d %d\n", p.x, p.y);
+        // fprintf(stderr, "point: %d %d, %d %d\n", p.x, p.y, p1.x, p1.y);
         // case: edge is horizontal
         if (dy == 0)
         // case: ymax on scan-line
             continue;
         // else if (p == boundary.getTopRight()) 
         //     continue;
-        else if (p.y >= boundary.getBottomLeft().y && p.y <= boundary.getTopRight().y) {
+        if (p.y >= boundary.getBottomLeft().y && p.y <= boundary.getTopRight().y) {
             // sort by y
             if (p.y > p1.y) {
                 auto temp = p;
                 p = p1;
                 p1 = temp;
             }
-            edgeList.push_back(Line(p, p1));
+            // if edge is is subset of other
+            auto l = Line(p, p1);
+            int same_line = 0;
+            for (auto e: edgeList) {
+                // get slope
+                int dy_l = l.p1.x - l.p0.x;
+                int dy_e = e.p1.x - e.p0.x;
+
+                if (dy_l == dy_e && dy_l == 0) {
+                    if (l.p1 == e.p1) {
+                        same_line = 1;
+                    }
+                }
+            }
+            if (!same_line)
+                edgeList.push_back(l);
             // fprintf(stderr, "edgeList: %d %d, %d %d\n", p.x, p.y, p1.x, p1.y);
         }
     }
@@ -120,14 +135,13 @@ std::vector<Line> Polygon::fill(Canva boundary) {
             // fprintf(stderr, "\nedgeList here: %d %d, %d %d\n", edgeList[j].p0.x, edgeList[j].p0.y, edgeList[j].p1.x, edgeList[j].p1.y);
             
             // in range edgeList
-            if (!(i >= edgeList[j].p0.y && i < edgeList[j].p1.y)) 
+            if (!(i >= edgeList[j].p0.y && i <= edgeList[j].p1.y)) 
                 continue;
 
             // get intersection
             Point intersect = getIntersection(edgeList[j].p0, edgeList[j].p1, lowPoint, topPoint);
             // fprintf(stderr, "intersect: %d %d\n", intersect.x, intersect.y);
         
-
             // intersections not contains intersect
             if(std::find(intersections.begin(), intersections.end(), intersect) == intersections.end())
                 if (intersect.x != INT_MAX)
@@ -142,7 +156,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         }
 
         // remove mid point
-        if (intersections.size() > 1 && !(intersections.size() % 2 == 0)) {
+        if (intersections.size() > 1 && !(intersections.size() % 2 == 0)) { // odd len
             for (auto i : intersections) {
                 for (auto edge: edgeList) {
                     fprintf(stderr, "edge: %d %d, %d %d\n", edge.p0.x, edge.p0.y, edge.p1.x, edge.p1.y);

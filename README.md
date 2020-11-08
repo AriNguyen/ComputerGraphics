@@ -1,6 +1,17 @@
 # Computer Graphics
 CS430-ComputerGrahics
 
+# Lecture
+**Oct 26 Lecture**
+- 
+
+**Oct 19th Lecture**
+- Week 4: Intro to Curves (1:30:00)
+- Week 3:
+    World to View Port: (00:10:00)
+    Polygon Filling Algorithm (00:21:00)
+    Circle Drawing and Clipping (00:38:00)
+
 # Overview
 - Assignment 1 (Draw clipped lines)
 - Assignment 2 (Sutherland-Hodgman polygon clipping)

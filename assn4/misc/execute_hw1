@@ -9,5 +9,5 @@ options=("-a 0 -b 0 -c 499 -d 499 -s 1.0 -m 0 -n 0 -r 0" "-a 0 -b 0 -c 499 -d 49
 outfile=("out.pbm" "hw1.pbm" "scale.pbm" "nrotate.pbm" "translate.pbm" "worldwindow.pbm" "all.pbm")
 
 for i in ${!options[@]}; do
-    ./CG_hw3 -f $imgFolder/hw1.ps ${options[$i]} > $outFolder/${outfile[$i]} 
+    ./CG_hw4 -f $imgFolder/hw1.ps ${options[$i]} > $outFolder/${outfile[$i]} 
 done

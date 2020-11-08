@@ -9,5 +9,5 @@ options=("-s 1.5" "-m -250 -n -200" "-a 170 -b 100 -c 270 -d 400" "-s 2" "-a 200
 file=("a" "a" "b" "b" "c" "c" "b" "b" "c")
 
 for i in ${!options[@]}; do
-    ./CG_hw3 -f $imgFolder/hw2_${file[$i]}.ps ${options[$i]}> $outFolder/hw2_ex$(($i+1)).pbm 
+    ./CG_hw4 -f $imgFolder/hw2_${file[$i]}.ps ${options[$i]}> $outFolder/hw2_ex$(($i+1)).pbm 
 done

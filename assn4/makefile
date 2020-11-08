@@ -1,8 +1,8 @@
 GPP := g++
 PPFLAGS := -std=c++11
-SRC := CG_hw3.cpp 
+SRC := CG_hw4.cpp 
 INCLUDE:= pbm_file.cpp utils.cpp ps_image.cpp geometry_objects.cpp transformations.cpp drawing.cpp
-EXE := CG_hw3
+EXE := CG_hw4
 .PHONY: cleanall
 
 ${EXE} : ${SRC} ${INCLUDE}

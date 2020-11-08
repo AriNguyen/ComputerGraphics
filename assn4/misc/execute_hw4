@@ -1,7 +1,7 @@
 #!/bin/bash
-# @file execute
+# @file execute_hw4
 # @author Arya Nguyen
-# @brief run all cmds to test hw2 images
+# @brief run all cmds to test hw4 images
 
 imgFolder="img"
 outFolder="output/hw3"

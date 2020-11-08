@@ -3,7 +3,9 @@ CS430-ComputerGrahics
 
 # Lecture
 **Oct 26 Lecture**
-- 
+- Week 4: continue
+    Bezier Curve
+    
 
 **Oct 19th Lecture**
 - Week 4: Intro to Curves (1:30:00)

@@ -18,8 +18,8 @@ struct PBMFile {
     Canva worldView, viewPort, world;
 
     PBMFile() {};
-    void load(std::vector<Point>);
-    void toStdOut(std::vector<Point>);
+    void load(std::vector<Point<int>>);
+    void toStdOut(std::vector<Point<int>>);
     void clear();
 };
 

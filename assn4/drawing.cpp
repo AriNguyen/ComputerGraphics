@@ -11,7 +11,7 @@
  * @param 2 points and window size
  * @return 0: if both points are outside, otherwise return 1;
  */
-int clipLine(Point &p0, Point &p1, Canva win) {
+int clipLine(Point<int> &p0, Point<int> &p1, Canva win) {
     int outCode0 = getOutCode(p0, win.bottomLeft, win.topRight);
     int outCode1 = getOutCode(p1, win.bottomLeft, win.topRight);
     while (true) {
@@ -21,7 +21,7 @@ int clipLine(Point &p0, Point &p1, Canva win) {
             return 0;
         } else {                            // either of 2 points out side window
             int outCode = outCode1 > outCode0 ? outCode1 : outCode0;    // get larger one
-            Point intersect;
+            Point<int> intersect;
             int dx = p1.x - p0.x;
             int dy = p1.y - p0.y;
             // point is above the clip window
@@ -59,15 +59,15 @@ int clipLine(Point &p0, Point &p1, Canva win) {
  * @param: 2 points of the line
  * @return vector of points lie in the line
  */
-std::vector<Point> drawLine(Point p0, Point p1) {
-    std::vector<Point> points;
+std::vector<Point<int>> drawLine(Point<int> p0, Point<int> p1) {
+    std::vector<Point<int>> points;
     int dx = abs(p1.x - p0.x);
     int sx = p0.x < p1.x ? 1 : -1;
     int dy = -abs(p1.y - p0.y);
     int sy = p0.y < p1.y ? 1 : -1;
     int error = dx + dy;  
     while (true) {  
-        Point p = {p0.x, p0.y};
+        Point<int> p = {p0.x, p0.y};
         points.push_back(p);
         if (p0.x == p1.x && p0.y == p1.y) 
             break;
@@ -87,10 +87,10 @@ std::vector<Point> drawLine(Point p0, Point p1) {
 /** Apply Sutherland-Hodgman
  * @return vector of clipped vertices of polygon
  */
-int clipPolygon(std::vector<Point> &vertices, Canva win) {
-    std::vector<Point> clippedVertices;
-    std::vector<Point> newVertices;
-    std::vector<Point> winVertices = {
+int clipPolygon(std::vector<Point<int>> &vertices, Canva win) {
+    std::vector<Point<int>> clippedVertices;
+    std::vector<Point<int>> newVertices;
+    std::vector<Point<int>> winVertices = {
         win.bottomLeft,
         win.topLeft,
         win.topRight,
@@ -106,7 +106,7 @@ int clipPolygon(std::vector<Point> &vertices, Canva win) {
         //     winVertices[(i + 1) % winVerticesSize].x,
         //     winVertices[(i + 1) % winVerticesSize].y
         // );
-        Line clippedLine(
+        Line<int> clippedLine(
             winVertices[i % winVerticesSize],
             winVertices[(i + 1) % winVerticesSize]
         );
@@ -117,8 +117,8 @@ int clipPolygon(std::vector<Point> &vertices, Canva win) {
             //     vertices[j + 1].x, 
             //     vertices[j + 1].y
             // );
-            Point p0 = vertices[j];
-            Point p1 = vertices[j + 1];
+            Point<int> p0 = vertices[j];
+            Point<int> p1 = vertices[j + 1];
             int posToClipLine1 = getDistancePointToLine(p0, clippedLine);
             int posToClipLine2 = getDistancePointToLine(p1, clippedLine);
             // fprintf(stderr, "distance: %d, %d\n", posToClipLine1, posToClipLine2);
@@ -170,7 +170,7 @@ int clipPolygon(std::vector<Point> &vertices, Canva win) {
  * @param Get 2 points and window size
  * @return 0: if both points are outside. Otherwise return 1;
  */
-int getOutCode(Point point, Point bottomLeft, Point topRight) {
+int getOutCode(Point<int> point, Point<int> bottomLeft, Point<int> topRight) {
     int code = INSIDE; // default to be inside
     if (point.x < bottomLeft.x) // to the left of rectangle 
         code |= LEFT; 
@@ -183,11 +183,11 @@ int getOutCode(Point point, Point bottomLeft, Point topRight) {
     return code; 
 }
 
-/** get Intersection Point of 2 lines
+/** get Intersection Point<int> of 2 lines
  * @param 4 points
  * @return intersecting point
  */
-Point getIntersection(Point p0, Point p1, Point p2, Point p3) {
+Point<int> getIntersection(Point<int> p0, Point<int> p1, Point<int> p2, Point<int> p3) {
     int a1 = p0.x - p1.x;
     int b1 = p0.y - p1.y;
     int c1 = p0.x * p1.y - p1.x * p0.y;
@@ -199,15 +199,15 @@ Point getIntersection(Point p0, Point p1, Point p2, Point p3) {
     // parallel
     int det = a1 * b2 - a2 * b1;
     if (det == 0) 
-        return Point(INT_MAX, INT_MAX);
+        return Point<int>(INT_MAX, INT_MAX);
     int x = (c1 * a2 - c2 * a1) / det;
     int y = (c1 * b2 - c2 * b1) / det;
     // fprintf(stderr, "getIntersection: %d %d, %d %d (with) %d %d, %d %d => %d %d\n", p0.x, p0.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, x, y);
-    return Point(x, y);
+    return Point<int>(x, y);
 }
 
-int getDistancePointToLine(Point p, Line l) {
-    // fprintf(stderr, "getDistance: %d %d, Line: %d %d, %d %d\n", p.x, p.y, l.p0.x, l.p0.y, l.p1.x, l.p1.y);
+int getDistancePointToLine(Point<int> p, Line<int> l) {
+    // fprintf(stderr, "getDistance: %d %d, Line<int>: %d %d, %d %d\n", p.x, p.y, l.p0.x, l.p0.y, l.p1.x, l.p1.y);
     int distance = (l.p1.x - l.p0.x) * (p.y - l.p0.y) - (l.p1.y - l.p0.y) * (p.x - l.p0.x);
     return distance;
 }
@@ -217,7 +217,7 @@ int getDistancePointToLine(Point p, Line l) {
  * 
  * 
  */
-void worldToViewPort(Point* p, Canva worldView, Canva viewPort) {
+void worldToViewPort(Point<int>* p, Canva worldView, Canva viewPort) {
     // scaling factors for x coordinate and y coordinate 
     float sx, sy; 
   

@@ -7,7 +7,7 @@
 #include "pbm_file.hpp"
 #include "geometry_objects.hpp"
 
-void PBMFile::toStdOut(std::vector<Point> points) {
+void PBMFile::toStdOut(std::vector<Point<int>> points) {
     fprintf(stdout, "P1\n");
     fprintf(stdout, "%d %d\n", world.width, world.height);
     std::vector<std::vector<int>> pixelArr(world.width, std::vector<int> (world.height, 0));

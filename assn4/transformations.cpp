@@ -14,7 +14,7 @@ void scale(int &x, int &y, float scaleFactor) {
     y = round(y * scaleFactor);
 }
 
-void rotate(int &x, int &y, int rotateAngle, Point rotatePoint) {
+void rotate(int &x, int &y, int rotateAngle, Point<int> rotatePoint) {
     int x0 = x;
     int y0 = y;
     const float rad = rotateAngle * PI/180;

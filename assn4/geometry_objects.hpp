@@ -3,24 +3,32 @@
 
 #include <vector>
 
+template <class T>
 struct Point {
-    int x, y, z;
+    T x, y, z;
     Point() {};
-    Point(int, int);
-    Point(int, int, int);
-    virtual bool operator==(const Point&) const;
-    virtual bool operator!=(const Point&) const;
-    virtual bool operator<(const Point&) const;
+    Point(T, T);
+    Point(T, T, T);
+    bool operator==(const Point<T> &other) {
+        return (x == other.x && y == other.y && z == other.z);
+    }
+    bool operator!=(const Point<T> &other) {
+        return !(x == other.x && y == other.y && z == other.z);
+    }
+    bool operator<(const Point<T> &other) {
+        return x < other.x;
+    }
 };
 
+template <class T>
 struct Line {
-    Point p0, p1;
+    Point<T> p0, p1;
     Line() {};
-    Line(Point, Point);
+    Line(Point<T>, Point<T>);
 };
 
 struct Canva {
-    Point topLeft, topRight, bottomLeft, bottomRight;
+    Point<int> bottomLeft, topLeft, bottomRight, topRight;
     int height, width;
     Canva() {};
     Canva(int, int, int, int);
@@ -29,38 +37,38 @@ struct Canva {
 };
 
 struct Polygon {
-    std::vector<Point> points;
-    std::vector<Line> lines;    // lines that connect 2 points of the all points in the Polygon
+    std::vector<Point<int>> points;
+    std::vector<Line<int>> lines;    // lines that connect 2 points of the all points in the Polygon
 
     Polygon();
-    Polygon(std::vector<Point>);
+    Polygon(std::vector<Point<int>>);
     virtual ~Polygon();
     void clear();
     void updateLines();
-    std::vector<Line> fill(Canva);  // return all points inside polygon
-    std::vector<Point> getPoints();
-    std::vector<Line> getLines();
-    void setPoints(std::vector<Point>);
-    void setLines(std::vector<Line>);
-    void addPoint(Point);
-    void addLine(Line);
+    std::vector<Line<int>> fill(Canva);  // return all points inside polygon
+    std::vector<Point<int>> getPoints();
+    std::vector<Line<int>> getLines();
+    void setPoints(std::vector<Point<int>>);
+    void setLines(std::vector<Line<int>>);
+    void addPoint(Point<int>);
+    void addLine(Line<int>);
 };
 
 struct GeoObjects {
-    std::vector<Point> points;
-    std::vector<Line> lines;
+    std::vector<Point<int>> points;
+    std::vector<Line<int>> lines;
     std::vector<Polygon> polygons;
 
     GeoObjects() {};
-    GeoObjects(std::vector<Point>, std::vector<Line>, std::vector<Polygon>);
-    std::vector<Point> getPoints();
-    std::vector<Line> getLines();
+    GeoObjects(std::vector<Point<int>>, std::vector<Line<int>>, std::vector<Polygon>);
+    std::vector<Point<int>> getPoints();
+    std::vector<Line<int>> getLines();
     std::vector<Polygon> getPolygons();
-    void setPoints(std::vector<Point>);
-    void setLines(std::vector<Line>);
+    void setPoints(std::vector<Point<int>>);
+    void setLines(std::vector<Line<int>>);
     void setPolygons(std::vector<Polygon>);
-    void addPoint(Point);
-    void addLine(Line);
+    void addPoint(Point<int>);
+    void addLine(Line<int>);
     void addPolygon(Polygon);
 };
 

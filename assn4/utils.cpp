@@ -19,10 +19,10 @@ std::vector<std::string> tokenizeBySymbol(std::string str, char symbol) {
     return tokens;
 } 
 
-bool compPoint(const Point& lhs, const Point& rhs) {
+bool compPoint(const Point<int>& lhs, const Point<int>& rhs) {
   return lhs.x < rhs.x;
 }
 
-bool compLine(const Line& lhs, const Line& rhs) {
+bool compLine(const Line<int>& lhs, const Line<int>& rhs) {
   return lhs.p0.y < rhs.p0.y;
 }

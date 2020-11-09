@@ -10,7 +10,7 @@
 #include "utils.hpp"
 
 void scale(int&, int&, float);
-void rotate(int&, int&, int, Point);
+void rotate(int&, int&, int, Point<int>);
 void translate(int&, int&, int, int);
 
 #endif

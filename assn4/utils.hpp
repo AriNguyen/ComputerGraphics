@@ -9,8 +9,8 @@
 
 
 std::vector<std::string> tokenizeBySymbol(std::string, char);
-bool compPoint(const Point&, const Point&); 
-bool compLine(const Line&, const Line&); 
+bool compPoint(const Point<int>&, const Point<int>&); 
+bool compLine(const Line<int>&, const Line<int>&); 
 
 
 #endif

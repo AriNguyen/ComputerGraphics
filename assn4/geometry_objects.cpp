@@ -7,24 +7,17 @@
 #include "utils.hpp"
 
 /** Point **/
-Point::Point(int a, int b) 
+template <class T>
+Point<T>::Point(T a, T b) 
 : x{a}, y{b}, z{0} {}
 
-Point::Point(int a, int b, int c) 
+template <class T>
+Point<T>::Point(T a, T b, T c) 
 : x{a}, y{b}, z{c} {}
 
-bool Point::operator==(const Point& other) const {
-    return x == other.x && y == other.y && z == other.z;
-}
-bool Point::operator!=(const Point& other) const {
-    return !(x == other.x && y == other.y && z == other.z);
-}
-bool Point::operator<(const Point& other) const {
-    return x < other.x;
-}
-
 /** Line **/
-Line::Line(Point a, Point b) 
+template <class T>
+Line<T>::Line(Point<T> a, Point<T> b) 
 : p0{a}, p1{b} {}
 
 
@@ -32,7 +25,7 @@ Line::Line(Point a, Point b)
 Polygon::Polygon() {
     points.clear();
 }
-Polygon::Polygon(std::vector<Point> p) {
+Polygon::Polygon(std::vector<Point<int>> p) {
     setPoints(p);
 }
 Polygon::~Polygon() {
@@ -44,7 +37,7 @@ void Polygon::clear() {
 void Polygon::updateLines() {
     lines.clear();
     for (int i = 0; i < points.size() - 1; ++i) {
-        Line l(points[i], points[i + 1]);
+        Line<int> l(points[i], points[i + 1]);
         addLine(l);
     }
 }
@@ -52,9 +45,9 @@ void Polygon::updateLines() {
  * @param boundary box that the polygon is within
  * @return vector of lines filling the polygons
  */
-std::vector<Line> Polygon::fill(Canva boundary) {
-    std::vector<Line> fillingLines, edgeList;
-    std::vector<Point> intersections;
+std::vector<Line<int>> Polygon::fill(Canva boundary) {
+    std::vector<Line<int>> fillingLines, edgeList;
+    std::vector<Point<int>> intersections;
 
     fprintf(stderr, "----------fill boundary: %d %d, %d %d\n", 
         boundary.bottomLeft.x,
@@ -65,8 +58,8 @@ std::vector<Line> Polygon::fill(Canva boundary) {
     
     // edgeList.insert(edgeList.end(), lines.begin(), lines.end());
     for (int i = 0; i < points.size(); ++i) {
-        Point p = points[i];
-        Point p1 = points[(i + 1) % points.size()];
+        Point<int> p = points[i];
+        Point<int> p1 = points[(i + 1) % points.size()];
         int dy = p1.y - p.y;
 
         // fprintf(stderr, "point: %d %d, %d %d\n", p.x, p.y, p1.x, p1.y);
@@ -84,7 +77,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
                 p1 = temp;
             }
             // if edge is is subset of other
-            Line l(p, p1);
+            Line<int> l(p, p1);
             int same_line = 0;
             for (auto e: edgeList) {
                 // get slope
@@ -129,8 +122,8 @@ std::vector<Line> Polygon::fill(Canva boundary) {
 
     // loop through horizontal scanline
     for (int i = lowY; i < topY; ++i) {
-        Point lowPoint(boundary.bottomLeft.x, i);
-        Point topPoint(boundary.bottomRight.x, i);
+        Point<int> lowPoint(boundary.bottomLeft.x, i);
+        Point<int> topPoint(boundary.bottomRight.x, i);
 
         // fprintf(stderr, "\nintersect with: %d %d, %d %d\n", lowPoint.x, lowPoint.y, topPoint.x, topPoint.y);
         for (int j = 0; j < edgeList.size(); ++j) {
@@ -141,7 +134,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
                 continue;
 
             // get intersection
-            Point intersect = getIntersection(edgeList[j].p0, edgeList[j].p1, lowPoint, topPoint);
+            Point<int> intersect = getIntersection(edgeList[j].p0, edgeList[j].p1, lowPoint, topPoint);
             // fprintf(stderr, "intersect: %d %d\n", intersect.x, intersect.y);
         
             // intersections not contains intersect
@@ -154,7 +147,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         std::sort(std::begin(intersections), std::end(intersections), compPoint);
         fprintf(stderr, "\n----intersections size: %lu\n", intersections.size());
         for (int j = 0; j < intersections.size(); ++j) {
-                Point is1 = intersections[j];
+                Point<int> is1 = intersections[j];
                 fprintf(stderr, "intersect: %d %d\n", is1.x, is1.y);
         }
 
@@ -175,15 +168,15 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         // add filling Lines
         if ((intersections.size() % 2) == 0)
             for (int j = 0; j < intersections.size(); j += 2) {
-                Point is1 = intersections[j];
-                Point is2 = intersections[j + 1];
+                Point<int> is1 = intersections[j];
+                Point<int> is2 = intersections[j + 1];
                 fprintf(stderr, "fillingLines: %d %d, %d %d\n", is1.x, is1.y, is2.x, is2.y);
-                fillingLines.push_back(Line(is1, is2));
+                fillingLines.push_back(Line<int>(is1, is2));
             }
         else if (intersections.size() > 1) {  // odd and > 1
-            Point is1 = intersections.front();   // first
-            Point is2 = intersections.back();  // last
-            fillingLines.push_back(Line(is1, is2));
+            Point<int> is1 = intersections.front();   // first
+            Point<int> is2 = intersections.back();  // last
+            fillingLines.push_back(Line<int>(is1, is2));
         }
         intersections.clear();
     }
@@ -192,55 +185,55 @@ std::vector<Line> Polygon::fill(Canva boundary) {
     return lines;
 }
 
-std::vector<Point> Polygon::getPoints() {
+std::vector<Point<int>> Polygon::getPoints() {
     return points;
 }
-std::vector<Line> Polygon::getLines() {
+std::vector<Line<int>> Polygon::getLines() {
     return lines;
 }
-void Polygon::setPoints(std::vector<Point> p) {
+void Polygon::setPoints(std::vector<Point<int>> p) {
     points = p;
     updateLines();
 }
-void Polygon::setLines(std::vector<Line> l) {
+void Polygon::setLines(std::vector<Line<int>> l) {
     lines = l;
 }
-void Polygon::addPoint(Point p) {
+void Polygon::addPoint(Point<int> p) {
     points.push_back(p);
     updateLines();
 }
-void Polygon::addLine(Line l) {
+void Polygon::addLine(Line<int> l) {
     lines.push_back(l);
 }
 
 /** GeoObjects **/
-GeoObjects::GeoObjects(std::vector<Point> p, std::vector<Line> l, std::vector<Polygon> poly) {
+GeoObjects::GeoObjects(std::vector<Point<int>> p, std::vector<Line<int>> l, std::vector<Polygon> poly) {
     setPoints(p);
     setLines(l);
     setPolygons(poly);
 }
-std::vector<Point> GeoObjects::getPoints() {
+std::vector<Point<int>> GeoObjects::getPoints() {
     return points;
 }
-std::vector<Line> GeoObjects::getLines() {
+std::vector<Line<int>> GeoObjects::getLines() {
     return lines;
 }
 std::vector<Polygon> GeoObjects::getPolygons() {
     return polygons;
 }
-void GeoObjects::setPoints(std::vector<Point> p) {
+void GeoObjects::setPoints(std::vector<Point<int>> p) {
     points = p;
 }
-void GeoObjects::setLines(std::vector<Line> l) {
+void GeoObjects::setLines(std::vector<Line<int>> l) {
     lines = l;
 }
 void GeoObjects::setPolygons(std::vector<Polygon> p) {
     polygons = p;
 }
-void GeoObjects::addPoint(Point p) {
+void GeoObjects::addPoint(Point<int> p) {
     points.push_back(p);
 }
-void GeoObjects::addLine(Line l) {
+void GeoObjects::addLine(Line<int> l) {
     lines.push_back(l);
 }
 void GeoObjects::addPolygon(Polygon p) {

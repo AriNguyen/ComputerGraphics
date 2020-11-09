@@ -16,10 +16,13 @@
 
 struct Specs {
     char *fileName;
-    float scaleFactor;
-    int rotateAngle, xDim, yDim;
-    // int lowX, lowY, upX, upY;
-    Canva worldView, viewPort, world;
+    bool isParallelProjection;
+
+    // PRP: Projection Reference
+    // VRP: View Reference
+    // VUP: View UP Vector
+    Point PRP, VRP, VUP;
+    Canva worldView, viewPort, world, viewReferenceWindow;
 } specs;
 
 void loadSpecs(int, char *[]);

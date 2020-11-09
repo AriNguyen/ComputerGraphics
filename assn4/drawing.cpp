@@ -12,8 +12,8 @@
  * @return 0: if both points are outside, otherwise return 1;
  */
 int clipLine(Point &p0, Point &p1, Canva win) {
-    int outCode0 = getOutCode(p0, win.getBottomLeft(), win.getTopRight());
-    int outCode1 = getOutCode(p1, win.getBottomLeft(), win.getTopRight());
+    int outCode0 = getOutCode(p0, win.bottomLeft, win.topRight);
+    int outCode1 = getOutCode(p1, win.bottomLeft, win.topRight);
     while (true) {
         if (!(outCode0 | outCode1)) {      // both points inside widnow
             return 1;
@@ -26,28 +26,28 @@ int clipLine(Point &p0, Point &p1, Canva win) {
             int dy = p1.y - p0.y;
             // point is above the clip window
             if (outCode & TOP)            
-                intersect = getIntersection(p0, p1, win.getTopLeft(), win.getTopRight());
+                intersect = getIntersection(p0, p1, win.topLeft, win.topRight);
             // point is below the clip window
 			else if (outCode & BOTTOM)  
-                intersect = getIntersection(p0, p1, win.getBottomLeft(), win.getBottomRight());
+                intersect = getIntersection(p0, p1, win.bottomLeft, win.bottomRight);
 			// point is to the right of clip window
             else if (outCode & RIGHT)   
-                intersect = getIntersection(p0, p1, win.getTopRight(), win.getBottomRight());
+                intersect = getIntersection(p0, p1, win.topRight, win.bottomRight);
 			// point is to the left of clip window
             else if (outCode & LEFT)    
-                intersect = getIntersection(p0, p1, win.getTopLeft(), win.getBottomLeft());
+                intersect = getIntersection(p0, p1, win.topLeft, win.bottomLeft);
 			
             if (outCode == outCode0) {
                 if (intersect.x != INT_MAX) {
                     p0.x = intersect.x;
                     p0.y = intersect.y;
-                    outCode0 = getOutCode(p0, win.getBottomLeft(), win.getTopRight());
+                    outCode0 = getOutCode(p0, win.bottomLeft, win.topRight);
                 }
 			} else {
                 if (intersect.x != INT_MAX) {
                     p1.x = intersect.x;
                     p1.y = intersect.y;
-                    outCode1 = getOutCode(p1, win.getBottomLeft(), win.getTopRight());
+                    outCode1 = getOutCode(p1, win.bottomLeft, win.topRight);
                 }
 			}
         }
@@ -91,10 +91,10 @@ int clipPolygon(std::vector<Point> &vertices, Canva win) {
     std::vector<Point> clippedVertices;
     std::vector<Point> newVertices;
     std::vector<Point> winVertices = {
-        win.getBottomLeft(),
-        win.getTopLeft(),
-        win.getTopRight(),
-        win.getBottomRight()
+        win.bottomLeft,
+        win.topLeft,
+        win.topRight,
+        win.bottomRight
     };
     
     int winVerticesSize = winVertices.size();
@@ -106,10 +106,10 @@ int clipPolygon(std::vector<Point> &vertices, Canva win) {
         //     winVertices[(i + 1) % winVerticesSize].x,
         //     winVertices[(i + 1) % winVerticesSize].y
         // );
-        Line clippedLine = {
+        Line clippedLine(
             winVertices[i % winVerticesSize],
             winVertices[(i + 1) % winVerticesSize]
-        };
+        );
         for (int j = 0; j < verticesSize - 1; ++j) {
             // fprintf(stderr, "\nbefore: %d %d, %d %d\n", 
             //     vertices[j % verticesSize].x, 

@@ -7,24 +7,26 @@
 #include "utils.hpp"
 
 /** Point **/
-Point::Point(int a, int b) {
-    x = a; 
-    y = b;
-}
+Point::Point(int a, int b) 
+: x{a}, y{b}, z{0} {}
+
+Point::Point(int a, int b, int c) 
+: x{a}, y{b}, z{c} {}
+
 bool Point::operator==(const Point& other) const {
-    return x == other.x && y == other.y;
+    return x == other.x && y == other.y && z == other.z;
 }
 bool Point::operator!=(const Point& other) const {
-    return !(x == other.x && y == other.y);
+    return !(x == other.x && y == other.y && z == other.z);
 }
 bool Point::operator<(const Point& other) const {
     return x < other.x;
 }
+
 /** Line **/
-Line::Line(Point a, Point b) {
-    p0 = a;
-    p1 = b;
-}
+Line::Line(Point a, Point b) 
+: p0{a}, p1{b} {}
+
 
 /** Polygon **/
 Polygon::Polygon() {
@@ -55,10 +57,10 @@ std::vector<Line> Polygon::fill(Canva boundary) {
     std::vector<Point> intersections;
 
     fprintf(stderr, "----------fill boundary: %d %d, %d %d\n", 
-        boundary.getBottomLeft().x,
-        boundary.getBottomLeft().y,
-        boundary.getTopRight().x,
-        boundary.getTopRight().y
+        boundary.bottomLeft.x,
+        boundary.bottomLeft.y,
+        boundary.topRight.x,
+        boundary.topRight.y
     );
     
     // edgeList.insert(edgeList.end(), lines.begin(), lines.end());
@@ -72,9 +74,9 @@ std::vector<Line> Polygon::fill(Canva boundary) {
         if (dy == 0)
         // case: ymax on scan-line
             continue;
-        // else if (p == boundary.getTopRight()) 
+        // else if (p == boundary.topRight) 
         //     continue;
-        if (p.y >= boundary.getBottomLeft().y && p.y <= boundary.getTopRight().y) {
+        if (p.y >= boundary.bottomLeft.y && p.y <= boundary.topRight.y) {
             // sort by y
             if (p.y > p1.y) {
                 auto temp = p;
@@ -82,7 +84,7 @@ std::vector<Line> Polygon::fill(Canva boundary) {
                 p1 = temp;
             }
             // if edge is is subset of other
-            auto l = Line(p, p1);
+            Line l(p, p1);
             int same_line = 0;
             for (auto e: edgeList) {
                 // get slope
@@ -264,52 +266,4 @@ void Canva::loadDim(int lowX, int lowY, int upX, int upY) {
 
     width = upX - lowX + 1;
     height = upY - lowY + 1;
-}
-
-int Canva::getHeight() {
-    return height;
-}
-
-int Canva::getWidth() {
-    return width;
-}
-
-void Canva::setHeight(int h) {
-    height = h;
-}
-
-void Canva::setWidth(int w) {
-    width = w;
-}
-
-Point Canva::getBottomLeft() {
-    return bottomLeft;
-}
-
-Point Canva::getTopLeft() {
-    return topLeft;
-}
-
-Point Canva::getTopRight() {
-    return topRight;
-}
-
-Point Canva::getBottomRight() {
-    return bottomRight;
-}
-
-void Canva::setBottomLeft(Point p) {
-    bottomLeft = p;
-}
-
-void Canva::setTopLeft(Point p) {
-    topLeft = p;
-}
-
-void Canva::setTopRight(Point p) {
-    topRight = p;
-}
-
-void Canva::setBottomRight(Point p) {
-    bottomRight = p;
 }

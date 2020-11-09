@@ -30,9 +30,9 @@ int main(int argc, char *argv[]) {
 
     // handle argvs
     loadSpecs(argc, argv);
-    pbmFile.setWorld(specs.world);
-    pbmFile.setWorldView(specs.worldView);
-    pbmFile.setViewPort(specs.viewPort);
+    pbmFile.world = specs.world;
+    pbmFile.worldView = specs.worldView;
+    pbmFile.viewPort = specs.viewPort;
     
     // handle .smf File
     

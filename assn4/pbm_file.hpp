@@ -13,21 +13,14 @@
 #include <vector>
 #include "geometry_objects.hpp"
 
-class PBMFile {
-    private: 
-        std::string pixels;
-        Canva worldView, viewPort, world;
-    public:
-        PBMFile() {};
-        Canva getWorld();
-        Canva getWorldView();
-        Canva getViewPort();
-        void setWorld(Canva);
-        void setWorldView(Canva);
-        void setViewPort(Canva);
-        void load(std::vector<Point>);
-        void toStdOut(std::vector<Point>);
-        void clear();
+struct PBMFile {
+    std::string pixels;
+    Canva worldView, viewPort, world;
+
+    PBMFile() {};
+    void load(std::vector<Point>);
+    void toStdOut(std::vector<Point>);
+    void clear();
 };
 
 #endif

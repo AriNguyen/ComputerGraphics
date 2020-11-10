@@ -7,8 +7,9 @@ template <class T>
 struct Point {
     T x, y, z;
     Point() {};
-    Point(T, T);
-    Point(T, T, T);
+    Point(T a, T b) : x{a}, y{b}, z{0} {};
+    Point(T a, T b, T c) : x{a}, y{b}, z{c} {};
+
     bool operator==(const Point<T> &other) {
         return (x == other.x && y == other.y && z == other.z);
     }
@@ -24,7 +25,7 @@ template <class T>
 struct Line {
     Point<T> p0, p1;
     Line() {};
-    Line(Point<T>, Point<T>);
+    Line(Point<T> a, Point<T> b) : p0{a}, p1{b} {};
 };
 
 struct Canva {

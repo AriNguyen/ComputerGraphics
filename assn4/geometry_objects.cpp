@@ -7,19 +7,8 @@
 #include "utils.hpp"
 
 /** Point **/
-template <class T>
-Point<T>::Point(T a, T b) 
-: x{a}, y{b}, z{0} {}
-
-template <class T>
-Point<T>::Point(T a, T b, T c) 
-: x{a}, y{b}, z{c} {}
 
 /** Line **/
-template <class T>
-Line<T>::Line(Point<T> a, Point<T> b) 
-: p0{a}, p1{b} {}
-
 
 /** Polygon **/
 Polygon::Polygon() {

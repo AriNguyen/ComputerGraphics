@@ -10,6 +10,7 @@
 
 #include "utils.hpp"
 #include "pbm_file.hpp"
+#include "smf_file.hpp"
 #include "geometry_objects.hpp"
 #include "transformations.hpp"
 #include "drawing.hpp"

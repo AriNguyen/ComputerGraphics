@@ -18,24 +18,59 @@ Test assignment 2:
 chmod 700 misc/execute
 ./misc/execute
 ```
-When running the above command line, the bash file runs all command below. All output images is in folder **output/hw3/hw2**
+When running the above command line, the bash file runs all command below. All output images is in folder **out/**
 ```shell
-./CG_hw3 -f img/hw3_split.ps > output/hw3/hw3_a.pbm 2> error
-./CG_hw3 -f img/hw3_split.ps -a 0 -b 0 -c 500 -d 500 -j 0 -k 0 -o 500 -p 500 -s 1.0 -m 0 -n 0 -r 0 > output/hw3/hw3_b.pbm 2> error
-./CG_hw3 -f img/hw3_split.ps -a 50 -b 0 -c 325 -d 500 -j 0 -k 110 -o 480 -p 410 -s 1 -m 0 -n 0 -r 0 > output/hw3/hw3_c.pbm 2> error
-./CG_hw3 -f img/hw3_split.ps -a 10 -b 10 -c 550 -d 400 -j 10 -k 10 -o 500 -p 400 -s 1.2 -m 6 -n 25 -r 8 > output/hw3/hw3_d.pbm 2> error
-./CG_hw3 -f img/hw3_split.ps -b 62 -c 500 -d 479 -r 75 -j 139 -o 404 -p 461 -s .85 -m 300 > output/hw3/hw3_e.pbm 2> error
-./CG_hw3 -f img/hw3_split.ps -a 275 -b 81 -c 550 -d 502 -r -37 -j 123 -k 217 -o 373 -p 467 > output/hw3/hw3_f.pbm 2> error
-./CG_hw3 -f img/hw3_split.ps -d 301 -c 435 -b 170 -a -100 -r -23 > output/hw3/hw3_g.pbm 2> error
-./CG_hw3 -f img/hw3_split.ps -a -135 -b -53 -c 633 -d 842 -m -23 -j 101 -p 415 -s 3.6 > output/hw3/hw3_h.pbm 2> error
+./CG_hw4 -f img/bound-lo-sphere.smf -j 0 -k 0 -o 500 -p 500 -x 0.0 -y 0.0 -z 1.0 -X 0.0 -Y 0.0 -Z 0.0 -q 0.0 -r 0.0 -w -1.0 -Q 0.0 -R 1.0 -W 0.0 -u -0.7 -v -0.7 -U 0.7 -V 0.7 > out/out.pbm 2> error
+
+./CG_hw4 -f img/bound-lo-sphere.smf -x -1.0 -z 0.5 -q 1.0 -w -0.5 > out/out/out.pbm 2> out/error
+
+./CG_hw4 -f img/bound-lo-sphere.smf -q 1.0 -w -1.0 > out/out.pbm 2> error
+
+./CG_hw4 -f img/bound-lo-sphere.smf -x -4.0 -z 5.0 -q 1.0 -w -0.5 > out/out.pbm 2> error
+
+./CG_hw4 -f img/bound-lo-sphere.smf -k 125 -p 375 -q 1.0 -u -1.4 -U 1.4 > out/out.pbm 2> error
  ```
 
+**Bunny Example Parallel Projection**
+ ```shell
+./CG_hw4 -f img/bound-bunny_200.smf -j 100 -k 50 -o 400 -p 450 -x 0.5 -y 0.2 -z 1.0 -X 0.2 -Y -0.2 -Z 0.3 -q -3.0 -r -2.0 -w 1.0 -Q 3.0 -R -2 -W -4.0 -u -.5 -v -.9 -U 1.2 -V .8 -P > out/hw4_f.pbm 2> error
+
+./CG_hw4 -f img/bound-bunny_200.smf -j 100 -k 50 -o 400 -p 450 -x 0.5 -y 0.2 -z 1.0 -X 0.2 -Y -0.2 -Z 0.3 -q -3.0 -r -2.0 -w 1.0 -Q 3.0 -R -2 -W -4.0 -u -.5 -v -.9 -U 1.2 -V .8 > out/hw4_g.pbm 2> error
+ ```
+
+ **Cow Example**
+ ```shell
+./CG_hw4 -f img/bound-cow.smf > out/cow_default.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -P > out/cow_parallel.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -j 0 -k 30 -o 275 -p 305 -P > out/cow_jkopP.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -x 1.5 > out/cow_x1.5.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -x 4.75 -y -3.25 -z 3.3 -P > out/cow_xyzPar.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -X 0.25 -Y -0.15 -Z 0.3 > out/cow_XYZ.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -X 0.35 -Y -0.3 -Z 0.3 -u -0.35 -v -0.35 -P > out/cow_XYZuvP.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -X 0.25 -Y -0.15 -Z 0.3 -j 103 -k 143 -o 421 -p 379 > out/cow_XYZjkop.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -X 0.35 -Y -0.3 -Z 0.3 -u -0.35 -v -0.35 -j 43 -k 71 -o 201 -p 402 -P > out/cow_XYZuvjkopP.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -q -1 -r 1.5 -w -2.0 > out/cow_q_r_w.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -Q 1.5 -R 1 -W .4 > out/cow_QRW.pbm 2> error
+
+./CG_hw4 -f img/bound-cow.smf -u -1.5 -v -0.9 -U 1.2 -V 0.7 > out/cow_uvUV.pbm 2> error
+ ```
+
+## Testing
 To test if the program works for assignment 1. All output images for hw1 is in folder **output/hw3/hw1**
 ```shell
 chmod 700 misc/execute_hw1
-./misc/execute_hw1
+./misc/execute
 ```
-
 
 ## File Structure
 ```

@@ -18,6 +18,7 @@ Test assignment 2:
 chmod 700 misc/execute
 ./misc/execute
 ```
+
 When running the above command line, the bash file runs all command below. All output images is in folder **out/**
 ```shell
 ./CG_hw4 -f img/bound-lo-sphere.smf -j 0 -k 0 -o 500 -p 500 -x 0.0 -y 0.0 -z 1.0 -X 0.0 -Y 0.0 -Z 0.0 -q 0.0 -r 0.0 -w -1.0 -Q 0.0 -R 1.0 -W 0.0 -u -0.7 -v -0.7 -U 0.7 -V 0.7 > out/out.pbm 2> error
@@ -65,7 +66,7 @@ When running the above command line, the bash file runs all command below. All o
 ./CG_hw4 -f img/bound-cow.smf -u -1.5 -v -0.9 -U 1.2 -V 0.7 > out/cow_uvUV.pbm 2> error
  ```
 
-## Testing
+## Automate testing
 To test if the program works for assignment 1. All output images for hw1 is in folder **output/hw3/hw1**
 ```shell
 chmod 700 misc/execute_hw1

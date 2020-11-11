@@ -31,6 +31,13 @@ struct Line {
 };
 
 template <class T>
+struct Triangle {
+    Point<T> p0, p1, p2;
+    Triangle() {};
+    Triangle(Point<T> a, Point<T> b, Point<T> c) : p0{a}, p1{b}, p2{c} {};
+};
+
+template <class T>
 struct Canva {
     Point<T> bottomLeft, topLeft, bottomRight, topRight;
     T height, width;

@@ -22,6 +22,8 @@ class SMFImage {
         SMFImage() {};
         SMFImage(char*);
         void parseData();
+        std::vector<Triangle<double>> getFace();
+        std::map<int, Point<double>> getVertex();
 };
 
 #endif

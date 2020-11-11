@@ -47,3 +47,11 @@ void SMFImage::parseData() {
     // debug
     ifs.close();
 }
+
+std::vector<Triangle<double>> SMFImage::getFace() {
+    return face;
+}
+
+std::map<int, Point<double>> SMFImage::getVertex() {
+    return vertex;
+}

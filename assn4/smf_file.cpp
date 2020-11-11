@@ -24,6 +24,7 @@ void SMFImage::parseData() {
         printf("Error: could not open file %s\n", imagePath);
         exit(EXIT_FAILURE);
     }
+    int i = 0;
     while (std::getline(ifs, line)) {
         // tokenize
         std::vector<std::string> tokens = tokenizeBySymbol(line, ' ');
@@ -31,19 +32,18 @@ void SMFImage::parseData() {
         // fprintf(stderr, "tokens: %s\n", tokens[0].c_str());
         
         if (tokens[0] == "v") {
+            i++;
             Point<double> v(std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3]));
-            vertex.push_back(v);
+            vertex[i] = v;
         }
         else if (tokens[0] == "f") {
-            Point<int> f(std::stoi(tokens[1]), std::stoi(tokens[2]), std::stoi(tokens[3]));
-            face.push_back(f);
+            // Point<int> f(, std::stoi(tokens[2]), std::stoi(tokens[3]));
+            Point<double> v1 = vertex[std::stoi(tokens[1])];
+            Point<double> v2 = vertex[std::stoi(tokens[2])];
+            Point<double> v3 = vertex[std::stoi(tokens[3])];
+            face.push_back(Triangle<double>(v1, v2, v3));
         }
     }
     // debug
-    for (auto v: vertex)
-        fprintf(stderr, "v: %f %f %f\n", v.x, v.y, v.z);
-    
-    for (auto f: face)
-        fprintf(stderr, "f: %d %d %d\n", f.x, f.y, f.z);
     ifs.close();
 }

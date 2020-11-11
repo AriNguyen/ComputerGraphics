@@ -15,7 +15,7 @@
 
 struct PBMFile {
     std::string pixels;
-    Canva worldView, viewPort, world;
+    Canva<int> worldView, viewPort, world;
 
     PBMFile() {};
     void load(std::vector<Point<int>>);

@@ -11,11 +11,11 @@ const int BOTTOM = 4; // 0100
 const int TOP = 8;    // 1000
 
 int getOutCode(Point<int>, Point<int>, Point<int>);
-int clipLine(Point<int> &, Point<int> &, Canva);
-int clipPolygon(std::vector<Point<int>> &, Canva);
+int clipLine(Point<int> &, Point<int> &, Canva<int>);
+int clipPolygon(std::vector<Point<int>> &, Canva<int>);
 std::vector<Point<int>> drawLine(Point<int>, Point<int>);
 Point<int> getIntersection(Point<int>, Point<int>, Point<int>, Point<int>);
 int getDistancePointToLine(Point<int>, Line<int>);
-void worldToViewPort(Point<int>*, Canva, Canva);
+void worldToViewPort(Point<int>*, Canva<int>, Canva<int>);
 
 #endif

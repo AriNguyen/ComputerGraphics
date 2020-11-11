@@ -11,7 +11,7 @@
  * @param 2 points and window size
  * @return 0: if both points are outside, otherwise return 1;
  */
-int clipLine(Point<int> &p0, Point<int> &p1, Canva win) {
+int clipLine(Point<int> &p0, Point<int> &p1, Canva<int> win) {
     int outCode0 = getOutCode(p0, win.bottomLeft, win.topRight);
     int outCode1 = getOutCode(p1, win.bottomLeft, win.topRight);
     while (true) {
@@ -87,7 +87,7 @@ std::vector<Point<int>> drawLine(Point<int> p0, Point<int> p1) {
 /** Apply Sutherland-Hodgman
  * @return vector of clipped vertices of polygon
  */
-int clipPolygon(std::vector<Point<int>> &vertices, Canva win) {
+int clipPolygon(std::vector<Point<int>> &vertices, Canva<int> win) {
     std::vector<Point<int>> clippedVertices;
     std::vector<Point<int>> newVertices;
     std::vector<Point<int>> winVertices = {
@@ -217,7 +217,7 @@ int getDistancePointToLine(Point<int> p, Line<int> l) {
  * 
  * 
  */
-void worldToViewPort(Point<int>* p, Canva worldView, Canva viewPort) {
+void worldToViewPort(Point<int>* p, Canva<int> worldView, Canva<int> viewPort) {
     // scaling factors for x coordinate and y coordinate 
     float sx, sy; 
   

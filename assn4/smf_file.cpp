@@ -13,6 +13,7 @@
 
 SMFImage::SMFImage(char *p) {
     imagePath = p;
+    parseData();
 }
 
 void SMFImage::parseData() {

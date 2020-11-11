@@ -10,6 +10,8 @@ struct Point {
     Point(T a, T b) : x{a}, y{b}, z{0} {};
     Point(T a, T b, T c) : x{a}, y{b}, z{c} {};
 
+    // void loadSpecs(a, b) : x{a}, y{b}, z{0} {};
+    // void loadSpecs(a, b, c) : x{a}, y{b}, z{c} {};
     bool operator==(const Point<T> &other) {
         return (x == other.x && y == other.y && z == other.z);
     }
@@ -28,13 +30,31 @@ struct Line {
     Line(Point<T> a, Point<T> b) : p0{a}, p1{b} {};
 };
 
+template <class T>
 struct Canva {
-    Point<int> bottomLeft, topLeft, bottomRight, topRight;
-    int height, width;
+    Point<T> bottomLeft, topLeft, bottomRight, topRight;
+    T height, width;
     Canva() {};
-    Canva(int, int, int, int);
-    void loadDim(int, int, int, int);
-    void setBound(int, int, int, int);
+    Canva(T a, T b, T c, T d) {
+        loadDim(a, b, c, d);
+    }
+    void loadDim(T a, T b, T c, T d) {
+        bottomLeft.x = a;
+        bottomLeft.y = b;
+
+        topRight.x = c;
+        topRight.y = d;
+
+        topLeft.x = a;
+        topLeft.y = d;
+
+        bottomRight.x = c;
+        bottomRight.y = b;
+
+        width = c - a + 1;
+        height = d - b + 1;
+    }
+    void setBound(T, T, T, T);
 };
 
 struct Polygon {
@@ -46,7 +66,7 @@ struct Polygon {
     virtual ~Polygon();
     void clear();
     void updateLines();
-    std::vector<Line<int>> fill(Canva);  // return all points inside polygon
+    std::vector<Line<int>> fill(Canva<int>);  // return all points inside polygon
     std::vector<Point<int>> getPoints();
     std::vector<Line<int>> getLines();
     void setPoints(std::vector<Point<int>>);

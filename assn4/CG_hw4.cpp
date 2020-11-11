@@ -22,8 +22,9 @@ struct Specs {
     // PRP: Projection Reference
     // VRP: View Reference
     // VUP: View UP Vector
-    Point<double> PRP, VRP, VUP;
-    Canva worldView, viewPort, world, viewReferenceWindow;
+    Point<double> PRP, VRP, VUP, VPN;
+    Canva<int> worldView, viewPort, world;
+    Canva<double> VRCWindow;
     PBMFile pbmFile;
 } specs;
 
@@ -36,7 +37,7 @@ int main(int argc, char *argv[]) {
     loadSpecs(argc, argv);
     
     // handle .smf File
-    
+    SMFImage smf(specs.fileName);
 
     // Hanlde 3D objects
 
@@ -54,10 +55,15 @@ void loadSpecs(int argc, char *argv[]) {
     specs.worldView.loadDim(x0, y0, x1, y1);
     specs.viewPort.loadDim(x2, y2, x3, y3);
 
+    specs.PRP = Point<double>(0, 0, 1);
+    specs.VRP = Point<double>(0, 0, 0);
+    specs.VUP = Point<double>(0, 1, 1);
+    specs.VPN = Point<double>(0, 0, -1);
+
     // parse argv
     for (int i = 0; i < argc; i++) {
         if (strcmp(argv[i], "-f") == 0) 
-            specs.fileName = argv[++i];
+            specs.fileName = (char *)argv[++i];
         // View Port
         else if (strcmp(argv[i], "-j") == 0) 
             specs.world.bottomLeft.x = std::atoi(argv[++i]);
@@ -83,26 +89,28 @@ void loadSpecs(int argc, char *argv[]) {
             specs.VRP.z = std::atof(argv[++i]);
         // VPN
         else if (strcmp(argv[i], "-q") == 0) 
-            ;
+            specs.VPN.x = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-r") == 0) 
-            ;
+            specs.VPN.y = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-w") == 0) 
-            ;
+            specs.VPN.z = std::atof(argv[++i]);
         // VUP
         else if (strcmp(argv[i], "-Q") == 0) 
-            ;
+            specs.VUP.x = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-R") == 0) 
-            ;
+            specs.VUP.y = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-W") == 0) 
-            ;
-        // VRC Win
+            specs.VUP.z = std::atof(argv[++i]);
+        // VRC Window
         else if (strcmp(argv[i], "-u") == 0) 
-            ;
+            specs.VRCWindow.bottomLeft.x = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-v") == 0) 
-            ;
+            specs.VRCWindow.bottomLeft.y = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-U") == 0) 
-            ;
+            specs.VRCWindow.topRight.x = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-V") == 0) 
-            ;
+            specs.VRCWindow.topRight.y = std::atof(argv[++i]);
+        else if (strcmp(argv[i], "-P") == 0) 
+            specs.isParallelProjection = 1;
     }
 }

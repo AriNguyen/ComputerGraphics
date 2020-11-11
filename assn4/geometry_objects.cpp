@@ -10,6 +10,8 @@
 
 /** Line **/
 
+/** Canva **/
+
 /** Polygon **/
 Polygon::Polygon() {
     points.clear();
@@ -34,7 +36,7 @@ void Polygon::updateLines() {
  * @param boundary box that the polygon is within
  * @return vector of lines filling the polygons
  */
-std::vector<Line<int>> Polygon::fill(Canva boundary) {
+std::vector<Line<int>> Polygon::fill(Canva<int> boundary) {
     std::vector<Line<int>> fillingLines, edgeList;
     std::vector<Point<int>> intersections;
 
@@ -229,23 +231,5 @@ void GeoObjects::addPolygon(Polygon p) {
     polygons.push_back(p);
 }
 
-Canva::Canva(int lowX, int lowY, int upX, int upY) {
-    loadDim(lowX, lowY, upX, upY);
-}
 
-void Canva::loadDim(int lowX, int lowY, int upX, int upY) {
-    bottomLeft.x = lowX;
-    bottomLeft.y = lowY;
 
-    topRight.x = upX;
-    topRight.y = upY;
-
-    topLeft.x = lowX;
-    topLeft.y = upY;
-
-    bottomRight.x = upX;
-    bottomRight.y = lowY;
-
-    width = upX - lowX + 1;
-    height = upY - lowY + 1;
-}

@@ -21,7 +21,6 @@ class SMFImage {
         SMFImage() {};
         SMFImage(char*);
         void parseData();
-        GeoObjects extractGeoObjects();
 };
 
 #endif

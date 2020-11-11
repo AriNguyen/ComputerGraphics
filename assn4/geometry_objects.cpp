@@ -10,6 +10,12 @@
 
 /** Line **/
 
+/** Triangle **/
+// template <class T>
+// Triangle<T>::Triangle(Point<T> a, Point<T> b, Point<T> c) 
+// : p0{a}, p1{b}, p2{c} {};
+
+
 /** Canva **/
 
 /** Polygon **/

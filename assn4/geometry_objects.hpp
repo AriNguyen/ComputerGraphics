@@ -1,6 +1,7 @@
 #ifndef GEOOBJECTS_HPP
 #define GEOOBJECTS_HPP
 
+#include <iostream>
 #include <vector>
 
 template <class T>
@@ -21,6 +22,10 @@ struct Point {
     bool operator<(const Point<T> &other) {
         return x < other.x;
     }
+    friend std::ostream& operator<<(std::ostream& os, const Point<T>& p) {
+        os << p.x << ", " << p.y << ", " << p.z;
+        return os;
+    }
 };
 
 template <class T>
@@ -35,6 +40,7 @@ struct Triangle {
     Point<T> p0, p1, p2;
     Triangle() {};
     Triangle(Point<T> a, Point<T> b, Point<T> c) : p0{a}, p1{b}, p2{c} {};
+    // Triangle(Point<T>, Point<T>, Point<T>);
 };
 
 template <class T>

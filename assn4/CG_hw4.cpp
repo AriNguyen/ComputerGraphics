@@ -41,19 +41,19 @@ int main(int argc, char *argv[]) {
 
     // Hanlde 3D objects
 
+
     // export to File
     specs.pbmFile.toStdOut(pixelPoints);
+
     return 0;
 }
 
 void loadSpecs(int argc, char *argv[]) {
     // default
-    specs.fileName = (char *)"bound-lo-sphere.smf";
-    int x0 = 0, y0 = 0, x1 = 250, y1 = 250; 
-    int x2 = 0, y2 = 0, x3 = 200, y3 = 200; 
+    specs.fileName = (char *)"img/bound-lo-sphere.smf";
     specs.world.loadDim(0, 0, 500, 500);
-    specs.worldView.loadDim(x0, y0, x1, y1);
-    specs.viewPort.loadDim(x2, y2, x3, y3);
+    specs.worldView.loadDim(0, 0, 250, 250);
+    specs.viewPort.loadDim(0, 0, 200, 200);
 
     specs.PRP = Point<double>(0, 0, 1);
     specs.VRP = Point<double>(0, 0, 0);

@@ -22,7 +22,7 @@ When running the above command line, the bash file runs all command below. All o
 ```shell
 ./CG_hw4 -f img/bound-lo-sphere.smf -j 0 -k 0 -o 500 -p 500 -x 0.0 -y 0.0 -z 1.0 -X 0.0 -Y 0.0 -Z 0.0 -q 0.0 -r 0.0 -w -1.0 -Q 0.0 -R 1.0 -W 0.0 -u -0.7 -v -0.7 -U 0.7 -V 0.7 > out/out.pbm 2> error
 
-./CG_hw4 -f img/bound-lo-sphere.smf -x -1.0 -z 0.5 -q 1.0 -w -0.5 > out/out/out.pbm 2> out/error
+./CG_hw4 -f img/bound-lo-sphere.smf -x -1.0 -z 0.5 -q 1.0 -w -0.5 > out/out.pbm 2> error
 
 ./CG_hw4 -f img/bound-lo-sphere.smf -q 1.0 -w -1.0 > out/out.pbm 2> error
 

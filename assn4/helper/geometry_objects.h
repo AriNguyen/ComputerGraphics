@@ -1,5 +1,6 @@
 #pragma once
 
+#include <iostream>
 #include <vector>
 #include <map>
 
@@ -47,8 +48,12 @@ struct Line {
 template <class T>
 struct Triangle {
     std::vector<Point<T>> p;
-    Triangle() {};
+     
+    Triangle() {
+        p.resize(3);
+    };
     Triangle(Point<T> a, Point<T> b, Point<T> c) {
+        p.resize(3);
         p[0] = a;
         p[1] = b;
         p[2] = c;

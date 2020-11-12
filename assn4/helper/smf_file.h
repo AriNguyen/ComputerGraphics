@@ -6,15 +6,15 @@
  */
 #pragma once
 
-#include <cstdio>
+#include <iostream>
 #include <cstdlib>
 #include <fstream>
 #include <string>
 #include <map>
 #include <vector>
 
+#include "util.h"
 #include "geometry_objects.h"
-#include "smf_file.h"
 
 
 class SMFImage {
@@ -42,20 +42,22 @@ class SMFImage {
                 std::vector<std::string> tokens = tokenizeBySymbol(line, ' ');
                 // fprintf(stderr, "line: %s\n", line.c_str());
                 // fprintf(stderr, "tokens: %s\n", tokens[0].c_str());
-                if (tokens.size() != 4) {
+                if (tokens.size() == 0) 
                     continue;
-                }
+                assert(tokens.size() == 4);
+
                 if (tokens[0] == "v") {
                     i++;
                     Point<double> v(std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3]));
                     vertex[i] = v;
                 }
                 else if (tokens[0] == "f") {
-                    // Point<int> f(, std::stoi(tokens[2]), std::stoi(tokens[3]));
-                    // Point<double> v1 = vertex[std::stoi(tokens[1])];
-                    // Point<double> v2 = vertex[std::stoi(tokens[2])];
-                    // Point<double> v3 = vertex[std::stoi(tokens[3])];
-                    // face.push_back(Triangle<double>(v1, v2, v3));
+                    std::cerr << "vertex size: " << vertex.size() << "\n";
+                    std::cerr << "SMFImage::parseData tokens: " << tokens[1] << ", " << tokens[2] << ", " << tokens[3] << "'\n";
+                    Point<double> v1 = vertex[std::stoi(tokens[1])];
+                    Point<double> v2 = vertex[std::stoi(tokens[2])];
+                    Point<double> v3 = vertex[std::stoi(tokens[3])];
+                    face.push_back(Triangle<double>(v1, v2, v3));
                 }
             }
             ifs.close();

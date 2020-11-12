@@ -1,4 +1,4 @@
-# Assignment 2 - Clip and Draw Polygon
+# Assignment 4 
 Language: C++ 11<br>
 OS: macOS Catalina<br>
 Note: Test on tux with the same instruction in the section **Compile and Run** and it worked for both assignment 1 and 2<br>

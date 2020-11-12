@@ -1,13 +1,14 @@
-GPP := g++
-PPFLAGS := -std=c++11
+CXX := g++
+CXXFLAGS := -std=c++11
 SRC := CG_hw4.cpp 
-INCLUDE:= pbm_file.cpp smf_file.cpp utils.cpp geometry_objects.cpp transformations.cpp drawing.cpp
+INCLUDE:= 
 EXE := CG_hw4
 .PHONY: cleanall
 
 ${EXE} : ${SRC} ${INCLUDE}
-	${GPP} ${PPFLAGS} -o $@ $^
+	${CXX} -I./helper ${CXXFLAGS} $^ -o $@
 
 cleanall :
 	-\rm $(EXE)
+	-\rm error
 	

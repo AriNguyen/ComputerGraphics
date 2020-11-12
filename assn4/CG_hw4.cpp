@@ -1,19 +1,9 @@
 /**
  * @file CG_hw4.cpp
- * @brief C++ Program that ...
+ * @brief main program for graphics pipeline
  * @author Ari Nguyen
  */
-#include <cstdio>
-#include <string>
-#include <cmath>
-#include <future> 
-
-#include "utils.hpp"
-#include "pbm_file.hpp"
-#include "smf_file.hpp"
-#include "geometry_objects.hpp"
-#include "transformations.hpp"
-#include "drawing.hpp"
+#include "helper/helper.h"
 
 struct Specs {
     char *fileName;
@@ -38,9 +28,21 @@ int main(int argc, char *argv[]) {
     
     // handle .smf File
     SMFImage smf(specs.fileName);
+    smf.parseData();
 
-    // Hanlde 3D objects
+    // std::vector<Triangle<double>> face = smf.getFace();
 
+    // normalizing
+
+    // trivial reject test
+
+    // parallel projection
+
+    // clip
+
+    // transform
+
+    // draw/fill
 
     // export to File
     specs.pbmFile.toStdOut(pixelPoints);

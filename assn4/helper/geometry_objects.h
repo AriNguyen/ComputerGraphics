@@ -41,25 +41,23 @@ namespace geo {
     };
 
     struct triangle {
-        std::vector<vec3D> p;
-        
-        triangle() {
-            p.resize(3);
-        }
+        vec3D p[3];
 
         triangle(vec3D a, vec3D b, vec3D c) {
-            p.resize(3);
             p[0] = a;
             p[1] = b;
             p[2] = c;
         }
-
         friend std::ostream& operator<<(std::ostream& os, const triangle& t) {
             for (auto p: t.p) {
                 os << p << std::endl;
             }
             return os;
         }
+    };
+
+    struct mat4x4 {
+        float m[4][4] = { 0 };
     };
 
     struct canva {
@@ -92,7 +90,6 @@ namespace geo {
             width = c - a + 1;
             height = d - b + 1;
         }
-        void setBound(float, float, float, float);
     };
 
 
@@ -140,19 +137,15 @@ namespace geo {
         Polygon() {
             points.clear();
         }
-
         Polygon(std::vector<vec3D> p) {
             points = p;
         }
-
         ~Polygon() {
             points.clear();
         }
-        
         void clear() {
             points.clear();
         }
-
         void updatelines() {
             lines.clear();
             for (int i = 0; i < points.size() - 1; ++i) {

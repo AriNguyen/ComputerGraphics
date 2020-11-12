@@ -4,65 +4,57 @@
 #include <vector>
 #include <map>
 
-template <class T> struct vec3D;
-template <class T> struct line;
-template <class T> struct triangle;
-template <class T> struct canva;
-
 namespace geo {
-    template <class T>
     struct vec3D {
-        T x, y, z;
+        float x, y, z;
         
         vec3D() {};
-        vec3D(T a, T b) : x{a}, y{b}, z{0} {};
-        vec3D(T a, T b, T c) : x{a}, y{b}, z{c} {};
+        vec3D(float a, float b) : x{a}, y{b}, z{0} {};
+        vec3D(float a, float b, float c) : x{a}, y{b}, z{c} {};
 
         // void loadSpecs(a, b) : x{a}, y{b}, z{0} {};
         // void loadSpecs(a, b, c) : x{a}, y{b}, z{c} {};
-        bool operator==(const vec3D<T> &other) {
+        bool operator==(const vec3D &other) {
             return (x == other.x && y == other.y && z == other.z);
         }
-        bool operator!=(const vec3D<T> &other) {
+        bool operator!=(const vec3D &other) {
             return !(x == other.x && y == other.y && z == other.z);
         }
-        bool operator<(const vec3D<T> &other) {
+        bool operator<(const vec3D &other) {
             return x < other.x;
         }
-        friend std::ostream& operator<<(std::ostream& os, const vec3D<T>& p) {
+        friend std::ostream& operator<<(std::ostream& os, const vec3D& p) {
             os << p.x << ", " << p.y << ", " << p.z;
             return os;
         }
     };
 
-    template <class T>
     struct line {
-        vec3D<T> p0, p1;
+        vec3D p0, p1;
 
         line() {}
-        line(vec3D<T> a, vec3D<T> b) : p0{a}, p1{b} {};
+        line(vec3D a, vec3D b) : p0{a}, p1{b} {};
         friend std::ostream& operator<<(std::ostream& os, const line& l) {
             os << l.p0 << " - " << l.p1;
             return os;
         }
     };
 
-    template <class T>
     struct triangle {
-        std::vector<vec3D<T>> p;
+        std::vector<vec3D> p;
         
         triangle() {
             p.resize(3);
         }
 
-        triangle(vec3D<T> a, vec3D<T> b, vec3D<T> c) {
+        triangle(vec3D a, vec3D b, vec3D c) {
             p.resize(3);
             p[0] = a;
             p[1] = b;
             p[2] = c;
         }
 
-        friend std::ostream& operator<<(std::ostream& os, const triangle<T>& t) {
+        friend std::ostream& operator<<(std::ostream& os, const triangle& t) {
             for (auto p: t.p) {
                 os << p << std::endl;
             }
@@ -70,22 +62,21 @@ namespace geo {
         }
     };
 
-    template <class T>
     struct canva {
-        vec3D<T> bottomLeft, topLeft, bottomRight, topRight;
-        T height, width;
+        vec3D bottomLeft, topLeft, bottomRight, topRight;
+        float height, width;
 
         canva() {};
-        canva(T a, T b, T c, T d) {
+        canva(float a, float b, float c, float d) {
             loadDim(a, b, c, d);
         }
 
-        friend std::ostream& operator<<(std::ostream& os, const canva<T>& c) {
+        friend std::ostream& operator<<(std::ostream& os, const canva& c) {
             os << c.bottomLeft.x << ", " << c.bottomLeft.y << ", " << c.topRight.x << ", " << c.topRight.y << "\n";
             return os;
         }
 
-        void loadDim(T a, T b, T c, T d) {
+        void loadDim(float a, float b, float c, float d) {
             bottomLeft.x = a;
             bottomLeft.y = b;
 
@@ -101,23 +92,23 @@ namespace geo {
             width = c - a + 1;
             height = d - b + 1;
         }
-        void setBound(T, T, T, T);
+        void setBound(float, float, float, float);
     };
 
 
-    bool comppoint(const vec3D<int>& lhs, const vec3D<int>& rhs) {
+    bool comppoint(const vec3D& lhs, const vec3D& rhs) {
     return lhs.x < rhs.x;
     }
 
-    bool compline(const line<int>& lhs, const line<int>& rhs) {
+    bool compline(const line& lhs, const line& rhs) {
     return lhs.p0.y < rhs.p0.y;
     }
 
-    /** get Intersection vec3D<int> of 2 lines
+    /** get Intersection vec3D of 2 lines
      * @param 4 points
      * @return intersecting vec3D
      */
-    vec3D<int> getIntersection(vec3D<int> p0, vec3D<int> p1, vec3D<int> p2, vec3D<int> p3) {
+    vec3D getIntersection(vec3D p0, vec3D p1, vec3D p2, vec3D p3) {
         int a1 = p0.x - p1.x;
         int b1 = p0.y - p1.y;
         int c1 = p0.x * p1.y - p1.x * p0.y;
@@ -129,28 +120,28 @@ namespace geo {
         // parallel
         int det = a1 * b2 - a2 * b1;
         if (det == 0) 
-            return vec3D<int>(INT_MAX, INT_MAX);
+            return vec3D(INT_MAX, INT_MAX);
         int x = (c1 * a2 - c2 * a1) / det;
         int y = (c1 * b2 - c2 * b1) / det;
         // fprintf(stderr, "getIntersection: %d %d, %d %d (with) %d %d, %d %d => %d %d\n", p0.x, p0.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, x, y);
-        return vec3D<int>(x, y);
+        return vec3D(x, y);
     }
 
-    int getDistancePointToLine(vec3D<int> p, line<int> l) {
-        // fprintf(stderr, "getDistance: %d %d, line<int>: %d %d, %d %d\n", p.x, p.y, l.p0.x, l.p0.y, l.p1.x, l.p1.y);
+    int getDistancePointToLine(vec3D p, line l) {
+        // fprintf(stderr, "getDistance: %d %d, line: %d %d, %d %d\n", p.x, p.y, l.p0.x, l.p0.y, l.p1.x, l.p1.y);
         int distance = (l.p1.x - l.p0.x) * (p.y - l.p0.y) - (l.p1.y - l.p0.y) * (p.x - l.p0.x);
         return distance;
     }
 
     struct Polygon {
-        std::vector<vec3D<int>> points;
-        std::vector<line<int>> lines;    // lines that connect 2 points of the all points in the Polygon
+        std::vector<vec3D> points;
+        std::vector<line> lines;    // lines that connect 2 points of the all points in the Polygon
 
         Polygon() {
             points.clear();
         }
 
-        Polygon(std::vector<vec3D<int>> p) {
+        Polygon(std::vector<vec3D> p) {
             points = p;
         }
 
@@ -165,7 +156,7 @@ namespace geo {
         void updatelines() {
             lines.clear();
             for (int i = 0; i < points.size() - 1; ++i) {
-                line<int> l(points[i], points[i + 1]);
+                line l(points[i], points[i + 1]);
                 lines.push_back(l);
             }
         }
@@ -174,16 +165,16 @@ namespace geo {
          * @param boundary box that the polygon is within
          * @return vector of lines filling the polygons
          */
-        std::vector<line<int>> fill(canva<int> boundary) {
-            std::vector<line<int>> fillinglines, edgeList;
-            std::vector<vec3D<int>> intersections;
+        std::vector<line> fill(canva boundary) {
+            std::vector<line> fillinglines, edgeList;
+            std::vector<vec3D> intersections;
 
             std::cerr << "----------fill boundary: " << boundary;
             
             // edgeList.insert(edgeList.end(), lines.begin(), lines.end());
             for (int i = 0; i < points.size(); ++i) {
-                vec3D<int> p = points[i];
-                vec3D<int> p1 = points[(i + 1) % points.size()];
+                vec3D p = points[i];
+                vec3D p1 = points[(i + 1) % points.size()];
                 int dy = p1.y - p.y;
 
                 // std::cerr << p << " - " << p1" << \n";
@@ -201,7 +192,7 @@ namespace geo {
                         p1 = temp;
                     }
                     // if edge is is subset of other
-                    line<int> l(p, p1);
+                    line l(p, p1);
                     int same_line = 0;
                     for (auto e: edgeList) {
                         // get slope
@@ -246,8 +237,8 @@ namespace geo {
 
             // loop through horizontal scanline
             for (int i = lowY; i < topY; ++i) {
-                vec3D<int> lowpoint(boundary.bottomLeft.x, i);
-                vec3D<int> toppoint(boundary.bottomRight.x, i);
+                vec3D lowpoint(boundary.bottomLeft.x, i);
+                vec3D toppoint(boundary.bottomRight.x, i);
 
                 // std::cerr << "intersect with: " << lowpoint << " - " << toppoint << "\n";
                 for (int j = 0; j < edgeList.size(); ++j) {
@@ -258,7 +249,7 @@ namespace geo {
                         continue;
 
                     // get intersection
-                    vec3D<int> intersect = getIntersection(edgeList[j].p0, edgeList[j].p1, lowpoint, toppoint);
+                    vec3D intersect = getIntersection(edgeList[j].p0, edgeList[j].p1, lowpoint, toppoint);
                     // fprintf(stderr, "intersect: %d %d\n", intersect.x, intersect.y);
                 
                     // intersections not contains intersect
@@ -272,7 +263,7 @@ namespace geo {
                 std::cerr << "\n----intersections size: " << intersections.size() << "\n";
                 
                 for (int j = 0; j < intersections.size(); ++j) {
-                        vec3D<int> is1 = intersections[j];
+                        vec3D is1 = intersections[j];
                         std::cerr << "intersect: " << is1 << "\n";
                 }
 
@@ -291,15 +282,15 @@ namespace geo {
                 // add filling lines
                 if ((intersections.size() % 2) == 0)
                     for (int j = 0; j < intersections.size(); j += 2) {
-                        vec3D<int> is1 = intersections[j];
-                        vec3D<int> is2 = intersections[j + 1];
+                        vec3D is1 = intersections[j];
+                        vec3D is2 = intersections[j + 1];
                         std::cerr << "fillinglines: " << is1 << " " << is2 << "\n";
-                        fillinglines.push_back(line<int>(is1, is2));
+                        fillinglines.push_back(line(is1, is2));
                     }
                 else if (intersections.size() > 1) {  // odd and > 1
-                    vec3D<int> is1 = intersections.front();   // first
-                    vec3D<int> is2 = intersections.back();  // last
-                    fillinglines.push_back(line<int>(is1, is2));
+                    vec3D is1 = intersections.front();   // first
+                    vec3D is2 = intersections.back();  // last
+                    fillinglines.push_back(line(is1, is2));
                 }
                 intersections.clear();
             }
@@ -310,12 +301,12 @@ namespace geo {
     };
 
     struct GeoObjects {
-        std::vector<vec3D<int>> points;
-        std::vector<line<int>> lines;
+        std::vector<vec3D> points;
+        std::vector<line> lines;
         std::vector<Polygon> polygons;
 
         GeoObjects() {};
-        GeoObjects(std::vector<vec3D<int>> p, std::vector<line<int>> l, std::vector<Polygon> poly) {
+        GeoObjects(std::vector<vec3D> p, std::vector<line> l, std::vector<Polygon> poly) {
             points = p;
             lines = l;
             polygons = poly;

@@ -12,16 +12,16 @@ struct Specs {
     // PRP: Projection Reference
     // VRP: View Reference
     // VUP: View UP Vector
-    geo::vec3D<double> PRP, VRP, VUP, VPN;
-    geo::canva<int> worldView, viewPort, world;
-    geo::canva<double> VRCWindow;
+    geo::vec3D PRP, VRP, VUP, VPN;
+    geo::canva worldView, viewPort, world;
+    geo::canva VRCWindow;
     PBMFile pbmFile;
 } specs;
 
 void loadSpecs(int, char *[]);
 
 int main(int argc, char *argv[]) {
-    std::vector<geo::vec3D<int>> pixelPoints;
+    std::vector<geo::vec3D> pixelPoints;
 
     // handle argvs
     loadSpecs(argc, argv);
@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
     SMFImage smf(specs.fileName);
     smf.parseData();
 
-    // std::vector<Triangle<double>> face = smf.getFace();
+    // std::vector<Triangle> face = smf.getFace();
 
     // normalizing
 
@@ -57,10 +57,10 @@ void loadSpecs(int argc, char *argv[]) {
     specs.worldView.loadDim(0, 0, 250, 250);
     specs.viewPort.loadDim(0, 0, 200, 200);
 
-    specs.PRP = geo::vec3D<double>(0, 0, 1);
-    specs.VRP = geo::vec3D<double>(0, 0, 0);
-    specs.VUP = geo::vec3D<double>(0, 1, 1);
-    specs.VPN = geo::vec3D<double>(0, 0, -1);
+    specs.PRP = geo::vec3D(0, 0, 1);
+    specs.VRP = geo::vec3D(0, 0, 0);
+    specs.VUP = geo::vec3D(0, 1, 1);
+    specs.VPN = geo::vec3D(0, 0, -1);
 
     // parse argv
     for (int i = 0; i < argc; i++) {

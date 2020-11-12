@@ -20,7 +20,7 @@ const int TOP = 8;    // 1000
  * @param Get 2 points and window size
  * @return 0: if both points are outside. Otherwise return 1;
  */
-int getOutCode(geo::vec3D<int> point, geo::vec3D<int> bottomLeft, geo::vec3D<int> topRight) {
+int getOutCode(geo::vec3D point, geo::vec3D bottomLeft, geo::vec3D topRight) {
     int code = INSIDE; // default to be inside
     if (point.x < bottomLeft.x) // to the left of rectangle 
         code |= LEFT; 
@@ -37,7 +37,7 @@ int getOutCode(geo::vec3D<int> point, geo::vec3D<int> bottomLeft, geo::vec3D<int
  * @param 2 points and window size
  * @return 0: if both points are outside, otherwise return 1;
  */
-int clipLine(geo::vec3D<int> &p0, geo::vec3D<int> &p1, geo::canva<int> win) {
+int clipLine(geo::vec3D &p0, geo::vec3D &p1, geo::canva win) {
     int outCode0 = getOutCode(p0, win.bottomLeft, win.topRight);
     int outCode1 = getOutCode(p1, win.bottomLeft, win.topRight);
     while (true) {
@@ -47,7 +47,7 @@ int clipLine(geo::vec3D<int> &p0, geo::vec3D<int> &p1, geo::canva<int> win) {
             return 0;
         } else {                            // either of 2 points out side window
             int outCode = outCode1 > outCode0 ? outCode1 : outCode0;    // get larger one
-            geo::vec3D<int> intersect;
+            geo::vec3D intersect;
             int dx = p1.x - p0.x;
             int dy = p1.y - p0.y;
             // point is above the clip window
@@ -84,10 +84,10 @@ int clipLine(geo::vec3D<int> &p0, geo::vec3D<int> &p1, geo::canva<int> win) {
 /** Apply Sutherland-Hodgman
  * @return vector of clipped vertices of polygon
  */
-int clipPolygon(std::vector<geo::vec3D<int>> &vertices, geo::canva<int> win) {
-    std::vector<geo::vec3D<int>> clippedVertices;
-    std::vector<geo::vec3D<int>> newVertices;
-    std::vector<geo::vec3D<int>> winVertices = {
+int clipPolygon(std::vector<geo::vec3D> &vertices, geo::canva win) {
+    std::vector<geo::vec3D> clippedVertices;
+    std::vector<geo::vec3D> newVertices;
+    std::vector<geo::vec3D> winVertices = {
         win.bottomLeft,
         win.topLeft,
         win.topRight,
@@ -97,13 +97,13 @@ int clipPolygon(std::vector<geo::vec3D<int>> &vertices, geo::canva<int> win) {
     int winVerticesSize = winVertices.size();
     for (int i = 0; i < winVerticesSize; ++i) {
         int verticesSize = vertices.size();
-        geo::line<int> clippedLine(
+        geo::line clippedLine(
             winVertices[i % winVerticesSize],
             winVertices[(i + 1) % winVerticesSize]
         );
         for (int j = 0; j < verticesSize - 1; ++j) {
-            geo::vec3D<int> p0 = vertices[j];
-            geo::vec3D<int> p1 = vertices[j + 1];
+            geo::vec3D p0 = vertices[j];
+            geo::vec3D p1 = vertices[j + 1];
             int posToClipLine1 = geo::getDistancePointToLine(p0, clippedLine);
             int posToClipLine2 = geo::getDistancePointToLine(p1, clippedLine);
             // fprintf(stderr, "distance: %d, %d\n", posToClipLine1, posToClipLine2);
@@ -155,15 +155,15 @@ int clipPolygon(std::vector<geo::vec3D<int>> &vertices, geo::canva<int> win) {
  * @param: 2 points of the line
  * @return vector of points lie in the line
  */
-std::vector<geo::vec3D<int>> drawLine(geo::vec3D<int> p0, geo::vec3D<int> p1) {
-    std::vector<geo::vec3D<int>> points;
+std::vector<geo::vec3D> drawLine(geo::vec3D p0, geo::vec3D p1) {
+    std::vector<geo::vec3D> points;
     int dx = abs(p1.x - p0.x);
     int sx = p0.x < p1.x ? 1 : -1;
     int dy = -abs(p1.y - p0.y);
     int sy = p0.y < p1.y ? 1 : -1;
     int error = dx + dy;  
     while (true) {  
-        geo::vec3D<int> p = {p0.x, p0.y};
+        geo::vec3D p = {p0.x, p0.y};
         points.push_back(p);
         if (p0.x == p1.x && p0.y == p1.y) 
             break;
@@ -184,7 +184,7 @@ std::vector<geo::vec3D<int>> drawLine(geo::vec3D<int> p0, geo::vec3D<int> p1) {
  * 
  * 
  */
-void worldToViewPort(geo::vec3D<int>* p, geo::canva<int> worldView, geo::canva<int> viewPort) {
+void worldToViewPort(geo::vec3D* p, geo::canva worldView, geo::canva viewPort) {
     // scaling factors for x coordinate and y coordinate 
     float sx, sy; 
   

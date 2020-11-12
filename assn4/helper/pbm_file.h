@@ -15,13 +15,13 @@
 
 struct PBMFile {
     std::string pixels;
-    Canva<int> worldView, viewPort, world;
+    geo::canva<int> worldView, viewPort, world;
 
     PBMFile() {};
-    void load(std::vector<Point<int>>);
+    void load(std::vector<geo::vec3D<int>>);
     void clear();
 
-    void toStdOut(std::vector<Point<int>> points) {
+    void toStdOut(std::vector<geo::vec3D<int>> points) {
         std::cout << "P1\n";
         std::cout << world.width << " " << world.height << "\n";
         std::vector<std::vector<int>> pixelArr(world.width, std::vector<int> (world.height, 0));

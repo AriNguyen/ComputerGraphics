@@ -12,16 +12,16 @@ struct Specs {
     // PRP: Projection Reference
     // VRP: View Reference
     // VUP: View UP Vector
-    Point<double> PRP, VRP, VUP, VPN;
-    Canva<int> worldView, viewPort, world;
-    Canva<double> VRCWindow;
+    geo::vec3D<double> PRP, VRP, VUP, VPN;
+    geo::canva<int> worldView, viewPort, world;
+    geo::canva<double> VRCWindow;
     PBMFile pbmFile;
 } specs;
 
 void loadSpecs(int, char *[]);
 
 int main(int argc, char *argv[]) {
-    std::vector<Point<int>> pixelPoints;
+    std::vector<geo::vec3D<int>> pixelPoints;
 
     // handle argvs
     loadSpecs(argc, argv);
@@ -57,10 +57,10 @@ void loadSpecs(int argc, char *argv[]) {
     specs.worldView.loadDim(0, 0, 250, 250);
     specs.viewPort.loadDim(0, 0, 200, 200);
 
-    specs.PRP = Point<double>(0, 0, 1);
-    specs.VRP = Point<double>(0, 0, 0);
-    specs.VUP = Point<double>(0, 1, 1);
-    specs.VPN = Point<double>(0, 0, -1);
+    specs.PRP = geo::vec3D<double>(0, 0, 1);
+    specs.VRP = geo::vec3D<double>(0, 0, 0);
+    specs.VUP = geo::vec3D<double>(0, 1, 1);
+    specs.VPN = geo::vec3D<double>(0, 0, -1);
 
     // parse argv
     for (int i = 0; i < argc; i++) {

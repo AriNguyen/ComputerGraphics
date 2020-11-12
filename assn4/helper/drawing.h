@@ -20,7 +20,7 @@ const int TOP = 8;    // 1000
  * @param Get 2 points and window size
  * @return 0: if both points are outside. Otherwise return 1;
  */
-int getOutCode(Point<int> point, Point<int> bottomLeft, Point<int> topRight) {
+int getOutCode(geo::vec3D<int> point, geo::vec3D<int> bottomLeft, geo::vec3D<int> topRight) {
     int code = INSIDE; // default to be inside
     if (point.x < bottomLeft.x) // to the left of rectangle 
         code |= LEFT; 
@@ -37,7 +37,7 @@ int getOutCode(Point<int> point, Point<int> bottomLeft, Point<int> topRight) {
  * @param 2 points and window size
  * @return 0: if both points are outside, otherwise return 1;
  */
-int clipLine(Point<int> &p0, Point<int> &p1, Canva<int> win) {
+int clipLine(geo::vec3D<int> &p0, geo::vec3D<int> &p1, geo::canva<int> win) {
     int outCode0 = getOutCode(p0, win.bottomLeft, win.topRight);
     int outCode1 = getOutCode(p1, win.bottomLeft, win.topRight);
     while (true) {
@@ -47,7 +47,7 @@ int clipLine(Point<int> &p0, Point<int> &p1, Canva<int> win) {
             return 0;
         } else {                            // either of 2 points out side window
             int outCode = outCode1 > outCode0 ? outCode1 : outCode0;    // get larger one
-            Point<int> intersect;
+            geo::vec3D<int> intersect;
             int dx = p1.x - p0.x;
             int dy = p1.y - p0.y;
             // point is above the clip window
@@ -84,10 +84,10 @@ int clipLine(Point<int> &p0, Point<int> &p1, Canva<int> win) {
 /** Apply Sutherland-Hodgman
  * @return vector of clipped vertices of polygon
  */
-int clipPolygon(std::vector<Point<int>> &vertices, Canva<int> win) {
-    std::vector<Point<int>> clippedVertices;
-    std::vector<Point<int>> newVertices;
-    std::vector<Point<int>> winVertices = {
+int clipPolygon(std::vector<geo::vec3D<int>> &vertices, geo::canva<int> win) {
+    std::vector<geo::vec3D<int>> clippedVertices;
+    std::vector<geo::vec3D<int>> newVertices;
+    std::vector<geo::vec3D<int>> winVertices = {
         win.bottomLeft,
         win.topLeft,
         win.topRight,
@@ -97,15 +97,15 @@ int clipPolygon(std::vector<Point<int>> &vertices, Canva<int> win) {
     int winVerticesSize = winVertices.size();
     for (int i = 0; i < winVerticesSize; ++i) {
         int verticesSize = vertices.size();
-        Line<int> clippedLine(
+        geo::line<int> clippedLine(
             winVertices[i % winVerticesSize],
             winVertices[(i + 1) % winVerticesSize]
         );
         for (int j = 0; j < verticesSize - 1; ++j) {
-            Point<int> p0 = vertices[j];
-            Point<int> p1 = vertices[j + 1];
-            int posToClipLine1 = getDistancePointToLine(p0, clippedLine);
-            int posToClipLine2 = getDistancePointToLine(p1, clippedLine);
+            geo::vec3D<int> p0 = vertices[j];
+            geo::vec3D<int> p1 = vertices[j + 1];
+            int posToClipLine1 = geo::getDistancePointToLine(p0, clippedLine);
+            int posToClipLine2 = geo::getDistancePointToLine(p1, clippedLine);
             // fprintf(stderr, "distance: %d, %d\n", posToClipLine1, posToClipLine2);
             // 1st case: both is inside
             if (posToClipLine1 < 0 && posToClipLine2 < 0) {
@@ -155,15 +155,15 @@ int clipPolygon(std::vector<Point<int>> &vertices, Canva<int> win) {
  * @param: 2 points of the line
  * @return vector of points lie in the line
  */
-std::vector<Point<int>> drawLine(Point<int> p0, Point<int> p1) {
-    std::vector<Point<int>> points;
+std::vector<geo::vec3D<int>> drawLine(geo::vec3D<int> p0, geo::vec3D<int> p1) {
+    std::vector<geo::vec3D<int>> points;
     int dx = abs(p1.x - p0.x);
     int sx = p0.x < p1.x ? 1 : -1;
     int dy = -abs(p1.y - p0.y);
     int sy = p0.y < p1.y ? 1 : -1;
     int error = dx + dy;  
     while (true) {  
-        Point<int> p = {p0.x, p0.y};
+        geo::vec3D<int> p = {p0.x, p0.y};
         points.push_back(p);
         if (p0.x == p1.x && p0.y == p1.y) 
             break;
@@ -184,7 +184,7 @@ std::vector<Point<int>> drawLine(Point<int> p0, Point<int> p1) {
  * 
  * 
  */
-void worldToViewPort(Point<int>* p, Canva<int> worldView, Canva<int> viewPort) {
+void worldToViewPort(geo::vec3D<int>* p, geo::canva<int> worldView, geo::canva<int> viewPort) {
     // scaling factors for x coordinate and y coordinate 
     float sx, sy; 
   

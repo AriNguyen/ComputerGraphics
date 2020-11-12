@@ -6,7 +6,9 @@
  */
 #pragma once
 
+#include <iostream>
 #include <cmath>
+
 #include "geometry_objects.h"
 
 #define PI 3.14259

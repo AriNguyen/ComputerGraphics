@@ -1,12 +1,9 @@
 #pragma once
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <string>
 #include <cstring>
 #include <vector>
 #include <sstream>
-#include <cmath>
 
 std::vector<std::string> tokenizeBySymbol(std::string str, char symbol) {
     std::vector<std::string> tokens;

@@ -52,8 +52,8 @@ class SMFImage {
                     vertex[i] = v;
                 }
                 else if (tokens[0] == "f") {
-                    std::cerr << "vertex size: " << vertex.size() << "\n";
-                    std::cerr << "SMFImage::parseData tokens: " << tokens[1] << ", " << tokens[2] << ", " << tokens[3] << "'\n";
+                    // std::cerr << "vertex size: " << vertex.size() << "\n";
+                    // std::cerr << "SMFImage::parseData tokens: " << tokens[1] << ", " << tokens[2] << ", " << tokens[3] << "'\n";
                     Point<double> v1 = vertex[std::stoi(tokens[1])];
                     Point<double> v2 = vertex[std::stoi(tokens[2])];
                     Point<double> v3 = vertex[std::stoi(tokens[3])];

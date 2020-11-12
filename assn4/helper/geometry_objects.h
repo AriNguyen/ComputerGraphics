@@ -13,6 +13,7 @@ template <class T> struct Canva;
 template <class T>
 struct Point {
     T x, y, z;
+    
     Point() {};
     Point(T a, T b) : x{a}, y{b}, z{0} {};
     Point(T a, T b, T c) : x{a}, y{b}, z{c} {};
@@ -37,7 +38,8 @@ struct Point {
 template <class T>
 struct Line {
     Point<T> p0, p1;
-    Line() {};
+
+    Line() {}
     Line(Point<T> a, Point<T> b) : p0{a}, p1{b} {};
     friend std::ostream& operator<<(std::ostream& os, const Line& l) {
         os << l.p0 << " - " << l.p1;
@@ -51,13 +53,15 @@ struct Triangle {
      
     Triangle() {
         p.resize(3);
-    };
+    }
+
     Triangle(Point<T> a, Point<T> b, Point<T> c) {
         p.resize(3);
         p[0] = a;
         p[1] = b;
         p[2] = c;
-    };
+    }
+
     friend std::ostream& operator<<(std::ostream& os, const Triangle<T>& t) {
         for (auto p: t.p) {
             os << p << std::endl;
@@ -70,14 +74,17 @@ template <class T>
 struct Canva {
     Point<T> bottomLeft, topLeft, bottomRight, topRight;
     T height, width;
+
     Canva() {};
     Canva(T a, T b, T c, T d) {
         loadDim(a, b, c, d);
     }
+
     friend std::ostream& operator<<(std::ostream& os, const Canva<T>& c) {
         os << c.bottomLeft.x << ", " << c.bottomLeft.y << ", " << c.topRight.x << ", " << c.topRight.y << "\n";
         return os;
     }
+
     void loadDim(T a, T b, T c, T d) {
         bottomLeft.x = a;
         bottomLeft.y = b;

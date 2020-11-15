@@ -63,7 +63,7 @@ class SMFImage {
             ifs.close();
         }
 
-        std::vector<geo::triangle> getFace() {
+        std::vector<geo::triangle> getTriangularFace() {
             return face;
         }
         std::map<int, geo::vec3D> getVertex() {

@@ -5,12 +5,18 @@
 #include <map>
 
 namespace geo {
+    struct mat4x4 {
+        float m[4][4] = { 0 };
+    };
+    
     struct vec3D {
-        float x, y, z;
+        float x = 0, y = 0, z = 0;
+        float w = 1;
         
         vec3D() {};
         vec3D(float a, float b) : x{a}, y{b}, z{0} {};
         vec3D(float a, float b, float c) : x{a}, y{b}, z{c} {};
+        vec3D(float a, float b, float c, float d) : x{a}, y{b}, z{c}, w{d} {};
 
         // void loadSpecs(a, b) : x{a}, y{b}, z{0} {};
         // void loadSpecs(a, b, c) : x{a}, y{b}, z{c} {};
@@ -26,6 +32,25 @@ namespace geo {
         friend std::ostream& operator<<(std::ostream& os, const vec3D& p) {
             os << p.x << ", " << p.y << ", " << p.z;
             return os;
+        }
+        vec3D operator*(mat4x4 m) const {
+            vec3D v;
+            v.x = x * m.m[0][0] + y * m.m[1][0] + z * m.m[2][0] + w * m.m[3][0];
+            v.y = x * m.m[0][1] + y * m.m[1][1] + z * m.m[2][1] + w * m.m[3][1];
+            v.z = x * m.m[0][2] + y * m.m[1][2] + z * m.m[2][2] + w * m.m[3][2];
+            v.w = x * m.m[0][3] + y * m.m[1][3] + z * m.m[2][3] + w * m.m[3][3];
+
+            if (v.w != 0) {
+                v.x /= v.w;
+                v.y /= v.w;
+                v.z /= v.w;
+            } 
+            return v;
+        }
+        template <typename T>
+        vec3D operator/(T num) {
+            vec3D newVec(x / num, y / num, z / num, w / num);
+            return newVec;
         }
     };
 
@@ -43,6 +68,7 @@ namespace geo {
     struct triangle {
         vec3D p[3];
 
+        triangle() {};
         triangle(vec3D a, vec3D b, vec3D c) {
             p[0] = a;
             p[1] = b;
@@ -56,10 +82,6 @@ namespace geo {
         }
     };
 
-    struct mat4x4 {
-        float m[4][4] = { 0 };
-    };
-
     struct canva {
         vec3D bottomLeft, topLeft, bottomRight, topRight;
         float height, width;
@@ -70,7 +92,7 @@ namespace geo {
         }
 
         friend std::ostream& operator<<(std::ostream& os, const canva& c) {
-            os << c.bottomLeft.x << ", " << c.bottomLeft.y << ", " << c.topRight.x << ", " << c.topRight.y << "\n";
+            os << c.bottomLeft.x << ", " << c.bottomLeft.y << ", " << c.topRight.x << ", " << c.topRight.y;
             return os;
         }
 

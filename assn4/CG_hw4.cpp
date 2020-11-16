@@ -114,14 +114,21 @@ int main(int argc, char *argv[]) {
 
 // View Volume Transformation
 geo::triangle projectParrallel(geo::triangle tri) {
-    // 1. Translate VRP to the origin : translation T(-VRP)
-    geo::mat4x4 T;
-    T.makeIdentity();
-    T.m[0][3] = -VRP.x;
-    T.m[1][3] = -VRP.y;
-    T.m[2][3] = -VRP.z;
+    // Translate VRP to the origin : translation T(-VRP)
+    geo::mat4x4 T_VRP;
+    T_VRP.makeIdentity();
+    T_VRP.m[0][3] = -VRP.x;
+    T_VRP.m[1][3] = -VRP.y;
+    T_VRP.m[2][3] = -VRP.z;
 
-    // 2. Rotate
+    // Translation T(-PRP)
+    geo::mat4x4 T_PRP;
+    T_PRP.makeIdentity();
+    T_PRP.m[0][3] = -PRP.x;
+    T_PRP.m[1][3] = -PRP.y;
+    T_PRP.m[2][3] = -PRP.z;
+
+    // Rotate
     float fTheta = 1.0f;
     geo::mat4x4 R;
     R.makeIdentity();
@@ -164,7 +171,21 @@ geo::triangle projectParrallel(geo::triangle tri) {
     SHpar.m[0][2] = shX;
     SHpar.m[1][2] = shY;
 
-    // 4. Translate and Scale
+    // Define Sper (Shear Perspective)
+    geo::mat4x4 mat;
+    mat.m[0][3] = 1;
+    mat.m[1][3] = 1;
+    mat.m[2][3] = 1;
+    mat.m[3][3] = 1;
+    geo::mat4x4 VRP_P = SHpar * (T_PRP * mat);
+
+    geo::mat4x4 Sper;
+    Sper.makeIdentity();
+    Sper.m[0][0] = (2 * PRP.z) / (VRC.topRight.x - VRC.bottomLeft.x) * (PRP.z - B);
+    Sper.m[1][1] = (2 * PRP.z) / (VRC.topRight.y - VRC.bottomLeft.y) * (PRP.z - B);
+    Sper.m[2][1] = 1 / (PRP.z - B);
+
+    // Translate and Scale
     geo::mat4x4 Tpar;
     Tpar.makeIdentity();
     Tpar.m[0][3] = -CW.x;
@@ -178,8 +199,13 @@ geo::triangle projectParrallel(geo::triangle tri) {
     Spar.m[2][0] = 1 / (F - B);
 
     // Do all matrix mult
-    geo::mat4x4 projMatrix = Spar * (Tpar * (SHpar * (R * T)));
+    geo::mat4x4 projMatrix;
+    if (isParallelProjection)
+        projMatrix = Spar * (Tpar * (SHpar * (R * T_VRP)));
+    else 
+        projMatrix = Sper * (SHpar * (T_PRP * (R * T_VRP)));
     
+    // std::cerr << "R: \n" << T_VRP << "\n";
     // std::cerr << "R: \n" << R << "\n";
     // std::cerr << "CW: " << CW << "\n";
     // std::cerr << "SHpar: \n" << SHpar << "\n";
@@ -210,7 +236,7 @@ void parseArgvs(int argc, char *argv[]) {
 
     PRP = geo::vec3D(0, 0, 1);
     VRP = geo::vec3D(0, 0, 0);
-    VUP = geo::vec3D(0, 1, 1);
+    VUP = geo::vec3D(0, 1, 0);
     VPN = geo::vec3D(0, 0, -1);
 
     // parse argv

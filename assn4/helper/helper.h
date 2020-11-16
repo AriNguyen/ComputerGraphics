@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <cassert>
 
 #include "geometry_objects.h"
 #include "utils.h"

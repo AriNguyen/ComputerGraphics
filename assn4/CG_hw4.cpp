@@ -23,13 +23,9 @@ geo::canva<int> worldView, viewPort, world;
 geo::canva<float> VRC;
 PBMFile pbmFile;
 
-
 // declare functions
 void parseArgvs(int, char *[]);
-void multiplyMatrixVector(geo::vec3D &i, geo::vec3D &o, geo::mat4x4 &m);
-geo::triangle projectParrallel(geo::triangle);
-geo::triangle projectPerspectice(geo::triangle);
-
+geo::mat4x4 computeProjMatrix();
 
 /** Main Function - behaves like a Graphics Pipeline 
  * Pipeline Order:
@@ -49,6 +45,10 @@ int main(int argc, char *argv[]) {
     // Set up rotation matrices
     geo::mat4x4 R, matRotX;
 
+    // compute projMatrix
+    geo::mat4x4 projMatrix = computeProjMatrix();
+    std::cerr << "projMatrix: \n" << projMatrix << "\n";
+
     // Project triangles from 3D --> 2D
     std::vector<geo::triangle> triFace = smf.getTriangularFace();
     for (auto &tri: triFace) {
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
         // std::cerr << "-----\n";
 
         // do projection
-        tri = projectParrallel(tri);
+        tri = tri * projMatrix;
 
         // print vector
         std::cerr << "points:" << "\n";
@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
 }
 
 // View Volume Transformation
-geo::triangle projectParrallel(geo::triangle tri) {
+geo::mat4x4 computeProjMatrix() {
     // Translate VRP to the origin : translation T(-VRP)
     geo::mat4x4 T_VRP;
     T_VRP.makeIdentity();
@@ -133,7 +133,7 @@ geo::triangle projectParrallel(geo::triangle tri) {
     geo::mat4x4 R;
     R.makeIdentity();
     geo::vec3D Rz = VPN / VPN.length();
-    geo::vec3D Rx = VUP.crossProduct(Rz) / VUP.crossProduct(Rz).length();
+    geo::vec3D Rx = VUP.crossProduct(Rz) / (VUP.crossProduct(Rz)).length();
     geo::vec3D Ry = Rz.crossProduct(Rx);
 
     R.m[0][0] = Rx.x;
@@ -149,27 +149,10 @@ geo::triangle projectParrallel(geo::triangle tri) {
     R.m[2][2] = Rz.z;
 
     // 3. Shear
-    geo::vec3D CW(
-        (VRC.topRight.x - VRC.bottomLeft.x) / 2, 
-        (VRC.topRight.y - VRC.bottomLeft.y) / 2, 
-        0
-    );
-    
-    geo::vec3D DOP(
-        CW.x - PRP.x, 
-        CW.y - PRP.y, 
-        CW.z - PRP.z
-    );
-
-    assert(DOP.y != 0);
-    assert(DOP.z != 0);
-    float shX = -(DOP.x / DOP.y);
-    float shY = -(DOP.y / DOP.z);
-
     geo::mat4x4 SHpar;
     SHpar.makeIdentity();
-    SHpar.m[0][2] = shX;
-    SHpar.m[1][2] = shY;
+    SHpar.m[0][2] = (0.5 * (VRC.topRight.x + VRC.bottomLeft.x) - PRP.x) / PRP.z;
+    SHpar.m[1][2] = (0.5 * (VRC.topRight.y + VRC.bottomLeft.y) - PRP.y) / PRP.z;
 
     // Define Sper (Shear Perspective)
     geo::mat4x4 mat;
@@ -181,22 +164,22 @@ geo::triangle projectParrallel(geo::triangle tri) {
 
     geo::mat4x4 Sper;
     Sper.makeIdentity();
-    Sper.m[0][0] = (2 * PRP.z) / (VRC.topRight.x - VRC.bottomLeft.x) * (PRP.z - B);
-    Sper.m[1][1] = (2 * PRP.z) / (VRC.topRight.y - VRC.bottomLeft.y) * (PRP.z - B);
-    Sper.m[2][1] = 1 / (PRP.z - B);
+    Sper.m[0][0] = (2 * PRP.z) / ((VRC.topRight.x - VRC.bottomLeft.x) * (PRP.z - B));
+    Sper.m[1][1] = (2 * PRP.z) / ((VRC.topRight.y - VRC.bottomLeft.y) * (PRP.z - B));
+    Sper.m[2][2] = 1 / (PRP.z - B);
 
     // Translate and Scale
     geo::mat4x4 Tpar;
     Tpar.makeIdentity();
-    Tpar.m[0][3] = -CW.x;
-    Tpar.m[1][3] = -CW.y;
+    Tpar.m[0][3] = -(VRC.topRight.x + VRC.bottomLeft.x);
+    Tpar.m[1][3] = -(VRC.topRight.y + VRC.bottomLeft.y);
     Tpar.m[2][3] = -F;
     
     geo::mat4x4 Spar;
     Spar.makeIdentity();
     Spar.m[0][0] = 2 / (VRC.topRight.x - VRC.bottomLeft.x);
-    Spar.m[1][0] = 2 / (VRC.topRight.y - VRC.bottomLeft.y);
-    Spar.m[2][0] = 1 / (F - B);
+    Spar.m[1][1] = 2 / (VRC.topRight.y - VRC.bottomLeft.y);
+    Spar.m[2][2] = 1 / (F - B);
 
     // Do all matrix mult
     geo::mat4x4 projMatrix;
@@ -205,29 +188,20 @@ geo::triangle projectParrallel(geo::triangle tri) {
     else 
         projMatrix = Sper * (SHpar * (T_PRP * (R * T_VRP)));
     
-    // std::cerr << "R: \n" << T_VRP << "\n";
-    // std::cerr << "R: \n" << R << "\n";
-    // std::cerr << "CW: " << CW << "\n";
-    // std::cerr << "SHpar: \n" << SHpar << "\n";
-    // std::cerr << "Tpar: \n" << Tpar << "\n";
-    // std::cerr << "Spar: \n" << Spar << "\n";
-    std::cerr << "projMatrix: \n" << projMatrix << "\n";
-    
-    // Appply to triangle   
-    geo::triangle triProjected = tri * projMatrix;
+    std::cerr << "T_VRP: \n" << T_VRP << "\n";
+    std::cerr << "R: \n" << R << "\n";
+    std::cerr << "SHpar: \n" << SHpar << "\n";
+    std::cerr << "Tpar: \n" << Tpar << "\n";
+    std::cerr << "Spar: \n" << Spar << "\n";
+    std::cerr << "Sper: \n" << Sper << "\n";
 
-    return triProjected;
-}
-
-geo::triangle projectPerspectice(geo::triangle triVector) {
-    return triVector;
+    return projMatrix;
 }
 
 void parseArgvs(int argc, char *argv[]) {
     // default
     fileName = (char *)"img/bound-lo-sphere.smf";
-    // world.loadDim(0, 0, 500, 500);
-    // worldView.loadDim(0, 0, 250, 250);
+    isParallelProjection = 0;
     viewPort.loadDim(0, 0, 500, 500);
     VRC.loadDim(-0.7, -0.7, 0.7, 0.7);
     pbmFile.world = viewPort;
@@ -291,8 +265,11 @@ void parseArgvs(int argc, char *argv[]) {
             VRC.topRight.y = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-P") == 0) 
             isParallelProjection = 1;
+        else if (strcmp(argv[i], "-F") == 0) 
+            F = std::atof(argv[++i]);
+        else if (strcmp(argv[i], "-B") == 0) 
+            B = std::atof(argv[++i]);
     }
-    VRC.loadDim(-0.7, -0.7, 0.7, 0.7);
     pbmFile.world = viewPort;
 
     // print to debug
@@ -308,15 +285,4 @@ void parseArgvs(int argc, char *argv[]) {
     std::cerr << "viewPort: " << viewPort << "\n"; 
     std::cerr << "VRC: " << VRC << "\n"; 
     std::cerr << "\n"; 
-}
-
-void multiplyMatrixVector(geo::vec3D &i, geo::vec3D &o, geo::mat4x4 &m) {
-    o.x = i.x * m.m[0][0] + i.y * m.m[1][0] + i.z * m.m[2][0] + m.m[3][0];
-    o.y = i.x * m.m[0][1] + i.y * m.m[1][1] + i.z * m.m[2][1] + m.m[3][1];
-    o.z = i.x * m.m[0][2] + i.y * m.m[1][2] + i.z * m.m[2][2] + m.m[3][2];
-    float w = i.x * m.m[0][3] + i.y * m.m[1][3] + i.z * m.m[2][3] + m.m[3][3];
-
-    if (w != 0.0f) {
-        o.x /= w; o.y /= w; o.z /= w;
-    }
 }

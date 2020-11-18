@@ -25,7 +25,7 @@ PBMFile pbmFile;
 
 // declare functions
 void parseArgvs(int, char *[]);
-geo::mat4x4 computeProjMatrix();
+geo::mat4x4 computeProjMatrix(bool);
 
 /** Main Function - behaves like a Graphics Pipeline 
  * Pipeline Order:
@@ -46,63 +46,106 @@ int main(int argc, char *argv[]) {
     geo::mat4x4 R, matRotX;
 
     // compute projMatrix
-    geo::mat4x4 projMatrix = computeProjMatrix();
+    geo::mat4x4 projMatrix = computeProjMatrix(false);
     std::cerr << "projMatrix: \n" << projMatrix << "\n";
 
     // Project triangles from 3D --> 2D
     std::vector<geo::triangle> triFace = smf.getTriangularFace();
     for (auto &tri: triFace) {
+        std::cerr << "\n-----tri before: \n" << tri << "-----\n" ;
 
-        // std::cerr << "\n-----tri before: \n";
-        // for (auto p: tri.p) {
-        //     std::cerr << p << "\n";
-        // }
-        // std::cerr << "-----\n";
-
-        // do projection
+        // Apply normalizing transformation, Npar or Nper
         tri = tri * projMatrix;
+        std::cerr << "\n-----tri projMatrix: \n" << tri << "-----\n" ;
+
+        // clip against VRC (View Cano)
+        // clipPolygon(tri.p, VRC, true);
+        // std::cerr << "\n-----tri clip: \n" << tri << "-----\n" ;
+
+        // compute Homogenous projection matrix
+        // float d = abs(PRP.z);
+        // std::cerr << "d: " << d << "\n";
+
+        // geo::mat4x4 M_per;
+        // M_per.makeIdentity();
+        // M_per.m[3][3] = 0;
+        // if (d > 0)
+        //     M_per.m[3][2] = 1/d;
+
+        // geo::mat4x4 M_ort;
+        // M_ort.makeIdentity();
+        // M_ort.m[2][2] = 0;
+        // std::cerr << M_ort << "\n";
+        // std::cerr << M_per << "\n";
 
         // print vector
-        std::cerr << "points:" << "\n";
-        for (auto &p: tri.p) {
-            // scale to device coor
-            p.x += 1.0f;
-            p.y += 1.0f;
-            p.x *= 0.5f * viewPort.width;
-            p.y *= 0.5f * viewPort.height;
-        }
-        
         std::vector<geo::point<int>> v;
-        for (auto p: tri.p) {
+        
+        for (auto &p: tri.p) {
+            // std::cerr << "p before: " << p << "\n";
+            // if (isParallelProjection) 
+            //     p = p * M_ort;
+            // else
+            //     p = p * M_per;
+            
+            // if (!isParallelProjection) {
+            //     // p = p / p.w;
+            //     p.x /= p.z;
+            //     p.y /= p.z;
+            //     p.z /= p.z;
+            // }
+
+            // std::cerr << "p: " << p << "\n";
+
+            // scale to device coord
+            if (isParallelProjection) {
+                p.x += 1.0f;
+                p.y += 1.0f;
+            }
+            else {
+                p.x += 1.0f;
+                p.y += 1.0f;
+            }
+            
+            assert(p.x >= 0);
+            assert(p.y >= 0);
+            p.x *= 0.5 * world.width;
+            p.y *= 0.5 * world.height;
+            std::cerr << "\np after scale:: " << p << "\n";
+
             // round to integer
             geo::point<int> point(
                 std::round(p.x),
                 std::round(p.y)
             );
+
+            // worldToViewPort
+            worldToViewPort(point, world, viewPort);
+
             v.push_back(point);
-            std::cerr << point << "\n";
+            std::cerr << "points: " << point << "\n";
         }
         triangularPoints.push_back(v);
     }
+    std::cerr << "points:" << "\n";
     std::cerr << "tri:  here\n";
 
     // clip && draw
     for (auto vecPoints: triangularPoints) {
         for (int i = 0; i < vecPoints.size(); i++) {
-            std::cerr << "tri: " << vecPoints[i] << "\n";
+            std::cerr << i << ", tri: " << vecPoints[i] << "\n";
             geo::point<int> p0 = vecPoints[i];
-            geo::point<int> p1 = vecPoints[(i + 1) % 2];
+            geo::point<int> p1 = vecPoints[(i + 1) % 3];
 
             // clip
-            // if (!clipLine(p0, p1, world)) 
-            //     continue;
+            if (!clipLine(p0, p1, world)) 
+                continue;
 
             // draw
             // drawLine() returns vector of points to be display
             std::vector<geo::point<int>> linePoints = drawLine(p0, p1);
             for (auto &p: linePoints) 
                 pixelPoints.push_back(p);
-            
         }
     }
 
@@ -113,7 +156,7 @@ int main(int argc, char *argv[]) {
 }
 
 // View Volume Transformation
-geo::mat4x4 computeProjMatrix() {
+geo::mat4x4 computeProjMatrix(bool debug) {
     // Translate VRP to the origin : translation T(-VRP)
     geo::mat4x4 T_VRP;
     T_VRP.makeIdentity();
@@ -188,23 +231,25 @@ geo::mat4x4 computeProjMatrix() {
     else 
         projMatrix = Sper * (SHpar * (T_PRP * (R * T_VRP)));
     
-    std::cerr << "T_VRP: \n" << T_VRP << "\n";
-    std::cerr << "R: \n" << R << "\n";
-    std::cerr << "SHpar: \n" << SHpar << "\n";
-    std::cerr << "Tpar: \n" << Tpar << "\n";
-    std::cerr << "Spar: \n" << Spar << "\n";
-    std::cerr << "Sper: \n" << Sper << "\n";
-
+    if (debug) {
+        std::cerr << "T_VRP: \n" << T_VRP << "\n";
+        std::cerr << "R: \n" << R << "\n";
+        std::cerr << "SHpar: \n" << SHpar << "\n";
+        std::cerr << "Tpar: \n" << Tpar << "\n";
+        std::cerr << "Spar: \n" << Spar << "\n";
+        std::cerr << "Sper: \n" << Sper << "\n";
+    }
     return projMatrix;
 }
 
 void parseArgvs(int argc, char *argv[]) {
     // default
+    float u = -0.7, v = -0.7, U = 0.7, V = 0.7;
+    float j = 0, k = 0, o = 500, p=500;
+
     fileName = (char *)"img/bound-lo-sphere.smf";
     isParallelProjection = 0;
-    viewPort.loadDim(0, 0, 500, 500);
-    VRC.loadDim(-0.7, -0.7, 0.7, 0.7);
-    pbmFile.world = viewPort;
+    world.loadDim(0, 0, 500, 500);
     F = 0.6;
     B = -0.6; 
 
@@ -213,19 +258,20 @@ void parseArgvs(int argc, char *argv[]) {
     VUP = geo::vec3D(0, 1, 0);
     VPN = geo::vec3D(0, 0, -1);
 
+    
     // parse argv
     for (int i = 0; i < argc; i++) {
         if (strcmp(argv[i], "-f") == 0) 
             fileName = (char *)argv[++i];
         // View Port
         else if (strcmp(argv[i], "-j") == 0) 
-            viewPort.bottomLeft.x = std::atoi(argv[++i]);
+            j = std::atoi(argv[++i]);
         else if (strcmp(argv[i], "-k") == 0) 
-            viewPort.bottomLeft.y = std::atoi(argv[++i]);
+            k = std::atoi(argv[++i]);
         else if (strcmp(argv[i], "-o") == 0) 
-            viewPort.topRight.x = std::atoi(argv[++i]);
+            o = std::atoi(argv[++i]);
         else if (strcmp(argv[i], "-p") == 0) 
-            viewPort.topRight.y = std::atoi(argv[++i]);
+            p = std::atoi(argv[++i]);
         // PRP
         else if (strcmp(argv[i], "-x") == 0) 
             PRP.x = std::atof(argv[++i]);
@@ -256,13 +302,13 @@ void parseArgvs(int argc, char *argv[]) {
             VUP.z = std::atof(argv[++i]);
         // VRC Window
         else if (strcmp(argv[i], "-u") == 0) 
-            VRC.bottomLeft.x = std::atof(argv[++i]);
+            u = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-v") == 0) 
-            VRC.bottomLeft.y = std::atof(argv[++i]);
+            v = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-U") == 0) 
-            VRC.topRight.x = std::atof(argv[++i]);
+            U = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-V") == 0) 
-            VRC.topRight.y = std::atof(argv[++i]);
+            V = std::atof(argv[++i]);
         else if (strcmp(argv[i], "-P") == 0) 
             isParallelProjection = 1;
         else if (strcmp(argv[i], "-F") == 0) 
@@ -270,7 +316,9 @@ void parseArgvs(int argc, char *argv[]) {
         else if (strcmp(argv[i], "-B") == 0) 
             B = std::atof(argv[++i]);
     }
-    pbmFile.world = viewPort;
+    viewPort.loadDim(j, k, o, p);
+    VRC.loadDim(u, v, U, V);
+    pbmFile.world = world;
 
     // print to debug
     std::cerr << "---------Specs: \n";
@@ -283,6 +331,7 @@ void parseArgvs(int argc, char *argv[]) {
     std::cerr << "VPN: " << VPN << "\n";   
 
     std::cerr << "viewPort: " << viewPort << "\n"; 
+    std::cerr << "world: " << world << "\n"; 
     std::cerr << "VRC: " << VRC << "\n"; 
     std::cerr << "\n"; 
 }

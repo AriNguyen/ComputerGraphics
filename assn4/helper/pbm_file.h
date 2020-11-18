@@ -33,7 +33,7 @@ struct PBMFile {
         
         for (auto &p: points) {
             // fprintf(stderr, "toStdOut: %d %d\n", p.x, p.y);
-            std::cerr << p << "\n";
+            // std::cerr << p << "\n";
             assert(p.x <= world.width);
             assert(p.y <= world.height);
             

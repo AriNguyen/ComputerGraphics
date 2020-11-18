@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cmath>
 #include <iostream>
 #include <vector>
 #include <map>
@@ -148,8 +149,8 @@ namespace geo {
             p[2] = c;
         }
         friend std::ostream& operator<<(std::ostream& os, const triangle& t) {
-            for (auto p: t.p) {
-                os << p << std::endl;
+            for (int i = 0; i < t.p.size(); i++) {
+                os << "vec " << i + 1 << " :" << t.p[i] << std::endl;
             }
             return os;
         }

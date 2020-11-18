@@ -49,78 +49,45 @@ int main(int argc, char *argv[]) {
     geo::mat4x4 transformedMatrix = computeProjMatrix(false);
     std::cerr << "transformedMatrix: \n" << transformedMatrix << "\n";
 
+    // compute projection matrix
+    float d = PRP.z / (B - PRP.z);
+    std::cerr << "d: " << d << "\n";
+
+    geo::mat4x4 projectMatrix;
+    if (isParallelProjection) {
+        projectMatrix.makeIdentity();
+        projectMatrix.m[2][2] = 0;
+    }
+    else {
+        projectMatrix.makeIdentity();
+        projectMatrix.m[3][3] = 0;
+        // projectMatrix.m[2][3] = 1;
+        projectMatrix.m[3][2] = 1/d;
+    }
+    std::cerr << "projectMatrix: \n" <<projectMatrix << "\n";
+
     // Project triangles from 3D --> 2D
     std::vector<geo::triangle> triFace = smf.getTriangularFace();
     for (auto &tri: triFace) {
         std::cerr << "\n-----tri before: \n" << tri << "-----\n" ;
 
-        // Apply normalizing transformation, Npar or Nper
-        tri = tri * transformedMatrix;
-        std::cerr << "\n-----tri transformedMatrix: \n" << tri << "-----\n" ;
-
-        // clip against VRC (View Cano)
-        // clipPolygon(tri.p, VRC, true);
-        // std::cerr << "\n-----tri clip: \n" << tri << "-----\n" ;
-
-        for (int i = 0; i < tri.p.size(); i++) {
-            // clip
-            // if (isParallelProjection) {
-            //     clipLine3D(tri.p[i], tri.p[(i + 1) % tri.p.size()], VRC);
-            // }
-            // else {
-            //     geo::canva clipPlane;
-            //     clipPlane.bottomLeft = VRC.bottomLeft;
-            //     clipPlane.topLeft = VRC.topLeft;
-            //     clipPlane.bottomRight = PRP;
-            //     clipPlane.topRight = PRP;
-            //     clipLine3D(tri.p[i], tri.p[(i + 1) % tri.p.size()], VRC);
-            // }
-            
-        }
-
-        //compute Homogenous projection matrix
-        float d = PRP.z / (B - PRP.z);
-        std::cerr << "d: " << d << "\n";
-
-        geo::mat4x4 projectPerMatrix;
-        projectPerMatrix.makeIdentity();
-        projectPerMatrix.m[3][3] = 0;
-        projectPerMatrix.m[2][3] = 1;
-        projectPerMatrix.m[3][2] = 1/d;
-
-        geo::mat4x4 projectParMatrix;
-        projectParMatrix.makeIdentity();
-        projectParMatrix.m[2][2] = 0;
-        std::cerr << projectParMatrix << "\n";
-        std::cerr << projectPerMatrix << "\n";
-
         // print vector
         std::vector<geo::point<int>> v;
         
         for (auto &p: tri.p) {
-            std::cerr << "\n-----p before: " << p << "\n";
-            if (isParallelProjection) 
-                p = p * projectParMatrix;
-            else
-                p = p * projectPerMatrix;
-            
-            // if (!isParallelProjection) {
-            //     // p = p / p.w;
-            //     p.x /= p.z;
-            //     p.y /= p.z;
-            //     p.z /= p.z;
-            // }
+            // Apply normalizing transformation, Npar or Nper
+            p = p * transformedMatrix;
+            std::cerr << "\np after transform:: " << p << "\n";
 
-            std::cerr << "p after M: " << p << "\n";
+            p = p * projectMatrix;
+            std::cerr << "p after projectMatrix:: " << p << "\n";
 
             // scale to device coord
             p.x += 1.0f;
             p.y += 1.0f;
-            // assert(p.x >= 0);
-            // assert(p.y >= 0);
             p.x *= 0.5 * world.width;
             p.y *= 0.5 * world.height;
-            std::cerr << "\np after scale:: " << p << "\n";
+            std::cerr << "p after scale:: " << p << "\n";
 
             // round to integer
             geo::point<int> point(
@@ -132,7 +99,7 @@ int main(int argc, char *argv[]) {
             worldToViewPort(point, world, viewPort);
 
             v.push_back(point);
-            std::cerr << "points: " << point << "\n";
+            std::cerr << "=> points: " << point << "\n";
         }
         triangularPoints.push_back(v);
     }
@@ -142,7 +109,7 @@ int main(int argc, char *argv[]) {
     // clip && draw
     for (auto vecPoints: triangularPoints) {
         for (int i = 0; i < vecPoints.size(); i++) {
-            std::cerr << i << ", tri: " << vecPoints[i] << "\n";
+            // std::cerr << i << ", tri: " << vecPoints[i] << "\n";
             geo::point<int> p0 = vecPoints[i];
             geo::point<int> p1 = vecPoints[(i + 1) % 3];
 
@@ -343,5 +310,6 @@ void parseArgvs(int argc, char *argv[]) {
     std::cerr << "world: " << world << "\n"; 
     std::cerr << "VRC: " << VRC << "\n"; 
     std::cerr << "F: " << F << "\n"; 
+    std::cerr << "B: " << B << "\n"; 
     std::cerr << "\n"; 
 }

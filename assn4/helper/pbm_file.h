@@ -16,7 +16,7 @@
 
 struct PBMFile {
     std::string pixels;
-    geo::canva<int> worldView, viewPort, world;
+    geo::canva worldView, viewPort, world;
 
     PBMFile() {};
     void load(std::vector<geo::vec3D> points);
@@ -34,14 +34,14 @@ struct PBMFile {
         for (auto &p: points) {
             // fprintf(stderr, "toStdOut: %d %d\n", p.x, p.y);
             std::cerr << p << "\n";
-            // assert(p.x <= world.width);
-            // assert(p.y <= world.height);
+            assert(p.x <= world.width);
+            assert(p.y <= world.height);
             
             // check if out of index
-            if (!(p.x <= world.width - 1) || !(p.y <= world.height - 1)) 
-                continue;
-            if (p.x < 0 || p.y < 0)
-                continue;
+            // if (!(p.x <= world.width - 1) || !(p.y <= world.height - 1)) 
+            //     continue;
+            // if (p.x < 0 || p.y < 0)
+            //     continue;
             pixelArr[p.x - world.bottomLeft.x][p.y - world.bottomLeft.y] = 1;
         }
         for (int i = world.height - 1; i >= 0; --i) {

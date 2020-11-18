@@ -19,8 +19,8 @@ float fNear, fFar, fFov, fAspectRatio, fFovRad;
 geo::mat4x4 matProj;  // Projection Matri
 
 geo::vec3D PRP, VRP, VUP, VPN;
-geo::canva<int> worldView, viewPort, world;
-geo::canva<float> VRC;
+geo::canva worldView, viewPort, world;
+geo::canva VRC;
 PBMFile pbmFile;
 
 // declare functions
@@ -45,9 +45,9 @@ int main(int argc, char *argv[]) {
     // Set up rotation matrices
     geo::mat4x4 R, matRotX;
 
-    // compute projMatrix
-    geo::mat4x4 projMatrix = computeProjMatrix(false);
-    std::cerr << "projMatrix: \n" << projMatrix << "\n";
+    // compute transformedMatrix
+    geo::mat4x4 transformedMatrix = computeProjMatrix(false);
+    std::cerr << "transformedMatrix: \n" << transformedMatrix << "\n";
 
     // Project triangles from 3D --> 2D
     std::vector<geo::triangle> triFace = smf.getTriangularFace();
@@ -55,38 +55,54 @@ int main(int argc, char *argv[]) {
         std::cerr << "\n-----tri before: \n" << tri << "-----\n" ;
 
         // Apply normalizing transformation, Npar or Nper
-        tri = tri * projMatrix;
-        std::cerr << "\n-----tri projMatrix: \n" << tri << "-----\n" ;
+        tri = tri * transformedMatrix;
+        std::cerr << "\n-----tri transformedMatrix: \n" << tri << "-----\n" ;
 
         // clip against VRC (View Cano)
         // clipPolygon(tri.p, VRC, true);
         // std::cerr << "\n-----tri clip: \n" << tri << "-----\n" ;
 
-        // compute Homogenous projection matrix
-        // float d = abs(PRP.z);
-        // std::cerr << "d: " << d << "\n";
+        for (int i = 0; i < tri.p.size(); i++) {
+            // clip
+            // if (isParallelProjection) {
+            //     clipLine3D(tri.p[i], tri.p[(i + 1) % tri.p.size()], VRC);
+            // }
+            // else {
+            //     geo::canva clipPlane;
+            //     clipPlane.bottomLeft = VRC.bottomLeft;
+            //     clipPlane.topLeft = VRC.topLeft;
+            //     clipPlane.bottomRight = PRP;
+            //     clipPlane.topRight = PRP;
+            //     clipLine3D(tri.p[i], tri.p[(i + 1) % tri.p.size()], VRC);
+            // }
+            
+        }
 
-        // geo::mat4x4 M_per;
-        // M_per.makeIdentity();
-        // M_per.m[3][3] = 0;
-        // if (d > 0)
-        //     M_per.m[3][2] = 1/d;
+        //compute Homogenous projection matrix
+        float d = PRP.z / (B - PRP.z);
+        std::cerr << "d: " << d << "\n";
 
-        // geo::mat4x4 M_ort;
-        // M_ort.makeIdentity();
-        // M_ort.m[2][2] = 0;
-        // std::cerr << M_ort << "\n";
-        // std::cerr << M_per << "\n";
+        geo::mat4x4 projectPerMatrix;
+        projectPerMatrix.makeIdentity();
+        projectPerMatrix.m[3][3] = 0;
+        projectPerMatrix.m[2][3] = 1;
+        projectPerMatrix.m[3][2] = 1/d;
+
+        geo::mat4x4 projectParMatrix;
+        projectParMatrix.makeIdentity();
+        projectParMatrix.m[2][2] = 0;
+        std::cerr << projectParMatrix << "\n";
+        std::cerr << projectPerMatrix << "\n";
 
         // print vector
         std::vector<geo::point<int>> v;
         
         for (auto &p: tri.p) {
-            // std::cerr << "p before: " << p << "\n";
-            // if (isParallelProjection) 
-            //     p = p * M_ort;
-            // else
-            //     p = p * M_per;
+            std::cerr << "\n-----p before: " << p << "\n";
+            if (isParallelProjection) 
+                p = p * projectParMatrix;
+            else
+                p = p * projectPerMatrix;
             
             // if (!isParallelProjection) {
             //     // p = p / p.w;
@@ -95,20 +111,13 @@ int main(int argc, char *argv[]) {
             //     p.z /= p.z;
             // }
 
-            // std::cerr << "p: " << p << "\n";
+            std::cerr << "p after M: " << p << "\n";
 
             // scale to device coord
-            if (isParallelProjection) {
-                p.x += 1.0f;
-                p.y += 1.0f;
-            }
-            else {
-                p.x += 1.0f;
-                p.y += 1.0f;
-            }
-            
-            assert(p.x >= 0);
-            assert(p.y >= 0);
+            p.x += 1.0f;
+            p.y += 1.0f;
+            // assert(p.x >= 0);
+            // assert(p.y >= 0);
             p.x *= 0.5 * world.width;
             p.y *= 0.5 * world.height;
             std::cerr << "\np after scale:: " << p << "\n";
@@ -225,11 +234,11 @@ geo::mat4x4 computeProjMatrix(bool debug) {
     Spar.m[2][2] = 1 / (F - B);
 
     // Do all matrix mult
-    geo::mat4x4 projMatrix;
+    geo::mat4x4 transformedMatrix;
     if (isParallelProjection)
-        projMatrix = Spar * (Tpar * (SHpar * (R * T_VRP)));
+        transformedMatrix = Spar * (Tpar * (SHpar * (R * T_VRP)));
     else 
-        projMatrix = Sper * (SHpar * (T_PRP * (R * T_VRP)));
+        transformedMatrix = Sper * (SHpar * (T_PRP * (R * T_VRP)));
     
     if (debug) {
         std::cerr << "T_VRP: \n" << T_VRP << "\n";
@@ -239,7 +248,7 @@ geo::mat4x4 computeProjMatrix(bool debug) {
         std::cerr << "Spar: \n" << Spar << "\n";
         std::cerr << "Sper: \n" << Sper << "\n";
     }
-    return projMatrix;
+    return transformedMatrix;
 }
 
 void parseArgvs(int argc, char *argv[]) {
@@ -333,5 +342,6 @@ void parseArgvs(int argc, char *argv[]) {
     std::cerr << "viewPort: " << viewPort << "\n"; 
     std::cerr << "world: " << world << "\n"; 
     std::cerr << "VRC: " << VRC << "\n"; 
+    std::cerr << "F: " << F << "\n"; 
     std::cerr << "\n"; 
 }

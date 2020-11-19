@@ -51,20 +51,19 @@ int main(int argc, char *argv[]) {
 
     // compute projection matrix
     float d = PRP.z / (B - PRP.z);
+    // float d = PRP.z ;
     std::cerr << "d: " << d << "\n";
 
     geo::mat4x4 projectMatrix;
+    projectMatrix.makeIdentity();
     if (isParallelProjection) {
-        projectMatrix.makeIdentity();
         projectMatrix.m[2][2] = 0;
     }
     else {
-        projectMatrix.makeIdentity();
         projectMatrix.m[3][3] = 0;
-        // projectMatrix.m[2][3] = 1;
         projectMatrix.m[3][2] = 1/d;
     }
-    std::cerr << "projectMatrix: \n" <<projectMatrix << "\n";
+    std::cerr << "projectMatrix: \n" << projectMatrix << "\n";
 
     // Project triangles from 3D --> 2D
     std::vector<geo::triangle> triFace = smf.getTriangularFace();
@@ -81,6 +80,12 @@ int main(int argc, char *argv[]) {
 
             p = p * projectMatrix;
             std::cerr << "p after projectMatrix:: " << p << "\n";
+
+            // Normalizing
+            if (!isParallelProjection) {
+                p = p / p.w;
+                std::cerr << "p after Normalizing:: " << p << "\n";
+            }
 
             // scale to device coord
             p.x += 1.0f;

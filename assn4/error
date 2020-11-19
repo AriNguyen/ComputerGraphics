@@ -31,20 +31,20 @@ vec 2 :0.5, 0.5, -0.5, 1
 vec 3 :0.5, -0.5, -0.5, 1
 -----
 
-p after transform:: -0.192646, -0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, -0.426035, 0, 1.08333
-p after scale:: 205.954, 143.778, 0, 1.08333
-=> points: 206, 144
+p after transform:: -0.134164, -0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
-p after transform:: 0.0550417, 0.461538, -0.543537, 1.08333
-p after projectMatrix:: 0.0508077, 0.426035, 0, 1.08333
-p after scale:: 263.227, 357.222, 0, 1.08333
-=> points: 263, 357
+p after transform:: 0.134164, 0.5, -0.0548633, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 
-p after transform:: 0.0550417, -0.461538, -0.543537, 1.08333
-p after projectMatrix:: 0.0508077, -0.426035, 0, 1.08333
-p after scale:: 263.227, 143.778, 0, 1.08333
-=> points: 263, 144
+p after transform:: 0.134164, -0.5, -0.0548633, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
 -----tri before: 
 vec 1 :-0.5, -0.5, -0.5, 1
@@ -52,20 +52,20 @@ vec 2 :-0.5, 0.5, -0.5, 1
 vec 3 :0.5, 0.5, -0.5, 1
 -----
 
-p after transform:: -0.192646, -0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, -0.426035, 0, 1.08333
-p after scale:: 205.954, 143.778, 0, 1.08333
-=> points: 206, 144
+p after transform:: -0.134164, -0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
-p after transform:: -0.192646, 0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, 0.426035, 0, 1.08333
-p after scale:: 205.954, 357.222, 0, 1.08333
-=> points: 206, 357
+p after transform:: -0.134164, 0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
-p after transform:: 0.0550417, 0.461538, -0.543537, 1.08333
-p after projectMatrix:: 0.0508077, 0.426035, 0, 1.08333
-p after scale:: 263.227, 357.222, 0, 1.08333
-=> points: 263, 357
+p after transform:: 0.134164, 0.5, -0.0548633, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 
 -----tri before: 
 vec 1 :-0.5, 0.5, 0.5, 1
@@ -73,20 +73,20 @@ vec 2 :0.5, -0.5, 0.5, 1
 vec 3 :0.5, 0.5, 0.5, 1
 -----
 
-p after transform:: -0.0650492, 0.545455, 0.642361, 0.916667
-p after projectMatrix:: -0.0709628, 0.595041, 0, 0.916667
-p after scale:: 232.724, 399.558, 0, 0.916667
-=> points: 233, 400
+p after transform:: -0.134164, 0.5, -0.27847, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
-p after transform:: 0.227672, -0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, -0.595041, 0, 0.916667
-p after scale:: 312.717, 101.442, 0, 0.916667
-=> points: 313, 101
+p after transform:: 0.134164, -0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
-p after transform:: 0.227672, 0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, 0.595041, 0, 0.916667
-p after scale:: 312.717, 399.558, 0, 0.916667
-=> points: 313, 400
+p after transform:: 0.134164, 0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 
 -----tri before: 
 vec 1 :-0.5, 0.5, 0.5, 1
@@ -94,20 +94,20 @@ vec 2 :-0.5, -0.5, 0.5, 1
 vec 3 :0.5, -0.5, 0.5, 1
 -----
 
-p after transform:: -0.0650492, 0.545455, 0.642361, 0.916667
-p after projectMatrix:: -0.0709628, 0.595041, 0, 0.916667
-p after scale:: 232.724, 399.558, 0, 0.916667
-=> points: 233, 400
+p after transform:: -0.134164, 0.5, -0.27847, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
-p after transform:: -0.0650492, -0.545455, 0.642361, 0.916667
-p after projectMatrix:: -0.0709628, -0.595041, 0, 0.916667
-p after scale:: 232.724, 101.442, 0, 0.916667
-=> points: 233, 101
+p after transform:: -0.134164, -0.5, -0.27847, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
-p after transform:: 0.227672, -0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, -0.595041, 0, 0.916667
-p after scale:: 312.717, 101.442, 0, 0.916667
-=> points: 313, 101
+p after transform:: 0.134164, -0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
 -----tri before: 
 vec 1 :-0.5, -0.5, -0.5, 1
@@ -115,20 +115,20 @@ vec 2 :-0.5, 0.5, 0.5, 1
 vec 3 :-0.5, 0.5, -0.5, 1
 -----
 
-p after transform:: -0.192646, -0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, -0.426035, 0, 1.08333
-p after scale:: 205.954, 143.778, 0, 1.08333
-=> points: 206, 144
+p after transform:: -0.134164, -0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
-p after transform:: -0.0650492, 0.545455, 0.642361, 0.916667
-p after projectMatrix:: -0.0709628, 0.595041, 0, 0.916667
-p after scale:: 232.724, 399.558, 0, 0.916667
-=> points: 233, 400
+p after transform:: -0.134164, 0.5, -0.27847, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
-p after transform:: -0.192646, 0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, 0.426035, 0, 1.08333
-p after scale:: 205.954, 357.222, 0, 1.08333
-=> points: 206, 357
+p after transform:: -0.134164, 0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
 -----tri before: 
 vec 1 :-0.5, -0.5, -0.5, 1
@@ -136,20 +136,20 @@ vec 2 :-0.5, -0.5, 0.5, 1
 vec 3 :-0.5, 0.5, 0.5, 1
 -----
 
-p after transform:: -0.192646, -0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, -0.426035, 0, 1.08333
-p after scale:: 205.954, 143.778, 0, 1.08333
-=> points: 206, 144
+p after transform:: -0.134164, -0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
-p after transform:: -0.0650492, -0.545455, 0.642361, 0.916667
-p after projectMatrix:: -0.0709628, -0.595041, 0, 0.916667
-p after scale:: 232.724, 101.442, 0, 0.916667
-=> points: 233, 101
+p after transform:: -0.134164, -0.5, -0.27847, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
-p after transform:: -0.0650492, 0.545455, 0.642361, 0.916667
-p after projectMatrix:: -0.0709628, 0.595041, 0, 0.916667
-p after scale:: 232.724, 399.558, 0, 0.916667
-=> points: 233, 400
+p after transform:: -0.134164, 0.5, -0.27847, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
 -----tri before: 
 vec 1 :0.5, -0.5, -0.5, 1
@@ -157,20 +157,20 @@ vec 2 :0.5, 0.5, 0.5, 1
 vec 3 :0.5, -0.5, 0.5, 1
 -----
 
-p after transform:: 0.0550417, -0.461538, -0.543537, 1.08333
-p after projectMatrix:: 0.0508077, -0.426035, 0, 1.08333
-p after scale:: 263.227, 143.778, 0, 1.08333
-=> points: 263, 144
+p after transform:: 0.134164, -0.5, -0.0548633, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
-p after transform:: 0.227672, 0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, 0.595041, 0, 0.916667
-p after scale:: 312.717, 399.558, 0, 0.916667
-=> points: 313, 400
+p after transform:: 0.134164, 0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 
-p after transform:: 0.227672, -0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, -0.595041, 0, 0.916667
-p after scale:: 312.717, 101.442, 0, 0.916667
-=> points: 313, 101
+p after transform:: 0.134164, -0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
 -----tri before: 
 vec 1 :0.5, -0.5, -0.5, 1
@@ -178,20 +178,20 @@ vec 2 :0.5, 0.5, -0.5, 1
 vec 3 :0.5, 0.5, 0.5, 1
 -----
 
-p after transform:: 0.0550417, -0.461538, -0.543537, 1.08333
-p after projectMatrix:: 0.0508077, -0.426035, 0, 1.08333
-p after scale:: 263.227, 143.778, 0, 1.08333
-=> points: 263, 144
+p after transform:: 0.134164, -0.5, -0.0548633, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
-p after transform:: 0.0550417, 0.461538, -0.543537, 1.08333
-p after projectMatrix:: 0.0508077, 0.426035, 0, 1.08333
-p after scale:: 263.227, 357.222, 0, 1.08333
-=> points: 263, 357
+p after transform:: 0.134164, 0.5, -0.0548633, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 
-p after transform:: 0.227672, 0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, 0.595041, 0, 0.916667
-p after scale:: 312.717, 399.558, 0, 0.916667
-=> points: 313, 400
+p after transform:: 0.134164, 0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 
 -----tri before: 
 vec 1 :-0.5, -0.5, -0.5, 1
@@ -199,20 +199,20 @@ vec 2 :0.5, -0.5, 0.5, 1
 vec 3 :-0.5, -0.5, 0.5, 1
 -----
 
-p after transform:: -0.192646, -0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, -0.426035, 0, 1.08333
-p after scale:: 205.954, 143.778, 0, 1.08333
-=> points: 206, 144
+p after transform:: -0.134164, -0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
-p after transform:: 0.227672, -0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, -0.595041, 0, 0.916667
-p after scale:: 312.717, 101.442, 0, 0.916667
-=> points: 313, 101
+p after transform:: 0.134164, -0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
-p after transform:: -0.0650492, -0.545455, 0.642361, 0.916667
-p after projectMatrix:: -0.0709628, -0.595041, 0, 0.916667
-p after scale:: 232.724, 101.442, 0, 0.916667
-=> points: 233, 101
+p after transform:: -0.134164, -0.5, -0.27847, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
 -----tri before: 
 vec 1 :-0.5, -0.5, -0.5, 1
@@ -220,20 +220,20 @@ vec 2 :0.5, -0.5, -0.5, 1
 vec 3 :0.5, -0.5, 0.5, 1
 -----
 
-p after transform:: -0.192646, -0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, -0.426035, 0, 1.08333
-p after scale:: 205.954, 143.778, 0, 1.08333
-=> points: 206, 144
+p after transform:: -0.134164, -0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, -0.5, 0, 1
+p after scale:: 216.892, 125.25, 0, 1
+=> points: 217, 125
 
-p after transform:: 0.0550417, -0.461538, -0.543537, 1.08333
-p after projectMatrix:: 0.0508077, -0.426035, 0, 1.08333
-p after scale:: 263.227, 143.778, 0, 1.08333
-=> points: 263, 144
+p after transform:: 0.134164, -0.5, -0.0548633, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
-p after transform:: 0.227672, -0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, -0.595041, 0, 0.916667
-p after scale:: 312.717, 101.442, 0, 0.916667
-=> points: 313, 101
+p after transform:: 0.134164, -0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, -0.5, 0, 1
+p after scale:: 284.108, 125.25, 0, 1
+=> points: 284, 125
 
 -----tri before: 
 vec 1 :-0.5, 0.5, -0.5, 1
@@ -241,20 +241,20 @@ vec 2 :0.5, 0.5, 0.5, 1
 vec 3 :0.5, 0.5, -0.5, 1
 -----
 
-p after transform:: -0.192646, 0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, 0.426035, 0, 1.08333
-p after scale:: 205.954, 357.222, 0, 1.08333
-=> points: 206, 357
+p after transform:: -0.134164, 0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
-p after transform:: 0.227672, 0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, 0.595041, 0, 0.916667
-p after scale:: 312.717, 399.558, 0, 0.916667
-=> points: 313, 400
+p after transform:: 0.134164, 0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 
-p after transform:: 0.0550417, 0.461538, -0.543537, 1.08333
-p after projectMatrix:: 0.0508077, 0.426035, 0, 1.08333
-p after scale:: 263.227, 357.222, 0, 1.08333
-=> points: 263, 357
+p after transform:: 0.134164, 0.5, -0.0548633, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 
 -----tri before: 
 vec 1 :-0.5, 0.5, -0.5, 1
@@ -262,20 +262,20 @@ vec 2 :-0.5, 0.5, 0.5, 1
 vec 3 :0.5, 0.5, 0.5, 1
 -----
 
-p after transform:: -0.192646, 0.461538, 0.612339, 1.08333
-p after projectMatrix:: -0.177827, 0.426035, 0, 1.08333
-p after scale:: 205.954, 357.222, 0, 1.08333
-=> points: 206, 357
+p after transform:: -0.134164, 0.5, -0.203934, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
-p after transform:: -0.0650492, 0.545455, 0.642361, 0.916667
-p after projectMatrix:: -0.0709628, 0.595041, 0, 0.916667
-p after scale:: 232.724, 399.558, 0, 0.916667
-=> points: 233, 400
+p after transform:: -0.134164, 0.5, -0.27847, 1
+p after projectMatrix:: -0.134164, 0.5, 0, 1
+p after scale:: 216.892, 375.75, 0, 1
+=> points: 217, 376
 
-p after transform:: 0.227672, 0.545455, -0.723673, 0.916667
-p after projectMatrix:: 0.24837, 0.595041, 0, 0.916667
-p after scale:: 312.717, 399.558, 0, 0.916667
-=> points: 313, 400
+p after transform:: 0.134164, 0.5, -0.129399, 1
+p after projectMatrix:: 0.134164, 0.5, 0, 1
+p after scale:: 284.108, 375.75, 0, 1
+=> points: 284, 376
 points:
 tri:  here
 

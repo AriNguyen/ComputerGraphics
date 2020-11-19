@@ -79,15 +79,10 @@ namespace geo {
         }
         vec3D operator*(mat4x4 m) const {
             vec3D v;
-            v.x = x * m.m[0][0] + y * m.m[1][0] + z * m.m[2][0] + w * m.m[3][0];
-            v.y = x * m.m[0][1] + y * m.m[1][1] + z * m.m[2][1] + w * m.m[3][1];
-            v.z = x * m.m[0][2] + y * m.m[1][2] + z * m.m[2][2] + w * m.m[3][2];
-            v.w = x * m.m[0][3] + y * m.m[1][3] + z * m.m[2][3] + w * m.m[3][3];
-            if (v.w != 0) {
-                v.x /= v.w;
-                v.y /= v.w;
-                v.z /= v.w;
-            }
+            v.x = x * m.m[0][0] + y * m.m[0][1] + z * m.m[0][1] + w * m.m[0][3];
+            v.y = x * m.m[1][0] + y * m.m[1][1] + z * m.m[1][2] + w * m.m[1][3];
+            v.z = x * m.m[2][0] + y * m.m[2][1] + z * m.m[2][2] + w * m.m[2][3];
+            v.w = x * m.m[3][0] + y * m.m[3][1] + z * m.m[3][2] + w * m.m[3][3];
             return v;
         }
         vec3D operator-(vec3D other) {
@@ -103,7 +98,7 @@ namespace geo {
         }
         template <typename T>
         vec3D operator/(T num) {
-            vec3D newVec(x / num, y / num, z / num, w / num);
+            vec3D newVec(x / num, y / num, z / num);
             return newVec;
         }
         template <typename T>
@@ -120,8 +115,8 @@ namespace geo {
     struct line {
         point<T> p0, p1;
 
-        line<int>() {}
-        line<int>(point<T> a, point<T>b) : p0{a}, p1{b} {};
+        line() {}
+        line(point<T> a, point<T>b) : p0{a}, p1{b} {};
         friend std::ostream& operator<<(std::ostream& os, const line<T>& l) {
             os << l.p0.x << " - " << l.p1;
             return os;

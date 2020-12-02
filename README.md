@@ -5,7 +5,8 @@ CS430-ComputerGrahics
 **Oct 26 Lecture**
 - Week 4: continue
     Bezier Curve
-    
+    Lect 8: Curve Drawing Algorithm (00:11:45) 
+    Splines (1:30:00)
 
 **Oct 19th Lecture**
 - Week 4: Intro to Curves (1:30:00)

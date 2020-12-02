@@ -13,7 +13,7 @@
 
 #include "geometry_objects.h"
 
-class netPBMFile {
+class netpbmFile {
 protected:
     char* magicNumber;
 
@@ -21,16 +21,16 @@ public:
     std::string pixels;
     geo::canva worldView, viewPort, world;
 
-    netPBMFile(char* n) {
+    netpbmFile(char* n) {
         magicNumber = n;
     };
 
     virtual void toStdOut(std::vector<geo::point<int>> points) = 0;
 };
 
-class PBMFile : public netPBMFile {
+class pbmFile : public netpbmFile {
 public:
-    PBMFile(char* magic = (char*)"P1") : netPBMFile(magic) {};
+    pbmFile(char* magic = (char*)"P1") : netpbmFile(magic) {};
 
     void toStdOut(std::vector<geo::point<int>> points) {
         std::cout << magicNumber << "\n";
@@ -64,9 +64,9 @@ public:
         }
 };
 
-class PPMFile : public netPBMFile {
+class ppmFile : public netpbmFile {
 public:
-    PPMFile(char* magic = (char*)"P3") : netPBMFile(magic) {};
+    ppmFile(char* magic = (char*)"P3") : netpbmFile(magic) {};
 
     void toStdOut(std::vector<geo::point<int>> points) {
         std::cout << magicNumber << "\n";

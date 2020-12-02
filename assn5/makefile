@@ -1,12 +1,12 @@
 CXX := g++
 CXXFLAGS := -std=c++14
-SRC := CG_hw4.cpp 
+SRC := CG_hw5.cpp 
 INCLUDE:= 
-EXE := CG_hw4
+EXE := CG_hw5
 .PHONY: cleanall
 
 ${EXE} : ${SRC} ${INCLUDE}
-	${CXX} -I./helper ${CXXFLAGS} $^ -o $@
+	${CXX} -I./../helper ${CXXFLAGS} $^ -o $@
 
 cleanall :
 	-\rm $(EXE)

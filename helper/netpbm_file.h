@@ -21,16 +21,15 @@ public:
     std::string pixels;
     geo::canva worldView, viewPort, world;
 
-    netpbmFile(char* n) {
-        magicNumber = n;
-    };
-
+    netpbmFile() {};
     virtual void toStdOut(std::vector<geo::point<int>> points) = 0;
 };
 
 class pbmFile : public netpbmFile {
 public:
-    pbmFile(char* magic = (char*)"P1") : netpbmFile(magic) {};
+    pbmFile(char* magic = (char*)"P1") {
+        magicNumber = magic;
+    };
 
     void toStdOut(std::vector<geo::point<int>> points) {
         std::cout << magicNumber << "\n";
@@ -66,7 +65,9 @@ public:
 
 class ppmFile : public netpbmFile {
 public:
-    ppmFile(char* magic = (char*)"P3") : netpbmFile(magic) {};
+    ppmFile(char* magic = (char*)"P3") {
+        magicNumber = magic;
+    };
 
     void toStdOut(std::vector<geo::point<int>> points) {
         std::cout << magicNumber << "\n";

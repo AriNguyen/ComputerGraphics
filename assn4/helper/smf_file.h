@@ -20,7 +20,7 @@
 class SMFImage {
     private:
         char *imagePath;
-        std::map<int, geo::vec3D> vertex; //counter-clockwise order
+        std::map<int, geo::vec4D> vertex; //counter-clockwise order
         std::vector<geo::triangle> face;
 
     public:
@@ -48,15 +48,15 @@ class SMFImage {
 
                 if (tokens[0] == "v") {
                     i++;
-                    geo::vec3D v(std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3]));
+                    geo::vec4D v(std::stof(tokens[1]), std::stof(tokens[2]), std::stof(tokens[3]));
                     vertex[i] = v;
                 }
                 else if (tokens[0] == "f") {
                     // std::cerr << "vertex size: " << vertex.size() << "\n";
                     // std::cerr << "SMFImage::parseData tokens: " << tokens[1] << ", " << tokens[2] << ", " << tokens[3] << "'\n";
-                    geo::vec3D v1 = vertex[std::stoi(tokens[1])];
-                    geo::vec3D v2 = vertex[std::stoi(tokens[2])];
-                    geo::vec3D v3 = vertex[std::stoi(tokens[3])];
+                    geo::vec4D v1 = vertex[std::stoi(tokens[1])];
+                    geo::vec4D v2 = vertex[std::stoi(tokens[2])];
+                    geo::vec4D v3 = vertex[std::stoi(tokens[3])];
                     face.push_back(geo::triangle(v1, v2, v3));
                 }
             }
@@ -66,7 +66,7 @@ class SMFImage {
         std::vector<geo::triangle> getTriangularFace() {
             return face;
         }
-        std::map<int, geo::vec3D> getVertex() {
+        std::map<int, geo::vec4D> getVertex() {
             return vertex;
         }
 };

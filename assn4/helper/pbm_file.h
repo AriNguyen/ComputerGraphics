@@ -19,7 +19,7 @@ struct PBMFile {
     geo::canva worldView, viewPort, world;
 
     PBMFile() {};
-    void load(std::vector<geo::vec3D> points);
+    void load(std::vector<geo::vec4D> points);
     void clear();
     
     void toStdOut(std::vector<geo::point<int>> points) {

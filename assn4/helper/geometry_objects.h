@@ -53,57 +53,57 @@ namespace geo {
         }
     };
     
-    struct vec3D {
+    struct vec4D {
         float x = 0, y = 0, z = 0;
         float w = 1;
         
-        vec3D() {};
-        vec3D(float a, float b) : x{a}, y{b}, z{0} {};
-        vec3D(float a, float b, float c) : x{a}, y{b}, z{c} {};
-        vec3D(float a, float b, float c, float d) : x{a}, y{b}, z{c}, w{d} {};
+        vec4D() {};
+        vec4D(float a, float b) : x{a}, y{b}, z{0} {};
+        vec4D(float a, float b, float c) : x{a}, y{b}, z{c} {};
+        vec4D(float a, float b, float c, float d) : x{a}, y{b}, z{c}, w{d} {};
 
         // void loadSpecs(a, b) : x{a}, y{b}, z{0} {};
         // void loadSpecs(a, b, c) : x{a}, y{b}, z{c} {};
-        bool operator==(const vec3D &other) {
+        bool operator==(const vec4D &other) {
             return (x == other.x && y == other.y && z == other.z);
         }
-        bool operator!=(const vec3D &other) {
+        bool operator!=(const vec4D &other) {
             return !(x == other.x && y == other.y && z == other.z);
         }
-        bool operator<(const vec3D &other) {
+        bool operator<(const vec4D &other) {
             return x < other.x;
         }
-        friend std::ostream& operator<<(std::ostream& os, const vec3D& p) {
+        friend std::ostream& operator<<(std::ostream& os, const vec4D& p) {
             os << p.x << ", " << p.y << ", " << p.z << ", " << p.w;
             return os;
         }
-        vec3D operator*(mat4x4 m) const {
-            vec3D v;
+        vec4D operator*(mat4x4 m) const {
+            vec4D v;
             v.x = x * m.m[0][0] + y * m.m[0][1] + z * m.m[0][1] + w * m.m[0][3];
             v.y = x * m.m[1][0] + y * m.m[1][1] + z * m.m[1][2] + w * m.m[1][3];
             v.z = x * m.m[2][0] + y * m.m[2][1] + z * m.m[2][2] + w * m.m[2][3];
             v.w = x * m.m[3][0] + y * m.m[3][1] + z * m.m[3][2] + w * m.m[3][3];
             return v;
         }
-        vec3D operator-(vec3D other) {
-            vec3D newVec(x - other.x, y - other.y, z - other.z, w - other.w);
+        vec4D operator-(vec4D other) {
+            vec4D newVec(x - other.x, y - other.y, z - other.z, w - other.w);
             return newVec;
         }
-        vec3D crossProduct(vec3D other) {
-            vec3D vN;
+        vec4D crossProduct(vec4D other) {
+            vec4D vN;
             vN.x = y * other.z - z * other.y;
             vN.y = z * other.x - x * other.z;
             vN.z = x * other.y - y * other.x;
             return vN;
         }
         template <typename T>
-        vec3D operator/(T num) {
-            vec3D newVec(x / num, y / num, z / num);
+        vec4D operator/(T num) {
+            vec4D newVec(x / num, y / num, z / num);
             return newVec;
         }
         template <typename T>
-        vec3D operator-(T num) {
-            vec3D newVec(x - num, y - num, z - num, w - num);
+        vec4D operator-(T num) {
+            vec4D newVec(x - num, y - num, z - num, w - num);
             return newVec;
         }
         float length() {
@@ -124,10 +124,10 @@ namespace geo {
     };
 
     struct line3D {
-        vec3D p0, p1;
+        vec4D p0, p1;
 
         line3D() {}
-        line3D(vec3D a, vec3D b) : p0{a}, p1{b} {};
+        line3D(vec4D a, vec4D b) : p0{a}, p1{b} {};
         friend std::ostream& operator<<(std::ostream& os, const line3D& l) {
             os << l.p0 << " - " << l.p1;
             return os;
@@ -135,10 +135,10 @@ namespace geo {
     };
 
     struct triangle {
-        std::vector<vec3D> p = {vec3D(), vec3D(), vec3D()};
+        std::vector<vec4D> p = {vec4D(), vec4D(), vec4D()};
 
         triangle() {};
-        triangle(vec3D a, vec3D b, vec3D c) {
+        triangle(vec4D a, vec4D b, vec4D c) {
             p[0] = a;
             p[1] = b;
             p[2] = c;
@@ -184,7 +184,7 @@ namespace geo {
     };
 
     struct canva {
-        geo::vec3D bottomLeft, topLeft, bottomRight, topRight;
+        geo::vec4D bottomLeft, topLeft, bottomRight, topRight;
         float height, width;
 
         canva() {};
@@ -225,12 +225,12 @@ namespace geo {
         return lhs.p0.y < rhs.p0.y;
     }
 
-    /** get Intersection vec3D of 2 lines
+    /** get Intersection vec4D of 2 lines
      * @param 4 points
-     * @return intersecting vec3D
+     * @return intersecting vec4D
      */
     template<class T>
-    point<T> getIntersection(point<T>p0, point<T>p1, vec3D p2, vec3D p3) {
+    point<T> getIntersection(point<T>p0, point<T>p1, vec4D p2, vec4D p3) {
         std::cerr << "\n-----getIntersection: \n";
         int a1 = p0.x - p1.x;
         int b1 = p0.y - p1.y;
@@ -250,13 +250,13 @@ namespace geo {
         return point<T>(x, y);
     }
 
-    float getDistancePointToLine3D(vec3D p, line3D l) {
+    float getDistancePointToLine3D(vec4D p, line3D l) {
         // fprintf(stderr, "getDistance: %d %d, line<int>: %d %d, %d %d\n", p.x, p.y, l.p0.x, l.p0.y, l.p1.x, l.p1.y);
         float distance = (l.p1.x - l.p0.x) * (p.y - l.p0.y) - (l.p1.y - l.p0.y) * (p.x - l.p0.x);
         return distance;
     }
 
-    vec3D getIntersection3D(vec3D p0, vec3D p1, vec3D p2, vec3D p3) {
+    vec4D getIntersection3D(vec4D p0, vec4D p1, vec4D p2, vec4D p3) {
         std::cerr << "\n-----getIntersection: \n";
         float a1 = p0.x - p1.x;
         float b1 = p0.y - p1.y;
@@ -269,11 +269,11 @@ namespace geo {
         // parallel
         float det = a1 * b2 - a2 * b1;
         if (det == 0) 
-            return vec3D(INT_MAX, INT_MAX);
+            return vec4D(INT_MAX, INT_MAX);
         float x = (c1 * a2 - c2 * a1) / det;
         float y = (c1 * b2 - c2 * b1) / det;
         // fprintf(stderr, "getIntersection: %d %d, %d %d (with) %d %d, %d %d => %d %d\n", p0.x, p0.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y, x, y);
-        return vec3D(x, y);
+        return vec4D(x, y);
     }
 
     int getDistancePointToLine(point<int>p, line<int> l) {
@@ -382,8 +382,8 @@ namespace geo {
 
             // loop through horizontal scanline
             for (int i = lowY; i < topY; ++i) {
-                vec3D lowpoint(boundary.bottomLeft.x, i);
-                vec3D toppoint(boundary.bottomRight.x, i);
+                vec4D lowpoint(boundary.bottomLeft.x, i);
+                vec4D toppoint(boundary.bottomRight.x, i);
 
                 // std::cerr << "intersect with: " << lowpoint<int><< " - " << toppoint<int><< "\n";
                 for (int j = 0; j < edgeList.size(); ++j) {
@@ -412,7 +412,7 @@ namespace geo {
                         std::cerr << "intersect: " << is1 << "\n";
                 }
 
-                // remove mid vec3D
+                // remove mid vec4D
                 if (intersections.size() > 1 && !(intersections.size() % 2 == 0)) { // odd len
                     for (auto i : intersections) {
                         for (auto edge: edgeList) {
@@ -446,12 +446,12 @@ namespace geo {
     };
 
     struct GeoObjects {
-        std::vector<vec3D> points;
+        std::vector<vec4D> points;
         std::vector<line<int>> lines;
         std::vector<Polygon> polygons;
 
         GeoObjects() {};
-        GeoObjects(std::vector<vec3D> p, std::vector<line<int>> l, std::vector<Polygon> poly) {
+        GeoObjects(std::vector<vec4D> p, std::vector<line<int>> l, std::vector<Polygon> poly) {
             points = p;
             lines = l;
             polygons = poly;

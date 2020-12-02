@@ -20,7 +20,7 @@ const int TOP = 8;    // 1000
  * @param Get 2 points and window size
  * @return 0: if both points are outside. Otherwise return 1;
  */
-int getOutCode(geo::point<int> point, geo::vec3D bottomLeft, geo::vec3D topRight) {
+int getOutCode(geo::point<int> point, geo::vec4D bottomLeft, geo::vec4D topRight) {
     int code = INSIDE; // default to be inside
     if (point.x < bottomLeft.x) // to the left of rectangle 
         code |= LEFT; 
@@ -33,7 +33,7 @@ int getOutCode(geo::point<int> point, geo::vec3D bottomLeft, geo::vec3D topRight
     return code; 
 }
 
-int getOutCode3D(geo::vec3D point, geo::vec3D bottomLeft, geo::vec3D topRight) {
+int getOutCode3D(geo::vec4D point, geo::vec4D bottomLeft, geo::vec4D topRight) {
     int code = INSIDE; // default to be inside
     if (point.x < bottomLeft.x) // to the left of rectangle 
         code |= LEFT; 
@@ -98,7 +98,7 @@ int clipLine(geo::point<int> &p0, geo::point<int> &p1, geo::canva win) {
  * @param 2 points and window size
  * @return 0: if both points are outside, otherwise return 1;
  */
-int clipLine3D(geo::vec3D &p0, geo::vec3D &p1, geo::canva win) {
+int clipLine3D(geo::vec4D &p0, geo::vec4D &p1, geo::canva win) {
     int outCode0 = getOutCode3D(p0, win.bottomLeft, win.topRight);
     int outCode1 = getOutCode3D(p1, win.bottomLeft, win.topRight);
     while (true) {
@@ -108,7 +108,7 @@ int clipLine3D(geo::vec3D &p0, geo::vec3D &p1, geo::canva win) {
             return 0;
         } else {                            // either of 2 points out side window
             int outCode = outCode1 > outCode0 ? outCode1 : outCode0;    // get larger one
-            geo::vec3D intersect;
+            geo::vec4D intersect;
             int dx = p1.x - p0.x;
             int dy = p1.y - p0.y;
             // point is above the clip window
@@ -145,14 +145,14 @@ int clipLine3D(geo::vec3D &p0, geo::vec3D &p1, geo::canva win) {
 /** Apply Sutherland-Hodgman
  * @return vector of clipped vertices of polygon
  */
-int clipPolygon(std::vector<geo::vec3D> &vertices, geo::canva win, bool debug) {
-    std::vector<geo::vec3D> clippedVertices;
-    std::vector<geo::vec3D> newVertices;
-    std::vector<geo::vec3D> winVertices = {
-        geo::vec3D(win.bottomLeft.x, win.bottomLeft.y),
-        geo::vec3D(win.topLeft.x, win.topLeft.y),
-        geo::vec3D(win.topRight.x, win.topRight.y),
-        geo::vec3D(win.bottomRight.x, win.bottomRight.y)
+int clipPolygon(std::vector<geo::vec4D> &vertices, geo::canva win, bool debug) {
+    std::vector<geo::vec4D> clippedVertices;
+    std::vector<geo::vec4D> newVertices;
+    std::vector<geo::vec4D> winVertices = {
+        geo::vec4D(win.bottomLeft.x, win.bottomLeft.y),
+        geo::vec4D(win.topLeft.x, win.topLeft.y),
+        geo::vec4D(win.topRight.x, win.topRight.y),
+        geo::vec4D(win.bottomRight.x, win.bottomRight.y)
     };
     if (debug) {
         std::cerr << "\n-----winVertices\n";
@@ -171,8 +171,8 @@ int clipPolygon(std::vector<geo::vec3D> &vertices, geo::canva win, bool debug) {
         );
         std::cerr << "clippedLine: " << clippedLine << "\n";
         for (int j = 0; j < verticesSize - 1; ++j) {
-            geo::vec3D p0 = vertices[j];
-            geo::vec3D p1 = vertices[j + 1];
+            geo::vec4D p0 = vertices[j];
+            geo::vec4D p1 = vertices[j + 1];
             int posToClipLine1 = geo::getDistancePointToLine3D(p0, clippedLine);
             int posToClipLine2 = geo::getDistancePointToLine3D(p1, clippedLine);
             // fprintf(stderr, "distance: %d, %d\n", posToClipLine1, posToClipLine2);

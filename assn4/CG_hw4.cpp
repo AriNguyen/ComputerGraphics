@@ -18,7 +18,7 @@ float F, B;
 float fNear, fFar, fFov, fAspectRatio, fFovRad;
 geo::mat4x4 matProj;  // Projection Matri
 
-geo::vec3D PRP, VRP, VUP, VPN;
+geo::vec4D PRP, VRP, VUP, VPN;
 geo::canva worldView, viewPort, world;
 geo::canva VRC;
 PBMFile pbmFile;
@@ -43,10 +43,10 @@ int main(int argc, char *argv[]) {
     smf.parseData();
 
     // Set up rotation matrices
-    geo::mat4x4 R, matRotX;
+    geo::mat4x4 transformedMatrix, projectMatrix;
 
     // compute transformedMatrix
-    geo::mat4x4 transformedMatrix = computeProjMatrix(false);
+    transformedMatrix = computeProjMatrix(true);
     std::cerr << "transformedMatrix: \n" << transformedMatrix << "\n";
 
     // compute projection matrix
@@ -54,7 +54,6 @@ int main(int argc, char *argv[]) {
     // float d = PRP.z ;
     std::cerr << "d: " << d << "\n";
 
-    geo::mat4x4 projectMatrix;
     projectMatrix.makeIdentity();
     if (isParallelProjection) {
         projectMatrix.m[2][2] = 0;
@@ -95,10 +94,10 @@ int main(int argc, char *argv[]) {
             std::cerr << "p after scale:: " << p << "\n";
 
             // round to integer
-            geo::point<int> point(
-                std::round(p.x),
-                std::round(p.y)
-            );
+            geo::point<int> point {
+                static_cast<int>(p.x),
+                static_cast<int>(p.y)
+            };
 
             // worldToViewPort
             worldToViewPort(point, world, viewPort);
@@ -156,10 +155,12 @@ geo::mat4x4 computeProjMatrix(bool debug) {
     float fTheta = 1.0f;
     geo::mat4x4 R;
     R.makeIdentity();
-    geo::vec3D Rz = VPN / VPN.length();
-    geo::vec3D Rx = VUP.crossProduct(Rz) / (VUP.crossProduct(Rz)).length();
-    geo::vec3D Ry = Rz.crossProduct(Rx);
-
+    geo::vec4D Rz = VPN / VPN.length();
+    geo::vec4D Rx = VUP.crossProduct(Rz) / (VUP.crossProduct(Rz)).length();
+    geo::vec4D Ry = Rz.crossProduct(Rx);
+    if (debug) {
+        std::cerr << "Rx Rz Ry: \n" << Rx << "\n" << Ry << "\n" << Rz << "\n";
+    }
     R.m[0][0] = Rx.x;
     R.m[0][1] = Rx.y;
     R.m[0][2] = Rx.z;
@@ -234,10 +235,10 @@ void parseArgvs(int argc, char *argv[]) {
     F = 0.6;
     B = -0.6; 
 
-    PRP = geo::vec3D(0, 0, 1);
-    VRP = geo::vec3D(0, 0, 0);
-    VUP = geo::vec3D(0, 1, 0);
-    VPN = geo::vec3D(0, 0, -1);
+    geo::vec4D PRP = { 0, 0, 1 };
+    geo::vec4D VRP = { 0, 0, 0 };
+    geo::vec4D VUP = { 0, 1, 0 };
+    geo::vec4D VPN = { 0, 0, -1 };
 
     
     // parse argv

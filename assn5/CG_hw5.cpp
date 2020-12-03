@@ -11,12 +11,12 @@ bool isParallelProjection = 0;
 
 geo::vec4D PRP = { 0, 0, 1 };
 geo::vec4D VRP = { 0, 0, 0 };
-geo::vec4D VUP = { 0, 1, 0 };
 geo::vec4D VPN = { 0, 0, -1 };
+geo::vec4D VUP = { 0, 1, 0 };
 geo::canva world = {0, 0, 500, 500};
 geo::canva worldView, viewPort;
 geo::canva VRC;
-ppmFile ppmFile;
+pbmFile ppmFile;
 
 // Declare functions
 void handleArgvs(int argc, char **argv);
@@ -32,10 +32,15 @@ int main(int argc, char **argv) {
 
   // handle smf file
   SMFImage smf(smf_model1);
-  if (smf_model2) 
+  smf.parseData();
+  if (smf_model2) {
     SMFImage smf2(smf_model2);
-  if (smf_model3) 
-    SMFImage smf2(smf_model3);
+    smf2.parseData();
+  }
+  if (smf_model3) {
+    SMFImage smf3(smf_model3);
+    smf3.parseData();
+  }
 
   // Set up rotation matrices
   geo::mat4x4 transformedMatrix, projectMatrix;
@@ -46,7 +51,6 @@ int main(int argc, char **argv) {
 
   // compute projection matrix
   float d = PRP.z / (fFar - PRP.z);
-  // float d = PRP.z ;
   std::cerr << "d: " << d << "\n";
 
   projectMatrix.makeIdentity();
@@ -126,7 +130,6 @@ int main(int argc, char **argv) {
 
   // export to File
   ppmFile.toStdOut(pixelPoints);
-
 
   return 0;
 }
@@ -303,4 +306,5 @@ void handleArgvs(int argc, char **argv) {
   std::cerr << "viewPort: " << viewPort << "\n"; 
   std::cerr << "world: " << world << "\n"; 
   std::cerr << "VRC: " << VRC << "\n"; 
+  std::cerr << "---------Specs: \n";
 }

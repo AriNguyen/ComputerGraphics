@@ -14,3 +14,4 @@
 #include "smf_file.h"
 #include "transformations.h"
 #include "drawing.h"
+#include "zbuffer.h"

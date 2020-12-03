@@ -1,3 +1,8 @@
+/**
+ * @file geometry_objects.h
+ * @brief namespace geo:: that holds point, vec3D, mat4x4, line, triangle, canva,
+ * @author Ari Nguyen
+ */ 
 #pragma once
 
 #include <cmath>

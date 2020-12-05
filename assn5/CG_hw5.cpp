@@ -27,12 +27,11 @@ mat4x4 computeProjMatrix(bool debug);
 int main(int argc, char **argv) {
     std::vector<pixel<int>> pixelPoints;
     std::vector<std::vector<pixel<int>>> triangularPoints;
+    std::shared_ptr<ZBuffer> zBuffer = std::make_shared<ZBuffer>(world.width, world.height);
+    std::unique_ptr<Color[]> colorBuffer = std::make_unique<Color[]>(world.width * world.height);
 
     // parse argvs
     handleArgvs(argc, argv);
-
-    // init z buffer
-    std::unique_ptr<ZBuffer> zBuffer = std::make_unique<ZBuffer>(world.width, world.height);
 
     // handle smf file
     SMFImage smf(smf_model1);
@@ -70,7 +69,7 @@ int main(int argc, char **argv) {
     // Project triangles from 3D --> 2D
     std::vector<triangle> triFace = smf.getTriangularFace();
     for (auto &tri : triFace) {
-        std::cerr << "\n-----tri before: \n" << tri << "-----\n";
+        // std::cerr << "\n-----tri before: \n" << tri << "-----\n";
 
         // print vector
         std::vector<pixel<int>> v;
@@ -78,15 +77,15 @@ int main(int argc, char **argv) {
         for (auto &p : tri.p) {
             // Apply normalizing transformation, Npar or Nper
             p = p * transformedMatrix;
-            std::cerr << "\np after transform:: " << p << "\n";
+            // std::cerr << "\np after transform:: " << p << "\n";
 
             p = p * projectMatrix;
-            std::cerr << "p after projectMatrix:: " << p << "\n";
+            // std::cerr << "p after projectMatrix:: " << p << "\n";
 
             // Normalizing
             if (!isParallelProjection) {
                 p = p / p.w;
-                std::cerr << "p after Normalizing:: " << p << "\n";
+                // std::cerr << "p after Normalizing:: " << p << "\n";
             }
 
             // scale to device coord
@@ -94,7 +93,7 @@ int main(int argc, char **argv) {
             p.y += 1.0f;
             p.x *= 0.5 * world.width;
             p.y *= 0.5 * world.height;
-            std::cerr << "p after scale:: " << p << "\n";
+            // std::cerr << "p after scale:: " << p << "\n";
 
             // round to integer
             pixel<int> pixel{
@@ -105,12 +104,10 @@ int main(int argc, char **argv) {
             worldToViewPort(pixel, world, viewPort);
 
             v.push_back(pixel);
-            std::cerr << "=> points: " << pixel << "\n";
+            // std::cerr << "=> points: " << pixel << "\n";
         }
         triangularPoints.push_back(v);
     }
-    std::cerr << "points:" << "\n";
-    std::cerr << "tri:  here\n";
 
     // clip && draw
     for (auto vecPoints : triangularPoints) {
@@ -118,7 +115,7 @@ int main(int argc, char **argv) {
         std::vector<pixel<int>> triVertices = triPolygon.points;
 
         // clip Polygon
-        clipPolygon(triVertices, ppm.world, true);
+        clipPolygon(triVertices, ppm.world, false);
 
         //  fill polygon
         // std::vector<Line> polygonLines =  polygonVector[i].getLines();
@@ -126,18 +123,26 @@ int main(int argc, char **argv) {
 
         // draw Line
         for (int j = 0; j < polygonLines.size(); ++j) {
-            fprintf(stderr, "drawLine: %d %d - %d %d\n", polygonLines[j].p0.x, polygonLines[j].p0.y, polygonLines[j].p1.x, polygonLines[j].p1.y);
+            // fprintf(stderr, "drawLine: %d %d - %d %d\n", polygonLines[j].p0.x, polygonLines[j].p0.y, polygonLines[j].p1.x, polygonLines[j].p1.y);
             std::vector<pixel<int>*> pl = {&(polygonLines[j].p0), &(polygonLines[j].p1)};
             std::vector<pixel<int>> linePoints = drawLine(polygonLines[j].p0, polygonLines[j].p1);
             for (auto &p: linePoints) {
-                // fprintf(stderr, "pixels: %d %d\n", p.x, p.y);
-                pixelPoints.push_back(p);
+                // std::cerr << "pixels: " << p.x << " " << p.y << std::endl;
+                Color c(255, 0, 0);
+
+                // put to buffer
+                float depth = -1.0f;
+                if (zBuffer->testAndSet(p.x, p.y, depth)) {
+                    std::cerr << "testAndSet: " << p.x << "-" << p.y << std::endl;
+                    int h = std::abs(world.height - p.y);
+                    colorBuffer[h * world.width + p.x] = c;
+                }                
             }
         }
     }
 
     // export to File
-    ppm.toStdOut(pixelPoints, 255, 0, 0);
+    ppm.toStdOutB(std::move(colorBuffer));
 
     return 0;
 }

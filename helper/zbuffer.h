@@ -47,6 +47,7 @@ class ZBuffer {
         }
         bool testAndSet(int x, int y, float depth) {
             float& depthInBuffer = At(x, y);
+            // std::cerr << "depthInBuffer: " << depthInBuffer << "\n";
             if (depth < depthInBuffer) {
                 depthInBuffer = depth;
                 return true;

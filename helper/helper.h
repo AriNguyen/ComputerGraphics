@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 #include <cassert>
+#include <memory>
+#include <utility>
 
 #include "geometry_objects.h"
 #include "utils.h"
@@ -15,3 +17,4 @@
 #include "transformations.h"
 #include "drawing.h"
 #include "zbuffer.h"
+#include "matrix.h"

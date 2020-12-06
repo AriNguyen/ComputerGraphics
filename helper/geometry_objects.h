@@ -12,9 +12,26 @@
 
 #include "matrix.h"
 
+class Color {
+    public:
+        int r = 0, g = 0, b = 0;
+        
+        Color() {};
+        Color(int a1, int a2, int a3)
+        : r(a1), g(a2), b(a3)
+        {}
+
+        friend std::ostream& operator<<(std::ostream& os, const Color& c) {
+            os << " " << c.r << " " << c.g << " " << c.b << " ";
+            return os;
+        }
+};
+
 template<class T>
-struct pixel{
+struct pixel {
     T x, y;
+    Color color;
+
     pixel() {};
     pixel(T a, T b) : x{a}, y{b} {};
     friend std::ostream& operator<<(std::ostream& os, const pixel<T>& p) {
@@ -30,10 +47,9 @@ struct pixel{
     bool operator<(const pixel<T>& other) const {
         return x < other.x;
     }
-};
-
-struct colorPixel {
-    int r = 0, g = 0, b = 0;
+    void setColor(Color c) {
+        color = c;
+    }
 };
 
 struct vec4D {
@@ -55,6 +71,44 @@ struct vec4D {
     }
     bool operator<(const vec4D &other) {
         return x < other.x;
+    }
+    vec4D& operator+=(const vec4D &rhs) {
+        x += rhs.x;
+        y += rhs.y;
+        z += rhs.z;
+        w += rhs.w;
+        return *this;
+    }
+    vec4D operator+(const vec4D &rhs) const {
+        return vec4D(*this) += rhs;
+    }
+    vec4D& operator-=(const vec4D &rhs) {
+        x -= rhs.x;
+        y -= rhs.y;
+        z -= rhs.z;
+        w -= rhs.w;
+        return *this;
+    }
+    vec4D operator-(const vec4D &rhs) const {
+        return vec4D(*this) -= rhs;
+    }
+    vec4D& operator/=(const float &rhs) {
+        x /= rhs;
+        y /= rhs;
+        z /= rhs;
+        return *this;
+    }
+    vec4D operator/(const float &rhs) const {
+        return vec4D(*this) /= rhs;
+    }
+    vec4D& operator*=(const float &rhs) {
+        x *= rhs;
+        y *= rhs;
+        z *= rhs;
+        return *this;
+    }
+    vec4D operator*(const float &rhs) const {
+        return vec4D(*this) *= rhs;
     }
     friend std::ostream& operator<<(std::ostream& os, const vec4D& p) {
         os << p.x << ", " << p.y << ", " << p.z << ", " << p.w;
@@ -166,21 +220,22 @@ struct triangle {
     }
 };
 
+template<typename T>
 struct canva {
-    vec4D bottomLeft, topLeft, bottomRight, topRight;
-    float height, width;
+    pixel<T> bottomLeft, topLeft, bottomRight, topRight;
+    T height, width;
 
     canva() {};
-    canva(float a, float b, float c, float d) {
+    canva(T a, T b, T c, T d) {
         loadDim(a, b, c, d);
     }
 
-    friend std::ostream& operator<<(std::ostream& os, const canva& c) {
+    friend std::ostream& operator<<(std::ostream& os, const canva<T>& c) {
         os << c.bottomLeft.x << ", " << c.bottomLeft.y << ", " << c.topRight.x << ", " << c.topRight.y;
         return os;
     }
 
-    void loadDim(float a, float b, float c, float d) {
+    void loadDim(T a, T b, T c, T d) {
         bottomLeft.x = a;
         bottomLeft.y = b;
 
@@ -213,8 +268,8 @@ bool compline(const line<T>& lhs, const line<T>& rhs) {
  * @return intersecting vec4D
  */
 template<class T>
-pixel<T> getIntersection(pixel<T>p0, pixel<T>p1, vec4D p2, vec4D p3) {
-    std::cerr << "\n-----getIntersection: \n";
+pixel<T> getIntersection(pixel<T>p0, pixel<T>p1, pixel<T> p2, pixel<T> p3) {
+    // std::cerr << "\n-----getIntersection: \n";
     int a1 = p0.x - p1.x;
     int b1 = p0.y - p1.y;
     int c1 = p0.x * p1.y - p1.x * p0.y;
@@ -239,8 +294,8 @@ float getDistancePointToLine3D(vec4D p, line3D l) {
     return distance;
 }
 
-vec4D getIntersection3D(vec4D p0, vec4D p1, vec4D p2, vec4D p3) {
-    std::cerr << "\n-----getIntersection: \n";
+vec4D getIntersection3D(vec4D p0, vec4D p1, pixel<int> p2, pixel<int> p3) {
+    // std::cerr << "\n-----getIntersection: \n";
     float a1 = p0.x - p1.x;
     float b1 = p0.y - p1.y;
     float c1 = p0.x * p1.y - p1.x * p0.y;
@@ -265,176 +320,177 @@ int getDistancePointToLine(pixel<int>p, line<int> l) {
     return distance;
 }
 
-struct Polygon {
-    std::vector<pixel<int>> points;
-    std::vector<line<int>> lines;    // lines that connect 2 points of the all points in the Polygon
+class polygon {
+    public:
+        std::vector<pixel<int>> points;
+        std::vector<line<int>> lines;    // lines that connect 2 points of the all points in the polygon
 
-    Polygon() {
-        points.clear();
-    }
-    Polygon(std::vector<pixel<int>> p) {
-        points = p;
-    }
-    ~Polygon() {
-        points.clear();
-    }
-    void clear() {
-        points.clear();
-    }
-    void updatelines() {
-        lines.clear();
-        for (int i = 0; i < points.size() - 1; ++i) {
-            line<int> l(points[i], points[i + 1]);
-            lines.push_back(l);
+        polygon() {
+            points.clear();
         }
-    }
+        polygon(std::vector<pixel<int>> p) {
+            points = p;
+        }
+        ~polygon() {
+            points.clear();
+        }
+        void clear() {
+            points.clear();
+        }
+        void updatelines() {
+            lines.clear();
+            for (int i = 0; i < points.size() - 1; ++i) {
+                line<int> l(points[i], points[i + 1]);
+                lines.push_back(l);
+            }
+        }
 
-    /** Scan-Filling algorithm
-     * @param boundary box that the polygon is within
-     * @return vector of lines filling the polygons
-     */
-    std::vector<line<int>> fill(canva boundary) {
-        std::vector<line<int>> fillinglines, edgeList;
-        std::vector<pixel<int>> intersections;
+        /** Scan-Filling algorithm
+         * @param boundary box that the polygon is within
+         * @return vector of lines filling the polygons
+         */
+        std::vector<line<int>> fill(canva<int> boundary) {
+            std::vector<line<int>> fillinglines, edgeList;
+            std::vector<pixel<int>> intersections;
 
-        std::cerr << "----------fill boundary: " << boundary;
-        
-        // edgeList.insert(edgeList.end(), lines.begin(), lines.end());
-        for (int i = 0; i < points.size(); ++i) {
-            pixel<int> p = points[i];
-            pixel<int> p1 = points[(i + 1) % points.size()];
-            int dy = p1.y - p.y;
+            // std::cerr << "----------fill boundary: " << boundary;
+            
+            // edgeList.insert(edgeList.end(), lines.begin(), lines.end());
+            for (int i = 0; i < points.size(); ++i) {
+                pixel<int> p = points[i];
+                pixel<int> p1 = points[(i + 1) % points.size()];
+                int dy = p1.y - p.y;
 
-            // std::cerr << p << " - " << p1" << \n";
-            // case: edge is horizontal
-            if (dy == 0)
-            // case: ymax on scan-line<int>
-                continue;
-            // else if (p == boundary.topRight) 
-            //     continue;
-            if (p.y >= boundary.bottomLeft.y && p.y <= boundary.topRight.y) {
-                // sort by y
-                if (p.y > p1.y) {
-                    auto temp = p;
-                    p = p1;
-                    p1 = temp;
-                }
-                // if edge is is subset of other
-                line<int> l(p, p1);
-                int same_line = 0;
-                for (auto e: edgeList) {
-                    // get slope
-                    int dy_l = l.p1.x - l.p0.x;
-                    int dy_e = e.p1.x - e.p0.x;
+                // std::cerr << p << " - " << p1" << \n";
+                // case: edge is horizontal
+                if (dy == 0)
+                // case: ymax on scan-line<int>
+                    continue;
+                // else if (p == boundary.topRight) 
+                //     continue;
+                if (p.y >= boundary.bottomLeft.y && p.y <= boundary.topRight.y) {
+                    // sort by y
+                    if (p.y > p1.y) {
+                        auto temp = p;
+                        p = p1;
+                        p1 = temp;
+                    }
+                    // if edge is is subset of other
+                    line<int> l(p, p1);
+                    int same_line = 0;
+                    for (auto e: edgeList) {
+                        // get slope
+                        int dy_l = l.p1.x - l.p0.x;
+                        int dy_e = e.p1.x - e.p0.x;
 
-                    if (dy_l == dy_e && dy_l == 0) {
-                        if (l.p1 == e.p1) {
-                            same_line = 1;
+                        if (dy_l == dy_e && dy_l == 0) {
+                            if (l.p1 == e.p1) {
+                                same_line = 1;
+                            }
                         }
                     }
-                }
-                if (!same_line)
-                    edgeList.push_back(l);
-                // std::cerr << "edgeList: " << p << " - " << p1" << \n";
-            }
-        }
-        std::cerr << "\n";
-        if (edgeList.size() == 0)
-            return lines;
-
-        // print scan line<int>
-        for (int i = 0; i < edgeList.size(); ++i) 
-            std::cerr << "edgeList: " << edgeList[i] << "\n";
-
-        int lowY = edgeList[0].p0.y;
-        int topY = edgeList[0].p0.y;
-        for (auto l : edgeList) {
-            // min
-            if (l.p0.y < lowY)
-                lowY = l.p0.y;
-            if (l.p1.y < lowY)
-                lowY = l.p1.y;
-
-            // max
-            if (l.p0.y > topY)
-                topY = l.p0.y;
-            if (l.p1.y > topY)
-                topY = l.p1.y;
-        }
-        std::cerr << "-----low and top: " << lowY << " " << topY;
-
-        // loop through horizontal scanline
-        for (int i = lowY; i < topY; ++i) {
-            vec4D lowpoint(boundary.bottomLeft.x, i);
-            vec4D toppoint(boundary.bottomRight.x, i);
-
-            // std::cerr << "intersect with: " << lowpoint<int><< " - " << toppoint<int><< "\n";
-            for (int j = 0; j < edgeList.size(); ++j) {
-                // fprintf(stderr, "\nedgeList here: %d %d, %d %d\n", edgeList[j].p0.x, edgeList[j].p0.y, edgeList[j].p1.x, edgeList[j].p1.y);
-                
-                // in range edgeList
-                if (!(i >= edgeList[j].p0.y && i <= edgeList[j].p1.y)) 
-                    continue;
-
-                // get intersection
-                pixel<int> intersect = getIntersection<int>(edgeList[j].p0, edgeList[j].p1, lowpoint, toppoint);
-                // fprintf(stderr, "intersect: %d %d\n", intersect.x, intersect.y);
-            
-                // intersections not contains intersect
-                if(std::find(intersections.begin(), intersections.end(), intersect) == intersections.end()) {
-                    if (intersect.x != INT_MAX)
-                        intersections.push_back(intersect);
+                    if (!same_line)
+                        edgeList.push_back(l);
+                    // std::cerr << "edgeList: " << p << " - " << p1" << \n";
                 }
             }
-                
-            std::sort(std::begin(intersections), std::end(intersections), comppoint<int>);
-            std::cerr << "\n----intersections size: " << intersections.size() << "\n";
-            
-            for (int j = 0; j < intersections.size(); ++j) {
-                    pixel<int> is1 = intersections[j];
-                    std::cerr << "intersect: " << is1 << "\n";
-            }
+            std::cerr << "\n";
+            if (edgeList.size() == 0)
+                return lines;
 
-            // remove mid vec4D
-            if (intersections.size() > 1 && !(intersections.size() % 2 == 0)) { // odd len
-                for (auto i : intersections) {
-                    for (auto edge: edgeList) {
-                        std::cerr << "edge: " << edge << "\n";
-                        if (i == edge.p0 || i == edge.p1) 
-                            intersections.erase(std::remove(intersections.begin(), intersections.end(), i), intersections.end());
+            // print scan line<int>
+            // for (int i = 0; i < edgeList.size(); ++i) 
+                // std::cerr << "edgeList: " << edgeList[i] << "\n";
+
+            int lowY = edgeList[0].p0.y;
+            int topY = edgeList[0].p0.y;
+            for (auto l : edgeList) {
+                // min
+                if (l.p0.y < lowY)
+                    lowY = l.p0.y;
+                if (l.p1.y < lowY)
+                    lowY = l.p1.y;
+
+                // max
+                if (l.p0.y > topY)
+                    topY = l.p0.y;
+                if (l.p1.y > topY)
+                    topY = l.p1.y;
+            }
+            // std::cerr << "-----low and top: " << lowY << " " << topY;
+
+            // loop through horizontal scanline
+            for (int i = lowY; i < topY; ++i) {
+                pixel<int> lowpoint(boundary.bottomLeft.x, i);
+                pixel<int> toppoint(boundary.bottomRight.x, i);
+
+                // std::cerr << "intersect with: " << lowpoint<int><< " - " << toppoint<int><< "\n";
+                for (int j = 0; j < edgeList.size(); ++j) {
+                    // fprintf(stderr, "\nedgeList here: %d %d, %d %d\n", edgeList[j].p0.x, edgeList[j].p0.y, edgeList[j].p1.x, edgeList[j].p1.y);
+                    
+                    // in range edgeList
+                    if (!(i >= edgeList[j].p0.y && i <= edgeList[j].p1.y)) 
+                        continue;
+
+                    // get intersection
+                    pixel<int> intersect = getIntersection<int>(edgeList[j].p0, edgeList[j].p1, lowpoint, toppoint);
+                    // fprintf(stderr, "intersect: %d %d\n", intersect.x, intersect.y);
+                
+                    // intersections not contains intersect
+                    if(std::find(intersections.begin(), intersections.end(), intersect) == intersections.end()) {
+                        if (intersect.x != INT_MAX)
+                            intersections.push_back(intersect);
                     }
                 }
-                std::cerr << intersections.size();
-            }
+                    
+                std::sort(std::begin(intersections), std::end(intersections), comppoint<int>);
+                // std::cerr << "\n----intersections size: " << intersections.size() << "\n";
+                
+                for (int j = 0; j < intersections.size(); ++j) {
+                        pixel<int> is1 = intersections[j];
+                        // std::cerr << "intersect: " << is1 << "\n";
+                }
 
-            // add filling lines
-            if ((intersections.size() % 2) == 0)
-                for (int j = 0; j < intersections.size(); j += 2) {
-                    pixel<int> is1 = intersections[j];
-                    pixel<int> is2 = intersections[j + 1];
-                    std::cerr << "fillinglines: " << is1 << " " << is2 << "\n";
+                // remove mid vec4D
+                if (intersections.size() > 1 && !(intersections.size() % 2 == 0)) { // odd len
+                    for (auto i : intersections) {
+                        for (auto edge: edgeList) {
+                            std::cerr << "edge: " << edge << "\n";
+                            if (i == edge.p0 || i == edge.p1) 
+                                intersections.erase(std::remove(intersections.begin(), intersections.end(), i), intersections.end());
+                        }
+                    }
+                    std::cerr << intersections.size();
+                }
+
+                // add filling lines
+                if ((intersections.size() % 2) == 0)
+                    for (int j = 0; j < intersections.size(); j += 2) {
+                        pixel<int> is1 = intersections[j];
+                        pixel<int> is2 = intersections[j + 1];
+                        // std::cerr << "fillinglines: " << is1 << " " << is2 << "\n";
+                        fillinglines.push_back(line<int>(is1, is2));
+                    }
+                else if (intersections.size() > 1) {  // odd and > 1
+                    pixel<int> is1 = intersections.front();   // first
+                    pixel<int> is2 = intersections.back();  // last
                     fillinglines.push_back(line<int>(is1, is2));
                 }
-            else if (intersections.size() > 1) {  // odd and > 1
-                pixel<int> is1 = intersections.front();   // first
-                pixel<int> is2 = intersections.back();  // last
-                fillinglines.push_back(line<int>(is1, is2));
+                intersections.clear();
             }
-            intersections.clear();
+            
+            lines.insert(lines.end(), fillinglines.begin(), fillinglines.end());
+            return lines;
         }
-        
-        lines.insert(lines.end(), fillinglines.begin(), fillinglines.end());
-        return lines;
-    }
 };
 
 struct GeoObjects {
     std::vector<vec4D> points;
     std::vector<line<int>> lines;
-    std::vector<Polygon> polygons;
+    std::vector<polygon> polygons;
 
     GeoObjects() {};
-    GeoObjects(std::vector<vec4D> p, std::vector<line<int>> l, std::vector<Polygon> poly) {
+    GeoObjects(std::vector<vec4D> p, std::vector<line<int>> l, std::vector<polygon> poly) {
         points = p;
         lines = l;
         polygons = poly;

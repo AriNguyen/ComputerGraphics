@@ -105,11 +105,9 @@ int main(int argc, char **argv) {
             // std::cerr << "=> points: " << pixel << "\n";
         }
 
-        std::cerr << "tri.p: " << tri << "\n";
+        // std::cerr << "tri.p: " << tri << "\n";
+        //
         drawTriangle(tri.p, world, colorBuffer, zBuffer);
-
-        int h = std::abs(world.height - 249);
-        std::cerr << "colorBuffer: " << colorBuffer[h * world.width + 251] << "\n";
     }
 
     // export to File

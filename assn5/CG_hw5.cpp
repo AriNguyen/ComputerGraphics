@@ -28,7 +28,7 @@ int main(int argc, char **argv) {
     std::vector<pixel<int>> pixelPoints;
     std::vector<std::vector<pixel<int>>> triangularPoints;
     std::shared_ptr<ZBuffer> zBuffer = std::make_shared<ZBuffer>(world.width, world.height);
-    std::unique_ptr<Color[]> colorBuffer = std::make_unique<Color[]>(world.width * world.height);
+    std::vector<Color> colorBuffer(world.width * world.height);
 
     // parse argvs
     handleArgvs(argc, argv);
@@ -106,42 +106,14 @@ int main(int argc, char **argv) {
         }
 
         std::cerr << "tri.p: " << tri << "\n";
-        
-        polygon triPolygon(v);
-        std::vector<pixel<int>> triVertices = triPolygon.points;
+        drawTriangle(tri.p, world, colorBuffer, zBuffer);
 
-        // clip Polygon
-        clipPolygon(triVertices, ppm.world, false);
-
-        //  fill polygon
-        // std::vector<Line> polygonLines =  polygonVector[i].getLines();
-        std::vector<line<int>> polygonLines = triPolygon.fill(ppm.world);
-
-        // draw Line
-        for (int j = 0; j < polygonLines.size(); ++j) {
-            // fprintf(stderr, "drawLine: %d %d - %d %d\n", polygonLines[j].p0.x, polygonLines[j].p0.y, polygonLines[j].p1.x, polygonLines[j].p1.y);
-            std::vector<pixel<int>*> pl = {&(polygonLines[j].p0), &(polygonLines[j].p1)};
-            std::vector<pixel<int>> linePoints = drawLine(polygonLines[j].p0, polygonLines[j].p1);
-            for (auto &lp: linePoints) {
-                // std::cerr << "pixels: " << p.x << " " << p.y << std::endl;
-                // float opasity = (lp.z - fFar) / (fNear - fFar);
-                Color c(255, 0, 0);
-
-                // put to buffer
-                float depth = -1.0f;
-                if (zBuffer->testAndSet(lp.x, lp.y, depth)) {
-                    // std::cerr << "testAndSet: " << p.x << "-" << p.y << std::endl;
-                    int h = std::abs(world.height - lp.y);
-                    colorBuffer[h * world.width + lp.x] = c;
-                }                
-            }
-        }
+        int h = std::abs(world.height - 249);
+        std::cerr << "colorBuffer: " << colorBuffer[h * world.width + 251] << "\n";
     }
 
-    // clip && draw
-
     // export to File
-    ppm.toStdOutB(std::move(colorBuffer));
+    ppm.toStdOutB(colorBuffer);
 
     return 0;
 }

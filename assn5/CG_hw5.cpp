@@ -25,8 +25,6 @@ mat4x4 computeProjMatrix(bool debug);
  * 
  */
 int main(int argc, char **argv) {
-    std::vector<pixel<int>> pixelPoints;
-    std::vector<std::vector<pixel<int>>> triangularPoints;
     std::shared_ptr<ZBuffer> zBuffer = std::make_shared<ZBuffer>(world.width, world.height);
     std::vector<Color> colorBuffer(world.width * world.height);
 
@@ -71,9 +69,6 @@ int main(int argc, char **argv) {
     for (auto &tri : triFace) {
         // std::cerr << "\n-----tri before: \n" << tri << "-----\n";
 
-        // print vector
-        std::vector<pixel<int>> v;
-
         for (auto &p : tri.p) {
             // Apply normalizing transformation, Npar or Nper
             p = p * transformedMatrix;
@@ -100,9 +95,6 @@ int main(int argc, char **argv) {
 
             // worldToViewPort
             worldToViewPort(pixel, world, viewPort);
-
-            v.push_back(pixel);
-            // std::cerr << "=> points: " << pixel << "\n";
         }
 
         // std::cerr << "tri.p: " << tri << "\n";

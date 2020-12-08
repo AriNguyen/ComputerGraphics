@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -std=c++14
+CXXFLAGS := -std=c++17
 SRC := CG_hw5.cpp 
 INCLUDE:= 
 EXE := CG_hw5

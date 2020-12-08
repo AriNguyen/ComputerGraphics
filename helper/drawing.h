@@ -179,15 +179,17 @@ int clipPolygon(std::vector<pixel<int>> &vertices, canva<int> win, bool debug) {
     return 1;
 }
 
-std::vector<Color> drawFlatTriangle(  vec4D& pv0, 
+void drawFlatTriangle(  vec4D& pv0, 
                         vec4D& pv1, 
                         vec4D& pv2, 
                         vec4D& dv0, 
                         vec4D& dv1, 
                         vec4D itEdge1,
                         canva<int> win,
+                        Color c,
+                        std::vector<Color>& colorBuffer,
                         std::shared_ptr<ZBuffer> zbuf) {
-    std::vector<Color> colorBuffer(win.width * win.height);
+    // std::vector<Color> colorBuffer(win.width * win.height);
 
     // create edge interpolant for left edge (always v0)
     auto itEdge0 = pv0;
@@ -200,7 +202,7 @@ std::vector<Color> drawFlatTriangle(  vec4D& pv0,
     itEdge0 += dv0 * (float( yStart ) + 0.5f - pv0.y);
     itEdge1 += dv1 * (float( yStart ) + 0.5f - pv0.y);
 
-    for (int y = yStart; y < yEnd; y++,itEdge0 += dv0,itEdge1 += dv1) {
+    for (int y = yStart; y < yEnd; y++, itEdge0 += dv0, itEdge1 += dv1) {
         // calculate start and end pixels
         const int xStart = std::max( (int)ceil( itEdge0.x - 0.5f ),0 );
         const int xEnd = std::min( (int)ceil( itEdge1.x - 0.5f ),(int)win.height - 1); // the pixel AFTER the last pixel drawn
@@ -216,21 +218,25 @@ std::vector<Color> drawFlatTriangle(  vec4D& pv0,
         iLine += diLine * (float( xStart ) + 0.5f - itEdge0.x);
 
         for( int x = xStart; x < xEnd; x++,iLine += diLine ) {
-            if (zbuf->testAndSet(x,y,iLine.z)) {
+            if (zbuf->testAndSet(x, y, iLine.z)) {
                 const float w = 1.0f / iLine.w;
                 const auto attr = iLine * w;
                 // gfx.PutPixel( x,y,effect.ps( attr ) );
-                std::cerr << "w, attr: " << w << attr << "\n";
-                Color c(255, 0, 0);
+                std::cerr << "x, y: " << x << ", "<< y << "\n";
+                // std::cerr << "w, attr: " << w << ", "<< attr << "\n";
                 int h = std::abs(win.height - y);
                 colorBuffer[h * win.width + x] = c;
             }
         }
     }
-    return colorBuffer;
+    // return colorBuffer;
 }
 
-std::vector<Color> drawFlatTopTriangle(vec4D& pv0, vec4D& pv1, vec4D& pv2, canva<int> win, std::shared_ptr<ZBuffer> zbuf) {
+void drawFlatTopTriangle(vec4D& pv0, vec4D& pv1, vec4D& pv2, 
+                        canva<int> win, 
+                        Color color,
+                        std::vector<Color>& colorBuf,
+                        std::shared_ptr<ZBuffer> zbuf) {
     const float delta_y = pv2.y - pv0.y;
     auto dit0 = (pv2 - pv0) / delta_y;
     auto dit1 = (pv2 - pv1) / delta_y;
@@ -239,10 +245,14 @@ std::vector<Color> drawFlatTopTriangle(vec4D& pv0, vec4D& pv1, vec4D& pv2, canva
     auto itEdge1 = pv1;
 
     // call the flat triangle render routine
-    return drawFlatTriangle(pv0, pv1, pv2, dit0, dit1, itEdge1, win, zbuf);
+    drawFlatTriangle(pv0, pv1, pv2, dit0, dit1, itEdge1, win, color, colorBuf, zbuf);
 }
 
-std::vector<Color> drawFlatBottomTriangle(vec4D& pv0, vec4D& pv1, vec4D& pv2, canva<int> win, std::shared_ptr<ZBuffer> zbuf) {
+void drawFlatBottomTriangle(vec4D& pv0, vec4D& pv1, vec4D& pv2, 
+                            canva<int> win, 
+                            Color color,
+                            std::vector<Color>& colorBuf,
+                            std::shared_ptr<ZBuffer> zbuf) {
     // calulcate dVertex / dy
 		// change in interpolant for every 1 change in y
     const float delta_y = pv2.y - pv0.y;
@@ -253,14 +263,19 @@ std::vector<Color> drawFlatBottomTriangle(vec4D& pv0, vec4D& pv1, vec4D& pv2, ca
     auto itEdge1 = pv0;
 
     // call the flat triangle render routine
-    return drawFlatTriangle(pv0, pv1, pv2, dit0, dit1, itEdge1, win, zbuf);
+    drawFlatTriangle(pv0, pv1, pv2, dit0, dit1, itEdge1, win, color, colorBuf, zbuf);
 } 
 
 /** Z Interpolation on triangle
  * @param vector of 3 vertices of a triangle
  * @return vector of pixel colors
  */
-std::vector<Color> drawTriangle(std::vector<vec4D> triVertices, canva<int> win, std::shared_ptr<ZBuffer> zbuf) {
+void drawTriangle(  std::vector<vec4D> triVertices, 
+                    canva<int> win, 
+                    Color color,
+                    std::vector<Color>& colorBuf,
+                    std::shared_ptr<ZBuffer> zbuf
+                    ) {
     assert(triVertices.size() == 3);  // make sure tri has 3
 
     // use pointer to swap
@@ -269,19 +284,19 @@ std::vector<Color> drawTriangle(std::vector<vec4D> triVertices, canva<int> win, 
     vec4D* pv2 = &triVertices[2];
 
     // sort vertices 
-    if (pv1->z < pv0->z) std::swap(pv0, pv1);
-    if (pv2->z < pv1->z) std::swap(pv1, pv2);
-    if (pv1->z < pv0->z) std::swap(pv0, pv1);
+    if (pv1->y < pv0->y) std::swap(pv0, pv1);
+    if (pv2->y < pv1->y) std::swap(pv1, pv2);
+    if (pv1->y < pv0->y) std::swap(pv0, pv1);
 
     // natural flat top 
-    if (pv0->z == pv1->z) {
+    if (pv0->y == pv1->y) {
         if (pv1->x < pv0->x) std::swap(pv0, pv1);
-        return drawFlatTopTriangle(*pv0, *pv1, *pv2, win, zbuf);
+        drawFlatTopTriangle(*pv0, *pv1, *pv2, win, color, colorBuf, zbuf);
     }
     // natural flat bottom
     else if (pv0->y == pv1->y) {
         if (pv2->x < pv1->x) std::swap(pv0, pv1);
-        return drawFlatBottomTriangle(*pv0, *pv1, *pv2, win, zbuf);
+        drawFlatBottomTriangle(*pv0, *pv1, *pv2, win, color, colorBuf, zbuf);
     }
     // general triangle
     else {
@@ -291,17 +306,13 @@ std::vector<Color> drawTriangle(std::vector<vec4D> triVertices, canva<int> win, 
 
         // major right
         if (pv1->x < vi.x) {
-            auto buf1 = drawFlatBottomTriangle(*pv0, *pv1, vi, win, zbuf);
-            auto buf2 = drawFlatTopTriangle(*pv1, vi, *pv2, win, zbuf);
-            buf1.insert(buf1.end(), buf2.begin(), buf2.end());
-            return buf1;
+            drawFlatBottomTriangle(*pv0, *pv1, vi, win, color, colorBuf, zbuf);
+            drawFlatTopTriangle(*pv1, vi, *pv2, win, color, colorBuf, zbuf);
         }
         // major left
         else {
-            auto buf1 = drawFlatBottomTriangle(*pv0, vi, *pv1, win, zbuf);
-            auto buf2 = drawFlatTopTriangle(vi, *pv1, *pv2, win, zbuf);
-            buf1.insert(buf1.end(), buf2.begin(), buf2.end());
-            return buf1;
+            drawFlatBottomTriangle(*pv0, vi, *pv1, win, color, colorBuf, zbuf);
+            drawFlatTopTriangle(vi, *pv1, *pv2, win, color, colorBuf, zbuf);
         }
     }
 }
@@ -339,7 +350,7 @@ std::vector<pixel<int>> drawLine(pixel<int> p0, pixel<int> p1) {
  * 
  * 
  */
-void worldToViewPort(pixel<int>& p, canva<int>worldView, canva<int>viewPort) {
+void worldToViewPort(vec4D& p, canva<int>worldView, canva<int>viewPort) {
     // scaling factors for x coordinate and y coordinate 
     float sx, sy; 
   

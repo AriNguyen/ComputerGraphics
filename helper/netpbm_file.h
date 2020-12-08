@@ -24,7 +24,7 @@ class netpbmFile {
 
         netpbmFile() {};
         virtual void toStdOut(std::vector<pixel<int>> points) = 0;
-        virtual void toStdOutB(std::unique_ptr<Color[]> ZBuffer_in) = 0;
+        virtual void toStdOutB(std::vector<Color>& ZBuffer_in) = 0;
 };
 
 class pbmFile : public netpbmFile {
@@ -71,7 +71,7 @@ class ppmFile : public netpbmFile {
         void toStdOut(std::vector<pixel<int>> points) { }
 
         // Color pixel
-        void toStdOutB(std::unique_ptr<Color[]> ZBuffer_in) {
+        void toStdOutB(std::vector<Color>& ZBuffer_in) {
             // init z buffer
             std::vector<std::vector<int>> colorPixelArr(world.width, std::vector<int> (world.height, 0));
 

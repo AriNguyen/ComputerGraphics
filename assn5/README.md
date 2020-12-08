@@ -1,9 +1,14 @@
 # Assignment 5: Z-Buffering
 
+
 ## Running Program
 ```shell
 chmod 700 runall  
 ./runall  # bash file to execute all commands in testing 
+```
+
+```shell
+make
 ```
 
 ## Testing

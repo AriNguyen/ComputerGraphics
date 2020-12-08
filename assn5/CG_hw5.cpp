@@ -26,21 +26,26 @@ mat4x4 computeProjMatrix(bool debug);
  */
 int main(int argc, char **argv) {
     std::shared_ptr<ZBuffer> zBuffer = std::make_shared<ZBuffer>(world.width, world.height);
-    std::vector<Color> colorBuffer(world.width * world.height);
+    std::vector<Color> colorPixelBuffer(world.width * world.height);
+    std::vector<Color> color = {Color(255, 0, 0), Color(0, 255, 0), Color(0, 0, 255)};
 
     // parse argvs
     handleArgvs(argc, argv);
 
     // handle smf file
+    std::vector<SMFImage> smf_all;
     SMFImage smf(smf_model1);
     smf.parseData();
+    smf_all.push_back(smf);
     if (smf_model2) {
         SMFImage smf2(smf_model2);
         smf2.parseData();
+        smf_all.push_back(smf2);
     }
     if (smf_model3) {
         SMFImage smf3(smf_model3);
         smf3.parseData();
+        smf_all.push_back(smf3);
     }
 
     // Set up rotation matrices
@@ -65,45 +70,48 @@ int main(int argc, char **argv) {
     std::cerr << "projectMatrix: \n" << projectMatrix << "\n";
 
     // Project triangles from 3D --> 2D
-    std::vector<triangle> triFace = smf.getTriangularFace();
-    for (auto &tri : triFace) {
-        // std::cerr << "\n-----tri before: \n" << tri << "-----\n";
+    std::cerr << "smf_all.size(): \n" << smf_all.size() << "\n";
+    for (int i = 0; i < smf_all.size(); i++) {
+        smf = smf_all[i];
+        std::vector<triangle> triFace = smf.getTriangularFace();
+        for (auto &tri : triFace) {
+            // std::cerr << "\n-----tri before: \n" << tri << "-----\n";
 
-        for (auto &p : tri.p) {
-            // Apply normalizing transformation, Npar or Nper
-            p = p * transformedMatrix;
-            // std::cerr << "\np after transform:: " << p << "\n";
+            for (auto &p : tri.p) {
+                // Apply normalizing transformation, Npar or Nper
+                p = p * transformedMatrix;
+                // std::cerr << "\np after transform:: " << p << "\n";
 
-            p = p * projectMatrix;
-            // std::cerr << "p after projectMatrix:: " << p << "\n";
+                p = p * projectMatrix;
+                // std::cerr << "p after projectMatrix:: " << p << "\n";
 
-            // Normalizing
-            if (!isParallelProjection) {
-                p = p / p.w;
-                // std::cerr << "p after Normalizing:: " << p << "\n";
+                // Normalizing
+                if (!isParallelProjection) {
+                    p = p / p.w;
+                    // std::cerr << "p after Normalizing:: " << p << "\n";
+                }
+
+                // scale to device coord
+                p.x += 1.0f;
+                p.y += 1.0f;
+                p.x *= 0.5 * world.width;
+                p.y *= 0.5 * world.height;
+                // std::cerr << "p after scale:: " << p << "\n";
+
+                // round to integer
+                // pixel<int> pixel{static_cast<int>(p.x), static_cast<int>(p.y)};
+
+                // worldToViewPort
+                worldToViewPort(p, world, viewPort);
             }
 
-            // scale to device coord
-            p.x += 1.0f;
-            p.y += 1.0f;
-            p.x *= 0.5 * world.width;
-            p.y *= 0.5 * world.height;
-            // std::cerr << "p after scale:: " << p << "\n";
-
-            // round to integer
-            pixel<int> pixel{static_cast<int>(p.x), static_cast<int>(p.y)};
-
-            // worldToViewPort
-            worldToViewPort(pixel, world, viewPort);
+            // std::cerr << "tri.p: " << tri << "\n";
+            drawTriangle(tri.p, world, color[i], colorPixelBuffer, zBuffer);
         }
-
-        // std::cerr << "tri.p: " << tri << "\n";
-        //
-        drawTriangle(tri.p, world, colorBuffer, zBuffer);
     }
 
     // export to File
-    ppm.toStdOutB(colorBuffer);
+    ppm.toStdOutB(colorPixelBuffer);
 
     return 0;
 }

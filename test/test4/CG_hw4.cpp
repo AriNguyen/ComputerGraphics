@@ -3,7 +3,7 @@
  * @brief main program for graphics pipeline
  * @author Ari Nguyen
  */
-#include "helper/helper.h"
+#include "../../helper/helper.h"
 
 /** Specifications for this assignment
  * PRP: Projection Reference

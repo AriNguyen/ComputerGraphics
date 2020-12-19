@@ -1,5 +1,5 @@
 /**
- * @file pbm_file.hpp
+ * @file vector.h
  * @brief C++ program that holds vec2D, vec3D, vec4D objects
  * @author Ari Nguyen
  */
